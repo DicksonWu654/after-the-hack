@@ -1,0 +1,4 @@
+tornado_era,bridge,cex,instant_exchange,other_contract,other_labeled,railgun,tornado_cash,tornado_cash(hop2),unlabeled_eoa_or_contract
+A_pre_sanction(<2022-08-08),8.8,11.8,0.0,0.0,2.9,0.0,32.4,2.9,41.2
+B_sanctioned(2022-08-08..2025-03-20),4.6,4.6,0.9,7.4,1.8,0.5,26.3,6.5,47.5
+C_post_delisting(>=2025-03-21),1.0,0.0,1.9,7.8,2.9,12.6,25.2,2.9,45.6

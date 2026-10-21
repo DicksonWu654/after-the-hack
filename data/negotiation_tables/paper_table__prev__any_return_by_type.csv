@@ -1,0 +1,9 @@
+stratum,incident_type,yes,no,unknown,n,known,share_of_known,lower_bound,upper_bound
+pooled,exploit,91,346,408,845,437,0.208,0.108,0.591
+pooled,key_compromise,7,131,95,233,138,0.051,0.03,0.438
+inherited_unverified,exploit,0,29,54,83,29,0.0,0.0,0.651
+inherited_unverified,key_compromise,0,12,13,25,12,0.0,0.0,0.52
+inherited_verified,exploit,76,162,21,259,238,0.319,0.293,0.375
+inherited_verified,key_compromise,6,69,7,82,75,0.08,0.073,0.159
+swept,exploit,15,155,333,503,170,0.088,0.03,0.692
+swept,key_compromise,1,50,75,126,51,0.02,0.008,0.603

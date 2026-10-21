@@ -1,0 +1,12 @@
+year,this_dataset_n,this_dataset_usd,defillama_raw_n,defillama_raw_usd,defillama_raw_usd_excl_lubian,published_totals,published_counts,urls (accessed 2026-10-21)
+2016,5,135730000,5,135730000,135730000,,,
+2017,7,139850010,8,288850010,288850010,,,
+2018,26,901911992,31,1123511992,1123511992,,,
+2019,20,211378529,26,277278529,277278529,,,
+2020,52,560805238,46,3977460238,477460238,,,
+2021,134,2659237659,127,2868249772,2868249772,3.2B (Chainalysis),n/a,https://www.chainalysis.com/blog/2022-crypto-crime-report-introduction/
+2022,196,3540797852,185,3633656105,3633656105,"3.8B at publication, 3.7B in later report (Chainalysis); 3.7B (CertiK)",219 service hacks (Chainalysis),https://www.chainalysis.com/blog/2022-biggest-year-ever-for-crypto-hacking/ ; https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2024/ ; https://cointelegraph.com/news/crypto-hack-losses-51-percent-decline-2023-certik
+2023,229,1640628133,197,1626253369,1626253369,1.7B (Chainalysis); >1.8B across 751 incidents (CertiK),"231 (Chainalysis, 2024 report) / 282 (Chainalysis, 2025 report); 751 (CertiK, incl. scams/phishing)",https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2024/ ; https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2025/ ; https://cointelegraph.com/news/crypto-hack-losses-51-percent-decline-2023-certik
+2024,235,1827041215,217,1669697215,1669697215,"2.2B (Chainalysis); 2.446B (CertiK, per its 2025 report)",303 (Chainalysis),https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2025/ ; https://certik.com/blog/hack3d-the-web3-security-report-2025
+2025,165,2569483978,148,2715021619,2715021619,>3.4B through early Dec (Chainalysis); 3.353B (CertiK),n/a,https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/ ; https://certik.com/blog/hack3d-the-web3-security-report-2025
+2026,308,2329983761,305,2344874907,2344874907,"H1: 1.32B (CertiK, via ForkLog); Jan-Apr: ~0.76B (TRM, derived from 577M = 76%)",207 incidents H1 (TRM),https://forklog.com/en/certik-says-crypto-hack-losses-hit-1-32b-in-h1-2026/ ; https://www.trmlabs.com/resources/blog/north-korea-stole-76-of-all-crypto-hack-value-in-2026-with-just-two-attacks

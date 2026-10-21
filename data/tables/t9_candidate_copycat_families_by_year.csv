@@ -1,0 +1,10 @@
+family,total,2021,2022,2023,2024,2026,2025,2020
+compound_v2_fork_empty_market_or_rounding,21,2.0,2.0,13.0,3.0,1.0,0.0,0.0
+uniswap_v2_pair_skim_sync_reflection_token,30,2.0,7.0,13.0,2.0,5.0,1.0,0.0
+erc2771_forwarder_multicall,7,0.0,1.0,0.0,0.0,3.0,3.0,0.0
+permit_or_approval_drain,15,0.0,2.0,2.0,0.0,7.0,4.0,0.0
+read_only_reentrancy_or_vyper,7,0.0,1.0,6.0,0.0,0.0,0.0,0.0
+erc4626_inflation_or_donation,23,0.0,0.0,9.0,1.0,11.0,2.0,0.0
+rounding_precision_loss,27,0.0,0.0,13.0,9.0,4.0,1.0,0.0
+balancer_or_curve_pool_rounding,11,0.0,0.0,4.0,0.0,5.0,1.0,1.0
+eip7702_or_account_abstraction,1,0.0,0.0,0.0,0.0,1.0,0.0,0.0

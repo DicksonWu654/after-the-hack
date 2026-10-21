@@ -1,0 +1,46 @@
+attacker_eoa,n,incidents,first,last
+0x835b45d38cbdccf99e609436ff38e31ac05bc502,11,BRAND; Babyloogn; Binemon; CCV; DominoTT; Freedom; HNet; KR; OSN; PHIL; Shell_MEV_0xa898,2023-11-02,2024-05-06
+0xc0ffeebabe5d496b2dde509f9fa189c25cf29671,8,AnyswapWETHPermit; BlueberryProtocol; DRLVaultV3; ERC20TokenBank; SecuredFi; SushiSwap; SwarmMarkets; WiseLending,2023-04-09,2026-09-05
+0x3026c464d3bd6ef0ced0d49e80f171b58176ce32,8,AIZPTToken; Lifeprotocol; MARA---price-manipulation; Nalakuvara_LotteryTicket50; SBT; Z123; wKeyDAO; wsm,2024-04-04,2025-05-09
+0xc49f2938327aa2cdc3f2f89ed17b54b3671f05de,7,BetaPresale; Crosswise; Gangsterfinance; SinstakeZombie; TokenFactory; TokenVault; WaleCoin,2025-05-06,2025-06-20
+0xfde0d1575ed8e06fbf36256bcdfa1f359281455a,6,Alkimiya_IO; DeFiPlaza; Erc20transfer; Paraswap; RsETHSafeModule; TIME,2023-12-06,2026-09-15
+0x4645863205b47a0a3344684489e8c446a437d66c,5,Bankroll_Network; DualPools; FIL314; HYDT; iVest,2024-02-15,2024-10-10
+0x6ce9fa08f139f5e48bc607845e57efe9aa34c9f6,4,BTC20; HeavensGate; JumpFarm; QuantumWN,2023-08-19,2023-09-05
+0xd215ffaf0f85fb6f93f11e49bd6175ad58af0dfd,4,DAO_SoulMate; DeezNutz 404; FILX DN404; INUMI,2024-01-22,2024-09-11
+0xc578d755cd56255d3ff6e92e1b6371ba945e3984,4,APC; Allbridge; UFDao; ZoomproFinance,2022-09-05,2023-04-02
+0x7cb74265e3e2d2b707122bf45aea66137c6c8891,3,AIS; BFCToken; LaEeb,2023-09-09,2023-11-29
+0x97d8170e04771826a31c4c9b81e9f9191a1c8613,3,StackMarket; UNI; unverified,2025-03-06,2025-03-07
+0x52e38d496f8d712394d5ed55e4d4cdd21f1957de,3,ETHFIN; INVISTECH; PTM,2024-03-29,2025-03-06
+0x7248939f65bdd23aab9eaab1bc4a4f909567486e,3,DOGGO; HANAToken; PestoToken,2024-09-05,2024-09-23
+0xb6911dee6a5b1c65ad1ac11a99aec09c2cf83c0e,3,EXcommunity; INcufi; Will,2024-05-28,2024-06-28
+0xea75aec151f968b8de3789ca201a2a3a7faeefba,3,Miner; XAI; pSeudoEth,2023-10-08,2024-02-15
+0xf84efa8a9f7e68855cf17eaac9c2f97a9d131366,3,ARA; Palmswap; UN,2023-06-06,2023-07-24
+0x096f0f03e4be68d7e6dd39b22a3846b8ce9849a3,2,GHT; Pandora,2024-02-08,2024-03-07
+0x0a4125690753b6cc82cadbca0f0899eb2025acb0,2,GMT7; HoldSafe,2025-02-08,2025-06-20
+0x101723def8695f5bb8d5d4aa70869c10b5ff6340,2,Unverified_16d0; YYStoken,2024-06-08,2024-09-04
+0x132d9bbdbe718365af6cc9e43bac109a9a53b138,2,MRP; SlurpyCoin,2024-07-02,2024-12-18
+0x172dca3e72e4643ce8b7932f4947347c1e49ba6d,2,BankrollStack; BankrollStackPlus,2025-06-18,2025-06-19
+0x547fb3db0f13eed5d3ff930a0b61ae35b173b4b5,2,MintoFinance; SUT,2023-07-21,2023-07-23
+0x67a909f2953fb1138bea4b60894b51291d2d0795,2,BRA; RoeFinance,2023-01-10,2023-01-11
+0x2352a1fca90182509dca9c12b2cad582a38e8b82,2,KipseliPropAMM; TesseraSwap,2026-04-21,2026-05-18
+0x7e7c1f0d567c0483f85e1d016718e44414cdbafe,2,ATM Token; WETC,2025-07-17,2026-06-04
+0x9bdc730183821b6bb2b51be30b77c964fa645b91,2,New Market Trading; SquidRouterModule,2026-05-25,2026-05-25
+0x7ccf451d3c48c8bb747f42f29a0cde4209ff863e,2,KubSplit; ZS,2023-09-24,2023-10-08
+0x7d192fa3a48c307100c3e663050291fff786aa1f,2,LaunchZone; swapX,2023-02-27,2023-02-27
+0x7c982e93d6b1ede9626a84ebeafbc42e5991dee8,2,AventaRewardClaim; multitransferswap,2025-04-27,2025-04-27
+0xbf6ec059f519b668a309e1b6ecb9a8ea62832d95,2,FutureSwap; MTToken,2026-01-10,2026-01-12
+0xbbcc139933d1580e7c40442e09263e90e6f1d66d,2,ElephantStatus; OKC Project,2023-11-14,2023-12-06
+0xb929c7215c0ec8ebad5fbf73b1da63bccfff1896,2,ReflexerGEB; RouterDrain,2026-09-01,2026-09-07
+0xad2cb8f48e74065a0b884af9c5a4ecbba101be23,2,InitcodeFactoryFees; RANT,2025-06-28,2025-07-05
+0xa27eae743cd8c03e9b7c25ebf43dadbbc6df9bfa,2,Vault4626; WHALE,2026-06-17,2026-06-29
+0xab90a897cf6c56c69a4579ead3c900260dfba02d,2,STRAC; UnverifiedContr_9ad32,2023-06-27,2023-06-27
+0xc2b2197ca4b2ee3b4eb61fc59e6d592d04a2e26a,2,HenloKart; LimitOrderProtocol,2025-02-11,2025-02-26
+0xc468d9a3a5557bff457586438c130e3afbec2ff9,2,MetaDragon; SATURN,2024-05-07,2024-05-29
+0xdfdea277f6b44270bcb804997d1e6cc4ad8407db,2,Circle,2022-08-13,2022-08-16
+0xd9a34af0b97f13871287c317ea0e1e8c00be0630,2,BasePricePool; DogeAlliance,2025-05-31,2025-06-19
+0xc9a5643ed8e4cd68d16fe779d378c0e8e7225a54,2,BBT; Scorch,2024-03-12,2025-02-11
+0xe4b97db5faf476db464bc271097fac97d6ce3783,2,Unverified670471; Unverified_6f7a,2025-07-26,2025-08-22
+0xedee6379fe90bd9b85d8d0b767d4a6deb0dc9dcf,2,Peapods Finance; YodlRouter,2024-08-14,2025-02-08
+0xebe15a67e37203563d0d99aafaf06ecf41305fba,2,BscInitcodeToken; MyCoinMaster,2025-08-04,2025-08-05
+0xf499f7a82de632cfd194025a51c88d1b44c8155e,2,BitCrown; Bitallx,2025-05-16,2025-06-09
+0xee0221d76504aec40f63ad7e36855eebf5ea5edd,2,Creat Future; EGD Finance,2022-04-11,2022-08-07

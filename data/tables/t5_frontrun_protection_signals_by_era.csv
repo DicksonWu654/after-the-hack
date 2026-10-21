@@ -1,0 +1,6 @@
+era,n,constructor_attack_pct,deployed_in_attack_tx_pct,builder_payment_mev_aware_pct,zero_gas_price_pct
+2020-22,95,1.1,1.1,4.2,0.0
+2023,190,4.7,5.8,5.3,0.0
+2024,182,14.3,14.3,9.3,0.0
+2025,153,40.5,41.2,6.5,0.0
+2026 (to 18 Oct),138,34.1,35.5,6.5,0.0

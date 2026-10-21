@@ -1,0 +1,33 @@
+era,chain,n,private_pct
+2020-22,arbitrum,1,0.0
+2020-22,avalanche,3,0.0
+2020-22,bsc,51,0.0
+2020-22,ethereum,39,10.3
+2020-22,optimism,1,0.0
+2023,arbitrum,11,0.0
+2023,avalanche,4,0.0
+2023,base,2,0.0
+2023,bsc,96,0.0
+2023,ethereum,74,13.5
+2023,optimism,3,0.0
+2024,arbitrum,11,0.0
+2024,base,6,0.0
+2024,blast,2,0.0
+2024,bsc,79,0.0
+2024,ethereum,78,21.8
+2024,linea,1,0.0
+2024,mantle,1,0.0
+2024,optimism,4,0.0
+2025,arbitrum,8,0.0
+2025,avalanche,2,0.0
+2025,base,17,0.0
+2025,bsc,69,0.0
+2025,ethereum,57,17.5
+2026 (to 18 Oct),arbitrum,7,0.0
+2026 (to 18 Oct),avalanche,1,0.0
+2026 (to 18 Oct),base,13,0.0
+2026 (to 18 Oct),bsc,50,0.0
+2026 (to 18 Oct),ethereum,58,15.5
+2026 (to 18 Oct),linea,1,0.0
+2026 (to 18 Oct),optimism,3,0.0
+2026 (to 18 Oct),polygon,5,0.0

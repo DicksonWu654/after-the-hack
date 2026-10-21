@@ -1,0 +1,6 @@
+era,access_control,arbitrary_call_or_input_validation,arithmetic_rounding,bridge_cross_chain,business_logic_accounting,governance_attack,key_compromise_or_rug,oracle_price_manipulation,reentrancy,unclassified
+2020-22,9.5,17.9,4.2,3.2,24.2,4.2,2.1,27.4,6.3,1.1
+2023,10.5,8.9,6.8,0.0,39.5,0.0,0.0,25.8,7.9,0.5
+2024,21.4,14.8,6.6,0.0,30.8,0.0,1.1,15.9,7.7,1.6
+2025,20.3,14.4,1.3,0.0,39.2,0.0,2.6,20.3,1.3,0.7
+2026 (to 18 Oct),21.7,14.5,5.1,0.7,31.2,2.2,1.4,19.6,2.9,0.7

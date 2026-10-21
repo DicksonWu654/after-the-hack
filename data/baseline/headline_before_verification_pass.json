@@ -1,0 +1,423 @@
+{
+ "all": {
+  "n": 1381,
+  "loss": 16696684367,
+  "recovered": 3058558304,
+  "pct_all": 18.32,
+  "pct_ex_chain": 15.5,
+  "pct_ex_top3": 12.54,
+  "top3": [
+   [
+    "Poly Network",
+    611000000
+   ],
+   [
+    "Liquid Network",
+    266560000
+   ],
+   [
+    "KuCoin",
+    239412000
+   ]
+  ],
+  "pct_ex_unverified": 18.32,
+  "n_ge1m": 662,
+  "n_ge1m_documented": 147,
+  "pct_count_ge1m": 22.21,
+  "n_ge1m_checked": 410,
+  "n_ge1m_documented_of_checked": 147,
+  "pct_count_checked": 35.85,
+  "n_ge1m_unchecked": 252,
+  "n_quantified": 176,
+  "n_documented": 187,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1727778350,
+    108,
+    56.5
+   ],
+   [
+    "law-enforcement seizure / court",
+    594105200,
+    13,
+    19.4
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    402609960,
+    9,
+    13.2
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    179925364,
+    29,
+    5.9
+   ],
+   [
+    "white-hat / MEV rescue",
+    69469160,
+    23,
+    2.3
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    68187000,
+    2,
+    2.2
+   ],
+   [
+    "other / unspecified",
+    16483269,
+    30,
+    0.5
+   ]
+  ]
+ },
+ "top150": {
+  "n": 150,
+  "loss": 14236630010,
+  "recovered": 2775967620,
+  "pct_all": 19.5,
+  "pct_ex_chain": 16.42,
+  "pct_ex_top3": 12.74,
+  "top3": [
+   [
+    "Poly Network",
+    611000000
+   ],
+   [
+    "Liquid Network",
+    266560000
+   ],
+   [
+    "KuCoin",
+    239412000
+   ]
+  ],
+  "pct_ex_unverified": 19.5,
+  "n_ge1m": 150,
+  "n_ge1m_documented": 59,
+  "pct_count_ge1m": 39.33,
+  "n_ge1m_checked": 150,
+  "n_ge1m_documented_of_checked": 59,
+  "pct_count_checked": 39.33,
+  "n_ge1m_unchecked": 0,
+  "n_quantified": 59,
+  "n_documented": 59,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1529436000,
+    24,
+    55.1
+   ],
+   [
+    "law-enforcement seizure / court",
+    590904400,
+    11,
+    21.3
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    377878710,
+    4,
+    13.6
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    162759010,
+    19,
+    5.9
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    60000000,
+    1,
+    2.2
+   ],
+   [
+    "white-hat / MEV rescue",
+    50152000,
+    6,
+    1.8
+   ],
+   [
+    "other / unspecified",
+    4837500,
+    4,
+    0.2
+   ]
+  ],
+  "arrest_strict": 19,
+  "arrest_broad": 19,
+  "arrest_flag_any": 19,
+  "arrest_classes": {
+   "none_found": 76,
+   "charged_or_arrested_for_hack": 19,
+   "": 55
+  },
+  "verified_check": {
+   "": [
+    150,
+    2775967620
+   ]
+  }
+ },
+ "top100": {
+  "n": 100,
+  "loss": 13212570010,
+  "recovered": 2601529720,
+  "pct_all": 19.69,
+  "pct_ex_chain": 16.38,
+  "pct_ex_top3": 12.37,
+  "top3": [
+   [
+    "Poly Network",
+    611000000
+   ],
+   [
+    "Liquid Network",
+    266560000
+   ],
+   [
+    "KuCoin",
+    239412000
+   ]
+  ],
+  "pct_ex_unverified": 19.69,
+  "n_ge1m": 100,
+  "n_ge1m_documented": 45,
+  "pct_count_ge1m": 45.0,
+  "n_ge1m_checked": 100,
+  "n_ge1m_documented_of_checked": 45,
+  "pct_count_checked": 45.0,
+  "n_ge1m_unchecked": 0,
+  "n_quantified": 45,
+  "n_documented": 45,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1374292600,
+    14,
+    52.8
+   ],
+   [
+    "law-enforcement seizure / court",
+    590904400,
+    11,
+    22.7
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    377878710,
+    4,
+    14.5
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    143464510,
+    13,
+    5.5
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    60000000,
+    1,
+    2.3
+   ],
+   [
+    "white-hat / MEV rescue",
+    50152000,
+    6,
+    1.9
+   ],
+   [
+    "other / unspecified",
+    4837500,
+    4,
+    0.2
+   ]
+  ],
+  "arrest_strict": 15,
+  "arrest_broad": 15,
+  "arrest_flag_any": 15,
+  "arrest_classes": {
+   "none_found": 76,
+   "charged_or_arrested_for_hack": 15,
+   "": 9
+  },
+  "verified_check": {
+   "": [
+    100,
+    2601529720
+   ]
+  }
+ },
+ "dprk": {
+  "n_gov": 33,
+  "loss_gov": 3837090000,
+  "pct_gov": 22.98,
+  "n_firm": 63,
+  "loss_firm": 2693572000,
+  "n_gov_firm": 96,
+  "loss_gov_firm": 6530662000,
+  "pct_gov_firm": 39.11,
+  "recovered_pct_dprk": 7.75,
+  "recovered_pct_non_dprk": 25.11
+ },
+ "top150_names": [
+  "Bybit",
+  "Ronin Bridge",
+  "Poly Network",
+  "BNB Chain Token Hub bridge (",
+  "Coincheck",
+  "FTX",
+  "Bitget",
+  "Wormhole (DeFiLlama name: Po",
+  "Liquid Network",
+  "DMM Bitcoin",
+  "Drift Trade",
+  "Kelp",
+  "PlayDapp",
+  "KuCoin",
+  "WazirX: India",
+  "Cetus CLMM",
+  "Mixin Network",
+  "Euler V1",
+  "Bitmart",
+  "Nomad",
+  "Beanstalk",
+  "BitGrail",
+  "Wintermute",
+  "Vulcan Forged",
+  "BXH",
+  "CREAM Lending",
+  "Balancer V2",
+  "Multichain",
+  "Poloniex",
+  "Tectonic",
+  "Badger DAO",
+  "COLDCARD",
+  "Mango Markets V3",
+  "Chris Larsen",
+  "Venus Protocol",
+  "Harmony Bridge",
+  "Atomic Wallet",
+  "Liquid Global",
+  "Mirror",
+  "Heco Bridge",
+  "Phemex",
+  "Nobitex",
+  "Orbit Bridge",
+  "Qubit",
+  "Rari Capital",
+  "AscenDEX",
+  "Bitfinex",
+  "UPCX",
+  "NiceHash",
+  "Munchables",
+  "Curve DEX",
+  "The DAO",
+  "Zaif",
+  "AnubisDAO",
+  "AlphaPo",
+  "EasyFi",
+  "Uranium Finance",
+  "CoinEx",
+  "BtcTurk",
+  "Cashio",
+  "Radiant V2",
+  "Nesa",
+  "Infini",
+  "Upbit",
+  "KyberSwap Elastic",
+  "BtcTurk",
+  "Josh Jones",
+  "Bunny",
+  "Hedgey",
+  "CoinDCX",
+  "BingX",
+  "GMX V1 EVM",
+  "SwissBorg",
+  "Stake.com",
+  "Coinbene",
+  "Binance",
+  "Ravencoin",
+  "Step Finance",
+  "Alpha Finance",
+  "CoinsPaid",
+  "Coinrail",
+  "IRA Financial / Gemini",
+  "Upbit",
+  "Vee Finance",
+  "Crypto.com",
+  "Humanity",
+  "MonoX",
+  "Bithumb",
+  "Meerkat Finance",
+  "Tether",
+  "Spartan",
+  "Parity",
+  "Curve Finance",
+  "Grim Finance",
+  "Transit Swap",
+  "Deribit",
+  "BitPoint",
+  "Paid Network",
+  "StableMagnet",
+  "Penpie",
+  "BigONE",
+  "Truebit",
+  "FixedFloat",
+  "Kronos Research",
+  "ThalaSwap",
+  "Indodax",
+  "dForce Lending",
+  "Resolv USR",
+  "AFX Bridge",
+  "Harvest Finance",
+  "xToken",
+  "Ostium",
+  "Bancor V3",
+  "Bitrue",
+  "Bald",
+  "Lykke",
+  "Gala",
+  "Elephant Money",
+  "Electrum",
+  "Pando Rings",
+  "Bilaxy",
+  "DEXX",
+  "SBI Crypto",
+  "Popsicle Finance",
+  "3Commas",
+  "MEV-Boost Relay",
+  "Sonne Finance",
+  "UwU Lend",
+  "US Government Crypto Wallet",
+  "BonkDAO",
+  "Pickle",
+  "Bithumb",
+  "CREAM Lending",
+  "Lympo",
+  "Rhea Lend",
+  "Snowdog",
+  "Bitcoin Gold",
+  "BearnFi",
+  "Wintermute",
+  "Cryptopia",
+  "Electrum",
+  "Indexed Finance",
+  "Curio",
+  "Team Finance",
+  "Farmers World",
+  "Inverse Finance Frontier",
+  "SUPERFORTUNE AI",
+  "PEPE",
+  "Eminence",
+  "Floating Point Group"
+ ],
+ "_note": "Frozen snapshot of the master built before curated_part5_verified.py, recomputed with the current definitions of baseline_stats.py (ex-chain, ex-top-3, arrest classes crude). Published prior-version figures are in research/incident-baseline.md history."
+}

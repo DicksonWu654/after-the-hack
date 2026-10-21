@@ -1,0 +1,2 @@
+incidents_with_known_outcome_and_loss,loss_usd_sum,returned_usd_sum,share_of_dollars_returned,returns_with_dollar_amount,returns_without_dollar_amount,top3_returned_usd,top3_share_of_returned,top3_names,top10_share_of_returned
+571,16049749361.470001,1309476789.6000001,0.082,78,19,875000000.0,0.668,Poly Network; Euler Finance; Mango Markets,0.847

@@ -1,0 +1,6 @@
+era,n_known_verification,verified_pct,n_selfdestruct_determinable,selfdestruct_inferred_pct,selfdestruct_in_poc_pct
+2020-22,48,22.9,94,3.2,1.1
+2023,86,9.3,179,5.6,3.2
+2024,85,8.2,178,1.1,2.7
+2025,62,6.5,151,0.0,2.6
+2026 (to 18 Oct),64,6.2,132,0.0,0.0

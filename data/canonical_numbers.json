@@ -1,0 +1,2916 @@
+{
+ "title": "After the Hack: canonical headline numbers",
+ "generated": "2026-10-21",
+ "generated_by": "scripts/build_canonical_numbers.py",
+ "data_snapshot": {
+  "master_rows_total": 1573,
+  "headline_rows": 1377,
+  "headline_loss_usd": 16516848367,
+  "period": "2016-01-01..2026-10-21",
+  "valuation": "USD at time of incident; recoveries at theft-date USD, capped at 100% of loss"
+ },
+ "confidence_scale": {
+  "high": "primary or multiply-corroborated, arithmetic over a defined list",
+  "medium": "reasonable but coverage-limited or definition-sensitive",
+  "low": "few cases, entity-link only, or single source; quote with \"at least\"/\"in our sample\""
+ },
+ "numbers": [
+  {
+   "id": "S1",
+   "section": "Scale",
+   "question": "How much has been stolen in total?",
+   "canonical_value": "$16.52B across 1,377 hacks and exploits with a stated USD loss, 1 Jan 2016 to 21 Oct 2026 (659 incidents of $1M or more = $16.32B)",
+   "definition": "Numerator: loss_usd_reported, USD at the time of the incident (DeFiLlama amount, or SlowMist USD figure; never re-priced). Denominator: n/a (a total). Scope: headline_scope=1 rows of data/incidents_master.csv (de-duplicated; excludes non-thefts, the LuBian $3.5B outlier, researcher-list-only rows, and large single-source rows; includes the four verification-pass scope exclusions Nobitex, Ravencoin, CoinBene, Nesa). Pure rug pulls and scams are mostly out. Period 2016-01-01..2026-10-21.",
+   "sources": [
+    "data/baseline/annual_totals.csv",
+    "data/baseline/headline_summary.json",
+    "project brief (not published): research/incident-baseline.md section 1-2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "$17.2B (DefiLlama raw, 2016-Oct 2026, ex LuBian)",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md",
+     "why": "raw DeFiLlama denominator; includes rows this master excludes (duplicates, non-thefts) and uses DeFiLlama Bybit $1.4B; BNB 2022 ($570M, minted rather than realised) is counted at full in both"
+    },
+    {
+     "figure": "$21.17B / 1,258 rows (DefiLlama incl. LuBian $3.5B)",
+     "source": "data/law_enforcement_stats.json",
+     "why": "arrests brief denominator; includes LuBian and pre-2016 rows"
+    },
+    {
+     "figure": "$39.09B / 2,314 events (SlowMist all-time)",
+     "source": "project brief (not published): research/incident-baseline.md section 7",
+     "why": "includes scams, phishing, pre-2016, token-denominated and unverified amounts"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Arithmetic over a defined list; the list is a union of public trackers, so it is a floor against Chainalysis/CertiK (see S2).",
+   "tweet": "Since 2016 we count $16.5B stolen across 1,377 hacks and exploits with a published USD loss (659 of them $1M or more). Losses are USD at the time; it is a lower bound, not a census.",
+   "numeric": {
+    "total_usd": 16516848367,
+    "n": 1377,
+    "n_ge_1m": 659,
+    "loss_ge_1m": 16320109764
+   },
+   "status": "final"
+  },
+  {
+   "id": "S2",
+   "section": "Scale",
+   "question": "How much was stolen each year?",
+   "canonical_value": "2021 $2.66B (134); 2022 $3.54B (196); 2023 $1.64B (229); 2024 $1.83B (235); 2025 $2.57B (165); 2026 $2.33B (308) (2026 to 21 Oct); 2016-2020 total $1.95B",
+   "definition": "Per calendar year of incident date: sum of loss_usd_reported (USD at time) and count of headline_scope=1 incidents. 2026 is year to date. Counts are not comparable across years (coverage improves after 2020); dollars are more stable.",
+   "sources": [
+    "data/baseline/annual_totals.csv",
+    "project brief (not published): research/incident-baseline.md section 2 and 7"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Chainalysis: 2021 $3.2B; 2022 $3.7-3.8B; 2023 ~$1.7B; 2024 $2.2B; 2025 >$3.4B (Jan to early Dec)",
+     "source": "https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/ ; https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2025/",
+     "why": "includes personal-wallet theft and unnamed victims; master is 4% to 25% lower for 2021-2025"
+    },
+    {
+     "figure": "CertiK: 2022 $3.7B; 2023 >$1.8B; 2024 $2.446B; 2025 $3.353B; H1 2026 $1.316B",
+     "source": "https://certik.com/blog/hack3d-the-web3-security-report-2025 ; https://www.certik.com/blog/certik-hack3d-h1-2026-report",
+     "why": "includes phishing and scams (e.g. $722.9M phishing in 2025)"
+    },
+    {
+     "figure": "DefiLlama raw: 2025 $2.72B; 2026 $2.34B; 2020 $3.98B (LuBian $3.5B)",
+     "source": "project brief (not published): research/incident-baseline.md section 7",
+     "why": "single-source guard exclusions, duplicates, LuBian"
+    },
+    {
+     "figure": "Bybit counted at $1.4B here vs $1.46B (Bybit/Elliptic) and ~$1.5B (FBI PSA)",
+     "source": "project brief (not published): research/verification/recent-events-verification.md item 10",
+     "why": "DeFiLlama figure kept for consistency; use $1.46B when naming Bybit"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Reported USD at the time; coverage-limited. Treat as lower bounds that are comparable year to year only in dollars.",
+   "tweet": "Reported hack losses in our dataset: 2021 $2.7B, 2022 $3.5B, 2023 $1.6B, 2024 $1.8B, 2025 $2.6B, 2026 so far $2.3B. Chainalysis and CertiK run higher because they add personal wallets and phishing.",
+   "numeric": {
+    "2016": {
+     "n": 5,
+     "loss_usd": 135730000,
+     "largest": "Bitfinex"
+    },
+    "2017": {
+     "n": 7,
+     "loss_usd": 139850010,
+     "largest": "NiceHash"
+    },
+    "2018": {
+     "n": 26,
+     "loss_usd": 901911992,
+     "largest": "Coincheck"
+    },
+    "2019": {
+     "n": 20,
+     "loss_usd": 211378529,
+     "largest": "Upbit"
+    },
+    "2020": {
+     "n": 52,
+     "loss_usd": 560805238,
+     "largest": "KuCoin"
+    },
+    "2021": {
+     "n": 134,
+     "loss_usd": 2659237659,
+     "largest": "Poly Network"
+    },
+    "2022": {
+     "n": 196,
+     "loss_usd": 3540797852,
+     "largest": "Ronin Bridge"
+    },
+    "2023": {
+     "n": 229,
+     "loss_usd": 1640628133,
+     "largest": "Mixin Network"
+    },
+    "2024": {
+     "n": 235,
+     "loss_usd": 1827041215,
+     "largest": "DMM Bitcoin"
+    },
+    "2025": {
+     "n": 165,
+     "loss_usd": 2569483978,
+     "largest": "Bybit"
+    },
+    "2026": {
+     "n": 308,
+     "loss_usd": 2329983761,
+     "largest": "Bitget"
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "S3",
+   "section": "Scale",
+   "question": "How concentrated are the losses?",
+   "canonical_value": "Median incident $820,000; 718 of 1377 incidents (52.0%) are under $1M; the 10 largest are 33.5% of all dollars; Bybit alone is 8.5% (2025: 54.0%)",
+   "definition": "Shares of loss_usd_reported over the S1 scope.",
+   "sources": [
+    "data/incidents_master.csv",
+    "data/baseline/annual_totals.csv"
+   ],
+   "alt_figures": [],
+   "confidence": "high",
+   "confidence_reason": "Direct arithmetic.",
+   "tweet": "Half of all recorded hacks are under $1M; the 10 largest account for a third of every dollar stolen. Bybit alone is 8.5% of the 10-year total and over half of 2025.",
+   "numeric": {
+    "median_usd": 820000.0,
+    "n_under_1m": 718,
+    "top10_pct": 33.5,
+    "bybit_pct_of_total": 8.5
+   },
+   "status": "final"
+  },
+  {
+   "id": "V1",
+   "section": "Vector mix",
+   "question": "What are the main attack vectors?",
+   "canonical_value": "By dollars: private-key/compromised-infra 35.0%; smart-contract logic 24.8%; social-engineering 11.4%; supply-chain 11.0%; oracle/price-manipulation 5.7%; access-control 4.8%. By count: smart-contract logic 35.7%, key/infra compromise 15.7%, access control 15.5%, oracle manipulation 13.2%. Key compromise + social engineering + supply chain = 57% of dollars.",
+   "definition": "Share of loss_usd_reported (and of incident count) by the `vector` field of headline_scope=1 rows, 2016-Oct 2026. Vector comes from DeFiLlama classification/technique mapped to a 9-class taxonomy, overridden where curated; coarse by design.",
+   "sources": [
+    "data/baseline/share_vector_by_year.csv",
+    "data/incidents_master.csv (vector, vector_note)",
+    "project brief (not published): research/incident-baseline.md section 3"
+   ],
+   "alt_figures": [
+    {
+     "figure": "DPRK stream: 47 DPRK rows are 1 smart-contract exploit; key/infra $2.3B, supply chain $1.7B, social engineering $1.3B",
+     "source": "project brief (not published): research/dprk.md section 5.1",
+     "why": "DPRK-only subset with its own classification (e.g. WazirX coded supply chain)"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Vector labels are coarse and single-incident reclassification moves shares (Bybit alone is 8.5% of dollars); counts are robust, dollar shares lumpy.",
+   "tweet": "By dollars, the biggest share of stolen crypto is lost to compromised keys and infrastructure (35%), more than buggy contracts (25%). Add social engineering and supply chain and operational failures are ~57% of all losses. By count, contract bugs lead.",
+   "numeric": {
+    "pct_dollars": {
+     "supply-chain": 11.0,
+     "private-key/compromised-infra": 35.0,
+     "smart-contract logic": 24.8,
+     "social-engineering": 11.4,
+     "other": 2.5,
+     "access-control": 4.8,
+     "oracle/price-manipulation": 5.7,
+     "reentrancy": 2.9,
+     "rug/insider": 2.0
+    },
+    "pct_count": {
+     "supply-chain": 2.9,
+     "private-key/compromised-infra": 15.7,
+     "smart-contract logic": 35.7,
+     "social-engineering": 5.1,
+     "other": 4.1,
+     "access-control": 15.5,
+     "oracle/price-manipulation": 13.2,
+     "reentrancy": 4.7,
+     "rug/insider": 3.1
+    },
+    "operational_share_pct": 57.4
+   },
+   "status": "final"
+  },
+  {
+   "id": "V2",
+   "section": "Vector mix",
+   "question": "Which kinds of target lose the most?",
+   "canonical_value": "DeFi 35.3%, CEX 33.8%, bridges 22.6%, other 4.9%, wallets 3.3% of dollars; by count DeFi 76.6%",
+   "definition": "Share of loss_usd_reported by `category` over the S1 scope. Bridges are 54% of 2022 and 34% of 2026 dollars; CEXs 66% of 2025 (Bybit).",
+   "sources": [
+    "data/baseline/share_category_by_year.csv",
+    "project brief (not published): research/incident-baseline.md section 3"
+   ],
+   "alt_figures": [],
+   "confidence": "medium",
+   "confidence_reason": "Category is a single label per incident; large events dominate.",
+   "tweet": "DeFi protocols, centralized exchanges and bridges each lost roughly a third, a third and a fifth of all stolen dollars. Bridges were 54% of 2022 losses; centralized exchanges were 66% of 2025 losses, mostly Bybit.",
+   "numeric": {
+    "pct_dollars": {
+     "cex": 33.8,
+     "bridge": 22.6,
+     "defi": 35.3,
+     "other": 4.9,
+     "wallet": 3.3
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "V3",
+   "section": "Vector mix",
+   "question": "How has the mix shifted recently?",
+   "canonical_value": "2024 to 21 Oct 2026 ($6.7B): key/infra 31.5%, supply chain 23.1%, contract logic 20.1%, social engineering 14.8%. 2025 supply-chain share is 56.1% (Bybit/Safe{Wallet} alone); 2024 social engineering 35.0% (DMM, Radiant).",
+   "definition": "Same as V1, restricted to incident dates 2024-01-01..2026-10-21.",
+   "sources": [
+    "data/baseline/share_vector_by_year.csv"
+   ],
+   "alt_figures": [],
+   "confidence": "medium",
+   "confidence_reason": "Three years, a few mega-incidents; direction is robust, point values are not.",
+   "tweet": "Since 2024, two thirds of stolen dollars came from people and infrastructure being compromised (keys, supply chain, social engineering), not from contract bugs, which fell to a fifth.",
+   "numeric": {
+    "pct_2024_2026": {
+     "supply-chain": 23.1,
+     "private-key/compromised-infra": 31.5,
+     "smart-contract logic": 20.1,
+     "social-engineering": 14.8,
+     "access-control": 4.1,
+     "rug/insider": 1.2,
+     "reentrancy": 1.2,
+     "oracle/price-manipulation": 2.8,
+     "other": 1.1
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "R1",
+   "section": "Returns",
+   "question": "How often do attackers give the money back?",
+   "canonical_value": "About 1 in 8 large exploits and key compromises (12.5%); range 8.5% to 14% across frames. Documented count: 110 incidents in our master (8.0% of 1,377), 78 of 659 incidents of $1M or more (11.8%); among those where voluntary return was reviewed, 78 of 364 (21.0%)",
+   "definition": "Canonical rate = prior paper estimate: voluntary return by the attacker (not reimbursement, freeze, seizure, rescue or reversal) among 1,078 exploits and key compromises (loss >= $100k, or $1M-class/any negotiation signal), 2016 to mid-2026; 98 confirmed returns; 12.5% if the 503 unresolved incidents behave like the swept ones (bounds 9.1% to 55.8%; 17% of the 575 with a known outcome). Cross-check = master: voluntary_return_status=yes over headline_scope=1 (includes insider and MEV-bot returns, mixed cases). COUNT BASIS: 110 = master incidents flagged voluntary_return_status=yes (102 of them carry a USD amount); 103 incidents contribute the voluntary dollars in R2/C3 (returned_usd capped at the incident recovery); 98 = the prior paper's confirmed returns over its own 1,078-incident frame (a different list, not comparable to the master counts).",
+   "sources": [
+    "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+    "data/negotiation_tables/paper_table__ref__headline_by_frame.csv",
+    "data/negotiation_tables/paper_table__reader__funnel.csv",
+    "data/incidents_master.csv (voluntary_return_status)"
+   ],
+   "alt_figures": [
+    {
+     "figure": "59% any voluntary return (45 of 76)",
+     "source": "project notes (not published; summary only) section 0 (generation A)",
+     "why": "78 hand-picked famous cases; self-described as not a planning probability; superseded"
+    },
+    {
+     "figure": "75% of known-outcome large hacks look like returns before checking; 17% after",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "the paper re-derived 247 inherited \"returned\" values; only 59 held (aggregator fields mislabel reimbursements, freezes, front-runners)"
+    },
+    {
+     "figure": "22.8% of $1M+ incidents (150 of 659) have a documented recovery",
+     "source": "project brief (not published): research/incident-baseline.md section 4",
+     "why": "ANY channel (freeze, seizure, halt, rescue, return); not a return rate. Voluntary-only is 11.8% of the same 659 (78 of 659)"
+    },
+    {
+     "figure": "20-21% (110 of 540 reviewed incidents)",
+     "source": "data/incidents_master.csv",
+     "why": "denominator is only incidents whose voluntary-return outcome was reviewed (a selected, outcome-aware subset)"
+    },
+    {
+     "figure": "DefiLlama returnedFunds populated for 27 of 1,313 hacks (2.1%)",
+     "source": "project brief (not published): research/arrests-and-prosecutions.md section 6",
+     "why": "field mixes returns with reimbursements (Bybit, DMM, Portal); never use as a rate"
+    },
+    {
+     "figure": "Key compromises 7 of 138 known returned vs exploits 91 of 437",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "split by incident type; DPRK-style key compromises almost never return"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Paper is the most careful estimate but 47% of outcomes are unresolved, the coding is LLM-assisted with a second-pass audit, and the frame is a registry union, not a census. The master floor (11.7% of $1M+ incidents) independently lands in the same place.",
+   "tweet": "Roughly 1 in 8 large DeFi exploits ends with the attacker voluntarily giving funds back (12.5% estimated; 17% among cases with a known outcome). For stolen-key hacks it is far rarer: 7 of 138 known cases.",
+   "numeric": {
+    "paper_rate": 0.125,
+    "paper_bounds": [
+     0.091,
+     0.558
+    ],
+    "paper_known_rate": 0.17,
+    "paper_frame_n": 1078,
+    "paper_returns": 98,
+    "master_n_voluntary": 110,
+    "master_n_ge1m": 78,
+    "master_pct_ge1m": 11.8,
+    "master_reviewed_ge1m": 364
+   },
+   "status": "final"
+  },
+  {
+   "id": "R2",
+   "section": "Returns",
+   "question": "What share of stolen dollars comes back voluntarily?",
+   "canonical_value": "About 10% of stolen dollars ($1.68B of $16.52B = 10.2%; 8.7% before Liquid Network); only ~3.7% without the three largest returns (Poly Network, Liquid, Euler)",
+   "definition": "Numerator: voluntary return by attacker/insider valued at theft-date USD, capped at the incident loss, no double count with freezes (master `returned_usd` -> Rv). Denominator: all headline_scope=1 loss ($16.52B, 1,377 incidents), including incidents whose outcome was never checked. Period 2016-Oct 2026. Three largest returns: Poly Network $610M, Liquid Network $266M, Euler V1 $197M.",
+   "sources": [
+    "data/baseline/recovery_by_year.csv (voluntary_returned_usd)",
+    "data/baseline/recovery_channel_mix.csv",
+    "data/negotiation_tables/paper_table__reader__dollars_returned.csv",
+    "data/negotiation_tables/paper_table__reader__dollar_concentration.csv"
+   ],
+   "alt_figures": [
+    {
+     "figure": "8.2% ($1.31B of $16.05B; 4.5% without Poly Network)",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "denominator is 571 incidents with a KNOWN outcome and loss; cut at 2026-09-05 (no Liquid); Euler valued at $197M (as the master now does; the master carried $177M until 2026-10-21); Mango $67M counted. Master ex-Liquid is 8.7%, i.e. the two agree once scope and date match"
+    },
+    {
+     "figure": "7% over every frame row with a loss; 2% over all tier-1/2 incidents of any type",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "wider denominators including unresolved and small incidents"
+    },
+    {
+     "figure": "7.6% of the DefiLlama total",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 3",
+     "why": "22 voluntary/unspecified recovery rows from a curated set, different denominator ($17.2B), Euler at The Block's interim $177M (now $197M here, per the Euler post-mortem)"
+    },
+    {
+     "figure": "Immunefi 5.2% (2022), 13.4% (2023), 7.7% (2024), 0.4% (Q1 2025); CertiK 7.6% (H1 2025), 8.8% (H1 2026)",
+     "source": "project brief (not published): research/verification/recent-events-verification.md item 11",
+     "why": "ALL recovery types (frozen+returned), measured per period at report time"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Dominated by three events (Poly, Liquid, Euler = 64.0% of voluntary dollars); outcomes for 785 incidents are unchecked so this is a floor for the denominator-wide share.",
+   "tweet": "About 10% of the dollars stolen in hacks have come back voluntarily, but three cases (Poly, Liquid, Euler) are nearly two thirds of that. Without them it is about 4%.",
+   "numeric": {
+    "voluntary_usd": 1681375837,
+    "pct_of_all": 10.2,
+    "pct_ex_liquid": 8.7,
+    "pct_ex_top3_numerator": 3.7,
+    "top3": [
+     "Poly Network",
+     "Liquid Network",
+     "Euler V1"
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "R3",
+   "section": "Returns",
+   "question": "What is the typical bounty / split?",
+   "canonical_value": "10% is the price: median opening offer 10% in every year (104 of 183 openings are exactly 10%); attackers who settle keep the offered share (median 10%, n=35; exactly the offer in 21). Recent public negotiated returns retained a median 3.0% (n=10, range 0% to 25%).",
+   "definition": "Opening bounty = percentage offered in the team's first on-chain message (183 recorded openings). Kept = share of the loss the attacker finally kept in 35 incidents with both an opening and a recorded retention. Settlement-split sample = 10 recent negotiated returns with a stated returned share (Poly, Euler, Munchables, Thala, KiloEx, GMX, Verus, Renegade, NEAR Intents, 79thVault), returned share of loss, Liquid and Mango excluded. Coding (corrected 2026-10-21): Poly Network and Euler are coded 100% returned (0% retained): the ~$33M Tether froze at Poly never reached the attacker, and Euler's post-mortem says all funds were recovered; the earlier drafts coded 94.6% and 89.8% (a median of 6.1%).",
+   "sources": [
+    "data/negotiation_tables/paper_table__terms__opening_pct_by_year.csv",
+    "data/negotiation_tables/paper_table__terms__offered_vs_kept.csv",
+    "data/negotiation_cases_public.csv (in_settlement_split_stats=y)",
+    "project brief (not published): research/negotiation-and-returns.md section 1"
+   ],
+   "alt_figures": [
+    {
+     "figure": "34 of 38 explicit openings equal 10%",
+     "source": "project brief (not published): research/negotiation-and-returns.md section 5 (repo generation A)",
+     "why": "older, smaller, selected sample; use 104 of 183"
+    },
+    {
+     "figure": "median retained 4.8% (n=11) if Liquid or Mango is added back; 5.8% (n=12) if both",
+     "source": "data/negotiation_cases_public.csv",
+     "why": "Liquid is withheld leverage, not a settlement; Mango (41% kept) was a 2022 governance vote"
+    },
+    {
+     "figure": "median retained 6.1% (n=10) in the earlier drafts",
+     "source": "data/negotiation_cases_public.csv (before 2026-10-21)",
+     "why": "Poly Network was coded 5.4% retained (the ~$33M Tether froze never reached the attacker) and Euler 10.2% (an interim $177M tally); both are 0% retained, which moves the median to 3.0%"
+    },
+    {
+     "figure": "Median opening bounty in dollars $290,000 (181 offers; 45 above $1M)",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "different unit (dollars, not percent)"
+    },
+    {
+     "figure": "Offers of 20% or more: 0 of 13 (2021), 10 of 44 (2023), 14 of 36 (2026)",
+     "source": "data/negotiation_tables/paper_table__terms__opening_pct_by_year.csv",
+     "why": "the tail is widening, partly because smaller hacks draw larger percentages; AFX 30% and Infini 20% had no public record of acceptance"
+    },
+    {
+     "figure": "Verus kept 24.99% (1,350 of 5,402 ETH); Liquid withheld 14.97% (598.5 of 3,998.5 BTC) against a 10% demand; Mango kept 41%",
+     "source": "project brief (not published): research/verification/recent-events-verification.md items 1 and 7",
+     "why": "right-tail cases"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "The 10% mode is well supported (183 openings). The realized-split medians (10% vs 3.0%) come from different samples; quote the 10% norm and name the sample for any retained figure.",
+   "tweet": "10% is the going rate: of 183 on-chain bounty offers, 104 were exactly 10% and the median was 10% in every year since 2021. When attackers settled, they kept about what was offered. Tail: Verus 25%, Mango 41%.",
+   "numeric": {
+    "openings_n": 183,
+    "openings_exactly_10": 104,
+    "kept_median_pct": 10,
+    "kept_n": 35,
+    "recent_sample_retained_median_pct": 3.0,
+    "recent_sample_n": 10,
+    "recent_sample_retained_median_pct_with_liquid": 4.8,
+    "recent_sample_retained_median_pct_with_mango": 4.8,
+    "recent_sample_retained_median_pct_with_both": 5.8
+   },
+   "status": "final"
+  },
+  {
+   "id": "R4",
+   "section": "Returns",
+   "question": "How fast do returns happen?",
+   "canonical_value": "Median first return 2.4 days after the exploit (n=23 dated returns; 2.8 days without Shezmu, whose 80% return is not verified on chain); 21 of 23 inside a week (20 of 22 without Shezmu); all 23 within 30 days if TrustedVolumes' 15 May transfer is a return (22 of 23 if only its July return counts). Median 42 hours after the team's first message (n=17; 8 of 17 within 24h; not re-audited). Liquid: 25h40m after the drain; NEAR Intents: ~36h after detection.",
+   "definition": "Dated voluntary returns only: days from the exploit transaction to the first substantive return transaction (n=23), re-audited row by row on 2026-10-21 against block timestamps (all 23 return transactions re-read on chain) and post-mortems (data/return_latency_audit.csv; rebuilt by scripts/build_return_latency.py). The sibling table measured from a date-only (midnight) incident date, which overstated latency by up to a day. Flagged rows stay in the 23: many first returns are partial, Shezmu's later amount is unverified, Value DeFi counts returns to individual victims, TrustedVolumes is ambiguous, Makina was returned by the MEV builder and Nomad by many copycat wallets. These are the large, well-documented returns (median loss $6.7M vs $2.2M undated), so the figure is biased fast. Sensitivities: without Shezmu 2.8 d (n=22); strictest 18-row sample (also without Value DeFi, TrustedVolumes, Makina, Nomad) 3.3 d, 17 of 18 inside a week.",
+   "sources": [
+    "data/return_latency_audit.csv",
+    "data/return_latency_summary.json",
+    "data/negotiation_tables/paper_table__time__return_latency.csv",
+    "data/negotiation_tables/paper_table__time__return_latency_cases.csv",
+    "data/onchain_returns.csv",
+    "project brief (not published): research/verification/recent-events-verification.md items 1 and 6"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Median 3.1 days; 20 of 23 inside a week (as published in the drafts)",
+     "source": "sibling paper_table__time__return_latency.csv (before 2026-10-21)",
+     "why": "date-only incident dates (midnight start) overstated most rows; re-audited median is 2.4 days, 21 of 23 in a week"
+    },
+    {
+     "figure": "Pre-publication check: Verus 2.8 d and Makina 2.4 d",
+     "source": "project brief (not published): research/verification/prepublication-claim-check.md",
+     "why": "Makina 2.40 d is confirmed; the Verus exploit date proposed there (2026-05-18) is wrong: the drain is block 25118335 at 2026-05-17T23:55:23Z, so Verus is 3.83 d (the master date 2026-05-17 stands)"
+    },
+    {
+     "figure": "Median 2.8 days without Shezmu (n=22)",
+     "source": "data/return_latency_summary.json",
+     "why": "Shezmu's first return (9,346 DAI) is verified on chain but the reported 80%% return is not; give both medians when asked"
+    },
+    {
+     "figure": "Liquid \"within about 15 hours of the patch\"",
+     "source": "project brief (not published): research/negotiation-and-returns.md (original)",
+     "why": "corrected 2026-10-21: ~7h after Blockstream's PGP message; 25h40m from the drain"
+    },
+    {
+     "figure": "NEAR Intents \"about 14 hours\"",
+     "source": "Unchained via Yahoo",
+     "why": "single source; use ~36h from detection per the post-mortem"
+    },
+    {
+     "figure": "Law-enforcement returns take 169 days to 5+ years",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 4",
+     "why": "different channel (seizure, not voluntary return)"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "n=23, selection toward documented cases; every row re-audited but most first returns are partial and 5 rows carry flags; direction (fast or never) is robust, the exact median moves between 2.4 and 3.3 days with the sample choice.",
+   "tweet": "When attackers do give money back it is usually fast: in 23 documented cases the median first return came about 2.4 days after the exploit and 21 of 23 landed inside a week (2.8 days without one unverified case). Documented cases skew fast.",
+   "numeric": {
+    "median_days_from_incident": 2.4,
+    "n_dated": 23,
+    "within_7d": 21,
+    "within_30d": 23,
+    "median_days_excl_shezmu": 2.78,
+    "n_excl_shezmu": 22,
+    "within_7d_excl_shezmu": 20,
+    "median_days_strict_18": 3.28,
+    "within_7d_strict_18": 17,
+    "within_30d_if_trustedvolumes_july": 22,
+    "sibling_median_days": 3.1,
+    "sibling_within_7d": 20,
+    "median_hours_from_first_message": 42,
+    "n_from_message": 17,
+    "scenarios": {
+     "primary_all_23": {
+      "label": "all 23 re-audited rows (canonical)",
+      "note": "first substantive return; flagged rows kept",
+      "n": 23,
+      "median_days": 2.4,
+      "within_7d": 21,
+      "within_30d": 23,
+      "max_days": 22.3,
+      "names_after_7d": [
+       "TrustedVolumes",
+       "SafeMoon"
+      ]
+     },
+     "excluding_shezmu_22": {
+      "label": "drop Shezmu (80% return not verified on chain; first return is)",
+      "note": "the pre-publication check asked for this variant",
+      "n": 22,
+      "median_days": 2.78,
+      "within_7d": 20,
+      "within_30d": 22,
+      "max_days": 22.3,
+      "names_after_7d": [
+       "TrustedVolumes",
+       "SafeMoon"
+      ]
+     },
+     "excluding_all_flagged_18": {
+      "label": "drop Shezmu, Value DeFi, TrustedVolumes, Makina, Nomad",
+      "note": "strictest sample: single attacker, clean first return",
+      "n": 18,
+      "median_days": 3.28,
+      "within_7d": 17,
+      "within_30d": 18,
+      "max_days": 22.3,
+      "names_after_7d": [
+       "SafeMoon"
+      ]
+     },
+     "trustedvolumes_as_71d": {
+      "label": "TrustedVolumes counted at 70.98 d (only the July return)",
+      "note": "breaks \"all within 30 days\"",
+      "n": 23,
+      "median_days": 2.4,
+      "within_7d": 21,
+      "within_30d": 22,
+      "max_days": 71.0,
+      "names_after_7d": [
+       "TrustedVolumes",
+       "SafeMoon"
+      ]
+     },
+     "any_tx_incl_tests": {
+      "label": "earliest transfer of any size, tests included",
+      "note": "sensitivity",
+      "n": 23,
+      "median_days": 2.4,
+      "within_7d": 21,
+      "within_30d": 23,
+      "max_days": 21.3,
+      "names_after_7d": [
+       "TrustedVolumes",
+       "SafeMoon"
+      ]
+     },
+     "sibling_original_23": {
+      "label": "sibling table as received (date-only incident dates)",
+      "n": 23,
+      "median_days": 3.1,
+      "within_7d": 20,
+      "within_30d": 23
+     }
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "R5",
+   "section": "Returns",
+   "question": "Does messaging matter?",
+   "canonical_value": "Messaging is strongly associated with a return but not shown to cause one. Teams that reached out saw a return in 36.5% of known cases vs 3.5% without outreach (80 of 219 vs 9 of 256); outreach roughly doubled 2020-2026 while the return rate stayed 14-22%; no tested term (offer size, deadline, legal threat, non-pursuit promise, tone) shows a measurable effect.",
+   "definition": "Known-outcome cases only, frame of 1,078 large exploits/key compromises (see R1). Association is non-causal: teams reach out when the attacker already looks willing. Strongest correlate: attacker reply (65 of 79 repliers returned vs 3 of 100 silent; coded in the same review pass as the return). Reply measure independent of the outcome (chain-scan attacker-class message): 6 of 7 vs 50 of 143. Tests on tactics are underpowered (minimum detectable odds ratio 3.3-4.4).",
+   "sources": [
+    "data/negotiation_tables/paper_table__cond__return_by_outreach.csv",
+    "data/negotiation_tables/paper_table__prev__any_return_by_year.csv",
+    "data/negotiation_tables/paper_table__prev__team_reached_out_by_year.csv",
+    "data/negotiation_tables/paper_table__tact__tactics_vs_any_return.csv"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Negotiation brief: identification (NEAR Intents) and speed worked; access-control/state-actor thefts never return",
+     "source": "project brief (not published): research/negotiation-and-returns.md section 6",
+     "why": "case-level mechanisms from a selected list, not rates"
+    },
+    {
+     "figure": "Pooled odds ratio 15.5 (HC1 7.6-31.9)",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "moved 12 -> 25 -> 15 across correction waves; non-causal"
+    },
+    {
+     "figure": "Press statement instead of a message to the attacker: 2 of 13 returned; private channel opened: 10 of 11",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "small cells, selection"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Descriptive associations are solid; causal claims are not supported by any stream. Never write \"messaging works\".",
+   "tweet": "Teams that messaged the attacker saw returns in 37% of known cases vs 3.5% without. But teams message attackers who already look willing; offer size, deadlines and legal threats showed no measurable effect.",
+   "numeric": {
+    "outreach_return_pct": 36.5,
+    "no_outreach_return_pct": 3.5,
+    "outreach_n": 219,
+    "no_outreach_n": 256,
+    "reply_return": "65/79 vs 3/100",
+    "chain_scan_reply": "6/7 vs 50/143"
+   },
+   "status": "final"
+  },
+  {
+   "id": "C1",
+   "section": "Recovery",
+   "question": "What share of stolen dollars is recovered through ANY channel?",
+   "canonical_value": "18.8% ($3.11B of $16.52B). Sensitivities: 16.1% without chain-level interventions, 13.0% without the three largest recoveries (numerator and denominator), 18.6% with Bybit at its corroborated $42.9M instead of the company claim.",
+   "definition": "Numerator: documented recovery by any channel (voluntary return, issuer/exchange/protocol freeze, law-enforcement seizure, chain halt/validator/fork/rollback, white-hat/MEV rescue), valued at theft-date USD, capped at 100% of each incident's loss (`recovered_usd_capped`). Make-whole by the victim, a parent or a pledge is NOT recovery. Denominator: all headline_scope=1 loss ($16.52B), 2016-Oct 2026. Includes company-stated recoveries (Bybit $78.9M, KuCoin $239M) flagged in verification_basis. Three largest: Poly Network $610M, Liquid Network $266M, KuCoin $239M.",
+   "sources": [
+    "data/baseline/headline_summary.json",
+    "data/baseline/recovery_by_year.csv",
+    "data/baseline/recovery_sensitivity.csv",
+    "project brief (not published): research/incident-baseline.md section 1a and 4"
+   ],
+   "alt_figures": [
+    {
+     "figure": "6.6% (3.5% excluding chain-level damage averted)",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 1",
+     "why": "NON-voluntary channels only ($1.13B of $17.2B DefiLlama raw); Bybit at $42.9M; KuCoin company claim excluded; counts BNB 2022 halt ($429M \"damage averted\") that the master rejects; master non-voluntary alone is 8.6% ($1.42B)"
+    },
+    {
+     "figure": "~8% voluntary-only",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "voluntary only, known-outcome denominator (see R2)"
+    },
+    {
+     "figure": "5-13% in a typical year (Immunefi 5.2/13.4/7.7%, CertiK 7.6/8.8% per half-year, SlowMist 13.2% for 2025)",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 2",
+     "why": "per-period snapshots, measured at report time, mostly different incident sets; they miss later seizures/returns and mix freezes with returns"
+    },
+    {
+     "figure": "327 of 1,078 incidents (30%) had \"any recovery\"",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "counts reimbursement by the victim (133 of the 327) as recovery; this project does not"
+    },
+    {
+     "figure": "16.0% ex chain-level; 18.5% ex not-corroborated; 15.5% ex Poly",
+     "source": "project brief (not published): research/incident-baseline.md section 1",
+     "why": "sensitivity cuts of the same numerator"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Valuation, company claims and 785 incidents with no outcome check make this a lower bound on documented recovery, dominated by 3 events; the 13.0% ex-top-3 is the better \"typical\" reading.",
+   "tweet": "About 19% of stolen dollars ($3.1B of $16.5B) has been recovered in some way since 2016, but three cases are a third of that. Without them it is under 13%. Most have no documented recovery.",
+   "numeric": {
+    "recovered_usd": 3105350612,
+    "pct": 18.8,
+    "pct_ex_chain": 16.1344,
+    "pct_ex_top3": 12.9985,
+    "pct_bybit_corroborated": 18.6,
+    "pct_ex_unverified": 18.6228
+   },
+   "status": "final"
+  },
+  {
+   "id": "C2",
+   "section": "Recovery",
+   "question": "How often (by count) does a hack have any recovery?",
+   "canonical_value": "150 of 659 incidents of $1M or more (22.8%) have a documented recovery; 36.4% of the 412 whose outcome was checked. Top 150 by loss: 58 of 150 (38.7%), 19.9% of their dollars; top 100: 43 of 100, 20.0% of dollars.",
+   "definition": "Count of incidents >= $1M (headline_scope=1) with recovery_status=recovered_documented (141 of them with a quantified amount), over all such incidents (659) or only those not \"unknown_not_checked\" (412). 247 incidents of $1M or more were never checked, so 22.8% is not a floor unless unchecked incidents are assumed to be unrecovered. Top-N = N largest by loss; recovered share in theft-date USD. (The two different counts of 150 are a coincidence: 150 $1M+ incidents have a documented recovery; 147 of the top 150 were fully checked.)",
+   "sources": [
+    "data/baseline/recovery_by_year.csv",
+    "data/baseline/outcome_check_coverage.csv",
+    "project brief (not published): research/incident-baseline.md section 4a"
+   ],
+   "alt_figures": [
+    {
+     "figure": "1 in 8 (12.5%) return rate",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "different numerator (attacker voluntary return only) and frame (exploits and key compromises)"
+    },
+    {
+     "figure": "By year 16.7% (2026) to 27.3% (2025) of $1M+ incidents",
+     "source": "data/baseline/recovery_by_year.csv",
+     "why": "2026 is partial and has 70 unchecked $1M+ incidents"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Coverage-limited: 147 of the top 150 were fully checked on three channels (2 partly checked, 1 not checked); the top 100 were all fully checked; 247 of 659 incidents of $1M or more were never checked.",
+   "tweet": "Of the 100 biggest hacks, 43 saw some money recovered; for the ~660 hacks of $1M or more, at least 22% did. For the largest hacks recovery is the exception but not rare, and it is usually partial.",
+   "numeric": {
+    "n_ge1m": 659,
+    "documented": 150,
+    "pct": 22.7618,
+    "checked": 412,
+    "pct_checked": 36.4078,
+    "top150": [
+     58,
+     19.9
+    ],
+    "top100": [
+     43,
+     20.0
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "C3",
+   "section": "Recovery",
+   "question": "Which channels recover the money?",
+   "canonical_value": "Of recovered dollars (primary channel per incident): voluntary return (attacker/insider) 54.1% ($1681M, 103 incidents); issuer / exchange / protocol freeze 17.2% ($534M, 32 incidents); law-enforcement seizure / court 10.6% ($330M, 11 incidents); chain-level: halt / validator / security council 8.4% ($261M, 9 incidents); chain-level: hard fork / rollback 5.8% ($179M, 3 incidents); white-hat / MEV rescue 2.3% ($70M, 19 incidents); other / unspecified 1.6% ($49M, 13 incidents). Chain-level halts/forks together = 14.2%.",
+   "definition": "Share of the $3.11B recovered (C1) by channel; each incident is assigned a primary channel (`channel_class`), mixed cases split between returned and non-returned parts. Valuation theft-date USD. The voluntary-return channel ($1681M, 103 incidents) equals the R2 numerator exactly: white-hat, MEV and exchange-freeze money is not in it (Ronin 2024, BlueBerry and Mozaic were recoded 2026-10-21), and recoveries that no source verified (Meerkat Finance, Saga 2024) sit in \"other / unspecified\"; before the recode the channel was $36M above R2.",
+   "sources": [
+    "data/baseline/recovery_channel_mix.csv",
+    "data/baseline/top150_recovery_channel_mix.csv",
+    "project brief (not published): research/incident-baseline.md section 4"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Non-voluntary only: chain/validator 74% ($836M), issuer freeze 6.9%, multi-channel freeze 4.1%, seizure 5.9%, white-hat 4.3%, protocol freeze 3.9%, exchange freeze 1.2%",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 3",
+     "why": "excludes voluntary returns; BNB 2022 $429M and Cronos counted as chain-level damage averted; KuCoin/Wormhole court recovery/Bitfinex excluded; Bybit at $42.9M"
+    },
+    {
+     "figure": "By priced dollars incl. reimbursement: seizure 49% (LuBian), reimbursement 18%, voluntary 17%, chain reversal 9%, rescue 4%, freeze 1%",
+     "source": "prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "includes LuBian $3.5B at forfeiture value and reimbursement, which the master excludes; 54 priced cases"
+    },
+    {
+     "figure": "By incident count (327): reimbursement 133, voluntary return 98, freeze 27, white-hat 23, governance reversal 9, seizure 8",
+     "source": "data/negotiation_tables/paper_table__cond__recovery_sources.csv",
+     "why": "counts, not dollars; reimbursement counted"
+    },
+    {
+     "figure": "BNB 2022: master counts $34M issuer freeze; freeze brief counts $429M halt",
+     "source": "project brief (not published): research/incident-baseline.md section 4 caveats",
+     "why": "the halt stopped outflow; ~$430M stayed on-chain by subtraction, not documented as returned. Master treatment adopted as canonical"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Channel labels are judgments (46 of 106 rows were recoded in the prior paper); big single events (Poly, Liquid, KuCoin, Cetus) swing the mix.",
+   "tweet": "Of the recovered money, about 54% was handed back by the attacker; freezes by issuers and exchanges ~17%, law enforcement ~11%, chain-level halts and rollbacks ~14%, white-hat rescues ~2%.",
+   "numeric": {
+    "channels": [
+     {
+      "channel": "voluntary return (attacker/insider)",
+      "usd": 1681375837,
+      "incidents": 103,
+      "pct": 54.1
+     },
+     {
+      "channel": "issuer / exchange / protocol freeze",
+      "usd": 534307471,
+      "incidents": 32,
+      "pct": 17.2
+     },
+     {
+      "channel": "law-enforcement seizure / court",
+      "usd": 329974815,
+      "incidents": 11,
+      "pct": 10.6
+     },
+     {
+      "channel": "chain-level: halt / validator / security council",
+      "usd": 261066300,
+      "incidents": 9,
+      "pct": 8.4
+     },
+     {
+      "channel": "chain-level: hard fork / rollback",
+      "usd": 179386549,
+      "incidents": 3,
+      "pct": 5.8
+     },
+     {
+      "channel": "white-hat / MEV rescue",
+      "usd": 70446208,
+      "incidents": 19,
+      "pct": 2.3
+     },
+     {
+      "channel": "other / unspecified",
+      "usd": 48793433,
+      "incidents": 13,
+      "pct": 1.6
+     }
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "C4",
+   "section": "Recovery",
+   "question": "How much comes back through non-voluntary channels (freeze, seizure, halt, rescue)?",
+   "canonical_value": "8.6% of stolen dollars ($1.42B); 3.5%-6.6% in the stricter freeze brief",
+   "definition": "Master: recovered (C1) minus voluntary return (R2), theft-date USD, same denominator as S1. Freeze brief: 27 counted rows, $1.13B of $17.2B (6.6%); 3.5% ($594M) excluding chain-level \"damage averted\" (BNB 2022, Cronos 2026).",
+   "sources": [
+    "data/baseline/headline_summary.json",
+    "project brief (not published): research/freezes-seizures-recovery.md section 1 and 3",
+    "data/recovery_events.csv"
+   ],
+   "alt_figures": [
+    {
+     "figure": "6.6% / 3.5%",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md",
+     "why": "DefiLlama raw denominator; company claims (KuCoin $239M, Bybit $73-78.9M) excluded; BNB $429M counted; Bitfinex excluded (in kind); fewer rows (27) than the master"
+    },
+    {
+     "figure": "~1 in 15 to 1 in 29 stolen dollars",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 10",
+     "why": "same figure as 6.6%/3.5%"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Two streams with different inclusion rules bracket the answer (3.5% to 8.6%); both are documented-only lower bounds.",
+   "tweet": "Freezes, seizures, chain halts and white-hat rescues together have clawed back roughly 4-8% of stolen dollars; the rest of what is recovered was returned by the attacker.",
+   "numeric": {
+    "master_pct": 8.6,
+    "master_usd": 1423974776,
+    "freeze_brief_pct": 6.6,
+    "freeze_brief_ex_averted_pct": 3.5
+   },
+   "status": "final"
+  },
+  {
+   "id": "C5",
+   "section": "Recovery",
+   "question": "Do published industry trackers agree?",
+   "canonical_value": "Industry trackers put recovery (frozen + returned) at roughly 5-13% of losses in a typical year: Immunefi 5.2% (2022), 13.4% (2023), 7.7% (2024), 0.4% (Q1 2025); CertiK 7.6% (H1 2025), 8.8% (H1 2026); SlowMist 13.2% (2025).",
+   "definition": "Third-party percentages of period losses, as published or (CertiK) divided by us from published totals; all recovery types combined.",
+   "sources": [
+    "https://immunefi.com/blog/research/immunefi-crypto-losses-report-2022/",
+    "https://www.certik.com/blog/certik-hack3d-h1-2026-report",
+    "https://www.unlock-bc.com/156111/cyberattacks-on-digital-assets-surge-in-2025-as-stolen-funds-jump-46/",
+    "project brief (not published): research/verification/recent-events-verification.md item 11"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Master by incident-year: 11.4% (2022), 19.9% (2023), 12.3% (2024), 14.1% (2025), 22.4% (2026)",
+     "source": "data/baseline/recovery_by_year.csv",
+     "why": "cohorts include later seizures/returns and chain interventions and are valued at theft date; industry figures are snapshots"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Directly read from the sources; CertiK percentages are our division (CertiK prints none).",
+   "tweet": "Industry trackers (Immunefi, CertiK, SlowMist) put frozen-or-returned funds at roughly 5-13% of stolen value in a normal year; one or two mega-events can swing a quarter past 30%.",
+   "numeric": {
+    "immunefi": {
+     "y2022": 5.2,
+     "y2023": 13.4,
+     "y2024": 7.7,
+     "q1_2025": 0.4
+    },
+    "certik": {
+     "h1_2025": 7.6,
+     "h1_2026": 8.8
+    },
+    "slowmist_2025": 13.2
+   },
+   "status": "final"
+  },
+  {
+   "id": "F1",
+   "section": "Freeze speed",
+   "question": "How fast do freezes and other recoveries happen?",
+   "canonical_value": "Chain halts/validator freezes: minutes to ~2 days (median 1 day; Cronos detected the attack ~36 min after it began, halted the chain and rolled it back, restoring 92.4% (the halt time is not stated; block production resumed ~11h after the attack; the events file codes 0.46 days); Cetus froze within a day, 72.6%; BNB 2022 ~3h). Issuer freezes: hours to ~2 days (median 1.5). Exchange freezes: 0-11 days (median 3). Law-enforcement seizures: 169 days to 5+ years (the 3 counted seizures took 169, 331 and 1,389 days, median 331; the Uranium day count is to mid-Feb 2025, month-only evidence; Bitfinex ~2,015 days, 5.5 years, is excluded from the sums).",
+   "definition": "Days from incident to the recovery action for counted rows of data/recovery_events.csv (include_in_sums=y; \"hours\" coded as 0.3 or less; n=2-5 per channel). Containment within hours preserved 76-100% of value in the cases where it happened (Venus, Cronos, BNB, Cetus); a same-day issuer freeze after the funds were swapped caught a few percent (Bybit Tether $181k of ~$1.46B).",
+   "sources": [
+    "data/recovery_events.csv",
+    "project brief (not published): research/freezes-seizures-recovery.md section 4"
+   ],
+   "alt_figures": [
+    {
+     "figure": "DPRK laundering is a ~45-day, three-wave cycle (days 0-5 DeFi/mixers; 6-10 limited-KYC exchanges; 20-45 no-KYC/OTC); Bybit \"fully laundered\" in 12 days (Arkham)",
+     "source": "https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/ ; https://info.arkm.com/research/lazarus-bridged-1-3b-of-bybit-eth-to-bitcoin",
+     "why": "attacker-side clock; \"10 days\" Elliptic claim unverified"
+    },
+    {
+     "figure": "Stolen stablecoins converted within 41 minutes (Bitget)",
+     "source": "crypto.news via ChangeNOW Q3 2026 summary (BlockSec)",
+     "why": "single outlet"
+    }
+   ],
+   "confidence": "low",
+   "confidence_reason": "n is 2-5 per channel; times are often approximate. Direction (hours matter, years for seizures) is well supported.",
+   "tweet": "Speed decides everything: Cronos spotted the attack in ~36 minutes, halted the chain, rolled it back and restored 92.4%; Bybit, Drift and Bitget lost the race by hours. Law-enforcement seizures took from 169 days to over 5 years.",
+   "numeric": {
+    "median_days": {
+     "chain_intervention": 1.0,
+     "stablecoin_issuer_freeze": 1.5,
+     "protocol_freeze_or_pause": 0.25,
+     "law_enforcement_seizure": 331.0,
+     "exchange_freeze": 3.0,
+     "whitehat_rescue": 0.5,
+     "multi_channel_freeze": 6.5
+    },
+    "n": {
+     "chain_intervention": 5,
+     "stablecoin_issuer_freeze": 2,
+     "protocol_freeze_or_pause": 2,
+     "law_enforcement_seizure": 3,
+     "exchange_freeze": 4,
+     "whitehat_rescue": 2,
+     "multi_channel_freeze": 2
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "F2",
+   "section": "Freeze speed",
+   "question": "Which stolen assets can actually be frozen?",
+   "canonical_value": "Only issuer-controlled tokens (USDT, USDC, EURe), project tokens with admin controls, and native assets on governed chains (Sui, Arbitrum, Cronos, BNB, Berachain) can be frozen. ETH/BTC/DAI/XMR on open chains cannot. Issuer freezes caught 1-11% of an incident's loss (Poly $33M of $611M = 5.4%; Multichain 2.0%; Bybit Tether $181k).",
+   "definition": "Freezability by asset class, with attacker countermeasures (swap to ETH/BTC/DAI within minutes to hours). Mixin: only ~12% of the haul was freezable at all (USDT $23.6M of ~$142M). Percent of loss is per incident for counted issuer freezes.",
+   "sources": [
+    "project brief (not published): research/freezes-seizures-recovery.md section 3 and 5",
+    "data/recovery_events.csv"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Tether has frozen >$4.4B for law enforcement since inception; T3 FCU >$450M since 2024",
+     "source": "https://www.theblock.co/post/398599/tether-freezes-344-million-in-usdt-on-tron-after-wallets-flagged-by-u-s-authorities",
+     "why": "ALL crime types, no hack-only split; never quote as hack recovery"
+    },
+    {
+     "figure": "ZachXBT: >$420M of illicit USDC unfrozen across 15 cases since 2022",
+     "source": "https://www.theblock.co/amp/post/396296/blockchain-sleuth-zachxbt-accuses-circle-slow-usdc-freezes-420-million-illicit-funds",
+     "why": "allegation; Circle freezes only on legal direction"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Mechanisms are well documented per case; shares come from a handful of cases.",
+   "tweet": "Freezes only work on tokens someone controls. Attackers swap stablecoins into ETH or BTC within minutes; Tether froze $181k in the $1.46B Bybit theft and issuer freezes typically catch 1-11% of a loss.",
+   "numeric": {
+    "issuer_freeze_pct_of_loss_range": [
+     1,
+     11
+    ],
+    "poly_pct": 5.4
+   },
+   "status": "final"
+  },
+  {
+   "id": "E1",
+   "section": "Arrests & charges",
+   "question": "What share of the biggest hacks end in an arrest or charge?",
+   "canonical_value": "9 of the 100 largest hacks (9%) have a person arrested or charged for the hack itself; 12 counting laundering-side and related cases; 11 of the 150 largest. Safe phrasing: about 1 in 10.",
+   "definition": "Scope: the 100 (150) largest headline_scope=1 incidents 2016-Oct 2026 by loss_usd_reported; \"charged_or_arrested_for_hack\" (enforcement_status=charged_for_hack) = arrest, indictment or charge of a person for the theft itself in the sources searched (FTX, Nomad, Mango Markets V3, NiceHash, Uranium Finance, KyberSwap Elastic, Coinrail, Josh Jones, IRA Financial / Gemini). \"Laundering-side only\" (enforcement_status=laundering_side_only: Coincheck, Bitfinex, StableMagnet) = people charged for handling or buying the loot, not for the hack; 9 + 3 = 12. One (NiceHash) rests on a DOJ indictment of the DPRK trio for an unnamed Slovenian company, matched by inference; excluding it gives 8. Reproduce with data/top100_master_enforcement.csv. Of the 9, six have rows in data/law_enforcement_cases.csv (FTX, Nomad, Mango, NiceHash, Uranium, KyberSwap); Coinrail, Josh Jones and IRA Financial are counted from the master only (arrest_or_charges and sources in data/incidents_master.csv): single-source press cases (Paris prosecutor via French press; a Hamilton teen's guilty plea; one person prosecuted per Gemini's S-1) without a dated first action or defendant record, so they are not in the case file and not in E3/E4. Likewise StableMagnet among the 3 laundering-side cases.",
+   "sources": [
+    "data/incidents_master.csv (arrest_status, arrest_or_charges)",
+    "data/law_enforcement_cases.csv",
+    "data/law_enforcement_corrections.csv [not shipped]",
+    "project brief (not published): research/arrests-and-prosecutions.md section 0-1",
+    "project brief (not published): research/verification/legal-verification.md"
+   ],
+   "alt_figures": [
+    {
+     "figure": "8 of 100 strict; 10 incl. 2 soft; 13 incl. in-rem/sanction-only; 16 incl. 3 inferred DOJ in-rem matches",
+     "source": "project brief (not published): research/arrests-and-prosecutions.md section 0",
+     "why": "DeFiLlama raw top-100 (incl. LuBian #1, Mt. Gox 2014); counts Coincheck buyers, Bitfinex launderers and Mt. Gox as person-level, lacks Coinrail, Josh Jones and IRA Financial (found later in the top-150 re-check); NiceHash and CoinDCX treated as soft"
+    },
+    {
+     "figure": "15 / 19 flagged in top 100 / 150",
+     "source": "project brief (not published): research/incident-baseline.md section 1a (before)",
+     "why": "crude text flag incl. civil, laundering-side and tangential cases; superseded"
+    },
+    {
+     "figure": "12 of 100 incl. laundering-side (Coincheck, Bitfinex, StableMagnet)",
+     "source": "project brief (not published): research/incident-baseline.md section 1",
+     "why": "definition (laundering-side counted)"
+    },
+    {
+     "figure": "Value of top-100 hacks with a person charged: $1.94B of $17.75B (10.9%) strict",
+     "source": "data/law_enforcement_stats.json",
+     "why": "DeFiLlama top-100 dollars; master gives $1.03 of $13.12 (7.9%)"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Both streams land at 8-9 strict; the 1-person difference is definitional. Absence is \"not found in sources searched\", never \"did not happen\"; 3 of the 9 are small single-incident press cases (Coinrail, Josh Jones, IRA Financial) counted from the master only: they have no row in law_enforcement_cases.csv, so E3 and E4 exclude them.",
+   "tweet": "Of the 100 largest crypto hacks, about 1 in 10 has led to someone being charged or arrested. That counts people prosecuted for the hack itself; it is a lower bound from public records.",
+   "numeric": {
+    "top100_strict": 9,
+    "top100_names": [
+     "FTX",
+     "Nomad",
+     "Mango Markets V3",
+     "NiceHash",
+     "Uranium Finance",
+     "KyberSwap Elastic",
+     "Coinrail",
+     "Josh Jones",
+     "IRA Financial / Gemini"
+    ],
+    "top100_broad": 12,
+    "top150_strict": 11,
+    "sibling_top100_strict": 8,
+    "sibling_top100_in_rem": 13,
+    "sibling_top100_inferred": 16,
+    "top100_charged_for_hack_itself": [
+     "FTX",
+     "Nomad",
+     "Mango Markets V3",
+     "NiceHash",
+     "Uranium Finance",
+     "KyberSwap Elastic",
+     "Coinrail",
+     "Josh Jones",
+     "IRA Financial / Gemini"
+    ],
+    "top100_laundering_side_only": [
+     "Coincheck",
+     "Bitfinex",
+     "StableMagnet"
+    ],
+    "status_definition": "data/incidents_master.csv enforcement_status: charged_for_hack (9 in the top 100) / laundering_side_only (3: Coincheck, Bitfinex, StableMagnet) / civil_or_regulatory_only / not_for_the_hack / none_found / not_checked; per-row list in data/top100_master_enforcement.csv; 9 + 3 = 12"
+   },
+   "status": "final"
+  },
+  {
+   "id": "E2",
+   "section": "Arrests & charges",
+   "question": "What share of all hacks end in an arrest or charge?",
+   "canonical_value": "16 of 1,377 headline incidents (1.2%, about 1 in 86); 16 of 659 incidents of $1M or more (2.4%, about 1 in 41). Sibling count on the raw DeFiLlama list: 14 of 1,313 (1.1%); 14 of 595 non-rug incidents of $1M or more (2.4%).",
+   "definition": "Numerator: incidents with a person arrested or charged for the hack itself (arrest_status=charged_or_arrested_for_hack; in_headline=1). THE E2 SET (16) is: NiceHash (2017); Coinrail (2018); Josh Jones (2020); 2gether (2020); Uranium Finance (2021); Indexed Finance (2021); IRA Financial / Gemini (2022); Crema Finance (2022); Nirvana V1 (2022); Nomad (2022); Mango Markets V3 (2022); FTX (2022); Platypus Finance (2023); MEV-Boost Relay (2023); KyberSwap Elastic (2023); Yala (2025). It is NOT the sample behind E3 (E3 is a different 16-set: 11 cases overlap). Denominator: all headline_scope=1 incidents (or those >= $1M). Arrests were searched systematically only for the top 150 and the sibling case list, so small incidents are under-counted.",
+   "sources": [
+    "data/incidents_master.csv",
+    "data/law_enforcement_stats.json",
+    "project brief (not published): research/arrests-and-prosecutions.md section 1.2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "1.2% any person (16 of 1,313); 1.4% incl. in-rem/sanction; 1.6% incl. inferred in-rem",
+     "source": "data/law_enforcement_stats.json",
+     "why": "wider numerators on DeFiLlama raw denominator"
+    },
+    {
+     "figure": "5.1% of incidents >= $10M (10 of 195)",
+     "source": "data/law_enforcement_stats.json",
+     "why": "size band"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Lower bound (searches were uneven below the top 150); both independent counts give 1.1-1.2% overall and 2.4% for $1M+.",
+   "tweet": "About 1 in 86 recorded hacks (16 of 1,377, 1.2%) has ever led to a person being arrested or charged; for hacks of $1M or more it is about 1 in 41. Lower bounds from public records.",
+   "numeric": {
+    "master_all": [
+     16,
+     1377
+    ],
+    "master_ge1m": [
+     16,
+     659
+    ],
+    "one_in": 86,
+    "pct": 1.2,
+    "sibling_all": [
+     14,
+     1313
+    ],
+    "sibling_core": [
+     14,
+     595
+    ],
+    "e2_set": [
+     {
+      "id": "20171208-nicehash",
+      "name": "NiceHash",
+      "date": "2017-12-08",
+      "loss_usd": 64000000
+     },
+     {
+      "id": "20180610-coinrail",
+      "name": "Coinrail",
+      "date": "2018-06-10",
+      "loss_usd": 37200000
+     },
+     {
+      "id": "20200222-josh-jones",
+      "name": "Josh Jones",
+      "date": "2020-02-22",
+      "loss_usd": 36500000
+     },
+     {
+      "id": "20200731-2gether",
+      "name": "2gether",
+      "date": "2020-07-31",
+      "loss_usd": 1183000
+     },
+     {
+      "id": "20210428-uranium-finance",
+      "name": "Uranium Finance",
+      "date": "2021-04-28",
+      "loss_usd": 57200000
+     },
+     {
+      "id": "20211014-indexed-finance",
+      "name": "Indexed Finance",
+      "date": "2021-10-14",
+      "loss_usd": 16000000
+     },
+     {
+      "id": "20220212-ira-financial-gemini",
+      "name": "IRA Financial / Gemini",
+      "date": "2022-02-12",
+      "loss_usd": 36000000
+     },
+     {
+      "id": "20220702-crema-finance",
+      "name": "Crema Finance",
+      "date": "2022-07-02",
+      "loss_usd": 8800000
+     },
+     {
+      "id": "20220728-nirvana-v1",
+      "name": "Nirvana V1",
+      "date": "2022-07-28",
+      "loss_usd": 3500000
+     },
+     {
+      "id": "20220801-nomad",
+      "name": "Nomad",
+      "date": "2022-08-01",
+      "loss_usd": 190000000
+     },
+     {
+      "id": "20221011-mango-markets-v3",
+      "name": "Mango Markets V3",
+      "date": "2022-10-11",
+      "loss_usd": 115000000
+     },
+     {
+      "id": "20221112-ftx",
+      "name": "FTX",
+      "date": "2022-11-12",
+      "loss_usd": 450000000
+     },
+     {
+      "id": "20230216-platypus-finance",
+      "name": "Platypus Finance",
+      "date": "2023-02-16",
+      "loss_usd": 8500000
+     },
+     {
+      "id": "20230403-mev-boost-relay",
+      "name": "MEV-Boost Relay",
+      "date": "2023-04-03",
+      "loss_usd": 20000000
+     },
+     {
+      "id": "20231122-kyberswap-elastic",
+      "name": "KyberSwap Elastic",
+      "date": "2023-11-22",
+      "loss_usd": 48000000
+     },
+     {
+      "id": "20250914-yala",
+      "name": "Yala",
+      "date": "2025-09-14",
+      "loss_usd": 7640000
+     }
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "E3",
+   "section": "Arrests & charges",
+   "question": "How long until the first arrest or charge?",
+   "canonical_value": "In a SEPARATE sample of 16 cases with a dated first arrest, charge or detention (not the 16 incidents counted in E2; 11 overlap), the median is 608 days (about 20 months) from incident to first public action against a person (IQR 354-1,650; mean 972); 75% took over a year. Restricted to the 14 cases that are 2016+ incidents inside the 1,377 scope: median 439.5 days; restricted to the 11 cases that are also in the E2 set: median 439 days. Fast cases (Platypus 6 days, Mango 76) involved a KYC'd exchange or a public identity.",
+   "definition": "Days from incident date to the first public arrest, indictment, unsealing or detention of a person; excludes placeholders and in-rem actions; 16 incident keys of data/law_enforcement_stats.json (time_to_first_person_action_days_by_incident). THE E3 SET differs from E2: it adds Mt. Gox 2011 and Silk Road 2012 (pre-2016, outside the 1,377), the Bitfinex and Coincheck laundering-side cases and the CoinDCX engineer detained, and lacks Coinrail, Josh Jones, 2gether, IRA Financial and Yala (no dated first action in the case file). Membership is listed in numeric.e3_set. Right-censored (incidents with no arrest yet are absent), so the true median is longer. Using Medjedovic's non-public Serbian arrest gives 607.",
+   "sources": [
+    "data/law_enforcement_stats.json (time_*)",
+    "project brief (not published): research/arrests-and-prosecutions.md section 2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "722 days excluding non-perpetrators and loot buyers (n=14)",
+     "source": "data/law_enforcement_stats.json",
+     "why": "drops CoinDCX engineer and Coincheck buyers"
+    },
+    {
+     "figure": "439.5 days (n=14) on the E3 cases that are 2016+ incidents in the 1,377 scope (drops Mt. Gox 2011 and Silk Road 2012)",
+     "source": "data/canonical_numbers.json numeric.e3_set",
+     "why": "computed here from the same case file; still includes the laundering-side Bitfinex and Coincheck and the CoinDCX detention"
+    },
+    {
+     "figure": "439 days (n=11) on the E3 cases that are also in the E2 set (charged for the hack itself)",
+     "source": "data/canonical_numbers.json numeric.e3_set",
+     "why": "the strictest like-for-like with E2"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "n=16, right-censored, depends on definition of \"first action\".",
+   "tweet": "In a separate sample of 16 cases with a dated first arrest or charge (some pre-2016 or laundering-side) the median wait was about 20 months (608 days); for the 14 that are 2016+ incidents in our dataset, about 14.5 months (439.5 days).",
+   "numeric": {
+    "median_days": 607.5,
+    "n": 16,
+    "q1_q3": [
+     354,
+     1650
+    ],
+    "mean": 972,
+    "median_days_2016_plus_in_headline_scope": 439.5,
+    "n_2016_plus_in_headline_scope": 14,
+    "median_days_overlap_with_e2": 439,
+    "n_overlap_with_e2": 11,
+    "e3_set": [
+     {
+      "key": "PLAT",
+      "case_id": "PLAT-1",
+      "incident": "Platypus Finance (Avalanche)",
+      "incident_date": "2023-02-16",
+      "first_action_date": "2023-02-22",
+      "days": 6,
+      "master_id": "20230216-platypus-finance",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "CDCX",
+      "case_id": "CDCX-1",
+      "incident": "CoinDCX (India)",
+      "incident_date": "2025-07-19",
+      "first_action_date": "2025-07-26",
+      "days": 7,
+      "master_id": "20250719-coindcx",
+      "in_headline_scope": true,
+      "in_e2_set": false,
+      "kind": "detained_non_perpetrator"
+     },
+     {
+      "key": "MANGO",
+      "case_id": "MANGO-1",
+      "incident": "Mango Markets (oracle/perp manipulation)",
+      "incident_date": "2022-10-11",
+      "first_action_date": "2022-12-26",
+      "days": 76,
+      "master_id": "20221011-mango-markets-v3",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "AHMED-2",
+      "case_id": "AHMED-2",
+      "incident": "Nirvana Finance (Solana)",
+      "incident_date": "2022-07-28",
+      "first_action_date": "2023-07-11",
+      "days": 348,
+      "master_id": "20220728-nirvana-v1",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "AHMED-1",
+      "case_id": "AHMED-1",
+      "incident": "Crema Finance (Solana; DOJ: unnamed \"Crypto Exchange\")",
+      "incident_date": "2022-07-02",
+      "first_action_date": "2023-07-11",
+      "days": 374,
+      "master_id": "20220702-crema-finance",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "PB",
+      "case_id": "PB-1",
+      "incident": "MEV-Boost relay / Ethereum validator-bot exploit (~12 seconds)",
+      "incident_date": "2023-04-02",
+      "first_action_date": "2024-05-15",
+      "days": 409,
+      "master_id": "20230403-mev-boost-relay",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "FTX",
+      "case_id": "FTX-1",
+      "incident": "FTX hack (SIM swap, \"Victim Company-1\")",
+      "incident_date": "2022-11-11",
+      "first_action_date": "2024-01-24",
+      "days": 439,
+      "master_id": "20221112-ftx",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "MEDJ-2",
+      "case_id": "MEDJ-2",
+      "incident": "KyberSwap Elastic",
+      "incident_date": "2023-11-21",
+      "first_action_date": "2025-02-03",
+      "days": 440,
+      "master_id": "20231122-kyberswap-elastic",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "CC",
+      "case_id": "CC-1",
+      "incident": "Coincheck (NEM, ~500M XEM)",
+      "incident_date": "2018-01-26",
+      "first_action_date": "2020-03-11",
+      "days": 775,
+      "master_id": "20180126-coincheck",
+      "in_headline_scope": true,
+      "in_e2_set": false,
+      "kind": "laundering_side"
+     },
+     {
+      "key": "NOM",
+      "case_id": "NOM-1",
+      "incident": "Nomad bridge (copycat free-for-all)",
+      "incident_date": "2022-08-01",
+      "first_action_date": "2025-05-01",
+      "days": 1004,
+      "master_id": "20220801-nomad",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "DPRK",
+      "case_id": "DPRK-1",
+      "incident": "Slovenian crypto company, Dec 2017 ($75M; likely NiceHash, unnamed by DOJ) + Indonesian exchange Sep 2018 ($24.9M)",
+      "incident_date": "2017-12-06",
+      "first_action_date": "2021-02-17",
+      "days": 1169,
+      "master_id": "20171208-nicehash",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "MEDJ-1",
+      "case_id": "MEDJ-1",
+      "incident": "Indexed Finance",
+      "incident_date": "2021-10-13",
+      "first_action_date": "2025-02-03",
+      "days": 1209,
+      "master_id": "20211014-indexed-finance",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "URAN",
+      "case_id": "URAN-1",
+      "incident": "Uranium Finance (two hacks, BNB Chain)",
+      "incident_date": "2021-04-28",
+      "first_action_date": "2026-03-30",
+      "days": 1797,
+      "master_id": "20210428-uranium-finance",
+      "in_headline_scope": true,
+      "in_e2_set": true,
+      "kind": "hack_itself"
+     },
+     {
+      "key": "BFX",
+      "case_id": "BFX-1",
+      "incident": "Bitfinex (119,754 BTC)",
+      "incident_date": "2016-08-02",
+      "first_action_date": "2022-02-08",
+      "days": 2016,
+      "master_id": "20160802-bitfinex",
+      "in_headline_scope": true,
+      "in_e2_set": false,
+      "kind": "laundering_side"
+     },
+     {
+      "key": "GOX",
+      "case_id": "GOX-3",
+      "incident": "Mt. Gox (laundering via BTC-e)",
+      "incident_date": "2011-09-15",
+      "first_action_date": "2017-07-25",
+      "days": 2140,
+      "master_id": null,
+      "in_headline_scope": false,
+      "in_e2_set": false,
+      "kind": "pre_2016_incident"
+     },
+     {
+      "key": "SR",
+      "case_id": "SR-1",
+      "incident": "Silk Road withdrawal-flaw theft (~51,680 BTC)",
+      "incident_date": "2012-09-15",
+      "first_action_date": "2021-11-09",
+      "days": 3342,
+      "master_id": null,
+      "in_headline_scope": false,
+      "in_e2_set": false,
+      "kind": "pre_2016_incident"
+     }
+    ],
+    "e3_only_vs_e2": [
+     "CoinDCX",
+     "Coincheck",
+     "Bitfinex",
+     "Mt. Gox",
+     "Silk Road withdrawal-flaw theft"
+    ],
+    "e2_only_vs_e3": [
+     "Coinrail",
+     "Josh Jones",
+     "2gether",
+     "IRA Financial / Gemini",
+     "Yala"
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "E4",
+   "section": "Arrests & charges",
+   "question": "What happens to those who are charged?",
+   "canonical_value": "Of 23 individuals charged or arrested for a hack or its laundering: 8 convicted or pleaded (35%), 1 conviction vacated/acquitted with US appeal pending, 2 acquitted, 3 pending, 1 outcome unknown, 8 charged and not in custody. Among the 11 whose cases reached a verdict or plea, 8 were convictions or pleas (the Powell case is a plea agreement on file); prison terms 12, 18, 36, 60 months, and Hernandez got 12 months probation.",
+   "definition": "23 distinct individuals in data/law_enforcement_cases.csv (case rows verified against DOJ releases and dockets 2026-10-21). Jury trials: Eisenberg (convictions later vacated: counts 1-2 for venue, count 3 acquittal; US appeal pending), Peraire-Bueno (mistrial 2025-11-07; retrial ready 2027-06-07), Spalletta (convicted all counts 2026-10-07; sentencing set for 2027-02-16). 7 of the 8 convictions or plea agreements are pleas; Powell's plea agreement is on file (sealed 2024-08-07, unsealed 2025-04-14), but no change-of-plea entry or sentencing date was seen on the docket as of 2026-10-21.",
+   "sources": [
+    "data/law_enforcement_stats.json (individual_outcomes)",
+    "data/law_enforcement_cases.csv",
+    "project brief (not published): research/arrests-and-prosecutions.md section 3",
+    "project brief (not published): research/verification/legal-verification.md"
+   ],
+   "alt_figures": [
+    {
+     "figure": "\"extradited\" suspect (Nomad)",
+     "source": "TRM headline",
+     "why": "corrected: arrested in Israel 2025-05-01, extradition approved, transfer to the US unconfirmed"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Docket-verified for the main cases; Rohn's outcome is unknown and Powell is counted on a plea agreement on file, not a seen verdict; small n.",
+   "tweet": "Of 23 people charged over hacks and laundering, 8 were convicted or have a plea agreement on file, 8 are charged but not in custody, and 3 are still pending. Most convictions were guilty pleas.",
+   "numeric": {
+    "individuals": 23,
+    "outcomes": {
+     "convicted_or_pleaded": 8,
+     "conviction_vacated_or_acquitted_appeal_pending": 1,
+     "acquitted": 2,
+     "pending": 3,
+     "outcome_unknown": 1,
+     "at_large_or_not_in_custody": 8
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "D1",
+   "section": "DPRK",
+   "question": "What share of stolen dollars is DPRK?",
+   "canonical_value": "Government-attributed: 22.6% ($3.74B across 32 incidents); adding firm attributions: 34% excluding researcher-list-only rows ($5.62B), up to 39.1% ($6.45B, 95 incidents) including them. By year (gov / gov+firm): 2024 39.2% / 59.8%; 2025 58.9% / 64.1%.",
+   "definition": "Numerator: loss_usd_reported of headline_scope=1 incidents by attribution tier. Tiers: dprk_gov_attributed (FBI, DOJ, OFAC, UN/MSMT, ROK/Japan police, joint statements); dprk_firm_attributed (Chainalysis, TRM, Elliptic, ZachXBT, victim forensics, or the tayvano researcher list); \"researcher-list-only\" = 47 firm-tier rows ($0.83B) whose only basis is membership of the tayvano/lazarus-bluenoroff-research list (a lead, not an attribution). Denominator: S1 total. 2016-Oct 2026.",
+   "sources": [
+    "data/incidents_master.csv (attribution, attribution_basis)",
+    "data/baseline/dprk_by_year.csv",
+    "data/baseline/headline_summary.json (dprk)",
+    "project brief (not published): research/dprk.md",
+    "project brief (not published): research/incident-baseline.md section 5"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Chainalysis: DPRK cumulative >= $6.75B; 2025 >= $2.02B (59% of $3.4B is OUR division; Chainalysis states 76% of service compromises); 2024 $1.34B (61%); 2023 $660.5M",
+     "source": "https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/ ; https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2025/",
+     "why": "includes personal-wallet and unnamed-victim thefts; master gov+firm dollars are 20-50% lower each year"
+    },
+    {
+     "figure": "TRM: 22% (2022), 37% (2023), 39% (2024), 64% (2025), 66% of H1 2026 ($643M of $972M); 76% of Jan-Apr 2026",
+     "source": "https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion",
+     "why": "different denominators (TRM totals); master 2025 is 64.1% and 2024 59.8% gov+firm"
+    },
+    {
+     "figure": "DPRK brief cross-check: 22% (2022), 36% (2023), 40% (2024), 59% (2025), 41% (2026 YTD)",
+     "source": "project brief (not published): research/dprk.md section 2",
+     "why": "47-row curated DPRK table, a stricter list than master (excludes researcher-list-only rows; includes speculative tier)"
+    },
+    {
+     "figure": "Government-attributed share without Coincheck: 19.4% (instead of 22.6%)",
+     "source": "data/incidents_master.csv (Coincheck, $534M)",
+     "why": "Coincheck is government-tier only through CyberScoop reporting that the UN Panel of Experts (S/2019/171) tied most of $571M in 2017-18 exchange thefts to it; the panel text was not read and the panel relied on private-sector research. Without it the government floor is 19.4%"
+    },
+    {
+     "figure": "Government-attributed share if KuCoin were counted as government tier: 24.3%",
+     "source": "data/incidents_master.csv (KuCoin, $281M)",
+     "why": "KuCoin stays firm-tier: Reuters (Feb 2021) relays a preliminary, confidential UN monitors' report saying the $281M theft \"strongly suggests links to the DPRK\" without naming the exchange (victim inferred by analysts), alongside Chainalysis. Coincheck is government-tier on a comparable UN-via-press basis, so this is a judgment call, shown here so the tier choice can be undone; moving KuCoin would also raise D3 government-only recovery"
+    },
+    {
+     "figure": "2026 is 0% gov-attributed in master but 46.1% gov+firm (Bitget, Kelp, Drift are firm-tier only)",
+     "source": "project brief (not published): research/incident-baseline.md section 5",
+     "why": "no primary government attribution for 2026 incidents retrievable; fbi.gov 403"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "The government-attributed floor is solid for Bybit (FBI PSA read directly, $1.4B) and Ronin (OFAC/FBI cited); but 27 of the 32 government-tier rows ($1.35B of $3.74B, 36.1%) are read through secondary sources (Wikipedia/press, the tayvano tabulation of MSMT, a sibling dataset); see attribution_source_grade. DMM was upgraded to primary-read on 2026-10-21 (Japan NPA page read directly). The upper range depends on firm-tier and researcher-list rows. Always give the tier with the number.",
+   "tweet": "North Korea is behind at least ~23% of the dollars stolen since 2016 from 2.3% of incidents on government attribution alone (39.1% of dollars from 6.9% of incidents counting firm and researcher attributions). In 2025 it was ~59-64%, almost all Bybit.",
+   "numeric": {
+    "gov_pct_without_coincheck": 19.4,
+    "gov_pct_if_kucoin_government_tier": 24.3,
+    "gov": {
+     "n": 32,
+     "usd": 3737290000,
+     "pct": 22.6
+    },
+    "gov_plus_firm": {
+     "n": 95,
+     "usd": 6453362000,
+     "pct": 39.1
+    },
+    "gov_plus_firm_ex_researcher_list": {
+     "usd": 5620290000,
+     "pct": 34.0
+    },
+    "researcher_list_only": {
+     "n": 47,
+     "usd": 833072000
+    },
+    "pairing": {
+     "gov_dollars_pct": 22.6,
+     "gov_incidents_pct": 2.3,
+     "gov_plus_firm_dollars_pct": 39.1,
+     "gov_plus_firm_incidents_pct": 6.9
+    },
+    "gov_tier_source_grade": {
+     "rows": 32,
+     "usd": 3737290000,
+     "secondary_rows": 27,
+     "secondary_usd": 1348290000,
+     "secondary_pct_usd": 36.1,
+     "by_grade": {
+      "primary_cited_not_read": {
+       "rows": 1,
+       "usd": 624000000
+      },
+      "primary_read": {
+       "rows": 2,
+       "usd": 1705000000
+      },
+      "primary_read_inferred_match": {
+       "rows": 2,
+       "usd": 60000000
+      },
+      "secondary_msmt_via_sibling_dataset": {
+       "rows": 6,
+       "usd": 3541000
+      },
+      "secondary_msmt_via_tayvano": {
+       "rows": 16,
+       "usd": 520149000
+      },
+      "secondary_wikipedia_or_press": {
+       "rows": 5,
+       "usd": 824600000
+      }
+     }
+    },
+    "by_year": {
+     "2016": {
+      "gov_pct": 0.0,
+      "gov_or_firm_pct": 1.1
+     },
+     "2017": {
+      "gov_pct": 0.0,
+      "gov_or_firm_pct": 45.8
+     },
+     "2018": {
+      "gov_pct": 59.2,
+      "gov_or_firm_pct": 73.0
+     },
+     "2019": {
+      "gov_pct": 23.3,
+      "gov_or_firm_pct": 34.3
+     },
+     "2020": {
+      "gov_pct": 0.0,
+      "gov_or_firm_pct": 54.4
+     },
+     "2021": {
+      "gov_pct": 0.0,
+      "gov_or_firm_pct": 7.5
+     },
+     "2022": {
+      "gov_pct": 20.4,
+      "gov_or_firm_pct": 23.5
+     },
+     "2023": {
+      "gov_pct": 12.3,
+      "gov_or_firm_pct": 30.9
+     },
+     "2024": {
+      "gov_pct": 39.2,
+      "gov_or_firm_pct": 59.8
+     },
+     "2025": {
+      "gov_pct": 58.9,
+      "gov_or_firm_pct": 64.1
+     },
+     "2026": {
+      "gov_pct": 0.0,
+      "gov_or_firm_pct": 46.1
+     }
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "D2",
+   "section": "DPRK",
+   "question": "What share of incidents (by count) is DPRK?",
+   "canonical_value": "6.9% of headline incidents (95 of 1,377; government-attributed 2.3%, 32 incidents); 12.7% of incidents of $1M or more (84 of 659). Chainalysis counts: ~7% of incidents in 2023 (20 of 282), 15.5% in 2024 (47 of 303).",
+   "definition": "Count of incidents by attribution tier over all headline_scope=1 rows (or >= $1M), 2016-Oct 2026. Dollar share is the headline; count shares depend on how many small incidents the list contains.",
+   "sources": [
+    "data/incidents_master.csv",
+    "project brief (not published): research/dprk.md section 2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Chainalysis says DPRK was \"20%\" of 2024 incidents",
+     "source": "https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2025/",
+     "why": "47/303 = 15.5%; the 20% is unexplained"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Count shares are lower bounds (many small DPRK incidents are not itemised publicly) and mix tiers.",
+   "tweet": "DPRK is a small share of incidents (under 7% of ours, ~13% of hacks of $1M+) but a large share of dollars: a handful of exchange and bridge heists do most of the damage.",
+   "numeric": {
+    "gov_plus_firm": [
+     95,
+     1377
+    ],
+    "gov": [
+     32,
+     1377
+    ],
+    "ge1m_gov_plus_firm": [
+     84,
+     659
+    ],
+    "ge1m_gov": [
+     26,
+     659
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "D3",
+   "section": "DPRK",
+   "question": "Is recovery lower for DPRK hacks?",
+   "canonical_value": "Yes. DPRK-attributed (gov+firm, 95 incidents, $6.45B): 8.3% of dollars recovered, only 3.8% once KuCoin (exchange-claimed 84%) and Munchables (insider handed over keys) are removed. Government-attributed alone: 3.4%. Everything else: 25.5% (16.7% without the three largest returns).",
+   "definition": "Recovered = capped theft-date USD of any channel (C1) over the loss of the same incident set. DPRK = master attribution tiers (D1); non-DPRK = every other headline incident. Bybit counted at the company-stated $78.9M; at the corroborated $42.9M the government-attributed share is 2.5%.",
+   "sources": [
+    "data/incidents_master.csv",
+    "data/baseline/headline_summary.json (dprk.recovered_pct_dprk, recovered_pct_non_dprk)",
+    "project brief (not published): research/dprk.md section 6",
+    "project brief (not published): research/freezes-seizures-recovery.md section 6"
+   ],
+   "alt_figures": [
+    {
+     "figure": "8.0% of $5.56B across 38 gov/firm rows; 2.8% without KuCoin and Munchables (3.0% with DOJ $15.1M; 1.4% also without Kelp)",
+     "source": "project brief (not published): research/dprk.md section 6",
+     "why": "38-row curated table vs 95 master rows; Bybit at $42.9M; Bitget not counted"
+    },
+    {
+     "figure": "5.0% (3.0% ex-Kelp) of ~$3.1B for Ronin, Atomic, WazirX, Bybit, Kelp, Drift, Bitget",
+     "source": "project brief (not published): research/freezes-seizures-recovery.md section 6",
+     "why": "7 incidents 2022+ and NON-voluntary channels only; KuCoin and Munchables not in the set; Bybit $42.9M; includes Bitget $0.34M"
+    },
+    {
+     "figure": "Non-DPRK 8.2% of dollars (voluntary only)",
+     "source": "project brief (not published): research/dprk.md section 6 / prior negotiation study \"One hack in eight\" (authors, unpublished; aggregate tables only, shipped in data/negotiation_tables/; figures not in those tables cannot be checked from this repository)",
+     "why": "voluntary only, 571 known-outcome incidents; not comparable with all-channel DPRK figure"
+    },
+    {
+     "figure": "Kelp is the exception: 24% frozen by Arbitrum Security Council, then court-restrained; release unconfirmed",
+     "source": "project brief (not published): research/verification/recent-events-verification.md item 3",
+     "why": "attacker left ETH on a governed L2"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Same direction in every stream (DPRK 1-8%, others 13-25%); exact value depends on row set, Bybit/KuCoin company claims and valuation. Quote the ex-outlier figure with the like-for-like comparison.",
+   "tweet": "Recovery in DPRK hacks is tiny: about 3-4% of dollars once two outliers are removed (8% with them), versus ~17% for non-DPRK hacks without the three biggest returns. Voluntary returns are almost absent.",
+   "numeric": {
+    "gov_plus_firm_pct": 8.3,
+    "gov_plus_firm_ex_outliers_pct": 3.8,
+    "gov_only_pct": 3.4,
+    "gov_only_bybit_corroborated_pct": 2.5,
+    "non_dprk_pct": 25.5,
+    "non_dprk_ex_top3_pct": 16.7,
+    "non_dprk_top3": [
+     "Poly Network",
+     "Liquid Network",
+     "Euler V1"
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "D4",
+   "section": "DPRK",
+   "question": "Have any DPRK hackers been arrested?",
+   "canonical_value": "We found no public record of any DPRK operator of an exchange or bridge theft being arrested. Indicted in absentia: Park Jin Hyok, Jon Chang Hyok, Kim Il (2021); Chinese OTC launderers Tian Yinyin and Li Jiadong (2020) and others. In custody or charged: only US and Ukrainian IT-worker facilitators (5 guilty pleas in November 2025; two more US nationals were arrested in October 2026 on an N.D. Ohio indictment announced 13 October and are charged, not convicted). OFAC actions against DPRK actors or their addresses: 4 (13 Sep 2019 Lazarus, Bluenoroff and Andariel; 2 Mar 2020 the Chinese OTC launderers; 14 and 22 Apr 2022 Ronin addresses). Separately OFAC designated three mixers that laundered Lazarus proceeds (Blender 6 May 2022, Tornado Cash 8 Aug 2022, delisted 21 Mar 2025, Sinbad 29 Nov 2023); those are not counted as actions against DPRK hackers. DOJ in-rem actions: 4. We found no DOJ criminal or forfeiture action for Bybit; Bybit filed a private civil suit (D.D.C. No. 1:26-cv-02173, Judge Bates; filed under seal 2026-06-18, preliminary injunction granted in part 2026-07-30, unsealed 2026-08-06).",
+   "definition": "Public court/DOJ/OFAC records through 2026-10-21. Counting rule for OFAC: an action counts if it names a DPRK person, group or wallet address; designations of laundering services (mixers) are listed separately. \"none found\" means no public record found in the sources searched. 14 of the top-100 incidents on the master ranking ($3.63B, 27.7% of top-100 value) are government-attributed (data/top100_master_enforcement.csv). The earlier \"7 ($2.38B)\" is a hand-coded subset of the raw DeFiLlama ranking (Ronin, Harmony, Bybit, Upbit, NiceHash, Atomic, Stake.com); it omits Coincheck, DMM, WazirX, Phemex, Radiant, BingX, CoinsPaid and BigONE and counts NiceHash, which the master files as firm-tier.",
+   "sources": [
+    "project brief (not published): research/arrests-and-prosecutions.md section 5",
+    "project brief (not published): research/dprk.md section 7",
+    "project brief (not published): research/verification/legal-verification.md items 2.7, 2.8",
+    "https://www.ic3.gov/PSA/2025/PSA250226"
+   ],
+   "alt_figures": [
+    {
+     "figure": "DOJ 2025-11-14: forfeiture of $15.1M USDT from four unnamed 2023 heists",
+     "source": "https://www.justice.gov/opa/pr/justice-department-announces-nationwide-actions-combat-illicit-north-korean-government",
+     "why": "civil in-rem, not an arrest; victims unnamed (CoinsPaid, AlphaPo matches inferred)"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Docket and DOJ primary sources read in the legal verification pass; absence is medium confidence.",
+   "tweet": "DPRK hackers have been indicted and sanctioned, but we found none arrested: no operator of an exchange or bridge theft in custody. The people caught are launderers and US-based IT-worker facilitators.",
+   "numeric": {
+    "dprk_hackers_arrested": 0,
+    "top100_dprk_gov": 14,
+    "top100_dprk_gov_usd": 3631100000,
+    "top100_dprk_gov_pct_value": 27.7,
+    "top100_dprk_gov_names": [
+     "Bybit",
+     "Ronin Bridge",
+     "Coincheck",
+     "DMM Bitcoin",
+     "WazirX: India",
+     "Harmony Bridge",
+     "Atomic Wallet",
+     "Phemex",
+     "Radiant V2",
+     "Upbit",
+     "BingX",
+     "Stake.com",
+     "CoinsPaid",
+     "BigONE"
+    ],
+    "top100_dprk_gov_defillama_subset": 7
+   },
+   "status": "final"
+  },
+  {
+   "id": "A1",
+   "section": "Audited yet hacked",
+   "question": "How many hacked projects had been audited?",
+   "canonical_value": "At least 334 of 4,005 de-duplicated incident events (8.3%) concern a project with a prior public audit report from a Tier-A firm in the corpus (12,394 engagements); 146 of our 1,377 headline incidents (10.6%; $1.50B, 9.1% of dollars) match by exact normalized name within +/-3 days. This is a floor and an entity link, not a failure rate.",
+   "definition": "prior audit corpus incident linkage (read-only): exact normalized name/domain match of an incident event (4,904 source rows collapsed to 4,005 events from SlowMist, DeFiLlama, DeFiHackLabs, rekt, pcaversaccio) to an audit report whose latest possible date strictly precedes the incident day; 707 audit/event pairs, 509 audit identities, 244 project keys. Manual entity-link precision 48/50 (96.0%, Wilson 86.5-98.9%); of 50 sampled, 27 direct exploits, 8 non-exploit events, 2 indirect exposure, 13 unverifiable. Events by year: 2020 7, 2021 26, 2022 33, 2023 79, 2024 70, 2025 50, 2026 69. Master cross-match is our own exact-name+date join of data/incidents_master.csv to incident_events.csv.",
+   "sources": [
+    "prior audit-corpus event table (unpublished; NOT shipped in this repository, so the 334-of-4,005 figure cannot be reproduced here)",
+    "prior audit-corpus precision table (unpublished; not shipped)",
+    "prior audit-corpus findings draft (unpublished; not shipped)",
+    "project notes (not published; summary only) section 4"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Linked events are NOT \"audited code was exploited\"",
+     "source": "prior audit-corpus findings draft (unpublished)",
+     "why": "direct attacks can hit frontends, keys or accounts; no bytecode/component overlap established; no unexploited control population so audit-failure rates and auditor comparisons are not estimable"
+    }
+   ],
+   "confidence": "low",
+   "confidence_reason": "Recall is unmeasured (audits by firms outside the corpus and pre-2020 reports are invisible), scope is entity links, and the denominator mixes scams and non-contract events. Use \"at least\" and never as a rate of audit failure.",
+   "tweet": "At least 1 in 12 hacked-project events in our trackers involves a project that had a public audit report from a top firm beforehand. A floor, not a failure rate: it says nothing about whether the audited code was the part exploited.",
+   "numeric": {
+    "events_total": 4005,
+    "events_linked": 334,
+    "pct_linked": 8.3,
+    "by_year": {
+     "2026": 69,
+     "2023": 79,
+     "2025": 50,
+     "2021": 26,
+     "2020": 7,
+     "2022": 33,
+     "2024": 70
+    },
+    "precision": [
+     48,
+     50
+    ],
+    "master_matches": 146,
+    "master_matches_usd": 1502325485,
+    "master_matches_pct_usd": 9.1
+   },
+   "status": "final"
+  },
+  {
+   "id": "K1",
+   "section": "Attack contracts & AI",
+   "question": "How common are same-transaction (constructor) attacks, and is the share growing?",
+   "canonical_value": "Share of enriched EVM exploits in the DeFiHackLabs sample (n=758) where the exploit ran inside the attack contract's own deployment transaction: 2023 4.7% (9/190); 2024 14.3% (26/182); 2025 40.5% (62/153); 2026 34.1% (47/138); ~0% in 2020-22 (0/95 after removing one false positive, Fortress Loans). Same-tx or same-block (deployed and attacked in the same block, separate txs): 49.0% in 2025 and 44.2% in 2026 (15.4% in 2024). USD-weighted the share is far smaller, 25.1% (2024), 8.2% (2025), 10.9% (2026): the shift is among small and mid exploits. Flag precision 24 of 25 sampled (96%, Wilson 80.5-99.3%).",
+   "definition": "Numerator: rows of data/attack_contracts.csv whose DeFiHackLabs-cited attack tx is a contract-creation tx (to == null, created address present; `constructor_attack`), minus the one row verified as a likely false positive (Fortress Loans, 2022). Denominator: all enriched rows in that year (758 of 793 candidates with an attack tx hash; 2020-22 n=95, 2023 190, 2024 182, 2025 153, 2026 to 18 Oct 138). Same-tx-or-same-block adds rows with deployed_in_attack_tx or a `deployed_same_block` signal (deploy and attack in different txs of one block). USD-weighted = share of loss_usd among rows with a usable USD figure (71/157/156/129/106 rows by era). Scope: EVM exploits that someone reproduced as a DeFiHackLabs PoC; BSC-heavy; key compromises and CEX hacks are largely absent. Incident years use the DHL date. Count-based; first attack tx per entry only.",
+   "sources": [
+    "data/attack_contracts.csv (constructor_attack, deployed_in_attack_tx, frontrun_protection_signals, loss_usd)",
+    "data/tables/t5_frontrun_protection_signals_by_era.csv",
+    "data/tables/t0_sample_overview.csv",
+    "project brief (not published): research/attack-contracts-and-ai.md section 0 item 1 and 3.1",
+    "project brief (not published): research/verification/attack-ai-verification.md Part A1 (precision, recall, cuts, corrections 1-3)",
+    "https://github.com/SunWeb3Sec/DeFiHackLabs (commit 23c7bd83ccb4524972a9493617fcc8764ab6269b)"
+   ],
+   "alt_figures": [
+    {
+     "figure": "1.1% (1/95) for 2020-22",
+     "source": "project brief (not published): research/attack-contracts-and-ai.md and data/tables/t5",
+     "why": "the single flagged row is Fortress Loans (BSC 2022): a 987k-gas deployment with zero logs whose DHL header contract differs from the contract created in the tx; probably not an exploit inside the creation tx, so the verified figure is ~0%"
+    },
+    {
+     "figure": "Strict floor: 18 of 25 flagged rows (72%) show value flow to the attacker inside the creation tx",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A1",
+     "why": "lenient precision is 24/25 (96%); at the strict rate 2025 would scale from 40.5% to ~29%, still ~25x the 2020-22 level, so the trend survives the strict reading"
+    },
+    {
+     "figure": "Ethereum only: 0/39, 4.1%, 12.8%, 56.1%, 36.2%; BSC only: 2.0%, 5.2%, 12.7%, 29.0%, 28.0%",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A1 table",
+     "why": "the rise appears inside each chain, so it is not a chain-mix artifact; one-incident-per-attacker and fixed-2024-chain-mix cuts give 33-40% for 2025-26"
+    },
+    {
+     "figure": "Share of rows with a known USD loss: 4.5% / 14.7% / 41.1% / 30.2%",
+     "source": "data/attack_contracts.csv",
+     "why": "row-count share restricted to the 71-157 rows with a USD figure; the USD-weighted shares (0.9/25.1/8.2/10.9%) are the ones that show the shift is not among the biggest thefts"
+    },
+    {
+     "figure": "deployed_in_attack_tx column: 5.8 / 14.3 / 41.2 / 35.5% (2023-26)",
+     "source": "data/tables/t5",
+     "why": "adds 5 rows where the contract was created inside the attack tx by a call (a factory-style creation; tx.to is not null); the headline uses the stricter constructor flag, and same-tx-or-same-block includes them"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Arithmetic reproduces exactly and was spot-checked (25 flagged rows, 15 unflagged, 0 false negatives, ~96.7% recall against the dataset's own indexer data), and the trend holds inside each chain. But it is a DeFiHackLabs PoC sample (BSC-heavy, contribution gaps Sep 2025-Feb 2026), count-based, and the 2020-22 baseline rests on 95 of 175 entries.",
+   "tweet": "Attack contracts increasingly do everything in one transaction: constructor attacks went from ~0% of sampled EVM exploits in 2020-22 to 14% (2024), 40% (2025), 34% (2026). It is a shift among small and mid exploits (8-25% of dollars since 2024), not the mega-thefts.",
+   "numeric": {
+    "by_era": {
+     "2020-22": {
+      "n": 95,
+      "ctor": 0,
+      "ctor_pct": 0.0,
+      "raw_flag": 1,
+      "sametx_or_block": 0,
+      "sametx_or_block_pct": 0.0,
+      "usd_known_rows": 71,
+      "usd_share_pct": 0.0,
+      "known_row_share_pct": 0.0
+     },
+     "2023": {
+      "n": 190,
+      "ctor": 9,
+      "ctor_pct": 4.7,
+      "raw_flag": 9,
+      "sametx_or_block": 12,
+      "sametx_or_block_pct": 6.3,
+      "usd_known_rows": 157,
+      "usd_share_pct": 0.9,
+      "known_row_share_pct": 4.5
+     },
+     "2024": {
+      "n": 182,
+      "ctor": 26,
+      "ctor_pct": 14.3,
+      "raw_flag": 26,
+      "sametx_or_block": 28,
+      "sametx_or_block_pct": 15.4,
+      "usd_known_rows": 156,
+      "usd_share_pct": 25.1,
+      "known_row_share_pct": 14.7
+     },
+     "2025": {
+      "n": 153,
+      "ctor": 62,
+      "ctor_pct": 40.5,
+      "raw_flag": 62,
+      "sametx_or_block": 75,
+      "sametx_or_block_pct": 49.0,
+      "usd_known_rows": 129,
+      "usd_share_pct": 8.2,
+      "known_row_share_pct": 41.1
+     },
+     "2026": {
+      "n": 138,
+      "ctor": 47,
+      "ctor_pct": 34.1,
+      "raw_flag": 47,
+      "sametx_or_block": 61,
+      "sametx_or_block_pct": 44.2,
+      "usd_known_rows": 106,
+      "usd_share_pct": 10.9,
+      "known_row_share_pct": 30.2
+     }
+    },
+    "false_positive_removed": "Fortress Loans (2022)",
+    "raw_2020_22_pct": 1.1,
+    "precision_lenient": [
+     24,
+     25
+    ],
+    "precision_lenient_wilson_pct": [
+     80.5,
+     99.3
+    ],
+    "precision_strict": [
+     18,
+     25
+    ],
+    "unflagged_false_negatives": [
+     0,
+     15
+    ],
+    "sample_n": 758,
+    "same_tx_or_block_pct": {
+     "2020-22": 0.0,
+     "2023": 6.3,
+     "2024": 15.4,
+     "2025": 49.0,
+     "2026": 44.2
+    },
+    "usd_weighted_pct": {
+     "2020-22": 0.0,
+     "2023": 0.9,
+     "2024": 25.1,
+     "2025": 8.2,
+     "2026": 10.9
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "K2",
+   "section": "Attack contracts & AI",
+   "question": "Did the time between deploying an attack contract and using it get shorter?",
+   "canonical_value": "Median deploy-to-attack lag for attacker-deployed contracts: 2020-22 10.3 min, 2023 4.2 min, 2024 4.2 min, 2025 0 s, 2026 0 s (n=44/90/97/84/75). The drop to zero is the same-transaction pattern, not faster two-step attacks: excluding zero-lag rows the median is 10.3 min (2020-22), 5.2 (2023), 10.9 (2024) and 6.0 (2026), i.e. flat at roughly 5-11 minutes (2025, n=24, is unstable at 185.4 min). Strictly same-tx (deployed inside the attack tx) is 60.7% of the lag set in 2025 and 53.3% in 2026; the other zero-lag rows are same-block, separate tx.",
+   "definition": "Lag = seconds from the contract-creation block time to the attack-tx block time, for rows where the contract was deployed by the attacker (creator equals attack-tx sender or DHL header attacker), creation time is known, and the row is not one of the 50% of BSC incidents skipped for archive bisection (including them would over-represent same-tx cases). Reproduces data/tables/t4 exactly (n=44/90/97/84/75). \"Excluding zero-lag\" drops rows with lag == 0 (same-tx and same-block). \"Strict same-tx\" = deployed_in_attack_tx. Scope: attacker-deployed contracts in the DHL sample only.",
+   "sources": [
+    "data/attack_contracts.csv (deploy_to_attack_lag_s, deployed_by_attacker, creation_method, deployed_in_attack_tx)",
+    "data/tables/t4_deploy_to_attack_lag_by_era.csv",
+    "data/tables/t4b_lag_by_year.csv",
+    "project brief (not published): research/attack-contracts-and-ai.md sections 0 item 2 and 3.1",
+    "project brief (not published): research/verification/attack-ai-verification.md Part A3 (10 of 10 sampled lags recomputed exactly; same_tx wording fix)"
+   ],
+   "alt_figures": [
+    {
+     "figure": "t4 \"same_tx_pct\" 10.0 / 23.7 / 71.4 / 66.7% (2023-26)",
+     "source": "data/tables/t4",
+     "why": "that column is lag == 0, which includes same-block-different-tx rows; strictly same-tx it is 8.9% (2023), 21.6% (2024), 60.7% (2025), 53.3% (2026). The headline \"median 0 s\" stays true."
+    },
+    {
+     "figure": "Median excluding only strictly same-tx rows: 2024 10.6 min (n=76), 2025 3.8 min (n=33), 2026 1.2 min (n=35)",
+     "source": "data/attack_contracts.csv",
+     "why": "keeping the same-block rows lowers the 2025-26 medians to 1-4 min; the flat 5-11 min reading uses the zero-lag exclusion that the verification endorsed"
+    },
+    {
+     "figure": "2023 non-zero median 5.3 min",
+     "source": "project brief (not published): research/attack-contracts-and-ai.md section 0 item 2",
+     "why": "recomputed here as 5.2 min (312 s); rounding difference only"
+    },
+    {
+     "figure": "Long tail: 26.8% of 2024 attacker-deployed contracts waited more than a day; p75 38.8 h (2024)",
+     "source": "data/tables/t4",
+     "why": "rug-style and staged attacks; the median hides it"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Table reproduced exactly and 10 of 10 sampled lags recomputed from chain data; the flat 5-11 min claim is a reading of small per-era samples (2025 n=24 non-zero) over an attacker-deployed, creation-known subset.",
+   "tweet": "Median time from deploying an attack contract to using it fell from ~10 min (2020-22) to 0 s (2025-26), but that is one trick: same-transaction attacks. Excluding zero-lag cases it stays at roughly 5-11 minutes. Attackers stopped doing two steps; they did not get faster.",
+   "numeric": {
+    "by_era": {
+     "2020-22": {
+      "n": 44,
+      "median_min": 10.3,
+      "zero": 0,
+      "strict_same_tx": 0,
+      "strict_pct": 0.0,
+      "zero_pct": 0.0,
+      "n_nonzero": 44,
+      "median_nonzero_min": 10.3,
+      "n_not_sametx": 44,
+      "median_not_sametx_min": 10.3
+     },
+     "2023": {
+      "n": 90,
+      "median_min": 4.2,
+      "zero": 9,
+      "strict_same_tx": 8,
+      "strict_pct": 8.9,
+      "zero_pct": 10.0,
+      "n_nonzero": 81,
+      "median_nonzero_min": 5.2,
+      "n_not_sametx": 82,
+      "median_not_sametx_min": 5.2
+     },
+     "2024": {
+      "n": 97,
+      "median_min": 4.2,
+      "zero": 23,
+      "strict_same_tx": 21,
+      "strict_pct": 21.6,
+      "zero_pct": 23.7,
+      "n_nonzero": 74,
+      "median_nonzero_min": 10.9,
+      "n_not_sametx": 76,
+      "median_not_sametx_min": 10.6
+     },
+     "2025": {
+      "n": 84,
+      "median_min": 0.0,
+      "zero": 60,
+      "strict_same_tx": 51,
+      "strict_pct": 60.7,
+      "zero_pct": 71.4,
+      "n_nonzero": 24,
+      "median_nonzero_min": 185.4,
+      "n_not_sametx": 33,
+      "median_not_sametx_min": 3.8
+     },
+     "2026": {
+      "n": 75,
+      "median_min": 0.0,
+      "zero": 50,
+      "strict_same_tx": 40,
+      "strict_pct": 53.3,
+      "zero_pct": 66.7,
+      "n_nonzero": 25,
+      "median_nonzero_min": 6.0,
+      "n_not_sametx": 35,
+      "median_not_sametx_min": 1.2
+     }
+    },
+    "flat_range_min": [
+     5.2,
+     10.9
+    ],
+    "strict_same_tx_pct_2025": 60.7,
+    "strict_same_tx_pct_2026": 53.3
+   },
+   "status": "final"
+  },
+  {
+   "id": "K3",
+   "section": "Attack contracts & AI",
+   "question": "How has the attack-vector mix changed in reproducible EVM exploits?",
+   "canonical_value": "DeFiHackLabs EVM sample, share of incidents by era (2020-22 / 2023 / 2024 / 2025 / 2026): oracle/price manipulation 27.4 / 25.8 / 15.9 / 20.3 / 19.6% (down from ~27% to 16-20% in 2024-26, not monotonic); access control 9.5 / 10.5 / 21.4 / 20.3 / 21.7% (about doubled from 2024); business logic/accounting 24.2 / 39.5 / 30.8 / 39.2 / 31.2%; reentrancy 6.3 / 7.9 / 7.7 / 1.3 / 2.9% (fades after 2023). Flash loans appear in 61.1 / 72.1 / 56.6 / 51.6 / 53.6% of exploits (52-72%; on-chain flash-loan event only 12.6 / 32.6 / 33 / 30.7 / 42.8%).",
+   "definition": "Share of rows in the 758-row DHL on-chain sample by `vector_primary` (keyword classification of DHL reason text, DeFiLlama class as fallback), by era; 2026 to 18 Oct. Flash loan = Aave/Balancer/Uniswap-V3/Pancake-V3/Morpho flash event in the receipt or a flash callback in the PoC; \"no\" means no evidence found (V2 flash swaps are invisible). Count-based, so this is the mix of incidents, not of dollars (for dollars see V1/V3). Key compromise, social engineering and CEX hacks are under-represented by construction (they lack a reproducible on-chain PoC).",
+   "sources": [
+    "data/tables/t1b_vector_share_pct_dhl_sample.csv",
+    "data/tables/t1a_vector_counts_dhl_sample.csv",
+    "data/tables/t3_flash_loan_share_by_era.csv",
+    "data/tables/t3b_flash_share_by_vector_era.csv",
+    "data/tables/t1e_defillama_class_share_pct.csv",
+    "project brief (not published): research/attack-contracts-and-ai.md section 2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "DeFiLlama all hacks: oracle manipulation 14.5 / 13.2 / 10.6 / 12.2 / 13.9%, access control 14.2 / 18.8 / 19.7 / 20.9 / 17.5%, key compromise 10.9 / 7.6 / 10.1 / 14.9 / 10.6% (2020-22 / 2023 / 2024 / 2025 / 2026)",
+     "source": "data/tables/t1e (DeFiLlama hacks_2026-10-21.json)",
+     "why": "all recorded hacks, not only reproducible EVM exploits; same direction (oracle down, access control up) but milder; key compromise holds at 8-15% there while it is 0-3% in the DHL sample"
+    },
+    {
+     "figure": "Flash loans accompany 81-100% of oracle/price exploits by era but only 13-33% of access-control exploits",
+     "source": "data/tables/t3b",
+     "why": "explains why flash-loan use stays high while oracle share falls"
+    },
+    {
+     "figure": "DeFiLlama technique counts: \"Spot Price Manipulation\" 47 / 21 / 20 / 14 / 32; \"Reentrancy\" 26 / 11 / 13 / 4 / 2",
+     "source": "data/tables/t1g",
+     "why": "price manipulation never went away (32 in 2026 alone); the 2026 Bridge & Cross-Chain jump (10.6%) looks like a backfill or classification batch"
+    },
+    {
+     "figure": "By dollars: key/infrastructure compromise 35%, contract logic 25%",
+     "source": "canonical entry V1 and V3",
+     "why": "different unit (loss-weighted, all 1,377 incidents); do not mix with this count-based sample"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Keyword vector labels are approximate and the sample is a PoC-contribution set with gaps; the direction (oracle down, access control up, reentrancy gone) is supported by two datasets, point values are not.",
+   "tweet": "In DeFiHackLabs' reproducible EVM exploits, oracle/price manipulation fell from 27% (2020-22) to 16-20% (2024-26) while access-control bugs doubled from ~10% to ~21%. Flash loans stayed in 52-72% of cases. Key theft and phishing are mostly absent from this sample.",
+   "numeric": {
+    "oracle_pct": {
+     "2020-22": 27.4,
+     "2023": 25.8,
+     "2024": 15.9,
+     "2025": 20.3,
+     "2026": 19.6
+    },
+    "access_control_pct": {
+     "2020-22": 9.5,
+     "2023": 10.5,
+     "2024": 21.4,
+     "2025": 20.3,
+     "2026": 21.7
+    },
+    "business_logic_pct": {
+     "2020-22": 24.2,
+     "2023": 39.5,
+     "2024": 30.8,
+     "2025": 39.2,
+     "2026": 31.2
+    },
+    "reentrancy_pct": {
+     "2020-22": 6.3,
+     "2023": 7.9,
+     "2024": 7.7,
+     "2025": 1.3,
+     "2026": 2.9
+    },
+    "flash_loan_pct": {
+     "2020-22": 61.1,
+     "2023": 72.1,
+     "2024": 56.6,
+     "2025": 51.6,
+     "2026": 53.6
+    },
+    "flash_loan_onchain_event_pct": {
+     "2020-22": 12.6,
+     "2023": 32.6,
+     "2024": 33.0,
+     "2025": 30.7,
+     "2026": 42.8
+    }
+   },
+   "status": "final"
+  },
+  {
+   "id": "K4",
+   "section": "Attack contracts & AI",
+   "question": "Do attackers still fund their wallets through Tornado Cash after the sanctions?",
+   "canonical_value": "Yes, it did not collapse after the sanctions. Ethereum attacker wallets with a resolved funder (n=31/189/86): Tornado direct-pool funding 35.5% before the 8 Aug 2022 OFAC designation, 30.2% during sanctions, 30.2% after the 21 Mar 2025 delisting. Including one pass-through hop via an unlabeled wallet (the headline in the brief) it is 38.7/37.6/33.7%. Half-year swings (26-46%, n 23-50) mean \"did not collapse\", not \"flat\". Railgun funded 14 sampled wallets, 13 of them in Mar-Oct 2026 (13 of 58 resolved Ethereum wallets in 2026, 22.4%).",
+   "definition": "Ethereum only (the one chain where funding resolution is ~100%; BSC resolves only 5-22% of attempted rows and half were not attempted). Denominator: Ethereum rows with a resolved funder (306 incl. all eras, 31 / 189 / 86 by era). Era by funding timestamp (attack time if missing): before 2022-08-08; 2022-08-08..2025-03-20; from 2025-03-21. Direct = the earliest inbound funder is a Tornado pool; one-hop = funded by an unlabeled wallet whose own first inbound transfer came from a Tornado pool (an inference of pass-through; 16.1% of Tornado-attributed rows). Railgun = funder contract 0xac9f360ae85469b27aeddeafc579ef2d052ad405 (verified source \"Relay Adapt ... Railgun Contributors\"); the 14th wallet (Rico, Arbitrum, Apr 2024) is attributed only by a same-named contract and is unconfirmed. Labels are an Oct 2023 snapshot, so non-Tornado categories are lower bounds.",
+   "sources": [
+    "data/tables/t2a_funding_by_tornado_era_counts.csv",
+    "data/tables/t2c_ethereum_tornado_share_by_era.csv",
+    "data/tables/t2d_ethereum_tornado_share_by_year.csv",
+    "data/tables/t2e_ethereum_tornado_share_by_half_year.csv",
+    "data/attack_contracts.csv (funding_source, funding_source_any_hop, funding_time_utc)",
+    "project brief (not published): research/attack-contracts-and-ai.md section 3.3",
+    "project brief (not published): research/verification/attack-ai-verification.md Part A2 (7/7 direct, 3/3 one-hop, 3/3 Railgun re-verified)",
+    "https://home.treasury.gov/news/press-releases/jy0916 (OFAC designation 2022-08-08)",
+    "https://home.treasury.gov/news/press-releases/sb0057 (delisting 2025-03-21)"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Direct + one-hop (headline of the brief): 38.7 / 37.6 / 33.7%",
+     "source": "project brief (not published): research/attack-contracts-and-ai.md section 0 item 4",
+     "why": "includes 18 one-hop cases (16.1% of Tornado-attributed rows); direct-only levels are 3-7 points lower. Both versions show no collapse. Quote the direct-only figures unless you say \"including one hop\"."
+    },
+    {
+     "figure": "By year (Tornado incl. hop): 2022 27.6% (n=29), 2023 41.9% (74), 2024 33.3% (78), 2025 35.1% (57), 2026 34.5% (58)",
+     "source": "data/tables/t2d",
+     "why": "the one visible dip is 2022H2 (26.1%, n=23) just after designation; no post-2022 move is statistically distinguishable from flat"
+    },
+    {
+     "figure": "Any privacy tool after delisting: 48.8% (Tornado incl. hop 33.7% + Railgun 13 of 86 = 15.1%)",
+     "source": "data/tables/t2c",
+     "why": "Railgun appears only from March 2026; whether it displaces Tornado is not established (33.7% vs 37.6% is within noise)"
+    },
+    {
+     "figure": "All-chain table (t2b): Tornado 32.4 / 26.3 / 25.2% of resolved rows",
+     "source": "data/tables/t2b",
+     "why": "mixes in the few resolved BSC/L2 rows and counts direct only; not used"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Labels verified where applied (13 of 13 sampled funding txs) and the Ethereum-only shares are exact, but the sample is Ethereum-only DeFiHackLabs incidents, one-hop is an inference, and half-year noise is large.",
+   "tweet": "Tornado Cash did not stop funding attackers after the 2022 sanctions: on Ethereum it directly funded 35.5% of attacker wallets before, 30.2% during sanctions and 30.2% after the 2025 delisting. Railgun funded 13 wallets since March 2026.",
+   "numeric": {
+    "by_era": {
+     "A": {
+      "n": 31,
+      "direct": 11,
+      "hop": 1,
+      "direct_pct": 35.5,
+      "incl_hop_pct": 38.7,
+      "railgun": 0
+     },
+     "B": {
+      "n": 189,
+      "direct": 57,
+      "hop": 14,
+      "direct_pct": 30.2,
+      "incl_hop_pct": 37.6,
+      "railgun": 0
+     },
+     "C": {
+      "n": 86,
+      "direct": 26,
+      "hop": 3,
+      "direct_pct": 30.2,
+      "incl_hop_pct": 33.7,
+      "railgun": 13
+     }
+    },
+    "one_hop_share_of_tornado_pct": 16.1,
+    "railgun_total": 14,
+    "railgun_mar_oct_2026": 13,
+    "railgun_unconfirmed": [
+     "Rico (2024-04-20, Arbitrum)"
+    ],
+    "eth_2026_resolved": 58,
+    "direct_only_pct": [
+     35.5,
+     30.2,
+     30.2
+    ],
+    "incl_one_hop_pct": [
+     38.7,
+     37.6,
+     33.7
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "K5",
+   "section": "Attack contracts & AI",
+   "question": "Did the number of recorded exploits surge in 2026?",
+   "canonical_value": "Yes in recorded count, cause untestable. DeFiLlama: 12.3 hacks/month in 2025 (148) vs 37.6/month in Mar-Sep 2026 (263), 3.1x; incidents of $1M or more 5.8 to 13.1/month; SlowMist (independent tracker) 16.8 to 38.6/month. Dollars rose far less (about a third more per month): $2.12B in Mar-Sep 2026 vs $2.71B in all of 2025. DeFiHackLabs shows no surge. No AI attribution is supported.",
+   "definition": "Counts of records per month: DeFiLlama hacks_2026-10-21.json (1,313 records; 2025 = 148 over 12 months; Mar-Sep 2026 = 263 over 7 months; dates as in scripts/analyze.py), the same restricted to amount >= $1M (69 and 92), and SlowMist hacked.slowmist.io (202 in 2025, 270 in Mar-Sep 2026). Raw reported USD sums are shown for context only. Monthly DeFiLlama counts Mar-Sep 2026: 26, 35, 45, 33, 39, 48, 37. The Mar-Sep window is the period after the early-2026 lull; Oct 2026 is partial and excluded.",
+   "sources": [
+    "data/raw/defillama/hacks_2026-10-21.json [raw snapshot, not shipped; re-fetchable from the public source]",
+    "data/raw/slowmist/slowmist_parsed_2026-10-21.csv [raw snapshot, not shipped; re-fetchable from the public source]",
+    "data/tables/t0b_monthly_counts_2024_2026.csv",
+    "project brief (not published): research/attack-contracts-and-ai.md sections 0 item 7 and 4.3",
+    "project brief (not published): research/verification/attack-ai-verification.md Part A4 (cross-checks and verdict)",
+    "https://hacked.slowmist.io/",
+    "https://defillama.com/hacks"
+   ],
+   "alt_figures": [
+    {
+     "figure": "SlowMist 2025 excluding the Jan 2025 spike (40 records): 14.7/month",
+     "source": "data/raw/slowmist",
+     "why": "the spike lowers the ratio from 2.6x to 2.3x"
+    },
+    {
+     "figure": "Rekt leaderboard (top-by-loss list only): 4.1 to 5.9/month (1.4x)",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A4",
+     "why": "only the largest incidents; a much smaller rise"
+    },
+    {
+     "figure": "DeFiHackLabs index: 13.4 to 18.9/month (no surge)",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A4",
+     "why": "requires a reproducible PoC and has a contribution gap Sep 2025-Feb 2026; not usable for monthly counts"
+    },
+    {
+     "figure": "incidents_base.csv (DeFiLlama + SlowMist-only): 13.9 to 39.4/month (2.8x)",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A4",
+     "why": "union of the two trackers; same conclusion"
+    },
+    {
+     "figure": "UTC-date recount of the DeFiLlama windows: 12.3 to 37.3/month",
+     "source": "data/raw/defillama",
+     "why": "the pipeline converts DeFiLlama's midnight-UTC timestamps with a US-Eastern date, one day early; 2 records move between months; no change to the conclusion"
+    },
+    {
+     "figure": "By mechanism: smart-contract-logic incidents ~4.7 to 19/month; private-key/infra only ~1.9x (2.4 to 4.6/month); bridge 1.1 to 6.7/month",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md A4 (incidents_base)",
+     "why": "the rise is concentrated in contract-logic and small DeFi incidents"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Two independent trackers and the $1M+ subset show the same 2.3-3x rise, so it is not a pure DeFiLlama coverage change, but both may have widened scope together, recent months may be revised upward later (we did not measure this), and nothing here can test why. Do not write \"AI-accelerated\".",
+   "tweet": "Recorded exploits roughly tripled: DeFiLlama counts 12.3 a month in 2025 vs 37.6 in Mar-Sep 2026 (SlowMist 16.8 to 38.6; $1M+ incidents 5.8 to 13.1). Dollars rose far less: $2.1B in 7 months vs $2.7B in all of 2025. We cannot tell whether this is more attacks or more reporting.",
+   "numeric": {
+    "dl25": 148,
+    "dl26": 263,
+    "dl25_pm": 12.3,
+    "dl26_pm": 37.6,
+    "dl25_m": 69,
+    "dl26_m": 92,
+    "dl25_m_pm": 5.8,
+    "dl26_m_pm": 13.1,
+    "sm25": 202,
+    "sm26": 270,
+    "sm25_pm": 16.8,
+    "sm26_pm": 38.6,
+    "sm25_ex_pm": 14.7,
+    "usd25": 2.71,
+    "usd26": 2.12,
+    "utc_dl25_pm": 12.3,
+    "utc_dl26_pm": 37.3,
+    "dhl25_pm": 13.4,
+    "dhl26_pm": 18.9
+   },
+   "status": "final"
+  },
+  {
+   "id": "K6",
+   "section": "Attack contracts & AI",
+   "question": "Has any real exploit been verifiably written or found by AI?",
+   "canonical_value": "No verified case. We found no post-mortem, security-firm statement, PoC comment or verified attacker-contract source that attributes an in-the-wild exploit to an AI model. Of 28 AI-related claims logged (data/ai_incident_claims.csv): 12 verified (mostly lab results, tool use in malware, social engineering or defender-side), 10 credible-claim, 6 speculation. Speculation is flagged, not findings: TRM via Bloomberg on the two April 2026 heists, reported as Drift and Kelp (\"highly likely\" AI-assisted, no evidence offered), Chainalysis on unverified contracts (no incident attributed to AI), the Immunefi and OpenZeppelin-alumni opinion pieces. The constructor-attack shift, just-in-time wallets and the 2026 count surge are consistent with scripted pipelines but equally with human use of public PoC templates.",
+   "definition": "\"Verified\" = a primary source (vendor report, paper, repo, GitHub API) was read on 2026-10-21 and supports the claim as worded; \"credible claim\" = named firm or multi-outlet reporting, primary not fully checked; \"speculation\" = opinion or unsourced. Own null scans: a case-insensitive scan of all 936 DeFiHackLabs Solidity test files for claude/chatgpt/gpt/LLM/copilot/codex/AI-generated found 1 hit (a post-mortem URL with utm_source=chatgpt.com, the PoC author's reading aid); scripts/scan_attack_sources.py on the 15 verified attacker contracts since 2024 found no LLM-style markers (n tiny; unverified bytecode carries no comments, so source style is invisible for 94% of the sample). \"No public record found\" is not \"did not happen\". The one place AI authorship is verified is the defender/researcher side: 4 of the last 100 DeFiHackLabs commits (e6330a8b29, ba1f1204cd, b19b01b508, 55dbc8d6f5; 18-20 Oct 2026) carry Claude co-author trailers.",
+   "sources": [
+    "data/ai_incident_claims.csv",
+    "project brief (not published): research/verification/attack-ai-verification.md Part B2-B4 and \"Corrections for the brief\"",
+    "project brief (not published): research/attack-contracts-and-ai.md sections 4.3-4.4 and 6",
+    "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/commits/e6330a8b29",
+    "https://www.chainalysis.com/blog/attackers-exploiting-unverified-smart-contracts/",
+    "https://www.trmlabs.com/resources/blog/north-korea-stole-76-of-all-crypto-hack-value-in-2026-with-just-two-attacks (TRM, 30 Apr 2026; analysts \"speculate\" DPRK is adding AI to recon and social engineering)",
+    "project brief (not published): research/dprk.md section 5.2"
+   ],
+   "alt_figures": [
+    {
+     "figure": "TRM via Bloomberg, 15 May 2026: the two April 2026 heists (reported as Drift and Kelp) \"highly likely\" AI-assisted; attackers \"appear to have used artificial intelligence to select targets and design exploits\"",
+     "source": "data/ai_incident_claims.csv (read via a newsletter summary, https://cybersecurity-docket.beehiiv.com/p/ai-hacking-threat-pushes-130b-crypto-sector-to-the-brink; Bloomberg original paywalled; the summary does not name the heists)",
+     "why": "speculation by a named TRM investigator with no evidence offered; TRM's own blog says only \"speculate\"; neither incident involved exploit code (Drift was a six-month social-engineering operation, Kelp a 1-of-1 verifier plus compromised RPC nodes)"
+    },
+    {
+     "figure": "Chainalysis, 9 Jun 2026: $36.7M across Truebit, Trusted Volumes, Aperture, Ekubo in unverified contracts, AI \"likely accelerating\"",
+     "source": "https://www.chainalysis.com/blog/attackers-exploiting-unverified-smart-contracts/",
+     "why": "the post does not attribute any listed incident to AI; Truebit is \"methodical\" (an earlier 5 ETH exploit by the same address); several outlets overstate it"
+    },
+    {
+     "figure": "Nx s1ngularity npm malware (26-27 Aug 2025) calling victims' claude/gemini/q CLIs to hunt wallet files and secrets",
+     "source": "https://stepsecurity.io/blog/supply-chain-security-alert-popular-nx-build-system-package-compromised-with-data-stealing-malware",
+     "why": "the closest real attacker-side use, but AI as a data-hunting tool inside malware, not an AI-written contract exploit"
+    },
+    {
+     "figure": "SCONE-bench page: four days after the agent found a flaw in a one-click token-launch contract \"a real attacker independently exploited the same flaw\" for ~$1,000 of fees",
+     "source": "https://www.anthropic.com/research/smart-contracts",
+     "why": "the page does not say the attacker used AI"
+    },
+    {
+     "figure": "Grok/Bankrbot prompt-injection theft (May 2026, ~$155-200k reported); Moonwell cbETH oracle error ($1.78M bad debt, Feb 2026)",
+     "source": "data/ai_incident_claims.csv",
+     "why": "AI as a victim (Grok/Bankrbot) and AI-co-authored defender-side code (Moonwell, \"reported\", causation unproven); neither is an AI-written exploit"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "The absence is robust across our own scans and an incident-level search, but it is absence of public evidence (power is low for unverified bytecode), the claims log is a search pass of June-Oct 2026 coverage, and several primary sources were read only via summaries.",
+   "tweet": "We found no verified case of an AI-written or AI-found exploit in a real hack. Of 28 AI-related claims we logged, 12 were verified (lab work, malware tooling, social engineering, defense), 6 were pure speculation. More constructor attacks or more hacks is not evidence of AI.",
+   "numeric": {
+    "claims_n": 28,
+    "grades": {
+     "credible claim": 10,
+     "verified": 12,
+     "speculation": 6
+    },
+    "categories": {
+     "ai_agent_victim": 6,
+     "attacker_social_engineering": 4,
+     "capability_research": 4,
+     "attacker_ai_use": 7,
+     "ai_defense": 4,
+     "ai_agent_ecosystem_attack": 1,
+     "ai_defense_failure": 1,
+     "ai_agent_misbehavior": 1
+    },
+    "verified_in_the_wild_ai_exploits": 0,
+    "dhl_solidity_files_scanned": 936,
+    "dhl_scan_hits": 1,
+    "attacker_contracts_scanned": 15,
+    "attacker_contracts_with_llm_markers": 0,
+    "dhl_commits_with_claude_trailers_of_last_100": 4
+   },
+   "status": "final"
+  },
+  {
+   "id": "K7",
+   "section": "Attack contracts & AI",
+   "question": "What do the AI exploit benchmarks actually show?",
+   "canonical_value": "AI can reproduce known exploits in simulation; this is capability, not attacker behaviour. SCONE-bench (Anthropic, 1 Dec 2025): 10 models produced working exploits for 207 of 405 historical contracts (51.11%, best of 8 attempts), $550.1M of simulated value; on post-cutoff contracts $4.6M; zero-day run on 2,849 contracts found 2 novel bugs ($3,694 simulated, API cost $3,476). A1 agent (Gervais and Zhou, arXiv 2507.05558): 63% success on 36 real vulnerable contracts, up to $8.59M per exploit; the authors' simulation of historical attacks puts success at 86-89% if run at disclosure vs 6-21% after a week. EVMbench (Paradigm and OpenAI, 18 Feb 2026): top models exploited under 20% of critical Code4rena bugs earlier and GPT-5.3-Codex over 70% (vendor-reported).",
+   "definition": "Capability measurements on historical or audit-contest vulnerabilities, run in a simulator or forked chain, not on live networks; verified by reading the primary pages on 2026-10-21 (vendor research: not independently reproduced). SCONE-bench tasks are sourced largely from the DeFiHackLabs catalog, which is also this project's attack-contract sample and is now partly AI-assisted (circularity: benchmark success on DHL-derived tasks and \"AI-shaped\" DHL features are not independent confirmations of each other). The A1 economics (attacker break-even ~$6,000 vs ~$60,000 for defenders) are the paper's argument, not an observation.",
+   "sources": [
+    "https://www.anthropic.com/research/smart-contracts",
+    "https://arxiv.org/abs/2507.05558",
+    "https://www.paradigm.xyz/2026/02/evmbench",
+    "https://github.com/anthropics/scone-bench",
+    "data/ai_incident_claims.csv",
+    "project brief (not published): research/verification/attack-ai-verification.md B1 items 1-3",
+    "project brief (not published): research/attack-contracts-and-ai.md section 4.1"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Post-cutoff contracts: 19 problems (55.8%), Opus 4.5 alone 13 of 20 (65%, $3.7M); simulated revenue \"roughly doubled every 1.3 months\"; median tokens per exploit -70.2% across four Claude generations",
+     "source": "https://www.anthropic.com/research/smart-contracts",
+     "why": "vendor figures for newer models; the page itself prints both 55.8 and 55.88%"
+    },
+    {
+     "figure": "GPT-5 economics: $1.22 per run, $1,738 per vulnerable contract identified, average net profit $109 per exploit",
+     "source": "https://www.anthropic.com/research/smart-contracts",
+     "why": "simulated, best-at-1 cost accounting"
+    },
+    {
+     "figure": "EVMbench contract count or \"three modes\"",
+     "source": "https://www.paradigm.xyz/2026/02/evmbench",
+     "why": "the page gives no count; do not quote one"
+    },
+    {
+     "figure": "SCONE-bench repo: 417 tasks; 12-incident post-cutoff set (Jan 2026 onward) for new models",
+     "source": "https://github.com/anthropics/scone-bench",
+     "why": "repo task count differs from the 405 in the Dec 2025 post"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "All five capability items were re-read at their primary pages by the verifier; the figures match. They are vendor or academic measurements in simulation, so the confidence is in what was reported, not in any real-world effect.",
+   "tweet": "AI agents are good at replaying known exploits in simulation: Anthropic's SCONE-bench reproduced 207 of 405 historical exploits (51.1%, $550.1M simulated, 1 Dec 2025); an academic agent hit 63% of 36 real vulnerable contracts. Capability research, not evidence of attacks.",
+   "numeric": {
+    "scone_reproduced": 207,
+    "scone_total": 405,
+    "scone_pct": 51.11,
+    "scone_simulated_usd": 550100000.0,
+    "scone_published": "2025-12-01",
+    "a1_success_pct": 63,
+    "a1_contracts": 36,
+    "a1_max_usd": 8590000.0,
+    "evmbench_published": "2026-02-18",
+    "evmbench_over_pct": 70,
+    "evmbench_earlier_under_pct": 20
+   },
+   "status": "final"
+  },
+  {
+   "id": "K8",
+   "section": "Attack contracts & AI",
+   "question": "Are attackers using AI at all?",
+   "canonical_value": "Yes, in social engineering and tooling, not (verified) in writing contract exploits. Verified: Google GTIG (5 Nov 2025): DPRK-linked UNC1069 used Gemini for crypto research, wallet-data locations and lures and attempted to develop crypto-theft code; UNC4899 for code and exploit research (accounts disabled; GTIG does not say Gemini made the deepfakes). Anthropic (27 Aug 2025): DPRK operatives used Claude to get and keep remote jobs at US tech firms; separate \"vibe hacking\" extortion of 17+ organizations. s1ngularity npm malware (26-27 Aug 2025) invoked victims' installed claude/gemini/q CLIs to find wallet files and secrets (StepSecurity). Huntress (18 Jun 2025): BlueNoroff/TA444 Zoom call in which an employee at a cryptocurrency foundation met several deepfakes of senior leaders from their own company and external contacts. Anthropic (10 Sep 2026 threat report, covering Dec 2025 to Aug 2026): AI-assisted exploit development including automated exploit foundries run by a China-based espionage group, against security appliances; the report describes no in-the-wild crypto or DeFi exploit. Speculation flagged: TRM on the two April 2026 heists, reported as Drift and Kelp.",
+   "definition": "Each item is a vendor primary report read on 2026-10-21 (vendor attribution, not government; none ties the AI use to a specific stolen-funds incident). Social engineering and developer-machine tooling are the verified attacker-side uses; the attempted theft-code generation in the GTIG report is attempted misuse, not an observed exploit. Anthropic's DPRK section does not mention crypto (it concerns IT-worker infiltration). Chainalysis (13 Jan 2026) found scams with on-chain links to AI vendors earned $3.2M vs $719k per operation (4.5x): a correlation on on-chain data, not proof of causation.",
+   "sources": [
+    "https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools",
+    "https://www.anthropic.com/news/detecting-countering-misuse-aug-2025",
+    "https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf",
+    "https://stepsecurity.io/blog/supply-chain-security-alert-popular-nx-build-system-package-compromised-with-data-stealing-malware",
+    "https://www.huntress.com/blog/inside-bluenoroff-web3-intrusion-analysis",
+    "https://www.chainalysis.com/blog/crypto-scams-2026/",
+    "data/ai_incident_claims.csv",
+    "project brief (not published): research/verification/attack-ai-verification.md B1 items 4-5, B2, B3"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Dark Reading: later BlueNoroff wave with stolen victim video and AI avatars (Jan 2026)",
+     "source": "https://www.darkreading.com/cyberattacks-data-breaches/bluenoroff-turns-victims-into-new-attack-lures",
+     "why": "credible but secondary only (fetch blocked, read via summary); do not quote as verified"
+    },
+    {
+     "figure": "DEV Community \"100+ executives compromised by deepfakes\"",
+     "source": "data/ai_incident_claims.csv",
+     "why": "unsourced; do not use"
+    },
+    {
+     "figure": "DPRK deepfake job interviews (Contagious Interview/ClickFake)",
+     "source": "project brief (not published): research/verification/attack-ai-verification.md B3",
+     "why": "no source ties these specifically to LLM or deepfake use; the reports describe recruiter personas and copy-paste malware"
+    },
+    {
+     "figure": "TRM / Bloomberg: attackers \"appear to have used AI to select targets and design exploits\" (Drift, Kelp)",
+     "source": "data/ai_incident_claims.csv",
+     "why": "speculation by a named expert, no evidence; see K6"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Each verified item was read at its primary page; what they show (AI used in lures, jobs fraud and malware tooling) is stated as narrowly as the reports state it.",
+   "tweet": "Attackers do use AI, just not (verified) to write exploits: Google saw DPRK-linked UNC1069 using Gemini for crypto research and lures; DPRK operatives used Claude for remote-job fraud; npm malware drove victims' AI CLIs to hunt wallet files; BlueNoroff used deepfakes on Zoom.",
+   "numeric": {
+    "verified_items": [
+     "GTIG UNC1069/UNC4899 Gemini (2025-11-05)",
+     "Anthropic DPRK IT workers and vibe hacking (2025-08-27)",
+     "s1ngularity npm (2025-08-26/27)",
+     "Huntress BlueNoroff deepfake Zoom (2025-06-18)"
+    ],
+    "chainalysis_scam_ai_vendor_link_per_op_usd": [
+     3200000.0,
+     719000.0
+    ]
+   },
+   "status": "final"
+  },
+  {
+   "id": "K9",
+   "section": "Attack contracts & AI",
+   "question": "Do exploits come in copycat waves?",
+   "canonical_value": "Yes. 12 lending-market exploits of one bug class (empty-market donation / rounding inflation) across Compound- and Aave-style forks and similar lending code in 13 months (2023-04-15 to 2024-05-14): HundredFinance, BaoCommunity, WiseLending, kTAF, OnyxProtocol, Raft_fi, MahaLend, MetaLend, bZxProtocol, ChannelsFinance, RadiantCapital, Sonne Finance; reported losses sum to $38M across the 12 with a USD figure. Other documented waves in DeFiHackLabs headings: read-only reentrancy (7 incidents, 2022-10-24 to 2023-07-30), ERC-2771 forwarder / unchecked multicall (6, May 2025 to Sep 2026), and MEV-bot replay of a revealed attack (SecuredFi 5 Sep 2026, BiFi 17 Oct 2026). 16 sampled incidents carry an explicit white-hat or rescue marker (a floor; intent unverified).",
+   "definition": "Clusters of the same mechanism on different forks, taken from DeFiHackLabs reason headings (data/tables/t9b: 9 documented members, labelled Compound-v2 forks in the headings; plus Onyx, Radiant and Sonne from the keyword family). Lineage is mixed: Radiant Capital is an Aave V2 fork, and WiseLending, bZx and Raft are not Compound forks as far as we could tell. Months = elapsed time from the first to the last incident (15 Apr 2023 to 14 May 2024). This is heading-based, not code-similarity analysis; shared-bytecode proof is future work. The ERC-2771/multicall and MEV-replay waves are from the brief (DHL notes), not recomputed here.",
+   "sources": [
+    "data/tables/t9b_documented_copycat_waves.csv",
+    "data/tables/t9_candidate_copycat_families_by_year.csv",
+    "data/tables/t8_whitehat_frontrun_flagged.csv",
+    "project brief (not published): research/attack-contracts-and-ai.md sections 3.5 and 3.6",
+    "data/attack_contracts.csv"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Keyword family \"compound_v2_fork_empty_market_or_rounding\": 21 candidates (13 in 2023)",
+     "source": "data/tables/t9",
+     "why": "unfiltered keyword match that includes rounding bugs on non-Compound code; not a wave count"
+    },
+    {
+     "figure": "Other keyword families: ERC-4626 inflation/donation 23, rounding/precision loss 27, Uniswap-V2 skim/sync reflection tokens 30",
+     "source": "data/tables/t9",
+     "why": "candidate families from keyword matching, not curated waves"
+    },
+    {
+     "figure": "White-hat/rescue marker: 14 by c0ffeebabe.eth or the Paraswap \"Whitehat\" EOA, plus INUMI and SquidMulticall rescue notes",
+     "source": "data/tables/t8",
+     "why": "label inherited from DHL and the actor identity; an MEV searcher can profit as well as rescue"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "The 12-in-13-months sequence is read off public incident headings and dates, so membership is solid but \"same bug class\" rests on the labels, not on bytecode.",
+   "tweet": "Exploits arrive in waves: 12 lending-market exploits of one bug class hit Compound- and Aave-style forks in 13 months (Apr 2023 to May 2024), and in 2026 a searcher replayed an attacker's revealed strategy within a block.",
+   "numeric": {
+    "compound_v2_wave": {
+     "n": 12,
+     "months": 13,
+     "incidents": [
+      "HundredFinance",
+      "BaoCommunity",
+      "WiseLending",
+      "kTAF",
+      "OnyxProtocol",
+      "Raft_fi",
+      "MahaLend",
+      "MetaLend",
+      "bZxProtocol",
+      "ChannelsFinance",
+      "RadiantCapital",
+      "Sonne Finance"
+     ],
+     "first": "2023-04-15",
+     "last": "2024-05-14",
+     "usd_known_n": 12,
+     "usd_known_sum": 37566000
+    },
+    "read_only_reentrancy_n": 7,
+    "whitehat_flagged_n": 16
+   },
+   "status": "final"
+  },
+  {
+   "id": "M1",
+   "section": "Marquee cases",
+   "question": "Liquid Network (Sep 2026)",
+   "canonical_value": "~$320M (3,998.5 L-BTC minted; 3,996.0 BTC released); attacker returned 3,400 BTC (85.0% by units; $266.5M in the master = 83.3% at theft-date price) confirmed 25h40m after the drain and ~7h after Blockstream's PGP \"safe to return\" message; 598.5 BTC (14.97%, ~$47M) withheld as leverage for a 10% bounty Blockstream refused (\"It is not white-hat activity. It is theft.\"). Unresolved as of 2026-10-21: the attacker's 598.50 BTC sat unspent since Bitcoin block 966,199 (2026-09-09), and Liquid's peg audit showed a 602.53 BTC gap (4,234.76 L-BTC against 3,632.23 BTC), a different measure (the federation's shortfall) from the coins the attacker holds; attacker unidentified, no arrest or charge found.",
+   "definition": "Incident 2026-09-06 (drain 14:28:56 UTC peg-out); cause: range-proof verification cache collision in Elements (fixed 23.3.4). Retained share = 598.5 / 3,998.5. The return is voluntary but NOT a settled split (excluded from the 3.0% sample).",
+   "sources": [
+    "project brief (not published): research/negotiation-and-returns.md",
+    "project brief (not published): research/verification/recent-events-verification.md item 1",
+    "https://www.theblock.co/news/ecosystems/2026-09-11-blockstream-refuses-ransom-demand-for-remaining-600-btc-from-liquid-exploit-414247",
+    "https://crypto.news/liquid-network-320-million-drain-cache-bug-unbacked-bitcoin/",
+    "https://www.trmlabs.com/resources/blog/2026s-biggest-hack-to-date-attackers-drained-usd-319-million-in-bitcoin-from-liquid-network-then-returned-85-of-funds"
+   ],
+   "alt_figures": [
+    {
+     "figure": "$265M vs $272M returned; \"kept 15% after demanding 10%\"; \"within 15 hours\"",
+     "source": "press / earlier brief",
+     "why": "price date; retained share is withheld leverage not a deal; 7h/25h40m corrected"
+    },
+    {
+     "figure": "CertiK Sep 2026: $273M frozen/returned of $769M = 35.5%",
+     "source": "https://www.gncrypto.news/news/september-crypto-hacks-hit-2026-high-768-5-million-losses/",
+     "why": "Liquid is nearly the whole numerator"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Core numbers hold across 2+ outlets; status after 2026-10-21 unverified.",
+   "tweet": "Liquid Network, $320M: the attacker returned 3,400 BTC (85%) about 26 hours later and kept 598.5 BTC hostage for a 10% bounty. Blockstream: \"It is not white-hat activity. It is theft.\" Standoff unresolved as of Oct 21.",
+   "numeric": {
+    "loss_usd": 320000000.0,
+    "returned_btc": 3400,
+    "withheld_btc": 598.5,
+    "minted_btc": 3998.5,
+    "returned_pct_units": 85.0,
+    "withheld_pct": 14.97,
+    "status_date": "2026-10-21"
+   },
+   "status": "final"
+  },
+  {
+   "id": "M2",
+   "section": "Marquee cases",
+   "question": "Bybit (Feb 2025)",
+   "canonical_value": "$1.46B (Bybit/Elliptic; FBI PSA ~$1.5B; master carries $1.4B). FBI attributed it to TraderTraitor/DPRK on 2025-02-26 (primary). ~$42.9M frozen within ~3 days (2.9%); Bybit itself later claims >$73M (Sept 2025) and $78.9M recovered-or-frozen (Aug 2026; 5.4%), unaudited. ETH-to-BTC conversion done in ~12 days (Arkham), 72% via THORChain. We found no DOJ criminal or forfeiture action; Bybit sued DPRK privately (D.D.C. No. 1:26-cv-02173, Judge Bates; filed under seal 2026-06-18; TROs 2026-06-19 and 2026-07-16; preliminary injunction granted in part 2026-07-30; unsealed 2026-08-06). Bybit made users whole from its own balance sheet.",
+   "definition": "Recovery share = frozen/recovered over $1.46B. ONE CONVENTION: quote the corroborated 2.9% ($42.9M); 5.4% ($78.9M) appears only labelled as a Bybit company claim; never 3.5% or 5.6% (5.6% = $78.9M over the $1.40B DeFiLlama loss). Make-whole is not recovery.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 10",
+    "project brief (not published): research/freezes-seizures-recovery.md section 6",
+    "https://www.ic3.gov/PSA/2025/PSA250226",
+    "https://www.coindesk.com/policy/2026/08/07/bybit-sues-north-korea-and-lazarus-group-over-usd1-5-billion-hack-secures-asset-freeze"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Master counts $78.9M (5.6% of $1.4B)",
+     "source": "data/incidents_master.csv",
+     "why": "company claim carried per the recent-events verification text; corroborated figure is $42.9M"
+    },
+    {
+     "figure": "3.5% (3.54%) returned/recovered share in paper Appendix B and earlier negotiation_cases_public.csv",
+     "source": "data/negotiation_cases_public.csv (before 2026-10-21)",
+     "why": "a CEO remark from Mar 2025, uncorroborated; matches neither 2.9% ($42.9M / $1.46B) nor 5.4% ($78.9M / $1.46B); retired"
+    },
+    {
+     "figure": "DeFiLlama returnedFunds shows $1.4B \"returned\"",
+     "source": "project brief (not published): research/incident-baseline.md section 4",
+     "why": "that is the exchange's own cover, not recovery"
+    },
+    {
+     "figure": "Laundered \"in 10 days\"",
+     "source": "low-quality reposts",
+     "why": "Arkham says 12 days; Elliptic claim unverified; it is ETH-to-BTC layering, not cash-out"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Loss and attribution are primary-sourced; every recovery figure beyond $42.9M is a company claim.",
+   "tweet": "Bybit lost $1.46B on 21 Feb 2025; the FBI named North Korea within 5 days. About $43M (2.9%) was frozen in the first days; Bybit itself claims $78.9M (5.4%) by 2026. Funds were converted to BTC in about 12 days.",
+   "numeric": {
+    "loss_usd": 1460000000.0,
+    "frozen_corroborated_usd": 42890000.0,
+    "company_claim_usd": 78900000.0,
+    "frozen_pct": 2.9,
+    "claim_pct": 5.4,
+    "quote_figure": "corroborated 2.9%; 5.4% only as a company claim",
+    "retired_figure_pct": 3.5,
+    "retired_figure_origin": "3.54% = a CEO remark (Mar 2025; the top-150 re-check attributes ~3.5% to the Bitget CEO), logged as returned_share_of_loss=0.0354 in data/negotiation_cases_public.csv and copied into paper Appendix B; it matches neither the corroborated 2.9% nor the company 5.4%; replaced by 0.0294 on 2026-10-21"
+   },
+   "status": "final"
+  },
+  {
+   "id": "M3",
+   "section": "Marquee cases",
+   "question": "Bitget (Sep 2026)",
+   "canonical_value": "$387M (first reported $351.6M; Chainalysis $387M across 23 transfers). Attribution: firm-tier only (Chainalysis \"DPRK-attributed\", Elliptic \"highly likely\", TRM \"has not definitively attributed\"); no government attribution. Recovery ~$0.34M frozen by issuers (0.09%); CEO claims $1.07M (0.28%, single source); BlockSec $0.84M includes ~$503K of swaps blocked mid-flight. THORChain declined to halt (~$269M passed through).",
+   "definition": "Frozen = issuer freezes only (Circle $99,989.91 USDC; Tether 218,022.97 + 21,090.53 + 221.13 USDT). Bitget says its $464M user protection fund covers losses (company claim).",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 2",
+    "https://blocksec.com/blog/bitget-hack-laundering-fund-tracing",
+    "https://www.chainalysis.com/blog/387m-bitget-theft-2026/",
+    "https://gizmodo.com/north-korea-very-likely-behind-388-million-hack-of-crypto-exchange-bitget-2000817421",
+    "https://www.trmlabs.com/resources/blog/bitget-loses-usd-3516-million-in-hot-wallet-breach-in-likely-north-korea-attack"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Master counts $840K (0.2%)",
+     "source": "data/incidents_master.csv",
+     "why": "includes the ~$503K of blocked swaps, which are not frozen balances; within the independent range $0.3M-$0.84M; difference does not move any rounded total"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Frozen figure is contested ($0.3-1.1M); attribution tier is firm.",
+   "tweet": "Bitget, $387M (Sept 2026): under $1.1M frozen, at most 0.28% by Bitget's own figure (independent counts $0.3-0.84M). Firm-attributed to North Korea, not government-attributed.",
+   "numeric": {
+    "loss_usd": 387000000.0,
+    "frozen_usd_low": 340000.0,
+    "frozen_usd_ceo_claim": 1070000.0,
+    "attribution": "firm"
+   },
+   "status": "final"
+  },
+  {
+   "id": "M4",
+   "section": "Marquee cases",
+   "question": "KelpDAO (Apr 2026)",
+   "canonical_value": "$292M (116,500 rsETH; master $293M). Arbitrum Security Council froze 30,766 ETH (~$71M, 24.3%) on 2026-04-20, ~2 days after the hack; a creditor restraining notice (terrorism-judgment holders, ~$877M face) was modified 2026-05-08 to let the DAO transfer to Aave; the creditors' turnover motion against Aave (S.D.N.Y. 1:25-mc-00527, ECF 60) is briefed with no ruling seen as of 2026-10-20; release from custody unverified. DPRK attribution is firm/victim-side (LayerZero preliminary, via Chainalysis; TRM). DeFi United pledged >$300M ($221.65M raised per a third-party tracker); Kelp says backing was restored 2026-05-25. Pledges are make-whole, not recovery.",
+   "definition": "Recovery = Arbitrum freeze only. Mechanism: forged LayerZero message after RPC nodes were compromised.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 3",
+    "https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/",
+    "https://cointelegraph.com/news/court-lets-arbitrum-dao-to-transfer-71m-in-eth-tied-to-north-korea-hack-to-aave"
+   ],
+   "alt_figures": [
+    {
+     "figure": "$75M freeze, \"3 days\"",
+     "source": "earlier dprk.md",
+     "why": "corrected 2026-10-21 to $71M, 2 days"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Freeze amount and date are corroborated; legal end-state unresolved.",
+   "tweet": "KelpDAO, $292M: Arbitrum's Security Council froze 30,766 ETH (~$71M, 24%) two days later, then a court-restraint fight over North Korea judgments. Pledges of $300M+ to make users whole are not recovery.",
+   "numeric": {
+    "loss_usd": 292000000.0,
+    "frozen_usd": 71000000.0,
+    "frozen_pct": 24.3,
+    "days_to_freeze": 2
+   },
+   "status": "final"
+  },
+  {
+   "id": "M5",
+   "section": "Marquee cases",
+   "question": "Cetus (May 2025)",
+   "canonical_value": "$223M (2025-05-22); Sui validators froze ~$162M (72.6%) by the next day; governance vote closed 2025-05-29 with 90.9% to move the funds to a Cetus/OtterSec/Sui Foundation multisig; attacker had already bridged 20,920 ETH (~$56.3M). Cetus offered the attacker ~$6M (2,324 ETH) to return the rest; no reply. Attacker unknown; no arrest or charge found. Sui Foundation $30M loan funded the relaunch.",
+   "definition": "Recovery share = frozen/loss. Credit validators, not Cetus alone.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 8",
+    "https://www.theblock.co/post/356347/sui-community-passes-governance-vote-to-recover-stolen-cetus-funds-blocked-by-validators-in-223m-heist"
+   ],
+   "alt_figures": [
+    {
+     "figure": "$260M or $63M-bridged figures",
+     "source": "some outlets",
+     "why": "conflict with primary-ish sources; not used"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Two or more independent outlets; amounts confirmed.",
+   "tweet": "Cetus, $223M: Sui validators froze $162M (73%) within a day, then 90.9% of stake voted to move it. It worked, and it set a precedent critics call centralisation.",
+   "numeric": {
+    "loss_usd": 223000000.0,
+    "frozen_usd": 162000000.0,
+    "frozen_pct": 72.6
+   },
+   "status": "final"
+  },
+  {
+   "id": "M6",
+   "section": "Marquee cases",
+   "question": "NEAR Intents (Oct 2026)",
+   "canonical_value": "~$3.8M (23 failed deposits creating unbacked balances; withdrawals Sep 29 to Oct 1; paused Oct 1); 100% returned within ~36 hours of detection after a public 48-hour ultimatum (\"We have identified you, sir.\" is NEAR GM Shevchenko's). No bounty to the attacker reported; the attacker's note (\"We've returned all the funds, we were in the wrong\") has no tx hash in our sources. A separate $300,000 reward went to another researcher.",
+   "definition": "Return share = returned / ~$3.8M; timing per NEAR post-mortem (36h); \"about 14 hours\" is single-source.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 6",
+    "https://decrypt.co/380014/near-intents-recovers-3-8-million-after-48-hour-ultimatum"
+   ],
+   "alt_figures": [
+    {
+     "figure": "\"about 14 hours\"",
+     "source": "Unchained via Yahoo",
+     "why": "single source; disagrees on the identification day"
+    }
+   ],
+   "confidence": "medium",
+   "confidence_reason": "Return confirmed by two outlets plus the post-mortem; quote attribution and hash gaps remain.",
+   "tweet": "NEAR Intents lost $3.8M, told the attacker publicly \"we have identified you\" and set a 48h deadline. 100% came back within ~36 hours of detection, with no bounty reported. We do not know how they identified them.",
+   "numeric": {
+    "loss_usd": 3800000.0,
+    "returned_pct": 100,
+    "hours_from_detection": 36
+   },
+   "status": "final"
+  },
+  {
+   "id": "M7",
+   "section": "Marquee cases",
+   "question": "Verus-Ethereum bridge (May 2026)",
+   "canonical_value": "~$11.4-11.6M (Blockaid $11.58M; 5,402 ETH after swaps); Verus offered on 2026-05-21 that returning 4,052.4 ETH within 24h would be treated as the attacker keeping the rest as a bounty and no pursuit; 4,052 ETH arrived on chain, 1,350 ETH kept = 24.99% retained, the largest realized retention in the settlement sample (a later separate exploit of the same flaw took ~$7.5M by a different attacker).",
+   "definition": "Retained share = 1,350 / 5,402 ETH.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 7",
+    "data/briefs/onchain-verification.md (scrubbed copy shipped) section 3",
+    "https://www.theblock.co/post/402319/verus-bridge-exploiter-returns-4052-eth"
+   ],
+   "alt_figures": [
+    {
+     "figure": "Offer asked 4,052.4 ETH; 4,052 arrived",
+     "source": "data/onchain_returns.csv",
+     "why": "0.4 ETH difference; retained share 24.99% not 25.0%"
+    }
+   ],
+   "confidence": "high",
+   "confidence_reason": "Offer and return decoded from chain data and corroborated by 3 outlets.",
+   "tweet": "Verus bridge, ~$11.5M (May 2026): the attacker took a 24-hour offer, returned 4,052 ETH and kept 1,350 ETH (25%), the highest realized \"bounty\" cut we found.",
+   "numeric": {
+    "loss_usd": 11500000.0,
+    "returned_eth": 4052,
+    "kept_eth": 1350,
+    "kept_pct": 24.99
+   },
+   "status": "final"
+  },
+  {
+   "id": "M8",
+   "section": "Marquee cases",
+   "question": "Drift (Apr 2026), the counter-case",
+   "canonical_value": "~$285M (Chainalysis; press $270-295M); firm-attributed DPRK (\"preliminary on-chain indicators\"); no freeze found (the $3.36M Circle figure was unsupported); ~$232M USDC bridged via Circle CCTP in 100+ transactions over ~6 hours (ZachXBT allegation); Circle class action (D. Mass., McCollum) pending; Tether-backed recovery package \"up to $127.5 million\" is make-whole financing, not recovery; about 44,510 ETH (~$109M) to Tornado Cash over 20-21 Oct 2026 (25,700 ETH on the first day; the total is the Onchain Lens count, relayed by several outlets); trackers disagree on what is still held (roughly 56,000 to 63,000 ETH); DFX claims opened 2026-10-01 with about $3.1M USDT in the pool against about $295M of verified losses, and the Tether \"up to $127.5 million\" is a commitment ceiling, not cash in the pool.",
+   "definition": "Recovery counted: $0.",
+   "sources": [
+    "project brief (not published): research/verification/recent-events-verification.md item 4",
+    "https://www.chainalysis.com/blog/lessons-from-the-drift-hack/",
+    "https://financefeeds.com/tether-backs-drift-protocol-with-127-5m-plan-following-280m-exploit/"
+   ],
+   "alt_figures": [],
+   "confidence": "medium",
+   "confidence_reason": "Amounts corroborated; laundering timeline partly single-source.",
+   "tweet": "Drift, ~$285M (Apr 2026): no funds frozen or returned that we could find; ~$232M of USDC was bridged away in ~6 hours. A Tether financing package pays users, but it is not recovered money.",
+   "numeric": {
+    "loss_usd": 285000000.0,
+    "recovered_usd": 0
+   },
+   "status": "final"
+  }
+ ],
+ "reconciliations": [
+  {
+   "topic": "Any-channel recovery 18.8% vs voluntary ~8-10% vs non-voluntary 6.6%/3.5%",
+   "explanation": "Three different numerators over three different denominators. 18.8% = every documented recovery channel (theft-date USD, capped, make-whole excluded) over all $16.52B of headline losses. Voluntary = attacker/insider return only: 10.2% on the same denominator; 8.2% in the prior paper (571 known-outcome incidents, $16.05B, cutoff 2026-09-05, no Liquid). Non-voluntary = freezes, seizures, halts, rescues: 8.6% in the master vs 6.6% (3.5% ex-\"damage averted\") in the freeze brief, which uses the raw DefiLlama $17.2B denominator, drops company claims (KuCoin, Bybit) and counts the BNB 2022 halt ($429M). They add up to rounding (10.2 + 8.6 = 18.8) and no stream is wrong. Master treatment adopted as canonical because it is the only one covering all channels with one denominator."
+  },
+  {
+   "topic": "\"1 in 8\" vs 22% of $1M+ incidents",
+   "explanation": "\"1 in 8\" (12.5%) is a voluntary-return rate among exploits and key compromises, imputed for unresolved cases. 22.8% (150 of 659) is the share of $1M+ incidents with a documented recovery by ANY channel. The matching voluntary-only floor in the master is 78 of 659 (11.8%), consistent with 12.5%. Never write \"22% of hacks are returned\"."
+  },
+  {
+   "topic": "DPRK recovered 8.3% vs 8.0% / 2.8% vs 5.0%",
+   "explanation": "8.3% (master): 95 incidents, $6.45B, gov+firm tiers, Bybit at the company-stated $78.9M, KuCoin counted at the exchange-stated $239M. 8.0% (DPRK brief): 38 curated rows, $5.56B, Bybit $42.9M, Bitget not counted. 2.8% (DPRK brief) and 3.8% (master) are the same cut without KuCoin and Munchables. 5.0% (freeze brief) is a third set: 7 named incidents 2022+, NON-voluntary channels only, no KuCoin/Munchables. All say the same thing: DPRK recovery is 3-5% without two outliers, 8% with."
+  },
+  {
+   "topic": "Arrests 8 vs 9 of the top 100",
+   "explanation": "Sibling (8) ranks the raw DeFiLlama list (LuBian #1, Mt. Gox 2014 inside) and counts Coincheck-buyers, Bitfinex-launderers and Mt. Gox as person-level, with NiceHash soft; master (9) ranks its own de-duplicated 2016+ scope, counts only people charged for the hack itself (FTX, Nomad, Mango, NiceHash, Uranium, KyberSwap, Coinrail, Josh Jones, IRA Financial) and files Coincheck, Bitfinex and StableMagnet under laundering-side (12 with them). Coinrail, Josh Jones and IRA Financial were found in the later top-150 re-check. Canonical: 9 (8 without the inferred NiceHash match), \"about 1 in 10\"."
+  },
+  {
+   "topic": "DPRK share 22.6% / 34% / 39.1% vs published 59-76%",
+   "explanation": "Master counts only incidents that appear in public lists and can be tiered. 47 of 63 firm-tier rows ($0.83B) rest solely on the tayvano researcher list, which is a lead, not an attribution, hence the three-tier presentation. Chainalysis and TRM include personal-wallet theft and unnamed victims and use their own denominators, so their annual shares run higher in 2025 (59-76%) while the master gives 58.9% (gov) and 64.1% (gov+firm)."
+  },
+  {
+   "topic": "Bybit: $1.4B vs $1.46B vs $1.5B; recovered 2.9% vs 5.4% vs 5.6% vs 3.5%",
+   "explanation": "Loss: DeFiLlama $1.4B (master), Bybit/Elliptic $1.46B, FBI/Chainalysis ~$1.5B; use $1.46B in text. Recovery: $42.9M is corroborated (The Block, 2025-02-27); $73M and $78.9M are Bybit's shifting company claims. The master carries $78.9M (attributed as a company claim); with $42.9M the all-channel share is 18.6% instead of 18.8%. ONE CONVENTION for Bybit's own recovered share: 2.9% ($42.9M / $1.46B) is the figure to quote; 5.4% ($78.9M / $1.46B) only as a company claim; 5.6% is the same $78.9M over the $1.40B DeFiLlama loss (table-internal); the 3.5% (3.54%) once printed in paper Appendix B was a CEO remark that matches neither and is retired (data/negotiation_cases_public.csv now carries 0.0294)."
+  },
+  {
+   "topic": "Arrests: two different 16-sets (E2 headline vs E3 timing)",
+   "explanation": "E2 (\"16 of 1,377\", 1.2%, about 1 in 86) counts the 16 headline incidents with a person charged for the hack itself (arrest_status=charged_or_arrested_for_hack). E3 (\"608 days\") is the median over 16 incident keys of data/law_enforcement_stats.json, built from the case file: it adds Mt. Gox 2011 and Silk Road 2012 (pre-2016), the Bitfinex and Coincheck laundering-side cases and the CoinDCX detention, and lacks Coinrail, Josh Jones, 2gether, IRA Financial and Yala. Only 11 cases overlap. Restricted to E3 cases that are 2016+ incidents in the 1,377 scope the median is 439.5 days (n=14); on the overlap only, 439 days (n=11). Membership of both sets is listed in numeric.e2_set and numeric.e3_set. Never write \"16 of 1,377 ... a median 608 days\"."
+  },
+  {
+   "topic": "Top-100 DPRK government rows: 14 (master) vs 7 (DeFiLlama subset)",
+   "explanation": "The master top 100 has 14 government-attributed incidents ($3.63B, 27.7% of top-100 value); the earlier \"7 ($2.38B)\" came from a hand-coded flag on the raw DeFiLlama ranking in compute_enforcement_stats.py and is retired. Government-tier source grade: 27 of 32 rows ($1.35B of $3.74B) are read through secondary sources; see D1 numeric.gov_tier_source_grade and the attribution_source_grade column."
+  },
+  {
+   "topic": "Liquid: 85% vs 83.3%",
+   "explanation": "85.0% = 3,400 of 3,998.5 BTC (by units, the cleanest). The master prices 3,400 BTC at $266.5M against a $320M loss = 83.3%; $265M-$272M appear in press by price date. Quote 85% by BTC units."
+  },
+  {
+   "topic": "Bitget: $0.34M vs $0.84M vs $1.07M",
+   "explanation": "Issuer freezes are ~$0.34M (0.09%). BlockSec's $0.84M adds ~$503K of swaps blocked mid-flight (not frozen balances); the CEO's $1.07M (0.28%) is single-source. Master carries $0.84M; the $0.5M difference moves nothing."
+  },
+  {
+   "topic": "Typical bounty: 10% vs 3.0% vs 41%",
+   "explanation": "10% is the modal opening offer (104 of 183) and the median retained share in 35 settlements. 3.0% retained is the median of 10 recent publicly negotiated returns by returned share of loss (6.1% in drafts before 2026-10-21, when Poly Network and Euler were coded 5.4% and 10.2% retained instead of 0%). 41% (Mango) is a 2022 governance vote and 25% (Verus) the right tail. Quote the 10% norm and always name the sample."
+  },
+  {
+   "topic": "Audited-yet-hacked 8.3% vs 10.6%",
+   "explanation": "8.3% = 334 events of 4,005 (corpus de-duplicated events, all incident types incl. scams). 10.6% = 146 of 1,377 headline incidents by our own exact-name+date join. Both are floors on an entity link; neither is a rate of audit failure."
+  }
+ ],
+ "attack_contracts_ai": {
+  "status": "final",
+  "note": "Attack-contracts and AI-assisted-exploit stream: project brief (not published): research/attack-contracts-and-ai.md as corrected by project brief (not published): research/verification/attack-ai-verification.md (verification wins). Entries K1-K9 are in `numbers`; do_not_cite lists claims that must not be repeated.",
+  "entries": [
+   "K1",
+   "K2",
+   "K3",
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K8",
+   "K9"
+  ],
+  "do_not_cite": [
+   {
+    "item": "\"AI-assisted hackers drain $36.7M\" (BeInCrypto/Yahoo, nadcab, CryptoTimes headlines)",
+    "why": "the Chainalysis post (9 Jun 2026) does not attribute any of the four incidents to AI; \"likely accelerating\" is its only language"
+   },
+   {
+    "item": "TRM/Bloomberg \"highly likely the hackers worked with the help of AI\" on the two April 2026 heists (reported as Drift and Kelp), as fact",
+    "why": "speculation by a named expert; no evidence; neither incident involved exploit code; Bloomberg original paywalled (read via summary)"
+   },
+   {
+    "item": "bex.co \"$45M AI trading agent oracle-poisoning exploit\" (12 Apr 2026)",
+    "why": "no protocol, agent, tx hash or primary source; internally inconsistent dates; vendor marketing"
+   },
+   {
+    "item": "DEV Community \"100+ executives compromised by deepfakes\"",
+    "why": "unsourced"
+   },
+   {
+    "item": "OECD.AI incident record (\"involvement of AI ... is clear\")",
+    "why": "an AI-written summary of the same opinion pieces"
+   },
+   {
+    "item": "Araoz \"all of DeFi is unsafe\" (26 May 2026), Immunefi CEO \"vulnerability apocalypse\" (Jun 2026), Hypernative \"vibe-coded attacks\"",
+    "why": "opinion; no incident, tx or protocol; OpenZeppelin disowned the first"
+   },
+   {
+    "item": "Hypernative homepage claims (\"$3B+ saved\", \"99.8% hacks detected\", \"within seconds\")",
+    "why": "vendor marketing without methodology"
+   },
+   {
+    "item": "An AI link to the Kelp, Verus, Step Finance or Makina incidents",
+    "why": "not supported; Step Finance (executive devices) and Makina (flash-loan oracle) were conventional"
+   },
+   {
+    "item": "Moonwell ($1.78M, Feb 2026) as \"an AI-written exploit\"",
+    "why": "defender-side coding error; the Claude co-author trailer shows assistance, not causation; Moonwell declined comment; if mentioned: \"reported, causation unproven\""
+   },
+   {
+    "item": "Any in-the-wild ElizaOS memory-injection theft",
+    "why": "research demonstration only (arXiv 2503.16248); no in-the-wild theft found"
+   },
+   {
+    "item": "Dark Reading BlueNoroff \"AI avatars\" wave (Jan 2026) as verified",
+    "why": "secondary only (read via summary); use Huntress (18 Jun 2025) instead"
+   },
+   {
+    "item": "The constructor-attack shift, just-in-time wallets or the 2026 incident count as evidence of AI",
+    "why": "equally explained by human use of public PoC templates; the data cannot separate them"
+   }
+  ]
+ }
+}

@@ -1,0 +1,168 @@
+{
+ "snapshot": "hacks_2026-10-21.json",
+ "n_incidents_total": 1313,
+ "n_with_amount": 1258,
+ "total_usd": 21167788756.12813,
+ "top100_strict_person": [
+  8,
+  100,
+  8.0
+ ],
+ "top100_person_any_incl_nonperp_probable": [
+  10,
+  100,
+  10.0
+ ],
+ "top100_broad_incl_inrem": [
+  13,
+  100,
+  13.0
+ ],
+ "top100_broad_incl_inferred_inrem": [
+  16,
+  100,
+  16.0
+ ],
+ "top100_usd": 17754570010,
+ "top100_usd_person_strict": 1936200000,
+ "top100_usd_broad": 6217700000,
+ "top100_usd_broad_incl_inferred": 6356300000,
+ "top100_person_hack_itself": [
+  6,
+  100,
+  6.0
+ ],
+ "top100_laundering_side_only": [
+  2,
+  100,
+  2.0
+ ],
+ "top100_dprk_gov_count": 7,
+ "top100_dprk_gov_usd": 2378600000,
+ "unmatched_keys": [],
+ "all_strict": [
+  14,
+  1313,
+  1.07
+ ],
+ "all_person_any": [
+  16,
+  1313,
+  1.22
+ ],
+ "all_broad": [
+  18,
+  1313,
+  1.37
+ ],
+ "all_broad_incl_inferred_inrem": [
+  21,
+  1313,
+  1.6
+ ],
+ "core_defn": "non-rugpull, loss >= $1M",
+ "core_n": 595,
+ "core_strict": [
+  14,
+  595,
+  2.35
+ ],
+ "core_person_any": [
+  16,
+  595,
+  2.69
+ ],
+ "ge10M_n": 195,
+ "ge10M_strict": [
+  10,
+  195
+ ],
+ "ge10M_person_any": [
+  12,
+  195
+ ],
+ "usd_ex_lubian": 17667788756.12813,
+ "usd_strict_share_ex_lubian_pct": 11.3,
+ "time_to_first_person_action_days_by_incident": {
+  "PLAT": 6,
+  "CDCX": 7,
+  "MANGO": 76,
+  "AHMED-2": 348,
+  "AHMED-1": 374,
+  "PB": 409,
+  "FTX": 439,
+  "MEDJ-2": 440,
+  "CC": 775,
+  "NOM": 1004,
+  "DPRK": 1169,
+  "MEDJ-1": 1209,
+  "URAN": 1797,
+  "BFX": 2016,
+  "GOX": 2140,
+  "SR": 3342
+ },
+ "time_n": 16,
+ "time_median_days": 607.5,
+ "time_mean_days": 972,
+ "time_q1_q3": [
+  354,
+  1650
+ ],
+ "time_median_excl_nonperp_and_buyers": 722.0,
+ "time_n_excl": 14,
+ "frac_within_1y": 0.25,
+ "time_sensitivity_medj_serbian_arrest": {
+  "MEDJ-1": 1031,
+  "MEDJ-2": 262,
+  "median_days": 607.0,
+  "n": 16
+ },
+ "individual_outcomes": {
+  "convicted_or_pleaded": 8,
+  "conviction_vacated_or_acquitted_appeal_pending": 1,
+  "acquitted": 2,
+  "pending": 3,
+  "outcome_unknown": 1,
+  "at_large_or_not_in_custody": 8
+ },
+ "individual_outcomes_n": 23,
+ "individual_outcomes_detail": {
+  "convicted_or_pleaded": [
+   "Ahmed",
+   "Lichtenstein",
+   "Morgan",
+   "Zhong",
+   "Vinnik (US plea; swapped to Russia before sentencing)",
+   "Powell (plea agreement filed 2024-08-07, unsealed 2025-04-14; sentencing not set)",
+   "Hernandez (sentenced 2025-12-08 to 12 months probation)",
+   "Spalletta (convicted 2026-10-07, sentencing set for 2027-02-16)"
+  ],
+  "conviction_vacated_or_acquitted_appeal_pending": [
+   "Eisenberg (counts 1-2 vacated for venue, count 3 acquitted; US appeal pending)"
+  ],
+  "acquitted": [
+   "a 22-year-old suspect (Platypus, France)",
+   "his brother (Platypus, France)"
+  ],
+  "pending": [
+   "Anton Peraire-Bueno (retrial ordered ready 2027-06-07)",
+   "James Peraire-Bueno (same)",
+   "the Nomad suspect (arrested in Israel; extradition approved; transfer to US unconfirmed)"
+  ],
+  "outcome_unknown": [
+   "Rohn (no public disposition found; co-defendant Powell has a plea agreement on file)"
+  ],
+  "at_large_or_not_in_custody": [
+   "Medjedovic",
+   "Bilyuchenko",
+   "Verner",
+   "Park Jin Hyok",
+   "Jon Chang Hyok",
+   "Kim Il",
+   "Tian Yinyin",
+   "Li Jiadong"
+  ]
+ },
+ "returnedFunds_flagged_n": 27,
+ "returnedFunds_flagged_pct": 2.1
+}

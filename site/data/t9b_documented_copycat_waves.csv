@@ -1,0 +1,17 @@
+wave,date,incident,chain,dhl_reason
+compound_v2_empty_market_donation_inflation,2023-04-15,HundredFinance,ethereum,Donate Inflation ExchangeRate && Rounding Error
+compound_v2_empty_market_donation_inflation,2023-07-04,BaoCommunity,ethereum,Donate Inflation ExchangeRate && Rounding Error
+compound_v2_empty_market_donation_inflation,2023-10-13,WiseLending,ethereum,Donate Inflation ExchangeRate && Rounding Error
+compound_v2_empty_market_donation_inflation,2023-10-19,kTAF,ethereum,CompoundV2 Inflation Attack
+compound_v2_empty_market_donation_inflation,2023-11-10,Raft_fi,ethereum,Donate Inflation ExchangeRate & Rounding Error
+compound_v2_empty_market_donation_inflation,2023-11-11,MahaLend,ethereum,Donate Inflation ExchangeRate & Rounding Error
+compound_v2_empty_market_donation_inflation,2023-11-25,MetaLend,ethereum,CompoundV2 Inflation Attack
+compound_v2_empty_market_donation_inflation,2023-12-02,bZxProtocol,ethereum,Inflation Attack
+compound_v2_empty_market_donation_inflation,2023-12-30,ChannelsFinance,bsc,CompoundV2 Inflation Attack
+read_only_reentrancy_2023,2022-10-24,Market,polygon,Read-only Reentrancy
+read_only_reentrancy_2023,2023-01-16,MidasCapital,polygon,Read-only Reentrancy
+read_only_reentrancy_2023,2023-02-10,dForce,arbitrum,Read-Only-Reentrancy
+read_only_reentrancy_2023,2023-04-05,Sentiment,arbitrum,Read-Only-Reentrancy
+read_only_reentrancy_2023,2023-06-12,Sturdy Finance,ethereum,Read-Only-Reentrancy
+read_only_reentrancy_2023,2023-07-21,Conic Finance,ethereum,Read-Only-Reentrancy && MisConfiguration
+read_only_reentrancy_2023,2023-07-30,Curve,ethereum,Vyper Compiler Bug && Reentrancy

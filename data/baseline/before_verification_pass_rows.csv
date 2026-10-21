@@ -1,0 +1,1573 @@
+id,name,date,loss_usd,recovered_usd,recovery_status,headline_scope,attribution
+20110619-mt-gox,Mt. Gox,2011-06-19,8750000,0,unknown_not_checked,1,unknown
+20120301-bitcoinica,Bitcoinica,2012-03-01,228000,0,unknown_not_checked,1,unknown
+20120511-bitcoinica,Bitcoinica,2012-05-11,90000,0,unknown_not_checked,1,unknown
+20120905-bitfloor,Bitfloor,2012-09-05,250000,0,no_voluntary_return_found,1,unknown
+20131023-inputs-io,Inputs.io,2013-10-23,1200000,0,unknown_not_checked,1,unknown
+20131111-bitcash,Bitcash,2013-11-11,100000,0,unknown_not_checked,1,unknown
+20140207-mt-gox,Mt. Gox,2014-02-07,470000000,0,recovered_documented,1,other_known
+20140217-picostocks,Picostocks,2014-02-17,4430000,0,unknown_not_checked,1,unknown
+20140302-flexcoin,Flexcoin,2014-03-02,600000,0,unknown_not_checked,1,unknown
+20140304-poloniex,Poloniex,2014-03-04,50000,0,no_voluntary_return_found,1,unknown
+20140713-mintpal,Mintpal,2014-07-13,2000000,0,no_voluntary_return_found,1,unknown
+20140729-cryptsy,Cryptsy,2014-07-29,9580000,0,no_voluntary_return_found,1,unknown
+20150105-bitstamp,Bitstamp,2015-01-05,5200000,0,unknown_not_checked,1,unknown
+20150127-796,796,2015-01-27,270000,0,no_voluntary_return_found,1,unknown
+20150217-bter,BTER,2015-02-17,1750000,0,no_voluntary_return_found,1,unknown
+20150218-kipcoin,KipCoin,2015-02-18,728000,0,unknown_not_checked,1,unknown
+20150522-bitfinex,Bitfinex,2015-05-22,329000,0,unknown_not_checked,1,unknown
+20150815-bter,BTER,2015-08-15,1650000,0,unknown_not_checked,1,unknown
+20160407-shapeshift,ShapeShift,2016-04-07,230000,0,unknown_not_checked,1,unknown
+20160514-gatecoin,Gatecoin,2016-05-14,2000000,0,no_voluntary_return_found,1,unknown
+20160617-the-dao,The DAO,2016-06-17,60000000,60000000,recovered_documented,1,unknown
+20160802-bitfinex,Bitfinex,2016-08-02,72000000,56520000,recovered_documented,1,other_known
+20161013-bitcurex,Bitcurex,2016-10-13,1500000,0,unknown_not_checked,1,dprk_firm_attributed
+x-20170101-bithumb,Bithumb,2017-01-01,14000000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20170101-youbit-aka-yapizon-aka-coinbin,Youbit aka Yapizon aka Coinbin,2017-01-01,7450000,0,unknown_not_checked,0,dprk_firm_attributed
+20170427-yapizon,Yapizon,2017-04-27,4800000,0,unknown_not_checked,1,unknown
+20170621-bithumb,Bithumb,2017-06-21,1000000,0,unknown_not_checked,1,unknown
+20170701-parity,Parity,2017-07-01,30000000,0,recovered_unquantified,1,unknown
+20170718-coindash,CoinDash,2017-07-18,7700000,0,unknown_not_checked,1,unknown
+x-20170923-coinis,Coinis,2017-09-23,2190000,0,unknown_not_checked,0,dprk_firm_attributed
+20171109-parity-multisig,Parity Multisig,2017-11-09,150000000,0,unknown_not_checked,0,unknown
+20171119-tether,Tether,2017-11-19,30950010,30950010,recovered_documented,1,unknown
+20171208-nicehash,NiceHash,2017-12-08,64000000,0,no_public_record_found,1,dprk_firm_attributed
+20171219-youbit,Youbit,2017-12-19,0,0,no_voluntary_return_found,1,unknown
+20171220-etherdelta,EtherDelta,2017-12-20,1400000,0,no_voluntary_return_found,1,unknown
+20180113-blackwallet,BlackWallet,2018-01-13,400000,0,unknown_not_checked,1,unknown
+20180126-coincheck,Coincheck,2018-01-26,534000000,0,no_recovery_in_sources_checked,1,dprk_gov_attributed
+20180212-bitgrail,BitGrail,2018-02-12,170000000,0,recovered_unquantified,1,unknown
+20180219-blockchain-info,Blockchain.info,2018-02-19,50000000,0,unknown_not_checked,0,unknown
+x-20180318-cypherium,Cypherium,2018-03-18,8500000,0,unknown_not_checked,0,dprk_firm_attributed
+20180412-coinsecure,Coinsecure,2018-04-12,3300000,0,no_voluntary_return_found,1,dprk_firm_attributed
+x-20180419-e7-theft,E7 Theft,2018-04-19,5000000,0,unknown_not_checked,0,dprk_firm_attributed
+20180421-gate,Gate,2018-04-21,235000000,0,unknown_not_checked,0,dprk_firm_attributed
+20180422-beautychain,BeautyChain,2018-04-22,0,0,unknown_not_checked,1,unknown
+20180424-smartmesh,SmartMesh,2018-04-24,0,0,unknown_not_checked,1,unknown
+20180425-myetherwallet,MyEtherWallet,2018-04-25,13000000,0,no_voluntary_return_found,1,unknown
+20180513-monacoin,MonaCoin,2018-05-13,90000,0,unknown_not_checked,1,unknown
+20180516-bitcoin-gold,Bitcoin Gold,2018-05-16,18000000,0,no_public_record_found,1,unknown
+20180522-verge,Verge,2018-05-22,1750000,0,unknown_not_checked,1,unknown
+x-20180529-taylor-ico,Taylor ICO,2018-05-29,1700000,0,unknown_not_checked,0,dprk_firm_attributed
+20180602-zencash,ZenCash,2018-06-02,550000,0,unknown_not_checked,1,unknown
+20180610-coinrail,Coinrail,2018-06-10,37200000,0,claimed_unverified,1,dprk_firm_attributed
+20180621-bithumb,Bithumb,2018-06-21,31000000,0,no_recovery_in_sources_checked,1,unknown
+20180709-bancor-v3,Bancor V3,2018-07-09,23500000,10011000,recovered_documented,1,dprk_firm_attributed
+20180726-kickico,KICKICO,2018-07-26,7700000,0,unknown_not_checked,1,unknown
+x-20180807-btc-markets,BTC Markets,2018-08-07,3500000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20180809-klickl-idcm,Klickl / IDCM,2018-08-09,620000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20180901-indodax,Indodax,2018-09-01,24900000,0,unknown_not_checked,0,dprk_firm_attributed
+20180912-eosbet,EOSBet,2018-09-12,200000,0,no_voluntary_return_found,1,unknown
+20180914-newdex,NewDex,2018-09-14,58000,0,unknown_not_checked,1,unknown
+20180914-zaif,Zaif,2018-09-14,60000000,0,no_public_record_found,1,dprk_firm_attributed
+20181007-spankchain,SpankChain,2018-10-07,38000,36632,recovered_documented,1,unknown
+20181015-eosbet,EOSBet,2018-10-15,338000,0,no_voluntary_return_found,1,unknown
+x-20181020-trade-io,Trade.io,2018-10-20,10000000,0,unknown_not_checked,0,dprk_firm_attributed
+20181026-eosroyale,EosRoyale,2018-10-26,60000,0,unknown_not_checked,1,unknown
+20181031-eoscast,EOSCast,2018-10-31,72912,0,unknown_not_checked,1,unknown
+20181107-gate,Gate,2018-11-07,0,0,unknown_not_checked,1,unknown
+20181108-ffgame,FFGame,2018-11-08,7200,0,unknown_not_checked,1,unknown
+20181110-eosdice,EOSDice,2018-11-10,25100,0,unknown_not_checked,1,unknown
+20181111-eos-win,EOS.WIN,2018-11-11,9180,0,unknown_not_checked,1,unknown
+20181112-aurumcoin,AurumCoin,2018-11-12,500000,0,unknown_not_checked,1,unknown
+20181112-hirevibes-airdropsdac,HireVibes AirDropsDAC,2018-11-12,13600,0,unknown_not_checked,1,unknown
+20181119-eos-lelego,EOS Lelego,2018-11-19,0,0,unknown_not_checked,1,unknown
+20181212-vertcoin,Vertcoin,2018-12-12,100000,0,unknown_not_checked,1,unknown
+20181219-eos-max,EOS Max,2018-12-19,0,0,unknown_not_checked,1,unknown
+20181219-tobet,ToBet,2018-12-19,0,0,unknown_not_checked,1,unknown
+20190106-ethereum-classic,Ethereum Classic,2019-01-06,219500,0,unknown_not_checked,1,unknown
+20190114-cryptopia,Cryptopia,2019-01-14,16000000,0,recovered_unquantified,1,dprk_firm_attributed
+20190126-localbitcoins,LocalBitcoins,2019-01-26,27000,0,unknown_not_checked,1,unknown
+20190220-coinbin,Coinbin,2019-02-20,26000000,0,unknown_not_checked,0,unknown
+20190324-dragonex,DragonEx,2019-03-24,7000000,0,unknown_not_checked,1,dprk_firm_attributed
+20190324-etbox,Etbox,2019-03-24,132000,0,unknown_not_checked,1,dprk_firm_attributed
+20190325-coinbene,Coinbene,2019-03-25,40000000,0,no_public_record_found,1,dprk_firm_attributed
+x-20190326-biki,BiKi,2019-03-26,12300000,0,unknown_not_checked,0,dprk_firm_attributed
+20190329-bithumb,Bithumb,2019-03-29,19000000,627000,recovered_documented,1,unknown
+20190329-troncrush,TronCrush,2019-03-29,0,0,unknown_not_checked,1,unknown
+20190411-tronbank,TronBank,2019-04-11,0,0,no_voluntary_return_found,1,unknown
+20190411-tronwow,TronWow,2019-04-11,0,0,unknown_not_checked,1,unknown
+20190503-tronbank,TronBank,2019-05-03,4270000,0,unknown_not_checked,1,unknown
+20190507-binance,Binance,2019-05-07,40000000,0,no_public_record_found,1,unknown
+20190522-coinbase,Coinbase,2019-05-22,100000,0,unknown_not_checked,1,unknown
+20190524-poker-eos,Poker EOS,2019-05-24,0,0,unknown_not_checked,1,unknown
+20190602-kraken,Kraken,2019-06-02,10450000,0,unknown_not_checked,1,unknown
+20190606-gatehub,GateHub,2019-06-06,9500000,0,unknown_not_checked,1,unknown
+20190625-synthetix-v1-v2,Synthetix v1+v2,2019-06-25,0,0,unknown_not_checked,1,unknown
+20190627-bitrue,Bitrue,2019-06-27,4700000,0,no_voluntary_return_found,1,unknown
+x-20190630-bitcoin-norway-alphapoint,Bitcoin Norway (AlphaPoint),2019-06-30,500000,0,unknown_not_checked,0,dprk_firm_attributed
+20190712-bitpoint,BitPoint,2019-07-12,27600000,0,no_public_record_found,1,unknown
+20190817-cointiger-ptt,CoinTiger (PTT),2019-08-17,9200000,0,unknown_not_checked,1,unknown
+x-20190925-algo-capital,Algo Capital,2019-09-25,2000000,0,unknown_not_checked,0,dprk_firm_attributed
+20190928-chain-fusion,Chain Fusion,2019-09-28,6400000,0,unknown_not_checked,1,unknown
+20191108-vindax,VinDAX,2019-11-08,500000,0,no_voluntary_return_found,1,unknown
+20191127-upbit,Upbit,2019-11-27,49300000,493000,recovered_documented,1,dprk_gov_attributed
+20191202-vertcoin,Vertcoin,2019-12-02,29,0,unknown_not_checked,1,unknown
+20191214-vechain,VeChain,2019-12-14,6500000,0,unknown_not_checked,1,unknown
+20191223-nuls,Nuls,2019-12-23,480000,0,unknown_not_checked,1,unknown
+20200123-bitcoin-gold,Bitcoin Gold,2020-01-23,70000,0,unknown_not_checked,1,unknown
+20200203-lucklambo104,LuckLambo104,2020-02-03,1500,0,unknown_not_checked,1,unknown
+20200205-altsbit,Altsbit,2020-02-05,70000,0,no_voluntary_return_found,1,unknown
+20200212-trinity-wallet,Trinity Wallet,2020-02-12,2000000,0,no_voluntary_return_found,1,unknown
+20200215-ooki,Ooki,2020-02-15,350000,0,unknown_not_checked,1,unknown
+20200215-bzx,bZx,2020-02-15,350000,0,unknown_not_checked,1,unknown
+20200218-ooki,Ooki,2020-02-18,650000,0,unknown_not_checked,1,unknown
+20200218-bzx,bZx,2020-02-18,645000,0,unknown_not_checked,1,unknown
+20200222-josh-jones,Josh Jones,2020-02-22,45000000,5490000,recovered_documented,1,unknown
+20200312-makerdao,MakerDAO,2020-03-12,8320000,0,unknown_not_checked,1,unknown
+20200408-bisq,Bisq,2020-04-08,248000,0,unknown_not_checked,1,unknown
+20200418-uniswap-v1,Uniswap V1,2020-04-18,220000,0,unknown_not_checked,1,unknown
+20200419-lendf-me,Lendf.Me,2020-04-19,24696616,24696616,recovered_documented,0,unknown
+20200419-dforce-lending,dForce Lending,2020-04-19,25000000,24300000,recovered_documented,1,unknown
+20200425-hegic,Hegic,2020-04-25,28537,0,unknown_not_checked,1,unknown
+20200618-bancor-v3,Bancor V3,2020-06-18,544885,0,no_recovery_in_sources_checked,1,unknown
+20200625-web3-defi,Web3 DeFi,2020-06-25,100000,0,unknown_not_checked,1,unknown
+20200628-balancer,Balancer,2020-06-28,500000,0,no_voluntary_return_found,1,unknown
+20200701-vether,Vether,2020-07-01,450000,0,unknown_not_checked,1,unknown
+20200703-ravencoin,Ravencoin,2020-07-03,40000000,0,no_public_record_found,1,unknown
+20200711-cashaa,Cashaa,2020-07-11,3100000,0,unknown_not_checked,1,unknown
+20200731-2gether,2gether,2020-07-31,1183000,0,unknown_not_checked,1,unknown
+20200804-opyn,Opyn,2020-08-04,371000,0,no_voluntary_return_found,1,unknown
+20200806-ethereum-classic,Ethereum Classic,2020-08-06,1680000,0,unknown_not_checked,1,unknown
+x-20200807-new-york-financial-services-company,New York Financial Services Company,2020-08-07,11800000,0,unknown_not_checked,0,dprk_firm_attributed
+20200813-yam,YAM,2020-08-13,750000,0,unknown_not_checked,1,unknown
+20200818-okex,OKEx,2020-08-18,5600000,0,no_voluntary_return_found,1,unknown
+20200824-yfvalue,YFValue,2020-08-24,170000000,0,unknown_not_checked,0,unknown
+20200830-electrum,Electrum,2020-08-30,16000000,0,no_public_record_found,1,unknown
+20200908-eterbase,Eterbase,2020-09-08,5400000,0,unknown_not_checked,1,dprk_firm_attributed
+20200910-coral,Coral,2020-09-10,420000,0,unknown_not_checked,1,unknown
+20200910-syfi,SYFI,2020-09-10,250000,0,unknown_not_checked,1,unknown
+x-20200911-unibright,Unibright,2020-09-11,500000,0,unknown_not_checked,0,dprk_firm_attributed
+20200920-soda-protocol,Soda Protocol,2020-09-20,160000,0,unknown_not_checked,1,unknown
+20200928-eminence,Eminence,2020-09-28,15000000,7995000,recovered_documented,1,unknown
+20200929-kucoin,KuCoin,2020-09-29,281000000,239412000,recovered_documented,1,dprk_firm_attributed
+x-20201006-coinmetro,CoinMetro,2020-10-06,740000,0,unknown_not_checked,0,dprk_firm_attributed
+20201011-wleo,WLEO,2020-10-11,42000,0,unknown_not_checked,1,unknown
+20201012-electrum,Electrum,2020-10-12,22000000,0,recovered_unquantified,1,unknown
+20201026-harvest-finance,Harvest Finance,2020-10-26,24000000,2472000,recovered_documented,1,unknown
+20201030-ethercrash,EtherCrash,2020-10-30,2500000,0,unknown_not_checked,1,unknown
+20201102-axion,Axion,2020-11-02,500000,0,unknown_not_checked,1,unknown
+20201106-ledger,Ledger,2020-11-06,271000,0,unknown_not_checked,1,unknown
+20201108-grin,Grin,2020-11-08,0,0,unknown_not_checked,1,unknown
+20201112-akropolis,Akropolis,2020-11-12,2000000,0,no_voluntary_return_found,1,unknown
+x-20201113-l2-theft,L2 Theft,2020-11-13,893000,0,unknown_not_checked,0,dprk_firm_attributed
+20201114-valuedefi,ValueDefi,2020-11-14,7400000,1998000,recovered_documented,1,unknown
+20201116-cheesebank,CheeseBank,2020-11-16,3300000,0,unknown_not_checked,1,unknown
+20201117-ousd,OUSD,2020-11-17,7000000,0,unknown_not_checked,1,unknown
+20201117-origin-protocol,Origin Protocol,2020-11-17,7700000,0,no_voluntary_return_found,1,unknown
+20201122-pickle,Pickle,2020-11-22,19700000,0,no_public_record_found,1,unknown
+20201130-saffron-finance,Saffron Finance,2020-11-30,50000000,0,unknown_not_checked,0,unknown
+20201130-sushiswap,SushiSwap,2020-11-30,15000,0,unknown_not_checked,1,unknown
+20201202-compounder-finance,Compounder Finance,2020-12-02,12464316,0,unknown_not_checked,1,unknown
+20201208-aeternity,Aeternity,2020-12-08,5201000,0,unknown_not_checked,1,unknown
+20201214-nexus-mutual,Nexus Mutual,2020-12-14,8000000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20201218-warp-protocol,Warp Protocol,2020-12-18,7800000,5850000,recovered_documented,1,unknown
+20201221-exmo,Exmo,2020-12-21,10500000,0,unknown_not_checked,1,dprk_firm_attributed
+20201224-livecoin,Livecoin,2020-12-24,3300000,0,unknown_not_checked,1,unknown
+20201226-altilly,Altilly,2020-12-26,750000,0,no_voluntary_return_found,1,unknown
+20201228-lubian,LuBian,2020-12-28,3500000000,0,unknown_not_checked,0,unknown
+20201229-cover-protocol,Cover Protocol,2020-12-29,9400000,3196000,recovered_documented,1,unknown
+x-20210122-indodax-ato,Indodax ATO,2021-01-22,2830000,0,unknown_not_checked,0,dprk_firm_attributed
+20210125-badger-dao,Badger DAO,2021-01-25,103842,0,unknown_not_checked,1,unknown
+20210127-sushiswap,SushiSwap,2021-01-27,103842,0,unknown_not_checked,1,unknown
+20210201-cryptopia,Cryptopia,2021-02-01,45000,0,unknown_not_checked,1,unknown
+20210205-yfi,YFI,2021-02-05,11000000,0,unknown_not_checked,1,unknown
+20210205-yearn-finance,Yearn Finance,2021-02-05,11000000,1705000,recovered_documented,1,unknown
+20210209-growth-defi,Growth DeFi,2021-02-09,1400000,0,unknown_not_checked,1,unknown
+20210212-bt-finance,BT Finance,2021-02-12,1500000,0,no_voluntary_return_found,1,unknown
+20210213-alpha-finance,Alpha Finance,2021-02-13,37500000,3712500,recovered_documented,1,unknown
+20210227-furucombo,Furucombo,2021-02-27,14000000,0,no_voluntary_return_found,1,unknown
+20210301-seascape,Seascape,2021-03-01,500000,0,unknown_not_checked,1,unknown
+20210304-meerkat-finance,Meerkat Finance,2021-03-04,31000000,29450000,recovered_documented,1,unknown
+20210305-paid-network,Paid Network,2021-03-05,27000000,0,no_public_record_found,1,dprk_firm_attributed
+20210309-dodo-amm,DODO AMM,2021-03-09,3800000,3298400,recovered_documented,1,unknown
+20210314-roll,Roll,2021-03-14,5700000,0,no_voluntary_return_found,1,unknown
+20210315-deus-finance,DEUS Finance,2021-03-15,3000000,0,unknown_not_checked,1,unknown
+20210315-pancakeswap-cream-finance,PancakeSwap / Cream Finance,2021-03-15,0,0,unknown_not_checked,1,unknown
+20210315-tsd-true-seigniorage-dollar,TSD (True Seigniorage Dollar),2021-03-15,7095000,0,unknown_not_checked,1,unknown
+20210316-iron-finance,Iron Finance,2021-03-16,170000,0,no_voluntary_return_found,1,unknown
+20210320-turtle-dex,Turtle Dex,2021-03-20,2500000,0,unknown_not_checked,1,unknown
+x-20210402-mudge-etna-mokens-deployer,Mudge / Etna / Mokens Deployer,2021-04-02,1000000,0,unknown_not_checked,0,dprk_firm_attributed
+20210404-force-dao,Force DAO,2021-04-04,367000,0,no_voluntary_return_found,1,unknown
+20210405-polkatrain,Polkatrain,2021-04-05,3000000,0,no_recovery_in_sources_checked,1,unknown
+20210412-pancakeswap,PancakeSwap,2021-04-12,1800000,0,unknown_not_checked,1,unknown
+20210419-easyfi,EasyFi,2021-04-19,59000000,0,no_public_record_found,1,dprk_firm_attributed
+20210428-uranium-finance,Uranium Finance,2021-04-28,57200000,31002400,recovered_documented,1,unknown
+20210502-spartan,Spartan,2021-05-02,30500000,0,no_public_record_found,1,unknown
+20210505-valuedefi,ValueDefi,2021-05-05,10000000,0,no_voluntary_return_found,1,unknown
+20210507-valuedefi,ValueDefi,2021-05-07,11000000,0,unknown_not_checked,1,unknown
+20210508-rari-capital,Rari Capital,2021-05-08,10000000,0,no_voluntary_return_found,1,unknown
+x-20210512-990-1-btc,990.1 BTC,2021-05-12,55600000,0,unknown_not_checked,0,dprk_firm_attributed
+20210512-xtoken,xToken,2021-05-12,24000000,0,no_public_record_found,1,unknown
+20210514-flash-sx-vaults-sx,flash.sx / vaults.sx,2021-05-14,13000000,13000000,recovered_documented,1,unknown
+20210517-bearnfi,BearnFi,2021-05-17,18000000,0,no_public_record_found,1,unknown
+20210517-finnexus,FinNexus,2021-05-17,7000000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20210518-venus-protocol,Venus Protocol,2021-05-18,100000000,0,no_public_record_found,1,unknown
+20210519-bunny,Bunny,2021-05-19,45000000,0,no_public_record_found,1,unknown
+20210523-bogged-finance,Bogged Finance,2021-05-23,3000000,0,no_recovery_in_sources_checked,1,unknown
+20210524-autoshark,AutoShark,2021-05-24,822800,0,no_voluntary_return_found,1,unknown
+20210526-merlin,Merlin,2021-05-26,680000,0,no_voluntary_return_found,1,unknown
+20210526-merlin-2,Merlin,2021-05-26,550000,0,unknown_not_checked,1,unknown
+20210528-burgerswap,BurgerSwap,2021-05-28,7200000,0,no_voluntary_return_found,1,unknown
+20210529-belt-finance,Belt Finance,2021-05-29,6300000,0,no_voluntary_return_found,1,unknown
+20210603-hunny-finance,Hunny Finance,2021-06-03,0,0,unknown_not_checked,1,unknown
+x-20210603-naos-finance,NAOs Finance,2021-06-03,750000,0,unknown_not_checked,0,dprk_firm_attributed
+20210606-fetch-ai,Fetch.ai,2021-06-06,2600000,0,unknown_not_checked,1,dprk_firm_attributed
+20210607-88mph,88mph,2021-06-07,0,0,unknown_not_checked,1,unknown
+20210610-evodefi,EvoDefi,2021-06-10,1000000,0,unknown_not_checked,1,unknown
+20210616-alchemix-v2,Alchemix V2,2021-06-16,6500000,2216500,recovered_documented,1,unknown
+20210619-visor-finance,Visor Finance,2021-06-19,504845,0,unknown_not_checked,1,unknown
+20210620-polydex,Polydex,2021-06-20,500000,0,no_voluntary_return_found,1,unknown
+20210621-impossible-finance,Impossible Finance,2021-06-21,500000,252000,recovered_documented,1,unknown
+x-20210621-market-maker,Market Maker,2021-06-21,13682000,0,unknown_not_checked,0,dprk_firm_attributed
+20210621-stakehound-fireblocks,StakeHound / Fireblocks,2021-06-21,72000000,0,unknown_not_checked,0,unknown
+20210622-eleven-finance,Eleven Finance,2021-06-22,4500000,4500000,recovered_documented,1,unknown
+x-20210623-coinsquare,Coinsquare,2021-06-23,22620000,0,unknown_not_checked,0,dprk_firm_attributed
+20210623-stablemagnet,StableMagnet,2021-06-23,27000000,22248000,recovered_documented,1,other_known
+20210624-sharedstake,SharedStake,2021-06-24,500000,0,no_recovery_in_sources_checked,1,unknown
+20210625-xwin-finance,xWin Finance,2021-06-25,270000,0,unknown_not_checked,1,unknown
+20210628-safe-dollar,Safe Dollar,2021-06-28,248000,0,no_voluntary_return_found,1,unknown
+20210629-merlin,Merlin,2021-06-29,330000,0,no_voluntary_return_found,1,unknown
+20210629-thorchain-dex,THORChain DEX,2021-06-29,350000,0,unknown_not_checked,1,unknown
+20210702-chainswap,ChainSwap,2021-07-02,800000,0,recovered_documented,1,unknown
+20210702-xdx-swap,XDX Swap,2021-07-02,176000,176000,recovered_documented,1,unknown
+20210703-haven-protocol,Haven Protocol,2021-07-03,8187000,8187000,recovered_documented,1,unknown
+x-20210704-rai-finance,RAI Finance,2021-07-04,414013,414013,recovered_documented,1,unknown
+20210710-multichain,Multichain,2021-07-10,7900000,0,no_voluntary_return_found,1,unknown
+20210711-chainswap-bridge,ChainSwap Bridge,2021-07-11,4400000,0,unknown_not_checked,1,unknown
+x-20210713-advcash,Advcash,2021-07-13,14000000,0,unknown_not_checked,0,dprk_firm_attributed
+20210713-defipie,DeFiPie,2021-07-13,124999,0,no_voluntary_return_found,1,unknown
+20210714-aperocket,ApeRocket,2021-07-14,1260000,0,unknown_not_checked,1,unknown
+20210715-bondly,Bondly,2021-07-15,5900000,0,unknown_not_checked,1,dprk_firm_attributed
+20210715-thorchain-dex,THORChain DEX,2021-07-15,5000000,0,no_voluntary_return_found,1,unknown
+20210716-bunny,Bunny,2021-07-16,2400000,0,no_voluntary_return_found,1,unknown
+20210722-thorchain-dex,THORChain DEX,2021-07-22,8000000,0,unknown_not_checked,1,unknown
+20210728-polyyeld-finance,PolyYeld Finance,2021-07-28,250000,0,no_voluntary_return_found,1,unknown
+20210730-levyathan,Levyathan,2021-07-30,1500000,0,unknown_not_checked,1,unknown
+x-20210801-aug-sept-oct-2021-hacks,Aug Sept Oct 2021 Hacks,2021-08-01,2000000,0,unknown_not_checked,0,dprk_firm_attributed
+20210802-stazie,Stazie,2021-08-02,1000000,0,no_voluntary_return_found,1,unknown
+20210803-popsicle-finance,Popsicle Finance,2021-08-03,20700000,0,no_public_record_found,1,unknown
+20210804-waultswap,WaultSwap,2021-08-04,930000,0,unknown_not_checked,1,unknown
+20210808-zerogoki,Zerogoki,2021-08-08,670000,0,unknown_not_checked,1,unknown
+20210810-poly-network,Poly Network,2021-08-10,611000000,611000000,recovered_documented,1,unknown
+20210810-punk-protocol,Punk Protocol,2021-08-10,8950000,4949350,recovered_documented,1,unknown
+20210812-dao-maker-vesting,DAO Maker Vesting,2021-08-12,7000000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20210813-acala-network,Acala Network,2021-08-13,1600000,1600000,recovered_documented,1,unknown
+20210813-neko,NEKO,2021-08-13,2200000,2200000,recovered_documented,1,unknown
+20210814-fetch-ai,Fetch.ai,2021-08-14,2600000,0,unknown_not_checked,1,unknown
+20210815-ref-finance,Ref Finance,2021-08-15,3203000,0,unknown_not_checked,1,unknown
+20210817-surgebnb,SurgeBNB,2021-08-17,5000000,0,no_voluntary_return_found,1,unknown
+20210819-liquid-global,Liquid Global,2021-08-19,91350000,17356500,recovered_documented,1,dprk_firm_attributed
+20210819-pinecone-finance,Pinecone Finance,2021-08-19,200000,200000,recovered_documented,1,unknown
+20210819-solend,Solend,2021-08-19,16000,0,no_voluntary_return_found,1,unknown
+20210825-dot-finance,Dot.Finance,2021-08-25,429724,0,unknown_not_checked,1,unknown
+20210829-bilaxy,Bilaxy,2021-08-29,21700000,0,no_public_record_found,1,unknown
+20210829-xtoken,xToken,2021-08-29,4500000,0,unknown_not_checked,1,unknown
+20210830-cream-lending,CREAM Lending,2021-08-30,18800000,16694400,recovered_documented,1,unknown
+20210903-siren,Siren,2021-09-03,3500000,0,no_voluntary_return_found,1,unknown
+20210904-dao-maker-vesting,DAO Maker Vesting,2021-09-04,4000000,0,unknown_not_checked,1,unknown
+20210910-opensea,OpenSea,2021-09-10,100000,0,unknown_not_checked,1,unknown
+20210912-zabu-finance,Zabu Finance,2021-09-12,3200000,0,no_voluntary_return_found,1,unknown
+20210915-nowswap,NowSwap,2021-09-15,1069000,0,no_voluntary_return_found,1,unknown
+20210917-jaypegs-automart,JayPegs Automart,2021-09-17,3100000,0,unknown_not_checked,1,unknown
+x-20210917-miso,MISO,2021-09-17,3008874,2999847,recovered_documented,1,unknown
+20210921-vee-finance,Vee Finance,2021-09-21,34000000,0,no_public_record_found,1,unknown
+20210929-compound-v2,Compound V2,2021-09-29,147000000,0,unknown_not_checked,0,unknown
+20211001-coinbase,Coinbase,2021-10-01,0,0,unknown_not_checked,1,unknown
+20211004-pnetwork,pNetwork,2021-10-04,13000000,0,unknown_not_checked,1,unknown
+x-20211008-mgnr,MGNR,2021-10-08,24100000,0,unknown_not_checked,0,dprk_firm_attributed
+20211008-mirror,Mirror,2021-10-08,90000000,0,no_public_record_found,1,unknown
+20211014-indexed-finance,Indexed Finance,2021-10-14,16000000,0,no_public_record_found,1,unknown
+20211018-glide-finance,Glide Finance,2021-10-18,300000,0,unknown_not_checked,1,unknown
+20211021-polygon-plasma-bridge,Polygon Plasma Bridge,2021-10-21,2000000,0,unknown_not_checked,0,unknown
+20211023-alpha-homora,Alpha Homora,2021-10-23,147000,0,unknown_not_checked,1,unknown
+20211027-cream-lending,CREAM Lending,2021-10-27,130000000,0,no_public_record_found,1,unknown
+x-20211028-metaplay-polyplay,Metaplay / Polyplay,2021-10-28,1710991,0,unknown_not_checked,0,dprk_firm_attributed
+20211029-anubisdao,AnubisDAO,2021-10-29,60000000,0,no_public_record_found,1,unknown
+20211029-autoshark,AutoShark,2021-10-29,580000,0,unknown_not_checked,1,unknown
+20211030-bxh,BXH,2021-10-30,139000000,0,no_public_record_found,1,unknown
+20211103-squid-games,Squid Games,2021-11-03,3380000,0,unknown_not_checked,1,unknown
+20211103-vesper-finance,Vesper Finance,2021-11-03,3370000,0,unknown_not_checked,1,unknown
+20211105-ooki,Ooki,2021-11-05,55000000,0,unknown_not_checked,0,unknown
+20211105-bzx,bZx,2021-11-05,55040167,0,recovered_documented,0,dprk_firm_attributed
+20211107-chainswap,ChainSwap,2021-11-07,4400000,0,unknown_not_checked,1,unknown
+20211107-farmers-world,Farmers World,2021-11-07,15700000,0,no_public_record_found,1,unknown
+20211111-curve-finance,Curve Finance,2021-11-11,30000000,0,no_public_record_found,1,unknown
+20211115-nerve,Nerve,2021-11-15,537000,0,no_voluntary_return_found,1,unknown
+20211119-phantom-galaxies,Phantom Galaxies,2021-11-19,1100000,0,no_voluntary_return_found,1,unknown
+20211121-formation-fi,Formation.Fi,2021-11-21,100000,0,unknown_not_checked,1,unknown
+20211123-ploutoz,Ploutoz,2021-11-23,365000,0,unknown_not_checked,1,unknown
+20211125-snowdog,Snowdog,2021-11-25,18100000,0,no_public_record_found,1,unknown
+20211127-lever,Lever,2021-11-27,652000,0,unknown_not_checked,1,unknown
+20211127-dydx,dYdX,2021-11-27,211000,0,recovered_documented,1,unknown
+20211128-visor-finance,Visor Finance,2021-11-28,975720,0,no_voluntary_return_found,1,unknown
+20211130-monox,MonoX,2021-11-30,31400000,0,no_public_record_found,1,unknown
+20211202-badger-dao,Badger DAO,2021-12-02,120000000,0,claimed_unverified,1,unknown
+20211203-polygon,Polygon,2021-12-03,2040000,0,unknown_not_checked,0,unknown
+20211204-bitmart,Bitmart,2021-12-04,196000000,196000,recovered_documented,1,unknown
+20211205-pizza-defi,Pizza DeFi,2021-12-05,5000000,0,recovered_documented,1,unknown
+20211208-8ightdao,8ightDAO,2021-12-08,1750000,0,no_voluntary_return_found,1,unknown
+20211211-ascendex,AscenDEX,2021-12-11,77000000,0,claimed_unverified,1,unknown
+20211211-gelato-network,Gelato Network,2021-12-11,744000,0,no_voluntary_return_found,1,unknown
+20211213-vulcan-forged,Vulcan Forged,2021-12-13,140000000,0,claimed_unverified,1,unknown
+20211214-nervebridge,NerveBridge,2021-12-14,537000,0,unknown_not_checked,1,unknown
+20211215-wepiggy,WePiggy,2021-12-15,400000,0,no_voluntary_return_found,1,unknown
+20211218-grim-finance,Grim Finance,2021-12-18,30000000,0,recovered_unquantified,1,unknown
+20211221-bent-finance,Bent Finance,2021-12-21,1750000,0,unknown_not_checked,1,unknown
+20211221-fractal,Fractal,2021-12-21,150000,0,no_voluntary_return_found,1,unknown
+20211221-fractal-2,Fractal,2021-12-21,600000,0,unknown_not_checked,1,unknown
+20211221-gamma,Gamma,2021-12-21,4500000,0,no_voluntary_return_found,1,unknown
+20211221-gamma-2,Gamma,2021-12-21,8200000,0,unknown_not_checked,1,unknown
+20211223-monkey-kingdom,Monkey Kingdom,2021-12-23,1300000,0,no_voluntary_return_found,1,unknown
+20211230-sashimiswap,SashimiSwap,2021-12-30,210000,0,unknown_not_checked,1,unknown
+20211231-vesper-finance,Vesper Finance,2021-12-31,1000000,0,unknown_not_checked,1,unknown
+20220101-tinyman,Tinyman,2022-01-01,3000000,0,unknown_not_checked,1,unknown
+20220102-defichain,DefiChain,2022-01-02,0,0,unknown_not_checked,1,unknown
+20220104-arbix-finance,Arbix Finance,2022-01-04,10000000,0,unknown_not_checked,1,unknown
+20220108-lcx,LCX,2022-01-08,7940000,4764000,recovered_documented,1,unknown
+20220110-lympo,Lympo,2022-01-10,18700000,0,no_public_record_found,1,unknown
+x-20220111-metaplay-itw-theft,MetaPlay ITW Theft,2022-01-11,2700000,0,unknown_not_checked,0,dprk_firm_attributed
+20220115-citydao,CityDAO,2022-01-15,95000,0,unknown_not_checked,1,unknown
+20220115-float-protocol,Float Protocol,2022-01-15,1160000,250560,recovered_documented,1,unknown
+20220117-crypto-burger,Crypto Burger,2022-01-17,770000,0,unknown_not_checked,1,unknown
+20220118-crosswise,Crosswise,2022-01-18,879000,0,no_voluntary_return_found,1,unknown
+20220118-crypto-com,Crypto.com,2022-01-18,33700000,0,no_public_record_found,1,unknown
+20220118-multichain,Multichain,2022-01-18,1400000,0,unknown_not_checked,1,unknown
+20220125-opensea,OpenSea,2022-01-25,1000000,0,unknown_not_checked,1,unknown
+x-20220127-ankr-founder,ANKR founder,2022-01-27,1799228,0,unknown_not_checked,0,dprk_firm_attributed
+20220128-qubit,Qubit,2022-01-28,80000000,0,no_public_record_found,1,dprk_firm_attributed
+20220201-bns,BNS,2022-02-01,7500000,0,no_voluntary_return_found,1,unknown
+20220202-portal,Wormhole (DeFiLlama name: Portal),2022-02-02,326000000,139854000,recovered_documented,1,unknown
+20220203-klayswap,KlaySwap,2022-02-03,1900000,0,no_voluntary_return_found,1,unknown
+x-20220204-depo-itw-theft,DEPO ITW Theft,2022-02-04,1723632,0,unknown_not_checked,0,dprk_firm_attributed
+20220206-meter,Meter,2022-02-06,7700000,0,no_voluntary_return_found,1,unknown
+20220208-superfluid,Superfluid,2022-02-08,8700000,0,no_voluntary_return_found,1,unknown
+20220210-dego-finance,Dego Finance,2022-02-10,10000000,0,no_recovery_in_sources_checked,1,unknown
+20220212-ira-financial-gemini,IRA Financial / Gemini,2022-02-12,36000000,0,recovered_unquantified,1,unknown
+20220214-titano-finance,Titano Finance,2022-02-14,1949000,1949000,recovered_documented,1,unknown
+20220215-build-finance,Build Finance,2022-02-15,470000,0,unknown_not_checked,1,unknown
+20220217-topgoal,TopGoal,2022-02-17,1100000,0,no_voluntary_return_found,1,unknown
+20220218-rigoblock,Rigoblock,2022-02-18,464000,417600,recovered_documented,1,unknown
+20220220-opensea,OpenSea,2022-02-20,2000000,0,unknown_not_checked,1,unknown
+20220223-flurry-finance,Flurry Finance,2022-02-23,293000,0,unknown_not_checked,1,unknown
+20220303-treasure,Treasure,2022-03-03,1400000,938000,recovered_documented,1,unknown
+20220305-bacon-protocol,Bacon Protocol,2022-03-05,1000000,0,no_voluntary_return_found,1,unknown
+20220309-fantasm-finance,Fantasm Finance,2022-03-09,2622097,0,no_recovery_in_sources_checked,1,unknown
+20220309-pirate-x,Pirate X,2022-03-09,78000,0,unknown_not_checked,1,unknown
+20220313-paraluni-masterchef,Paraluni Masterchef,2022-03-13,1700000,0,no_voluntary_return_found,1,unknown
+20220315-agave,Agave,2022-03-15,5500000,0,no_voluntary_return_found,1,unknown
+20220315-deus-finance,DEUS Finance,2022-03-15,3000000,0,no_voluntary_return_found,1,unknown
+20220315-hundred-finance,Hundred Finance,2022-03-15,6200000,0,unknown_not_checked,1,unknown
+20220317-apecoin,ApeCoin,2022-03-17,820000,0,unknown_not_checked,1,unknown
+20220320-umbrella-network,Umbrella Network,2022-03-20,700000,0,unknown_not_checked,1,unknown
+20220321-li-fi,LI.FI,2022-03-21,600000,0,no_voluntary_return_found,1,unknown
+20220321-one-ring-finance,One Ring Finance,2022-03-21,1400000,0,no_voluntary_return_found,1,unknown
+x-20220322-arthur-0x,Arthur_0x,2022-03-22,1700000,0,unknown_not_checked,0,dprk_firm_attributed
+20220323-cashio,Cashio,2022-03-23,52800000,14361600,recovered_documented,1,unknown
+20220323-ronin-bridge,Ronin Bridge,2022-03-23,624000000,29952000,recovered_documented,1,dprk_gov_attributed
+20220326-auctus,Auctus,2022-03-26,726000,0,unknown_not_checked,1,unknown
+20220327-revest-finance,Revest Finance,2022-03-27,2010000,0,no_voluntary_return_found,1,unknown
+20220328-cryptovoxels,Cryptovoxels,2022-03-28,171000,0,unknown_not_checked,1,unknown
+20220330-basketdao,BasketDAO,2022-03-30,1200000,0,unknown_not_checked,1,unknown
+20220331-ola-finance,Ola Finance,2022-03-31,4670000,0,no_voluntary_return_found,1,unknown
+20220402-inverse-finance-frontier,Inverse Finance Frontier,2022-04-02,15600000,0,no_public_record_found,1,unknown
+20220407-starstream-finance,Starstream Finance,2022-04-07,4000000,0,no_voluntary_return_found,1,unknown
+20220407-wonderhero,WonderHero,2022-04-07,320000,0,unknown_not_checked,1,dprk_firm_attributed
+20220411-cf,CF,2022-04-11,1900000,0,unknown_not_checked,1,unknown
+20220411-cf-token,CF Token,2022-04-11,1900000,0,unknown_not_checked,1,unknown
+20220412-elephant-money,Elephant Money,2022-04-12,22200000,0,no_public_record_found,1,unknown
+20220415-rikkei-finance,Rikkei Finance,2022-04-15,1100000,0,no_voluntary_return_found,1,unknown
+20220417-beanstalk,Beanstalk,2022-04-17,181000000,181000,recovered_documented,1,unknown
+20220421-terra-luna,Terra (LUNA),2022-04-21,4310000,0,unknown_not_checked,1,unknown
+20220421-zeed-finance,Zeed Finance,2022-04-21,1000000,0,no_voluntary_return_found,1,unknown
+20220424-wiener-doge,Wiener DOGE,2022-04-24,30000,0,unknown_not_checked,1,unknown
+20220428-deus-finance,DEUS Finance,2022-04-28,13400000,0,no_voluntary_return_found,1,unknown
+20220430-saddle-finance,Saddle Finance,2022-04-30,11000000,3795000,recovered_documented,1,unknown
+20220501-rari-capital,Rari Capital,2022-05-01,80000000,0,no_public_record_found,1,unknown
+20220504-mm-finance-cronos,MM Finance Cronos,2022-05-04,2000000,0,unknown_not_checked,1,unknown
+20220504-mm-finance,MM.finance,2022-05-04,2000000,0,unknown_not_checked,1,unknown
+20220508-fortress-loans,Fortress Loans,2022-05-08,2976004,0,unknown_not_checked,1,unknown
+20220510-ownly,OWNLY,2022-05-10,37000,0,unknown_not_checked,1,unknown
+20220511-drift-trade,Drift Trade,2022-05-11,14500000,0,no_voluntary_return_found,1,unknown
+20220511-x2y2,X2Y2,2022-05-11,200000,0,unknown_not_checked,1,unknown
+20220512-venus-protocol,Venus Protocol,2022-05-12,11200000,0,unknown_not_checked,1,unknown
+20220513-blizz-finance,Blizz Finance,2022-05-13,8300000,0,unknown_not_checked,1,unknown
+20220514-quickswap-v3,Quickswap V3,2022-05-14,107600,0,unknown_not_checked,1,unknown
+20220514-spiritswap-v3,SpiritSwap V3,2022-05-14,18000,0,unknown_not_checked,1,unknown
+20220516-scream,Scream,2022-05-16,35000000,0,unknown_not_checked,0,unknown
+20220517-feg-token,FEG Token,2022-05-17,1900000,0,unknown_not_checked,1,unknown
+20220518-feminist-metaverse,Feminist Metaverse,2022-05-18,540000,0,no_voluntary_return_found,1,unknown
+20220518-qanx-bridge,QANX Bridge,2022-05-18,707000,0,unknown_not_checked,1,unknown
+20220518-seth-green-nfts,Seth Green NFTs,2022-05-18,300000,0,unknown_not_checked,1,unknown
+20220520-llamascape,Llamascape,2022-05-20,70000,0,unknown_not_checked,1,unknown
+20220524-hackdao,HackDao,2022-05-24,65000,0,unknown_not_checked,1,unknown
+20220529-anchor,Anchor,2022-05-29,800000,0,unknown_not_checked,1,unknown
+20220529-lunc,LUNC,2022-05-29,800000,0,unknown_not_checked,1,unknown
+20220530-mirror,Mirror,2022-05-30,2000000,0,no_voluntary_return_found,1,unknown
+20220602-cofixprotocol,CoFiXProtocol,2022-06-02,140000,0,unknown_not_checked,1,unknown
+20220604-bayc-otherside,BAYC/Otherside,2022-06-04,257000,0,unknown_not_checked,1,unknown
+20220604-fomo-dao,fomo-dao,2022-06-04,110000,0,unknown_not_checked,1,unknown
+20220605-elrond,Elrond,2022-06-05,113000000,0,recovered_documented,0,unknown
+20220605-wintermute,Wintermute,2022-06-05,17600000,15593600,recovered_documented,1,unknown
+20220607-equalizer-exchange,Equalizer Exchange,2022-06-07,50000,0,unknown_not_checked,1,unknown
+20220608-apollox,ApolloX,2022-06-08,2150000,0,unknown_not_checked,1,unknown
+20220608-gym-network,Gym Network,2022-06-08,2100000,0,unknown_not_checked,1,unknown
+20220608-osmosis,Osmosis,2022-06-08,5000000,2000000,recovered_documented,1,unknown
+20220616-inverse-finance-frontier,Inverse Finance Frontier,2022-06-16,5800000,0,no_voluntary_return_found,1,unknown
+20220622-pandorachaindao,pandorachainDAO,2022-06-22,128000,0,no_voluntary_return_found,1,unknown
+20220623-harmony-bridge,Harmony Bridge,2022-06-23,100000000,2500000,recovered_documented,1,dprk_gov_attributed
+20220624-convex-finance,Convex Finance,2022-06-24,14000,0,unknown_not_checked,1,unknown
+20220624-ribbon,Ribbon,2022-06-24,12000,0,unknown_not_checked,1,unknown
+20220626-xcarnival,XCarnival,2022-06-26,3800000,1801200,recovered_documented,1,unknown
+20220630-mad,MAD,2022-06-30,115681,0,unknown_not_checked,1,unknown
+20220701-quixotic,Quixotic,2022-07-01,100000,0,unknown_not_checked,1,unknown
+20220702-crema-finance,Crema Finance,2022-07-02,8800000,8096000,recovered_documented,1,unknown
+20220710-omni,Omni,2022-07-10,1400000,0,unknown_not_checked,1,unknown
+20220711-uniswap-phishing-attack,Uniswap (Phishing Attack),2022-07-11,8000000,0,no_voluntary_return_found,1,unknown
+20220712-citizen-finance,Citizen Finance,2022-07-12,94300,0,unknown_not_checked,1,unknown
+20220713-spacegodzilla,SpaceGodzilla,2022-07-13,25379,0,unknown_not_checked,1,unknown
+20220716-deekay,DeeKay,2022-07-16,150000,0,unknown_not_checked,1,unknown
+20220716-impermax,Impermax,2022-07-16,9000000,0,unknown_not_checked,1,unknown
+20220717-premint,Premint,2022-07-17,375000,0,no_voluntary_return_found,1,unknown
+20220725-audius,Audius,2022-07-25,6000000,0,no_voluntary_return_found,1,unknown
+20220725-lpc,LPC,2022-07-25,45000,0,unknown_not_checked,1,unknown
+20220728-nirvana-v1,Nirvana V1,2022-07-28,3500000,2600500,recovered_documented,1,unknown
+20220801-nomad,Nomad,2022-08-01,190000000,37430000,recovered_documented,1,unknown
+20220801-reaper-farm,Reaper Farm,2022-08-01,1700000,0,unknown_not_checked,1,unknown
+20220801-zb-exchange,ZB Exchange,2022-08-01,4800000,0,no_voluntary_return_found,1,unknown
+20220802-slope-wallet,Slope Wallet,2022-08-02,4100000,0,no_voluntary_return_found,1,unknown
+x-20220804-velodrome,Velodrome,2022-08-04,350000,350000,recovered_documented,1,unknown
+20220806-steven-galanis,Steven Galanis,2022-08-06,231000,0,unknown_not_checked,1,unknown
+20220807-egd-finance,EGD Finance,2022-08-07,36000,0,unknown_not_checked,1,unknown
+20220808-dragoma,Dragoma,2022-08-08,3500000,0,unknown_not_checked,1,unknown
+20220809-curve-dex,Curve DEX,2022-08-09,575000,192050,recovered_documented,1,unknown
+20220810-blur-finance,Blur Finance,2022-08-10,600000,0,unknown_not_checked,1,unknown
+20220810-xstable-protocol,XSTABLE Protocol,2022-08-10,0,0,unknown_not_checked,1,unknown
+20220814-acala,Acala,2022-08-14,0,0,unknown_not_checked,1,unknown
+20220818-celer-cbridge,Celer cBridge,2022-08-18,240000,0,unknown_not_checked,1,unknown
+20220823-sudorare,SudoRare,2022-08-23,800000,0,unknown_not_checked,1,unknown
+20220824-kaoyaswap,KaoyaSwap,2022-08-24,118000,0,unknown_not_checked,1,unknown
+20220829-bill-murray,Bill Murray,2022-08-29,174000,0,unknown_not_checked,1,unknown
+20220829-ddc,DDC,2022-08-29,104600,0,unknown_not_checked,1,unknown
+20220901-kyberswap-classic,KyberSwap Classic,2022-09-01,265000,0,no_voluntary_return_found,1,unknown
+20220902-bad-guys-by-rpf,Bad Guys by RPF,2022-09-02,0,0,unknown_not_checked,1,unknown
+20220902-shadowfi,ShadowFi,2022-09-02,301000,0,unknown_not_checked,1,unknown
+20220905-dao-swap,DAO Swap,2022-09-05,580000,0,unknown_not_checked,1,unknown
+20220906-nereus-finance,Nereus Finance,2022-09-06,371000,0,unknown_not_checked,1,unknown
+20220907-gera,GERA,2022-09-07,1480000,0,unknown_not_checked,1,unknown
+20220908-new-free-dao,New Free DAO,2022-09-08,1250000,0,no_voluntary_return_found,1,unknown
+20220908-ragnarok-online-invasion,Ragnarok Online Invasion,2022-09-08,44000,0,unknown_not_checked,1,unknown
+20220911-dogechain,Dogechain,2022-09-11,600000,0,no_voluntary_return_found,1,unknown
+20220918-gmx-v1-evm,GMX V1 EVM,2022-09-18,565000,0,no_voluntary_return_found,1,unknown
+20220920-wintermute,Wintermute,2022-09-20,160000000,0,no_public_record_found,1,unknown
+20220921-bxh,BXH,2022-09-21,2500000,0,unknown_not_checked,1,unknown
+x-20220922-dwf-labs,DWF Labs,2022-09-22,45150000,0,unknown_not_checked,0,dprk_firm_attributed
+20220928-mev-bots,MEV Bots,2022-09-28,1500000,0,unknown_not_checked,1,unknown
+20221002-transit-swap,Transit Swap,2022-10-02,28900000,19189600,recovered_documented,1,unknown
+20221004-sovryn,Sovryn,2022-10-04,1100000,550000,recovered_documented,1,unknown
+20221006-binance-bridge,BNB Chain Token Hub bridge (DeFiLlama name: Binance Bridge),2022-10-06,570000000,33630000,recovered_documented,1,unknown
+20221006-res-token,RES Token,2022-10-06,290000,0,unknown_not_checked,1,unknown
+20221009-xave-finance,Xave Finance,2022-10-09,0,0,unknown_not_checked,1,unknown
+x-20221011-algorand,Algorand,2022-10-11,750000,0,unknown_not_checked,0,dprk_firm_attributed
+20221011-mango-markets-v3,Mango Markets V3,2022-10-11,115000000,67045000,recovered_documented,1,unknown
+20221011-qanplatform,QANplatform,2022-10-11,2000000,0,unknown_not_checked,1,unknown
+20221011-rabby,Rabby,2022-10-11,190000,0,unknown_not_checked,1,unknown
+20221011-templedao,TempleDAO,2022-10-11,2300000,0,no_voluntary_return_found,1,unknown
+20221012-atk,ATK,2022-10-12,120000,0,no_voluntary_return_found,1,unknown
+20221013-ftx,FTX,2022-10-13,70000,0,unknown_not_checked,1,unknown
+20221015-earning-farm,Earning.Farm,2022-10-15,1200000,0,unknown_not_checked,1,unknown
+x-20221017-darshan,Darshan,2022-10-17,1750000,0,unknown_not_checked,0,dprk_firm_attributed
+20221017-liveartx,LiveArtX,2022-10-17,39000,0,unknown_not_checked,1,unknown
+20221017-mtdao,MTDAO,2022-10-17,702000,0,unknown_not_checked,1,unknown
+20221018-bitkeep-swap,Bitkeep Swap,2022-10-18,1180000,0,unknown_not_checked,1,unknown
+20221018-moola-market,Moola Market,2022-10-18,8400000,7803600,recovered_documented,1,unknown
+20221020-ethereum-alarm-clock,Ethereum Alarm Clock,2022-10-20,260000,0,unknown_not_checked,1,unknown
+20221021-bond-protocol,Bond Protocol,2022-10-21,300000,300000,recovered_documented,1,unknown
+x-20221021-olympusdao,OlympusDAO,2022-10-21,315328,315328,recovered_documented,1,unknown
+20221023-ftx-3commas,FTX & 3Commas,2022-10-23,6000000,0,unknown_not_checked,1,unknown
+20221023-layer2dao,Layer2DAO,2022-10-23,190000,0,no_voluntary_return_found,1,unknown
+20221024-quickswap-market,QuickSwap Market,2022-10-24,220000,0,no_voluntary_return_found,1,unknown
+20221025-ulme,ULME,2022-10-25,250000,0,unknown_not_checked,1,unknown
+20221026-n00dleswap,N00dleSwap,2022-10-26,29000,0,unknown_not_checked,1,unknown
+20221027-team-finance,Team Finance,2022-10-27,15800000,13398400,recovered_documented,1,unknown
+20221027-uvtoken,UvToken,2022-10-27,1500000,0,unknown_not_checked,1,unknown
+20221028-friesdao,FriesDAO,2022-10-28,2300000,0,no_voluntary_return_found,1,unknown
+20221101-deribit,Deribit,2022-11-01,28000000,1708000,recovered_documented,1,dprk_firm_attributed
+20221101-save,Save,2022-11-01,1026000,0,no_recovery_in_sources_checked,1,unknown
+20221102-rubic,Rubic,2022-11-02,1200000,0,unknown_not_checked,1,unknown
+20221102-save,Save,2022-11-02,1260000,0,unknown_not_checked,1,unknown
+20221102-skyward-finance,Skyward Finance,2022-11-02,3000000,0,unknown_not_checked,1,unknown
+20221102-solend,Solend,2022-11-02,1260000,0,no_voluntary_return_found,1,unknown
+20221103-pnetwork,pNetwork,2022-11-03,4300000,0,no_voluntary_return_found,1,unknown
+20221106-pando-rings,Pando Rings,2022-11-06,22000000,2354000,recovered_documented,1,unknown
+20221107-moocakectx,MooCAKECTX,2022-11-07,140000,0,no_voluntary_return_found,1,unknown
+20221109-brahma-finance,Brahma Finance,2022-11-09,89343,0,unknown_not_checked,1,unknown
+20221110-dfx-v2,DFX V2,2022-11-10,4000000,0,unknown_not_checked,1,unknown
+20221111-dfxfinance,DFXFinance,2022-11-11,231138,0,unknown_not_checked,1,unknown
+20221112-ftx,FTX,2022-11-12,450000000,0,no_recovery_in_sources_checked,1,other_known
+20221116-sheepfarm,SheepFarm,2022-11-16,72000,0,unknown_not_checked,1,unknown
+20221117-trust-wallet,Trust Wallet,2022-11-17,170000,0,no_voluntary_return_found,1,unknown
+20221117-uearnpool,UEarnPool,2022-11-17,16038,0,unknown_not_checked,1,unknown
+20221118-polynomial,Polynomial,2022-11-18,7000,0,unknown_not_checked,1,unknown
+20221121-sdao,sDAO,2022-11-21,13000,0,unknown_not_checked,1,unknown
+20221122-aur-protocol,AUR Protocol,2022-11-22,13000,0,unknown_not_checked,1,unknown
+20221123-numbers-protocol,Numbers Protocol,2022-11-23,13836,0,unknown_not_checked,1,unknown
+20221129-mbc-zzsh,MBC & ZZSH,2022-11-29,5900,0,unknown_not_checked,1,unknown
+20221129-seaman,SEAMAN,2022-11-29,7000,0,unknown_not_checked,1,unknown
+20221201-apc,APC,2022-12-01,6000,0,unknown_not_checked,1,unknown
+20221202-ankr,Ankr,2022-12-02,5000000,3000000,recovered_documented,1,unknown
+20221202-overnight-finance,Overnight Finance,2022-12-02,0,0,unknown_not_checked,1,unknown
+20221203-btc-com,BTC.com,2022-12-03,3000000,0,unknown_not_checked,1,unknown
+20221203-ratio-finance,Ratio Finance,2022-12-03,0,0,unknown_not_checked,1,unknown
+20221205-bbox,BBOX,2022-12-05,0,0,unknown_not_checked,1,unknown
+20221205-rfb,RFB,2022-12-05,0,0,unknown_not_checked,1,unknown
+20221207-aes,AES,2022-12-07,61608,0,unknown_not_checked,1,unknown
+20221209-novatoken,NOVAToken,2022-12-09,0,0,unknown_not_checked,1,unknown
+20221210-lodestar-v0,Lodestar V0,2022-12-10,6900000,0,no_voluntary_return_found,1,unknown
+20221210-mu-mug,MU&MUG,2022-12-10,57000,0,unknown_not_checked,1,unknown
+20221210-tifi,TiFi,2022-12-10,43500,0,unknown_not_checked,1,unknown
+20221211-3commas,3Commas,2022-12-11,20000000,0,no_public_record_found,1,unknown
+20221212-bgld,BGLD,2022-12-12,18000,0,unknown_not_checked,1,unknown
+20221213-elasticswap,ElasticSwap,2022-12-13,850000,508300,recovered_documented,1,unknown
+20221214-fpr,FPR,2022-12-14,29000,0,unknown_not_checked,1,unknown
+20221214-nimbus,Nimbus,2022-12-14,76000,0,unknown_not_checked,1,unknown
+20221216-raydium-amm,Raydium AMM,2022-12-16,4400000,0,no_voluntary_return_found,1,unknown
+20221224-defrost,Defrost,2022-12-24,12000000,6000000,recovered_documented,1,unknown
+20221225-rubic,Rubic,2022-12-25,1410000,0,no_voluntary_return_found,1,unknown
+20221226-amun,Amun,2022-12-26,300000,0,no_voluntary_return_found,1,unknown
+20221229-jaypeggers,Jaypeggers,2022-12-29,18500,0,unknown_not_checked,1,unknown
+20230103-gds,GDS,2023-01-03,187000,0,no_voluntary_return_found,1,unknown
+20230103-nikhil-gopalani,Nikhil Gopalani,2023-01-03,173000,0,unknown_not_checked,1,unknown
+20230107-mycelium,Mycelium,2023-01-07,300000,0,no_voluntary_return_found,1,unknown
+20230110-bra,BRA,2023-01-10,225000,0,no_voluntary_return_found,1,unknown
+20230111-roe-finance,Roe Finance,2023-01-11,80000,0,no_voluntary_return_found,1,unknown
+20230116-lendhub,LendHub,2023-01-16,6000000,0,unknown_not_checked,1,unknown
+20230117-midas-capital,Midas Capital,2023-01-17,660000,0,no_voluntary_return_found,1,unknown
+20230117-omniestate,OmniEstate,2023-01-17,70705,0,unknown_not_checked,1,unknown
+20230119-thoreum-finance,Thoreum Finance,2023-01-19,65540,0,no_voluntary_return_found,1,unknown
+20230120-fff,FFF,2023-01-20,1030000,0,unknown_not_checked,1,unknown
+20230121-omm,Omm,2023-01-21,1891000,0,no_voluntary_return_found,1,unknown
+20230126-kevin-rose,Kevin Rose,2023-01-26,1000000,0,unknown_not_checked,1,unknown
+20230126-robinhood,Robinhood,2023-01-26,8200,0,unknown_not_checked,1,unknown
+20230130-bevo,BEVO,2023-01-30,45000,0,unknown_not_checked,1,unknown
+20230201-bonqdao,BonqDAO,2023-02-01,1800000,0,no_voluntary_return_found,1,unknown
+20230202-orion-pools,Orion Pools,2023-02-02,3000000,0,no_voluntary_return_found,1,unknown
+20230204-sperax-usd,Sperax USD,2023-02-04,250000,0,unknown_not_checked,1,unknown
+20230207-cowswap,CoWSwap,2023-02-07,180000,0,unknown_not_checked,1,unknown
+20230207-liangopay,LianGoPay,2023-02-07,1600000,0,unknown_not_checked,1,unknown
+20230210-sheep,Sheep,2023-02-10,3000,0,unknown_not_checked,1,unknown
+20230210-dforce-lending,dForce Lending,2023-02-10,3650000,3650000,recovered_documented,1,unknown
+20230211-fcdep,fcdep,2023-02-11,350000,0,unknown_not_checked,1,unknown
+20230215-multichain,Multichain,2023-02-15,130000,0,unknown_not_checked,1,unknown
+20230216-platypus-finance,Platypus Finance,2023-02-16,8500000,2397000,recovered_documented,1,unknown
+20230220-dexible-v2,Dexible V2,2023-02-20,2047635,0,no_voluntary_return_found,1,unknown
+20230220-hope-finance,Hope Finance,2023-02-20,2000000,0,unknown_not_checked,1,unknown
+20230220-revert-finance,Revert Finance,2023-02-20,29000,0,unknown_not_checked,1,unknown
+20230224-earning-farm,Earning.farm,2023-02-24,5150000,0,unknown_not_checked,1,unknown
+20230227-dungeonswap,DungeonSwap,2023-02-27,728000,0,unknown_not_checked,1,unknown
+20230227-hideyoapes,HideYoApes,2023-02-27,208000,0,unknown_not_checked,1,unknown
+20230227-launchzone,LaunchZone,2023-02-27,700000,0,unknown_not_checked,1,unknown
+20230227-myalgo,MyAlgo,2023-02-27,9200000,1499600,recovered_documented,1,unknown
+20230227-swapx,swapX,2023-02-27,1000000,0,unknown_not_checked,1,unknown
+20230302-arbiswap,ArbiSwap,2023-03-02,100000,0,unknown_not_checked,1,unknown
+20230307-tender-finance,Tender Finance,2023-03-07,1590000,1590000,recovered_documented,1,unknown
+20230308-dkp,DKP,2023-03-08,80000,0,unknown_not_checked,1,unknown
+20230308-peopledao,PeopleDAO,2023-03-08,120000,0,unknown_not_checked,1,unknown
+20230310-hedera,Hedera,2023-03-10,600000,0,no_voluntary_return_found,1,unknown
+20230313-euler-v1,Euler V1,2023-03-13,197000000,197000000,recovered_documented,1,unknown
+20230315-poolz-network,Poolz Network,2023-03-15,390000,0,unknown_not_checked,1,unknown
+20230317-general-bytes,General Bytes,2023-03-17,1500000,0,unknown_not_checked,1,unknown
+20230317-paraspace-lending-v1,ParaSpace Lending V1,2023-03-17,5000000,0,no_voluntary_return_found,1,unknown
+20230318-zircon-gamma,Zircon Gamma,2023-03-18,350000,0,unknown_not_checked,1,unknown
+20230319-harvest-keeper,Harvest Keeper,2023-03-19,933000,0,unknown_not_checked,1,unknown
+20230321-indexed-finance,Indexed Finance,2023-03-21,9925,0,unknown_not_checked,1,unknown
+20230325-swerve,Swerve,2023-03-25,1300000,0,unknown_not_checked,1,unknown
+20230327-kokomo-finance,Kokomo Finance,2023-03-27,4000000,0,unknown_not_checked,1,unknown
+20230328-safemoon,Safemoon,2023-03-28,8900000,8900000,recovered_documented,1,unknown
+20230330-patricio-worthalter,Patricio Worthalter,2023-03-30,3830000,0,unknown_not_checked,1,unknown
+20230330-rocket-pool,Rocket Pool,2023-03-30,3800000,0,unknown_not_checked,1,unknown
+20230402-allbridge-core,Allbridge Core,2023-04-02,573000,463557,recovered_documented,1,unknown
+20230403-mev-boost-relay,MEV-Boost Relay,2023-04-03,20000000,3000000,recovered_documented,1,unknown
+20230404-sentiment,Sentiment,2023-04-04,1000000,900000,recovered_documented,1,unknown
+20230408-gdac,GDAC,2023-04-08,13900000,0,no_voluntary_return_found,1,unknown
+20230410-sushiswap,SushiSwap,2023-04-10,3300000,1683000,recovered_documented,1,unknown
+20230410-terraport,Terraport,2023-04-10,4000000,1000000,recovered_documented,1,dprk_firm_attributed
+20230411-paribus,Paribus,2023-04-11,67800,0,unknown_not_checked,1,unknown
+20230412-metapoint,MetaPoint,2023-04-12,820000,0,unknown_not_checked,1,unknown
+20230413-yearn-finance,Yearn Finance,2023-04-13,11539000,0,no_recovery_in_sources_checked,1,unknown
+20230414-bitrue,Bitrue,2023-04-14,23000000,0,no_public_record_found,1,unknown
+20230415-hundred-finance,Hundred Finance,2023-04-15,7400000,0,no_voluntary_return_found,1,unknown
+20230416-swapos-v2,Swapos V2,2023-04-16,468000,0,unknown_not_checked,1,unknown
+20230420-mev-bot,MEV Bot,2023-04-20,1400000,0,unknown_not_checked,1,unknown
+20230420-tales-of-elleria,Tales of Elleria,2023-04-20,280000,0,unknown_not_checked,1,unknown
+20230423-filda,FilDA,2023-04-23,700000,228900,recovered_documented,1,unknown
+20230424-kucoin,KuCoin,2023-04-24,22628,0,unknown_not_checked,1,unknown
+20230425-merlin-dex,MERLIN DEX,2023-04-25,1820000,0,unknown_not_checked,1,dprk_firm_attributed
+20230428-0vix,0vix,2023-04-28,2000000,0,no_voluntary_return_found,1,unknown
+20230501-level-perps,Level Perps,2023-05-01,1100000,0,no_voluntary_return_found,1,unknown
+20230501-pcash,pcash,2023-05-01,2000000,0,unknown_not_checked,1,unknown
+20230505-deus-finance,DEUS Finance,2023-05-05,6500000,5499000,recovered_documented,1,unknown
+20230506-melo,Melo,2023-05-06,90000,0,unknown_not_checked,1,unknown
+20230507-art-coin,Art Coin,2023-05-07,331000,0,unknown_not_checked,1,unknown
+20230510-snk-snooker,SNK (Snooker),2023-05-10,197725,0,unknown_not_checked,1,unknown
+20230512-lw-token,LW Token,2023-05-12,50000,0,unknown_not_checked,1,unknown
+20230515-land,land,2023-05-15,150000,0,unknown_not_checked,1,unknown
+20230519-swaprum,Swaprum,2023-05-19,3000000,0,unknown_not_checked,1,unknown
+20230519-wdzd-swap,WDZD Swap,2023-05-19,1000000,0,unknown_not_checked,1,unknown
+20230520-swap-lp,Swap-LP,2023-05-20,1100000,0,unknown_not_checked,1,unknown
+20230520-tornado-cash,Tornado Cash,2023-05-20,2173500,0,no_voluntary_return_found,1,unknown
+20230523-lunafi,LunaFi,2023-05-23,35000,0,unknown_not_checked,1,unknown
+20230524-cs-token,CS Token,2023-05-24,714000,0,no_voluntary_return_found,1,unknown
+20230524-local-traders,Local Traders,2023-05-24,118000,0,no_voluntary_return_found,1,unknown
+20230526-patricia,Patricia,2023-05-26,2000000,0,no_voluntary_return_found,1,unknown
+20230528-jimbos-protocol,Jimbos Protocol,2023-05-28,7500000,0,no_voluntary_return_found,1,unknown
+20230530-ede,EDE,2023-05-30,580000,400200,recovered_documented,1,unknown
+20230530-el-dorado-exchange,El Dorado Exchange,2023-05-30,120000,0,unknown_not_checked,1,unknown
+20230531-unsheth,unshETH,2023-05-31,375000,0,unknown_not_checked,1,unknown
+20230601-cellframe,Cellframe,2023-06-01,76112,0,unknown_not_checked,1,unknown
+20230601-dd-coin,DD Coin,2023-06-01,126000,0,unknown_not_checked,1,unknown
+20230602-hector-lending,Hector Lending,2023-06-02,653000,0,unknown_not_checked,1,unknown
+20230603-atomic-wallet,Atomic Wallet,2023-06-03,100000000,2000000,recovered_documented,1,dprk_gov_attributed
+20230610-atlantis-loans,Atlantis Loans,2023-06-10,2500000,0,unknown_not_checked,1,unknown
+x-20230611-a-large-theft-investment-platform,A Large Theft / Investment Platform,2023-06-11,17600000,0,unknown_not_checked,0,unknown
+20230611-fpg,FPG,2023-06-11,20000000,0,no_voluntary_return_found,0,unknown
+20230611-floating-point-group,Floating Point Group,2023-06-11,15000000,0,no_public_record_found,1,unknown
+20230612-keep3r-network,Keep3r Network,2023-06-12,200000,0,unknown_not_checked,1,unknown
+20230612-sturdy-v1,Sturdy V1,2023-06-12,775000,0,unknown_not_checked,1,unknown
+20230614-tropykus-rsk,Tropykus RSK,2023-06-14,150000,0,unknown_not_checked,1,unknown
+20230615-cfc,CFC,2023-06-15,16000,0,unknown_not_checked,1,unknown
+20230615-hashflow,Hashflow,2023-06-15,605000,0,unknown_not_checked,1,unknown
+20230615-hyperliquid,Hyperliquid,2023-06-15,37000,0,unknown_not_checked,1,unknown
+20230617-midas-capital,Midas Capital,2023-06-17,340000,0,no_voluntary_return_found,1,unknown
+20230617-pawnfi,Pawnfi,2023-06-17,820000,0,unknown_not_checked,1,unknown
+20230619-ara-finance,Ara Finance,2023-06-19,125000,0,unknown_not_checked,1,unknown
+20230623-shido,Shido,2023-06-23,238500,0,unknown_not_checked,1,unknown
+20230627-themis-protocol,Themis Protocol,2023-06-27,370000,0,unknown_not_checked,1,unknown
+20230630-biswap,Biswap,2023-06-30,72000,0,no_voluntary_return_found,1,unknown
+x-20230701-polynetwork,PolyNetwork,2023-07-01,10000000,0,unknown_not_checked,0,dprk_firm_attributed
+20230702-aave-fork,Aave fork,2023-07-02,930000,0,unknown_not_checked,1,unknown
+20230702-poly-network,Poly Network,2023-07-02,5000000,0,unknown_not_checked,1,unknown
+20230703-azukidao,AzukiDAO,2023-07-03,68000,0,unknown_not_checked,1,unknown
+20230704-mike-sid,MIKE & SID,2023-07-04,171000,0,no_voluntary_return_found,1,unknown
+20230704-rodeo,Rodeo,2023-07-04,90000,0,no_voluntary_return_found,1,unknown
+20230707-gutter-cat-gang,Gutter Cat Gang,2023-07-07,800000,0,no_voluntary_return_found,1,unknown
+20230707-multichain,Multichain,2023-07-07,126000000,65016000,recovered_documented,1,unknown
+20230708-civnft,CIVNFT,2023-07-08,180000,0,no_voluntary_return_found,1,unknown
+20230709-civfund,CivFund,2023-07-09,180000,0,no_voluntary_return_found,1,unknown
+20230710-arcadia-v1,Arcadia V1,2023-07-10,455000,0,no_voluntary_return_found,1,unknown
+20230711-libertivault,LibertiVault,2023-07-11,450000,0,no_voluntary_return_found,1,unknown
+20230711-libertify,Libertify,2023-07-11,230,0,unknown_not_checked,1,unknown
+20230712-platypus-finance,Platypus Finance,2023-07-12,50000,0,unknown_not_checked,1,unknown
+20230713-ethscriptions,Ethscriptions,2023-07-13,2828,0,unknown_not_checked,1,unknown
+20230718-bno,BNO,2023-07-18,500000,0,unknown_not_checked,1,unknown
+20230720-ffist,FFIST,2023-07-20,110000,0,unknown_not_checked,1,unknown
+20230720-utopia,Utopia,2023-07-20,119300,0,unknown_not_checked,1,unknown
+20230721-conic-finance,Conic Finance,2023-07-21,3300000,0,no_voluntary_return_found,1,unknown
+20230722-coinspaid,CoinsPaid,2023-07-22,37300000,0,recovered_unquantified,1,dprk_gov_attributed
+20230722-conic-finance,Conic Finance,2023-07-22,300000,0,no_voluntary_return_found,1,unknown
+20230724-palmswap,Palmswap,2023-07-24,900000,720000,recovered_documented,1,unknown
+20230725-eralend,EraLend,2023-07-25,3400000,0,no_voluntary_return_found,1,unknown
+20230725-metalabz,MetaLabz,2023-07-25,0,0,unknown_not_checked,1,unknown
+20230726-alphapo,AlphaPo,2023-07-26,60000000,0,no_public_record_found,1,dprk_gov_attributed
+20230726-carson-defi,Carson DeFi,2023-07-26,150000,0,unknown_not_checked,1,unknown
+20230728-pond0x,Pond0x,2023-07-28,2200000,0,unknown_not_checked,1,unknown
+20230730-curve-dex,Curve DEX,2023-07-30,61700000,38994400,recovered_documented,1,unknown
+20230730-jpeg-d,JPEG'd,2023-07-30,11363266,0,unknown_not_checked,1,unknown
+20230730-kannagi,Kannagi,2023-07-30,2130000,0,unknown_not_checked,1,unknown
+20230731-gym-network,GYM Network,2023-07-31,1193,0,unknown_not_checked,1,unknown
+20230801-leetswap,LeetSwap,2023-08-01,620000,0,unknown_not_checked,1,unknown
+20230801-neutra-finance,Neutra Finance,2023-08-01,36450,0,unknown_not_checked,1,unknown
+20230802-bald,Bald,2023-08-02,23000000,0,recovered_unquantified,1,unknown
+20230802-uwerx,Uwerx,2023-08-02,327000,0,no_voluntary_return_found,1,unknown
+20230807-cypher,Cypher,2023-08-07,1035000,600300,recovered_documented,1,unknown
+20230808-steadefi,Steadefi,2023-08-08,1157000,540319,recovered_documented,1,dprk_firm_attributed
+20230809-earning-farm,Earning.Farm,2023-08-09,540000,0,no_voluntary_return_found,1,unknown
+20230813-zunami-protocol,Zunami Protocol,2023-08-13,2100000,0,no_voluntary_return_found,1,unknown
+20230815-rocketswap-base,RocketSwap Base,2023-08-15,865000,0,no_voluntary_return_found,1,unknown
+x-20230816-coinshift,Coinshift,2023-08-16,2900000,0,unknown_not_checked,0,dprk_firm_attributed
+20230818-exactly,Exactly,2023-08-18,7600000,0,no_voluntary_return_found,1,unknown
+20230819-harbor-protocol,Harbor Protocol,2023-08-19,250000,0,no_voluntary_return_found,1,unknown
+20230824-gss,GSS,2023-08-24,25000,0,unknown_not_checked,1,unknown
+20230825-magnate-finance,Magnate Finance,2023-08-25,6500000,0,unknown_not_checked,1,unknown
+20230826-bitbrowser,BitBrowser,2023-08-26,520000,0,unknown_not_checked,1,unknown
+20230826-pepe,PEPE,2023-08-26,15080000,0,no_public_record_found,1,unknown
+20230826-sol-big-brain,SOL Big Brain,2023-08-26,1500000,0,unknown_not_checked,1,unknown
+20230826-svt,SVT,2023-08-26,400000,0,no_voluntary_return_found,1,unknown
+20230827-balancer-v2,Balancer V2,2023-08-27,800000,0,no_voluntary_return_found,1,unknown
+20230829-eac,EAC,2023-08-29,6376,0,unknown_not_checked,1,unknown
+20230830-starkware,Starkware,2023-08-30,550000,0,unknown_not_checked,1,unknown
+20230901-sharedstake,SharedStake,2023-09-01,175000,0,unknown_not_checked,1,unknown
+20230902-dappsocial,DAppSocial,2023-09-02,16000,0,unknown_not_checked,1,unknown
+20230904-stake-com,Stake.com,2023-09-04,41300000,0,no_recovery_in_sources_checked,1,dprk_gov_attributed
+20230905-floor-dao,Floor Dao,2023-09-05,64200,0,unknown_not_checked,1,unknown
+20230906-gmbl-computer,GMBL.COMPUTER,2023-09-06,770000,381920,recovered_documented,1,unknown
+20230907-fortress-trust,Fortress Trust,2023-09-07,12000000,0,unknown_not_checked,1,unknown
+20230910-vitalik-buterin,Vitalik Buterin,2023-09-10,700000,0,no_voluntary_return_found,1,unknown
+20230911-milady-maker,Milady Maker,2023-09-11,1000000,0,unknown_not_checked,1,unknown
+20230911-paxos,Paxos,2023-09-11,500000,0,unknown_not_checked,1,unknown
+20230912-coinex,CoinEx,2023-09-12,55000000,0,no_public_record_found,1,dprk_firm_attributed
+20230915-remitano,Remitano,2023-09-15,2700000,1401300,recovered_documented,1,unknown
+20230916-mark-cuban,Mark Cuban,2023-09-16,870000,0,no_voluntary_return_found,1,unknown
+20230916-uniclynft,uniclyNFT,2023-09-16,2000,0,unknown_not_checked,1,unknown
+20230919-balancer-v2,Balancer V2,2023-09-19,238000,0,unknown_not_checked,1,unknown
+20230923-mixin-network,Mixin Network,2023-09-23,200000000,0,no_public_record_found,1,unknown
+20230925-htx,HTX,2023-09-25,8000000,8000000,recovered_documented,1,unknown
+x-20230928-unidentified-company,Unidentified Company,2023-09-28,3000000,0,unknown_not_checked,0,unknown
+20231005-stars-arena,Stars Arena,2023-10-05,2900000,2676700,recovered_documented,1,unknown
+20231006-galxe,Galxe,2023-10-06,270000,0,unknown_not_checked,1,unknown
+20231007-arena-socialfi,Arena SocialFi,2023-10-07,2974530,2608663,recovered_documented,1,unknown
+20231012-blackhole-token,BlackHole Token,2023-10-12,1275000,0,unknown_not_checked,1,unknown
+20231013-beluga,Beluga,2023-10-13,175000,0,unknown_not_checked,1,unknown
+20231013-platypus-finance,Platypus Finance,2023-10-13,2200000,1980000,recovered_documented,1,unknown
+20231013-wiselending,WiseLending,2023-10-13,260000,0,unknown_not_checked,1,unknown
+20231017-fantom-foundation,Fantom Foundation,2023-10-17,657000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20231018-hope-lend,HOPE Lend,2023-10-18,825000,742500,recovered_documented,1,unknown
+20231018-micdao,MicDao,2023-10-18,13000,0,unknown_not_checked,1,unknown
+20231019-synthetify,Synthetify,2023-10-19,230000,0,no_recovery_in_sources_checked,1,unknown
+20231020-coins-ph,Coins.ph,2023-10-20,6000000,0,no_voluntary_return_found,1,unknown
+20231023-maestro,Maestro,2023-10-23,500000,0,no_voluntary_return_found,1,unknown
+20231025-lastpass,LastPass,2023-10-25,4400000,0,unknown_not_checked,1,unknown
+x-20231026-maverick,Maverick,2023-10-26,8300000,0,unknown_not_checked,0,dprk_firm_attributed
+20231029-astrid-finance,Astrid Finance,2023-10-29,228000,182400,recovered_documented,1,unknown
+20231031-unibot,Unibot,2023-10-31,640000,0,no_voluntary_return_found,1,unknown
+20231101-onyx-protocol,Onyx Protocol,2023-11-01,2100000,0,no_voluntary_return_found,1,unknown
+20231105-fake-ledger-live-web3,Fake Ledger Live Web3,2023-11-05,588000,0,no_voluntary_return_found,1,unknown
+20231106-thestandard-io,TheStandard.io,2023-11-06,290000,263900,recovered_documented,1,unknown
+20231106-trustpad,TrustPad,2023-11-06,155000,0,no_voluntary_return_found,1,unknown
+20231107-curve-finance-mev-bot,Curve Finance MEV Bot,2023-11-07,2000000,0,unknown_not_checked,1,unknown
+x-20231107-nft-phishing,NFT Phishing,2023-11-07,1077186,0,unknown_not_checked,0,unknown
+20231109-coinspot,CoinSpot,2023-11-09,2400000,0,no_voluntary_return_found,1,unknown
+20231110-poloniex,Poloniex,2023-11-10,126000000,0,claimed_unverified,1,dprk_firm_attributed
+20231110-raft,Raft,2023-11-10,3300000,0,no_voluntary_return_found,1,unknown
+20231111-samudai,Samudai,2023-11-11,1250000,0,recovered_documented,1,dprk_firm_attributed
+20231114-exzo-network,Exzo Network,2023-11-14,470498,0,unknown_not_checked,1,unknown
+20231118-kronos-research,Kronos Research,2023-11-18,26000000,0,no_public_record_found,1,dprk_firm_attributed
+20231118-spookyswap,SpookySwap,2023-11-18,5000,0,unknown_not_checked,1,unknown
+20231118-dydx-v3,dYdX V3,2023-11-18,9000000,0,no_voluntary_return_found,1,unknown
+20231122-heco-bridge,Heco Bridge,2023-11-22,86600000,0,recovered_unquantified,1,dprk_firm_attributed
+20231122-huobi,Huobi,2023-11-22,13600000,0,no_voluntary_return_found,1,unknown
+20231122-kyberswap-elastic,KyberSwap Elastic,2023-11-22,48000000,5856000,recovered_documented,1,unknown
+20231125-thenftv2,TheNFTV2,2023-11-25,19000,0,unknown_not_checked,1,unknown
+20231129-velodrome,Velodrome,2023-11-29,250000,0,unknown_not_checked,1,unknown
+20231130-florence-finance,Florence Finance,2023-11-30,1450000,0,unknown_not_checked,1,unknown
+20231201-fcn-trust-fcn,FCN-TRUST (FCN),2023-12-01,504000,0,unknown_not_checked,1,unknown
+20231204-stargate-finance,Stargate Finance,2023-12-04,43000,0,unknown_not_checked,1,unknown
+20231206-elephantstatus,ElephantStatus,2023-12-06,165000,0,unknown_not_checked,1,unknown
+20231206-time,TIME,2023-12-06,190000,0,unknown_not_checked,1,unknown
+20231207-xai,Xai,2023-12-07,845800,0,unknown_not_checked,1,unknown
+20231211-venus-protocol,Venus Protocol,2023-12-11,274000,0,no_voluntary_return_found,1,unknown
+20231213-levana,Levana,2023-12-13,1140000,0,unknown_not_checked,1,unknown
+20231213-okx-dex,OKX DEX,2023-12-13,2700000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20231213-peapods-finance,Peapods Finance,2023-12-13,231192,231192,recovered_documented,1,unknown
+20231214-ledger-connect-kit,Ledger Connect Kit,2023-12-14,484000,44044,recovered_documented,1,unknown
+20231216-gooddollar,GoodDollar,2023-12-16,2000000,0,no_voluntary_return_found,1,unknown
+20231216-nft-trader,NFT Trader,2023-12-16,3000000,0,unknown_not_checked,1,unknown
+20231217-flooring-protocol,Flooring Protocol,2023-12-17,1600000,0,no_voluntary_return_found,1,unknown
+20231220-inx,INX,2023-12-20,1600000,0,unknown_not_checked,1,unknown
+20231220-inx-digital-company,INX Digital Company,2023-12-20,1600000,0,unknown_not_checked,1,unknown
+20231220-transit-finance,Transit Finance,2023-12-20,110000,0,unknown_not_checked,1,unknown
+20231222-pine-protocol,Pine Protocol,2023-12-22,95000,47500,recovered_documented,1,unknown
+20231225-telcoin,Telcoin,2023-12-25,1250000,0,unknown_not_checked,1,unknown
+20231227-levana-perps,Levana Perps,2023-12-27,1100000,0,no_voluntary_return_found,1,unknown
+20231227-thunder-terminal,Thunder Terminal,2023-12-27,240000,0,no_voluntary_return_found,1,unknown
+20231230-channels-finance,Channels Finance,2023-12-30,320000,0,unknown_not_checked,1,unknown
+20231230-locus-finance,Locus Finance,2023-12-30,321000,0,no_voluntary_return_found,1,unknown
+20231231-orbit-bridge,Orbit Bridge,2023-12-31,81700000,0,no_public_record_found,1,unknown
+20240102-radiant-v2,Radiant V2,2024-01-02,4500000,0,no_voluntary_return_found,1,unknown
+20240104-chronos,Chronos,2024-01-04,148000,0,unknown_not_checked,1,unknown
+20240104-gamma,Gamma,2024-01-04,4500000,0,no_voluntary_return_found,1,unknown
+20240106-coinspaid,CoinsPaid,2024-01-06,7500000,0,unknown_not_checked,1,unknown
+20240107-mangofarmsol,MangoFarmSol,2024-01-07,2000000,0,unknown_not_checked,1,unknown
+20240112-wise-lending-v1,Wise Lending V1,2024-01-12,464000,0,unknown_not_checked,1,unknown
+20240116-bungee,Bungee,2024-01-16,3300000,2300100,recovered_documented,1,unknown
+20240116-hector-network,Hector Network,2024-01-16,2700000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20240116-socket,Socket,2024-01-16,3300000,2300100,recovered_documented,1,unknown
+20240117-basketdao,BasketDAO,2024-01-17,1200000,0,unknown_not_checked,1,unknown
+20240122-bullran-index,Bullran Index,2024-01-22,310000,0,unknown_not_checked,1,unknown
+20240122-concentric,Concentric,2024-01-22,1720000,0,unknown_not_checked,1,dprk_gov_attributed
+20240123-gamee,Gamee,2024-01-23,7000000,2310000,recovered_documented,1,unknown
+20240125-nebula-revelation,Nebula Revelation,2024-01-25,180264,0,no_voluntary_return_found,1,unknown
+20240125-saga,Saga,2024-01-25,65800,65800,recovered_documented,1,unknown
+x-20240125-wall-street-memes,Wall Street Memes,2024-01-25,2500000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20240125-wall-street-memes,Wall Street Memes,2024-01-25,1330000,0,unknown_not_checked,1,dprk_gov_attributed
+20240127-citadel-one,Citadel.one,2024-01-27,93000,0,unknown_not_checked,1,unknown
+20240127-somesing,Somesing,2024-01-27,11580000,0,unknown_not_checked,1,unknown
+20240128-goledo,Goledo,2024-01-28,1700000,0,unknown_not_checked,1,unknown
+20240129-barley-finance,Barley Finance,2024-01-29,130000,0,no_voluntary_return_found,1,unknown
+20240130-abracadabra-spell,Abracadabra Spell,2024-01-30,6500000,0,no_voluntary_return_found,1,unknown
+20240131-chris-larsen,Chris Larsen,2024-01-31,112500000,23625000,recovered_documented,1,unknown
+20240201-affine-protocol,Affine Protocol,2024-02-01,88000,0,unknown_not_checked,1,unknown
+20240208-starlay-finance,Starlay Finance,2024-02-08,2100000,0,unknown_not_checked,1,unknown
+20240209-playdapp,PlayDapp,2024-02-09,290000000,0,claimed_unverified,1,dprk_firm_attributed
+20240213-duelbits,DuelBits,2024-02-13,4600000,0,unknown_not_checked,1,dprk_firm_attributed
+20240215-dualpools,DualPools,2024-02-15,41000,0,unknown_not_checked,1,unknown
+20240215-miner,Miner,2024-02-15,466000,0,unknown_not_checked,1,unknown
+20240216-particletrade,ParticleTrade,2024-02-16,140000,0,unknown_not_checked,1,unknown
+20240216-xpet,xPET,2024-02-16,254000,0,unknown_not_checked,1,unknown
+20240218-fixedfloat,FixedFloat,2024-02-18,26100000,0,no_public_record_found,1,unknown
+20240219-ruggedart,RuggedArt,2024-02-19,0,0,unknown_not_checked,1,unknown
+20240221-deeznutz-404,DeezNutz 404,2024-02-21,170000,0,no_voluntary_return_found,1,unknown
+20240221-gain,Gain,2024-02-21,3010000,0,unknown_not_checked,1,unknown
+20240222-swarm-markets,Swarm Markets,2024-02-22,472892,0,unknown_not_checked,1,unknown
+20240222-tectonic,Tectonic,2024-02-22,250000,0,unknown_not_checked,1,unknown
+20240223-compound,Compound,2024-02-23,660000,0,unknown_not_checked,1,unknown
+20240223-jihoz,Jihoz,2024-02-23,10000000,0,unknown_not_checked,1,unknown
+20240224-blueberry,BlueBerry,2024-02-24,1340000,1340000,recovered_documented,1,unknown
+20240224-zoomercoin,ZoomerCoin,2024-02-24,41000,0,unknown_not_checked,1,unknown
+20240225-riskonblast,RiskOnBlast,2024-02-25,1300000,0,unknown_not_checked,1,unknown
+20240226-microstrategy,MicroStrategy,2024-02-26,440000,0,unknown_not_checked,1,unknown
+20240228-seneca,Seneca,2024-02-28,6400000,5299200,recovered_documented,1,unknown
+20240228-serenity-shield,Serenity Shield,2024-02-28,586000,0,unknown_not_checked,1,dprk_firm_attributed
+20240228-smoofs,Smoofs,2024-02-28,0,0,unknown_not_checked,1,unknown
+20240229-shido,Shido,2024-02-29,3300000,0,unknown_not_checked,1,unknown
+x-20240305-murall,MurALL,2024-03-05,199000,0,unknown_not_checked,1,dprk_gov_attributed
+20240305-woofi-swap,WOOFi Swap,2024-03-05,8750000,0,no_voluntary_return_found,1,unknown
+20240306-alp,ALP,2024-03-06,10000,0,unknown_not_checked,1,unknown
+20240306-tgbs-tgbs,TGBS (TGBS),2024-03-06,151000,0,unknown_not_checked,1,unknown
+20240307-ght,GHT,2024-03-07,0,0,unknown_not_checked,1,unknown
+20240308-unizen,Unizen,2024-03-08,2100000,184800,recovered_documented,1,unknown
+20240309-juice-finance,Juice Finance,2024-03-09,54000,0,no_voluntary_return_found,1,unknown
+20240311-blastoff,Blastoff,2024-03-11,600000,0,unknown_not_checked,1,unknown
+20240312-bbt,BBT,2024-03-12,0,0,unknown_not_checked,1,unknown
+20240312-polyhedra-network,Polyhedra Network,2024-03-12,760000,0,no_voluntary_return_found,1,unknown
+x-20240313-cloudai,CloudAI,2024-03-13,305000,0,unknown_not_checked,1,dprk_gov_attributed
+20240315-mobox,MOBOX,2024-03-15,750000,0,no_recovery_in_sources_checked,1,unknown
+20240315-mozaic,Mozaic,2024-03-15,2000000,2000000,recovered_documented,1,unknown
+20240315-nfprompt,NFPrompt,2024-03-15,3000000,0,unknown_not_checked,1,dprk_gov_attributed
+20240316-wilder-world,Wilder World,2024-03-16,1800000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20240317-fake-ansem,Fake Ansem,2024-03-17,2600000,0,no_voluntary_return_found,1,unknown
+20240317-remilia,Remilia,2024-03-17,6000000,0,unknown_not_checked,1,unknown
+20240320-dolomite,Dolomite,2024-03-20,1800000,1620000,recovered_documented,1,unknown
+x-20240320-huge-march-2024-theft,Huge March 2024 Theft,2024-03-20,90000000,0,unknown_not_checked,0,dprk_firm_attributed
+20240320-layerswap,LayerSwap,2024-03-20,100000,0,no_voluntary_return_found,1,unknown
+20240320-paraswap,ParaSwap,2024-03-20,300000,0,unknown_not_checked,1,unknown
+20240321-airdao,AirDAO,2024-03-21,1050000,0,unknown_not_checked,1,unknown
+20240321-ticker,TICKER,2024-03-21,900000,0,no_voluntary_return_found,1,unknown
+20240322-super-sushi-samurai,Super Sushi Samurai,2024-03-22,4800000,4550400,recovered_documented,1,unknown
+20240325-curio,Curio,2024-03-25,16000000,0,no_public_record_found,1,unknown
+20240325-zongzifa,ZongZiFa,2024-03-25,229000,0,no_voluntary_return_found,1,unknown
+20240326-munchables,Munchables,2024-03-26,62500000,62500000,recovered_documented,1,dprk_gov_attributed
+20240328-prismalst,PrismaLST,2024-03-28,11600000,0,no_voluntary_return_found,1,unknown
+20240329-ethfin,ETHFIN,2024-03-29,1200,0,unknown_not_checked,1,unknown
+20240329-lava,Lava,2024-03-29,340000,0,unknown_not_checked,1,unknown
+20240329-solareum,Solareum,2024-03-29,1400000,0,unknown_not_checked,1,dprk_firm_attributed
+20240331-fixedfloat,FixedFloat,2024-03-31,3000000,0,unknown_not_checked,1,unknown
+20240401-openleverage,OpenLeverage,2024-04-01,236000,0,unknown_not_checked,1,unknown
+x-20240402-unknown-apr-victim,Unknown Apr Victim,2024-04-02,815000,0,unknown_not_checked,0,dprk_firm_attributed
+20240408-squid,SQUID,2024-04-08,87000,0,unknown_not_checked,1,unknown
+20240409-xblast,xBlast,2024-04-09,84500,0,unknown_not_checked,1,unknown
+20240412-sumer-money,Sumer.money,2024-04-12,350000,0,unknown_not_checked,1,unknown
+20240412-zest,Zest,2024-04-12,1000000,0,no_voluntary_return_found,1,unknown
+20240415-chainge-finance,Chainge Finance,2024-04-15,716000,0,no_voluntary_return_found,1,unknown
+20240415-grand-base,Grand Base,2024-04-15,1700000,0,unknown_not_checked,1,unknown
+20240419-hedgey,Hedgey,2024-04-19,44700000,0,claimed_unverified,1,unknown
+20240420-rico,Rico,2024-04-20,0,0,unknown_not_checked,1,unknown
+20240422-z123,Z123,2024-04-22,136000,0,unknown_not_checked,1,unknown
+20240423-magpie-protocol,Magpie Protocol,2024-04-23,129000,0,no_voluntary_return_found,1,unknown
+20240424-xbridge,XBridge,2024-04-24,1440000,0,no_voluntary_return_found,1,unknown
+20240424-yiedl,YIEDL,2024-04-24,150000,0,unknown_not_checked,1,unknown
+20240425-fengshou,FENGSHOU,2024-04-25,191000,0,unknown_not_checked,1,unknown
+20240427-bnbx,BNBX,2024-04-27,0,0,unknown_not_checked,1,unknown
+20240428-ember-sword-nft,Ember Sword NFT,2024-04-28,195000,0,unknown_not_checked,1,unknown
+20240429-rain,Rain,2024-04-29,14800000,0,unknown_not_checked,1,dprk_gov_attributed
+20240430-pike-v1,Pike V1,2024-04-30,1600000,0,no_voluntary_return_found,1,unknown
+20240430-yield-protocol,Yield Protocol,2024-04-30,181000,0,unknown_not_checked,1,unknown
+20240505-geniusai,GeniusAI,2024-05-05,1270000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20240506-osn,OSN,2024-05-06,110000,0,unknown_not_checked,1,unknown
+20240506-perpy,Perpy,2024-05-06,132000,0,unknown_not_checked,1,unknown
+20240507-saturn,SATURN,2024-05-07,9000,0,unknown_not_checked,1,unknown
+20240508-gpu,GPU,2024-05-08,32400,0,unknown_not_checked,1,unknown
+20240509-bloom,Bloom,2024-05-09,540000,486000,recovered_documented,1,unknown
+20240510-galaxy-fox,Galaxy Fox,2024-05-10,330000,0,no_voluntary_return_found,1,unknown
+20240510-tsuru,Tsuru,2024-05-10,410000,0,unknown_not_checked,1,unknown
+20240514-predy-finance,Predy Finance,2024-05-14,464000,0,unknown_not_checked,1,unknown
+20240515-sonne-finance,Sonne Finance,2024-05-15,20000000,0,no_public_record_found,1,unknown
+20240516-alex,ALEX,2024-05-16,4300000,3900100,recovered_documented,1,dprk_gov_attributed
+20240516-pump-fun,pump.fun,2024-05-16,1900000,0,unknown_not_checked,1,unknown
+20240520-gala,Gala,2024-05-20,22300000,22300000,recovered_documented,1,unknown
+x-20240522-exclusible-penthouse,Exclusible Penthouse,2024-05-22,820000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20240522-exclusible-penthouse,Exclusible Penthouse,2024-05-22,827000,0,unknown_not_checked,1,dprk_gov_attributed
+20240522-tonup,TonUP,2024-05-22,107600,0,no_voluntary_return_found,1,unknown
+20240522-yon,YON,2024-05-22,118000,0,unknown_not_checked,1,unknown
+20240526-normie,NORMIE,2024-05-26,881686,0,unknown_not_checked,1,unknown
+20240528-excommunity,EXcommunity,2024-05-28,37000,0,unknown_not_checked,1,unknown
+20240528-orion-protocol,Orion Protocol,2024-05-28,645000,0,unknown_not_checked,1,unknown
+20240529-metadragon,MetaDragon,2024-05-29,181000,0,no_voluntary_return_found,1,unknown
+20240529-scroll-token,Scroll Token,2024-05-29,0,0,no_voluntary_return_found,1,unknown
+x-20240529-spacecatch,SpaceCatch,2024-05-29,200000,0,unknown_not_checked,1,dprk_gov_attributed
+20240531-dmm-bitcoin,DMM Bitcoin,2024-05-31,305000000,0,no_recovery_in_sources_checked,1,dprk_gov_attributed
+20240531-mixedswaprouter,MixedSwapRouter,2024-05-31,16000,0,unknown_not_checked,1,unknown
+20240531-tln-protocol,TLN Protocol,2024-05-31,280000,0,unknown_not_checked,1,unknown
+20240602-velocore-v2,Velocore V2,2024-06-02,6800000,0,no_voluntary_return_found,1,unknown
+20240604-lykke,Lykke,2024-06-04,22400000,0,no_public_record_found,1,unknown
+20240607-steamswap,SteamSwap,2024-06-07,105000,0,unknown_not_checked,1,unknown
+20240609-loopring,Loopring,2024-06-09,5000000,0,no_voluntary_return_found,1,unknown
+20240610-jokinthebox,JokInTheBox,2024-06-10,34000,0,unknown_not_checked,1,unknown
+20240610-uwu-lend,UwU Lend,2024-06-10,20000000,0,no_public_record_found,1,unknown
+x-20240611-theft-from-individual-c7,Theft from Individual C7,2024-06-11,4200000,0,unknown_not_checked,0,dprk_firm_attributed
+20240611-yolo-games,YOLO Games,2024-06-11,1500000,1270500,recovered_documented,1,unknown
+20240613-holograph,Holograph,2024-06-13,1200000,0,no_voluntary_return_found,1,unknown
+20240613-uwu-lend,UwU Lend,2024-06-13,3700000,0,unknown_not_checked,1,unknown
+20240614-autochain-global,AutoChain Global,2024-06-14,113000,0,unknown_not_checked,1,unknown
+20240616-wifcoin,WIFCOIN,2024-06-16,0,0,unknown_not_checked,1,unknown
+20240620-okx-nft-aggregator,OKX NFT Aggregator,2024-06-20,14000,0,unknown_not_checked,1,unknown
+20240622-btcturk,BtcTurk,2024-06-22,54000000,5292000,recovered_documented,1,unknown
+20240627-apemaga,APEMAGA,2024-06-27,32000,0,unknown_not_checked,1,unknown
+x-20240701-kyrrex,Kyrrex,2024-07-01,13500000,0,unknown_not_checked,0,dprk_firm_attributed
+20240702-bittensor,Bittensor,2024-07-02,8000000,0,no_voluntary_return_found,1,unknown
+20240702-mintrisesprices,MintRisesPrices,2024-07-02,59000,0,unknown_not_checked,1,unknown
+20240705-defiplaza,DefiPlaza,2024-07-05,200000,0,unknown_not_checked,1,unknown
+20240711-opsec,OPSEC,2024-07-11,100000,0,no_voluntary_return_found,1,unknown
+20240712-coinstats,CoinStats,2024-07-12,2200000,0,no_voluntary_return_found,1,dprk_gov_attributed
+20240712-dough-finance,Dough Finance,2024-07-12,1960000,282240,recovered_documented,1,unknown
+20240715-minterest,Minterest,2024-07-15,1400000,0,no_voluntary_return_found,1,unknown
+20240716-lifi-finance,LiFi Finance,2024-07-16,9730000,0,no_voluntary_return_found,1,unknown
+20240718-wazirx-india,WazirX: India,2024-07-18,234900000,3053700,recovered_documented,1,dprk_gov_attributed
+20240719-rho-markets,Rho Markets,2024-07-19,7600000,7600000,recovered_documented,1,unknown
+20240721-utopiasphere,UtopiaSphere,2024-07-21,521000,0,unknown_not_checked,1,unknown
+20240722-ethtrustfund,ETHTrustFund,2024-07-22,2100000,0,unknown_not_checked,1,unknown
+x-20240722-founder-ceo-of-i4,Founder/CEO of I4,2024-07-22,1500000,0,unknown_not_checked,0,dprk_firm_attributed
+20240723-deltaprime,DeltaPrime,2024-07-23,1000000,900000,recovered_documented,1,unknown
+20240723-dydx-v3,dYdX V3,2024-07-23,31000,0,unknown_not_checked,1,unknown
+20240724-spectra-finance,Spectra Finance,2024-07-24,73000,0,unknown_not_checked,1,unknown
+20240726-casper-network,Casper Network,2024-07-26,6700000,0,unknown_not_checked,1,unknown
+20240726-solrise-finance,Solrise Finance,2024-07-26,6700000,0,unknown_not_checked,1,unknown
+20240730-anzen-finance,Anzen Finance,2024-07-30,500000,450000,recovered_documented,1,unknown
+20240731-monoswap,Monoswap,2024-07-31,1300000,0,unknown_not_checked,1,unknown
+20240731-terra-2-0,Terra 2.0,2024-07-31,6400000,2387200,recovered_documented,1,unknown
+20240801-convergence,Convergence,2024-08-01,210000,0,no_voluntary_return_found,1,unknown
+20240806-ronin-bridge,Ronin Bridge,2024-08-06,12000000,12000000,recovered_documented,1,unknown
+20240807-nexera,Nexera,2024-08-07,449000,449000,recovered_documented,1,dprk_gov_attributed
+20240812-polynetwork,PolyNetwork,2024-08-12,5000000,0,unknown_not_checked,1,unknown
+20240812-ivest,iVest,2024-08-12,190000,0,unknown_not_checked,1,unknown
+20240813-vow,Vow,2024-08-13,1200000,0,unknown_not_checked,1,unknown
+20240813-vowcurrency,Vowcurrency,2024-08-13,1200000,0,unknown_not_checked,1,unknown
+x-20240816-theft-from-individual-a4,Theft from Individual A4,2024-08-16,2500000,0,unknown_not_checked,0,dprk_firm_attributed
+20240816-zenterest,Zenterest,2024-08-16,21000,0,unknown_not_checked,1,unknown
+20240828-aave,Aave,2024-08-28,56000,0,unknown_not_checked,1,unknown
+20240902-pythia,Pythia,2024-09-02,53000,0,unknown_not_checked,1,unknown
+20240903-penpie,Penpie,2024-09-03,27000000,0,no_public_record_found,1,unknown
+20240910-caterpillar-coin,Caterpillar Coin,2024-09-10,1400000,0,unknown_not_checked,1,unknown
+20240910-indodax,Indodax,2024-09-10,25200000,0,no_public_record_found,1,dprk_gov_attributed
+20240911-omnipus,Omnipus,2024-09-11,30000,0,unknown_not_checked,1,unknown
+20240913-otsea,OTSea,2024-09-13,26000,0,unknown_not_checked,1,unknown
+20240916-deltaprime,DeltaPrime,2024-09-16,5980000,0,no_voluntary_return_found,1,dprk_gov_attributed
+20240916-rivus-dao,Rivus DAO,2024-09-16,0,0,unknown_not_checked,1,unknown
+20240916-wxeta,WXETA,2024-09-16,110000,0,unknown_not_checked,1,unknown
+20240919-banana-gun,Banana Gun,2024-09-19,3000000,0,no_voluntary_return_found,1,unknown
+20240920-bingx,BingX,2024-09-20,43300000,10002300,recovered_documented,1,dprk_gov_attributed
+20240920-doggo,DOGGO,2024-09-20,7000,0,unknown_not_checked,1,unknown
+20240920-ocelotdex,OcelotDex,2024-09-20,980000,0,unknown_not_checked,1,unknown
+20240920-ocelotdex-2,OcelotDex,2024-09-20,4900000,0,unknown_not_checked,1,unknown
+20240921-shezmu,Shezmu,2024-09-21,4900000,1661100,recovered_documented,1,unknown
+20240923-bankroll-network,Bankroll Network,2024-09-23,234800,0,no_voluntary_return_found,1,unknown
+20240925-truflation,Truflation,2024-09-25,5200000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20240926-onyx-v2,Onyx V2,2024-09-26,3800000,0,no_voluntary_return_found,1,dprk_gov_attributed
+20240926-rehold,ReHold,2024-09-26,700000,0,unknown_not_checked,1,unknown
+20240926-unibtc,uniBTC,2024-09-26,2000000,0,no_voluntary_return_found,1,unknown
+20240927-bedrock,Bedrock,2024-09-27,2000000,0,no_voluntary_return_found,1,unknown
+20241001-firetoken,FireToken,2024-10-01,20000,0,unknown_not_checked,1,unknown
+20241005-eigenlayer,EigenLayer,2024-10-05,5700000,0,recovered_documented,1,unknown
+20241014-kalax,Kalax,2024-10-14,350000,0,unknown_not_checked,1,unknown
+20241014-leadblock-s-morpho-blue-market,LeadBlock's Morpho Blue Market,2024-10-14,250000,0,no_voluntary_return_found,1,unknown
+20241016-radiant-v2,Radiant V2,2024-10-16,50000000,0,no_recovery_in_sources_checked,1,dprk_gov_attributed
+20241017-ambient,Ambient,2024-10-17,0,0,unknown_not_checked,1,unknown
+20241018-tapioca-dao,Tapioca DAO,2024-10-18,4700000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20241022-erc20transfer,Erc20transfer,2024-10-22,14800,0,unknown_not_checked,1,unknown
+20241022-vista-finance,Vista Finance,2024-10-22,28000,0,unknown_not_checked,1,unknown
+x-20241023-theft-from-individual-m4,Theft from Individual M4,2024-10-23,1400000,0,unknown_not_checked,0,dprk_firm_attributed
+20241024-cryptobottle,Cryptobottle,2024-10-24,490000,0,unknown_not_checked,1,unknown
+20241024-ramses-exchange,Ramses Exchange,2024-10-24,93000,0,unknown_not_checked,1,unknown
+20241024-us-government-crypto-wallet,US Government Crypto Wallet,2024-10-24,20000000,19300000,recovered_documented,1,unknown
+20241025-aark-aark-digital,AARK (Aark Digital),2024-10-25,1900000,0,unknown_not_checked,1,unknown
+20241025-base-lending,Base Lending,2024-10-25,1000000,0,unknown_not_checked,1,unknown
+20241025-unverified-contracts,Unverified Contracts,2024-10-25,1000000,0,unknown_not_checked,1,unknown
+20241029-bubai,BUBAI,2024-10-29,131000,0,unknown_not_checked,1,unknown
+20241030-sunray-finance,SUNRAY·FINANCE,2024-10-30,2855000,0,unknown_not_checked,1,unknown
+20241030-shoebill-finance,Shoebill Finance,2024-10-30,1520000,0,unknown_not_checked,1,unknown
+20241031-1inch-swap,1inch Swap,2024-10-31,723000,0,unknown_not_checked,1,unknown
+20241031-m2-exchange,M2 Exchange,2024-10-31,13700000,0,no_voluntary_return_found,1,dprk_gov_attributed
+20241104-metawin,MetaWin,2024-11-04,4400000,0,no_voluntary_return_found,1,unknown
+20241105-rpp,RPP,2024-11-05,14100,0,unknown_not_checked,1,unknown
+20241107-chisale,ChiSale,2024-11-07,16300,0,unknown_not_checked,1,unknown
+20241107-cow,CoW,2024-11-07,59000,0,unknown_not_checked,1,unknown
+20241107-vrug,VRug,2024-11-07,8400,0,unknown_not_checked,1,unknown
+20241108-coinpoker,CoinPoker,2024-11-08,2000000,0,no_voluntary_return_found,1,unknown
+20241109-x319,X319,2024-11-09,12900,0,unknown_not_checked,1,unknown
+20241110-bgm,BGM,2024-11-10,450000,0,no_voluntary_return_found,1,unknown
+20241111-deltaprime,DeltaPrime,2024-11-11,4800000,0,no_voluntary_return_found,1,dprk_gov_attributed
+20241111-zkfinance,zkFinance,2024-11-11,200000,0,unknown_not_checked,1,unknown
+20241114-veth,vETH,2024-11-14,447000,0,unknown_not_checked,1,unknown
+20241115-thalaswap,ThalaSwap,2024-11-15,25500000,25168500,recovered_documented,1,unknown
+20241116-dexx,DEXX,2024-11-16,21000000,0,no_public_record_found,1,unknown
+20241116-polter-finance,Polter Finance,2024-11-16,8700000,0,no_voluntary_return_found,1,unknown
+20241117-mft,MFT,2024-11-17,33700,0,unknown_not_checked,1,unknown
+20241118-tectonic,Tectonic,2024-11-18,0,0,unknown_not_checked,1,unknown
+20241120-mainnetsettler,MainnetSettler,2024-11-20,66000,0,unknown_not_checked,1,unknown
+20241121-matez,Matez,2024-11-21,80000,0,unknown_not_checked,1,unknown
+20241123-ak1111,AK1111,2024-11-23,31500,0,unknown_not_checked,1,unknown
+20241123-jrny,JRNY,2024-11-23,4000000,0,unknown_not_checked,1,unknown
+20241124-proxy-b7e1,Proxy_b7e1,2024-11-24,8500,0,unknown_not_checked,1,unknown
+20241125-dcf,DCF,2024-11-25,440000,0,unknown_not_checked,1,unknown
+x-20241125-ton-dude,TON Dude,2024-11-25,14000000,0,unknown_not_checked,0,dprk_firm_attributed
+20241126-nftg,NFTG,2024-11-26,10000,0,unknown_not_checked,1,unknown
+20241128-xt-exchange,XT Exchange,2024-11-28,1700000,0,no_voluntary_return_found,1,dprk_firm_attributed
+x-20241129-mak-metacene,MAK / Metacene,2024-11-29,2056995,0,unknown_not_checked,0,dprk_firm_attributed
+20241201-clipper,Clipper,2024-12-01,450000,343350,recovered_documented,1,unknown
+20241201-spectral-labs,Spectral Labs,2024-12-01,250000,0,no_voluntary_return_found,1,unknown
+20241202-debox,DeBox,2024-12-02,275000,0,unknown_not_checked,1,unknown
+20241203-byc-token,BYC Token,2024-12-03,100000,0,unknown_not_checked,1,unknown
+20241203-runway-byc,RunWay (BYC),2024-12-03,100000,0,unknown_not_checked,1,unknown
+20241204-vestra-dao,Vestra DAO,2024-12-04,500000,0,unknown_not_checked,1,unknown
+20241207-maat-protocol,MAAT Protocol,2024-12-07,168173,0,unknown_not_checked,1,unknown
+20241210-clober-liquidity-vault,Clober Liquidity Vault,2024-12-10,500000,0,no_voluntary_return_found,1,unknown
+20241210-labubu-token,LABUBU Token,2024-12-10,12000,0,no_voluntary_return_found,1,unknown
+x-20241211-founder-ceo-of-o6,Founder/CEO of O6,2024-12-11,500000,0,unknown_not_checked,0,dprk_firm_attributed
+20241212-bnbs,BNBS,2024-12-12,20300,0,unknown_not_checked,1,unknown
+20241214-jhy-token,JHY Token,2024-12-14,12000,0,unknown_not_checked,1,unknown
+20241216-btc24h,BTC24H,2024-12-16,85700,0,unknown_not_checked,1,unknown
+x-20241216-syfu,SyFu,2024-12-16,1936593,0,unknown_not_checked,0,dprk_firm_attributed
+x-20241216-uknown-dec-2024-theft,Uknown Dec 2024 Theft,2024-12-16,1000000,0,unknown_not_checked,0,dprk_firm_attributed
+20241217-gempad,GemPad,2024-12-17,1900000,0,unknown_not_checked,1,unknown
+20241218-harrypotterobamasonic10inu,HarryPotterObamaSonic10Inu,2024-12-18,243000,0,no_voluntary_return_found,1,unknown
+x-20241218-rainfi,Rainfi,2024-12-18,2009331,0,unknown_not_checked,0,dprk_firm_attributed
+20241218-slurpycoin,SlurpyCoin,2024-12-18,3000,0,unknown_not_checked,1,unknown
+20241227-bizness,Bizness,2024-12-27,15700,0,unknown_not_checked,1,unknown
+20241229-fegex,Fegex,2024-12-29,1070000,0,no_voluntary_return_found,1,unknown
+x-20241230-napier-founder,Napier Founder,2024-12-30,500000,0,unknown_not_checked,0,dprk_firm_attributed
+20250101-noones,NoOnes,2025-01-01,7900000,0,unknown_not_checked,1,unknown
+20250102-moonhacker,MoonHacker,2025-01-02,300000,0,unknown_not_checked,1,unknown
+20250104-sorra-finance,Sorra Finance,2025-01-04,41000,0,unknown_not_checked,1,unknown
+20250106-mosca,Mosca,2025-01-06,37600,0,unknown_not_checked,1,unknown
+20250107-ipc-ai,IPC AI,2025-01-07,590000,0,unknown_not_checked,1,unknown
+20250108-moby,Moby,2025-01-08,1470000,1470000,recovered_documented,1,unknown
+20250108-orange-finance,Orange Finance,2025-01-08,840000,0,no_voluntary_return_found,1,unknown
+20250112-unilend-v2,Unilend V2,2025-01-12,197600,0,no_voluntary_return_found,1,unknown
+20250113-mosca2,Mosca2,2025-01-13,37600,0,unknown_not_checked,1,unknown
+20250114-the-idols,The Idols,2025-01-14,324000,0,no_voluntary_return_found,1,unknown
+x-20250120-unknown-jan-2025,Unknown Jan 2025,2025-01-20,1700000,0,unknown_not_checked,0,dprk_firm_attributed
+20250123-phemex,Phemex,2025-01-23,85000000,0,claimed_unverified,1,dprk_gov_attributed
+20250124-adspower,AdsPower,2025-01-24,4700000,0,unknown_not_checked,1,unknown
+20250124-odos,ODOS,2025-01-24,100000,0,unknown_not_checked,1,unknown
+x-20250126-dimitra-token,Dimitra Token,2025-01-26,6910484,0,unknown_not_checked,0,dprk_firm_attributed
+20250128-dogwiftools,DogWifTools,2025-01-28,10000000,0,unknown_not_checked,1,unknown
+20250201-sirio-finance,Sirio Finance,2025-02-01,2000000,0,unknown_not_checked,1,unknown
+20250204-ionic-protocol,Ionic Protocol,2025-02-04,8600000,0,no_voluntary_return_found,1,unknown
+x-20250205-russell,Russell,2025-02-05,1125700,0,unknown_not_checked,0,dprk_firm_attributed
+x-20250205-unknown-feb-2025,Unknown Feb 2025,2025-02-05,610000,0,unknown_not_checked,0,dprk_firm_attributed
+20250208-cashverse,Cashverse,2025-02-08,107900,0,unknown_not_checked,1,unknown
+20250211-four-meme,four.meme,2025-02-11,183000,0,no_voluntary_return_found,1,unknown
+20250211-zklend,zkLend,2025-02-11,9550000,0,no_voluntary_return_found,1,unknown
+x-20250217-ripio,Ripio,2025-02-17,9400000,0,unknown_not_checked,0,dprk_firm_attributed
+20250218-cardex,Cardex,2025-02-18,400000,0,no_voluntary_return_found,1,unknown
+x-20250218-individual-0xpeet,Individual 0xpeet,2025-02-18,1334230,0,unknown_not_checked,0,dprk_firm_attributed
+20250221-bybit,Bybit,2025-02-21,1400000000,40600000,recovered_documented,1,dprk_gov_attributed
+20250221-stepheronfts,StepHeroNFTs,2025-02-21,90000,0,unknown_not_checked,1,unknown
+20250222-unverified-35bc,Unverified_35bc,2025-02-22,6700,0,unknown_not_checked,1,unknown
+20250224-infini,Infini,2025-02-24,49500000,0,no_public_record_found,1,unknown
+x-20250228-fantom-reuse-address,Fantom Reuse Address,2025-02-28,3200000,0,unknown_not_checked,0,dprk_firm_attributed
+20250228-wemix,Wemix,2025-02-28,6220000,0,unknown_not_checked,1,unknown
+20250301-hegic-old-contract,Hegic(old contract),2025-03-01,80000,0,unknown_not_checked,1,unknown
+20250301-zoth-zeusd,Zoth ZeUSD,2025-03-01,285000,0,unknown_not_checked,1,unknown
+20250305-pond-fun,Pond.fun,2025-03-05,145000,0,no_voluntary_return_found,1,unknown
+20250307-1inch-swap,1inch Swap,2025-03-07,5000000,4550000,recovered_documented,1,unknown
+x-20250307-founder-ceo-of-b3,Founder/CEO of B3,2025-03-07,3186200,0,unknown_not_checked,0,dprk_firm_attributed
+20250314-berally,Berally,2025-03-14,90000,0,unknown_not_checked,1,unknown
+x-20250314-huge-march-2025-theft,Huge March 2025 Theft,2025-03-14,171000000,0,unknown_not_checked,0,dprk_firm_attributed
+20250316-webkeydao,WebKeyDAO,2025-03-16,73000,0,unknown_not_checked,1,unknown
+20250318-voltage-v3,Voltage V3,2025-03-18,322113,0,unknown_not_checked,1,unknown
+20250318-four-meme,four.meme,2025-03-18,80000,0,unknown_not_checked,1,unknown
+20250320-bbxtoken,BBXToken,2025-03-20,12000,0,unknown_not_checked,1,unknown
+20250321-zoth-zeusd,Zoth ZeUSD,2025-03-21,8850000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20250325-abracadabra-spell,Abracadabra Spell,2025-03-25,13000000,0,unknown_not_checked,1,unknown
+20250327-vicuna-lending,Vicuna Lending,2025-03-27,700000,0,unknown_not_checked,1,unknown
+20250328-alkimiya,Alkimiya,2025-03-28,95500,0,unknown_not_checked,1,unknown
+20250329-venus-core-pool,Venus Core Pool,2025-03-29,902000,0,no_voluntary_return_found,1,unknown
+20250330-sir,SIR,2025-03-30,355000,0,unknown_not_checked,1,unknown
+20250330-sir-trading,SIR.trading,2025-03-30,355000,0,unknown_not_checked,1,unknown
+20250401-upcx,UPCX,2025-04-01,70000000,0,no_public_record_found,1,unknown
+20250401-zapper,Zapper,2025-04-01,0,0,unknown_not_checked,1,unknown
+20250404-airwa,AIRWA,2025-04-04,33600,0,unknown_not_checked,1,unknown
+20250407-tenderize-v2,Tenderize V2,2025-04-07,10850,0,unknown_not_checked,1,unknown
+20250408-mev-bot,MEV Bot,2025-04-08,210000,0,unknown_not_checked,1,unknown
+20250411-jake-gallen,Jake Gallen,2025-04-11,100000,0,unknown_not_checked,1,unknown
+20250414-kiloex,KiloEx,2025-04-14,7500000,7500000,recovered_documented,1,unknown
+20250415-zksync,ZKsync,2025-04-15,5000000,4500000,recovered_documented,1,unknown
+20250416-r0ar,R0AR,2025-04-16,780000,0,unknown_not_checked,1,unknown
+20250418-numa,Numa,2025-04-18,506000,0,unknown_not_checked,1,unknown
+20250420-bitget,Bitget,2025-04-20,100000000,0,unknown_not_checked,0,unknown
+20250422-bitcoin-mission,Bitcoin Mission,2025-04-22,1300000,0,unknown_not_checked,1,unknown
+x-20250423-april-2025-theft,April 2025 Theft,2025-04-23,525000,0,unknown_not_checked,0,dprk_firm_attributed
+20250424-acb,ACB,2025-04-24,22804,0,unknown_not_checked,1,unknown
+20250426-impermax-v3,Impermax V3,2025-04-26,300000,0,unknown_not_checked,1,unknown
+20250426-loopscale,Loopscale,2025-04-26,5800000,5800000,recovered_documented,1,unknown
+20250426-term-finance,Term Finance,2025-04-26,1650000,0,recovered_documented,1,unknown
+20250427-aventa,Aventa,2025-04-27,7000,0,unknown_not_checked,1,unknown
+20250427-quantmaster,QuantMaster,2025-04-27,100000,0,unknown_not_checked,1,unknown
+20250508-bitopro,BitoPro,2025-05-08,11500000,0,unknown_not_checked,1,dprk_firm_attributed
+20250509-lnd,LND,2025-05-09,1180000,0,unknown_not_checked,1,dprk_firm_attributed
+20250511-mobius-token,Mobius Token,2025-05-11,2150000,0,no_voluntary_return_found,1,unknown
+20250515-zunami-protocol,Zunami Protocol,2025-05-15,500000,0,no_voluntary_return_found,1,unknown
+20250516-demex,Demex,2025-05-16,950559,0,unknown_not_checked,1,unknown
+20250516-nitron,Nitron,2025-05-16,950559,0,unknown_not_checked,1,unknown
+x-20250516-unknown-jup-holder,Unknown JUP Holder,2025-05-16,3360880,0,unknown_not_checked,0,dprk_firm_attributed
+x-20250519-marketacross,MarketAcross,2025-05-19,560000,0,unknown_not_checked,0,dprk_firm_attributed
+20250520-irys-ai,IRYS AI,2025-05-20,69600,0,unknown_not_checked,1,unknown
+x-20250520-individual-m6,Individual M6,2025-05-20,1200000,0,unknown_not_checked,0,dprk_firm_attributed
+20250522-cetus-clmm,Cetus CLMM,2025-05-22,223000000,161898000,recovered_documented,1,unknown
+x-20250524-tao-founder,TAO Founder,2025-05-24,5116358,0,unknown_not_checked,0,dprk_firm_attributed
+20250526-dexodus-finance,Dexodus Finance,2025-05-26,300000,0,unknown_not_checked,1,unknown
+20250527-usual-usd0,Usual USD0,2025-05-27,43000,0,unknown_not_checked,1,unknown
+20250528-cork-v1,Cork V1,2025-05-28,12000000,0,no_voluntary_return_found,1,unknown
+20250530-malda,Malda,2025-05-30,285000,0,unknown_not_checked,1,unknown
+20250606-alex,ALEX,2025-06-06,8373000,0,no_voluntary_return_found,1,unknown
+20250606-forcebridge,ForceBridge,2025-06-06,3900000,0,no_voluntary_return_found,1,unknown
+x-20250614-clober,Clober,2025-06-14,1391963,0,unknown_not_checked,0,dprk_firm_attributed
+20250615-fixedtokenbswap,FixedTokenBSwap,2025-06-15,2200,0,unknown_not_checked,1,unknown
+20250617-meta-pool,Meta Pool,2025-06-17,130000,0,unknown_not_checked,1,unknown
+x-20250618-favrr,Favrr,2025-06-18,680000,0,unknown_not_checked,1,dprk_gov_attributed
+20250618-nobitex,Nobitex,2025-06-18,82000000,0,no_public_record_found,1,other_known
+20250619-bankroll-network,Bankroll Network,2025-06-19,65000,0,unknown_not_checked,1,unknown
+20250620-hacken-token,Hacken Token,2025-06-20,250000,0,no_voluntary_return_found,1,dprk_firm_attributed
+x-20250622-sololabs,Sololabs,2025-06-22,963000,0,unknown_not_checked,0,dprk_firm_attributed
+x-20250625-favrr,Favrr,2025-06-25,650000,0,unknown_not_checked,0,dprk_firm_attributed
+20250625-mev-bot,MEV Bot,2025-06-25,2000000,0,no_voluntary_return_found,1,unknown
+20250625-resupply,Resupply,2025-06-25,9600000,0,no_voluntary_return_found,1,unknown
+20250625-silo-finance,Silo Finance,2025-06-25,546000,0,unknown_not_checked,1,unknown
+x-20250626-june-26-2025-theft,June 26 2025 Theft,2025-06-26,1316809,0,unknown_not_checked,0,dprk_firm_attributed
+x-20250630-june-30-2025-theft,June 30 2025 Theft,2025-06-30,1277499,0,unknown_not_checked,0,dprk_firm_attributed
+20250702-future-protocol,Future Protocol,2025-07-02,4600000,0,unknown_not_checked,1,unknown
+x-20250704-individual-dd,Individual DD,2025-07-04,544086,0,unknown_not_checked,0,dprk_firm_attributed
+20250705-rant,RANT,2025-07-05,204000,0,unknown_not_checked,1,unknown
+20250708-peapods-finance,Peapods Finance,2025-07-08,207000,0,no_voluntary_return_found,1,unknown
+20250709-gmx-v1-evm,GMX V1 EVM,2025-07-09,42000000,40110000,recovered_documented,1,unknown
+20250709-texture,Texture,2025-07-09,2200000,1980000,recovered_documented,1,unknown
+20250709-zkswap,ZKSwap,2025-07-09,5000000,0,unknown_not_checked,1,unknown
+20250710-kinto-bridge,Kinto Bridge,2025-07-10,1550000,0,no_voluntary_return_found,1,unknown
+20250712-pundi-ai,Pundi AI,2025-07-12,6570000,5702760,recovered_documented,1,unknown
+20250715-arcadia-v2,Arcadia V2,2025-07-15,2500000,0,no_recovery_in_sources_checked,1,unknown
+20250716-bigone,BigONE,2025-07-16,27000000,0,no_public_record_found,1,dprk_gov_attributed
+20250719-coindcx,CoinDCX,2025-07-19,44200000,0,no_public_record_found,1,unknown
+20250720-stepp2p,Stepp2p,2025-07-20,43000,0,unknown_not_checked,1,unknown
+20250724-woo-x,WOO X,2025-07-24,14000000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20250728-superrare,SuperRare,2025-07-28,730000,0,no_voluntary_return_found,1,unknown
+20250804-credix,CrediX,2025-08-04,4500000,0,unknown_not_checked,1,unknown
+x-20250806-aug-2025-theft-from-individual,Aug 2025 Theft from Individual,2025-08-06,2738690,0,unknown_not_checked,0,dprk_firm_attributed
+20250810-numa,numa.,2025-08-10,313000,0,no_voluntary_return_found,1,unknown
+20250812-odin-fun,Odin.Fun,2025-08-12,7000000,0,no_voluntary_return_found,1,unknown
+20250813-coinbase,Coinbase,2025-08-13,300000,0,unknown_not_checked,1,unknown
+20250813-grizzifi,Grizzifi,2025-08-13,61000,0,unknown_not_checked,1,unknown
+20250814-btcturk,BtcTurk,2025-08-14,48000000,0,no_public_record_found,1,dprk_firm_attributed
+20250816-d3x-ai,D3X AI,2025-08-16,158900,0,unknown_not_checked,1,unknown
+20250825-panoptic-v1-1,Panoptic V1.1,2025-08-25,0,0,unknown_not_checked,1,unknown
+20250826-betterbank,BetterBank,2025-08-26,5000000,2700000,recovered_documented,1,unknown
+20250830-cozy-v2,Cozy V2,2025-08-30,427000,0,unknown_not_checked,1,unknown
+20250901-olaxbt,OlaXBT,2025-09-01,2000000,0,unknown_not_checked,1,dprk_firm_attributed
+x-20250901-venus-whale,Venus Whale,2025-09-01,27000000,0,unknown_not_checked,0,dprk_firm_attributed
+20250902-bunni-v2,Bunni V2,2025-09-02,8400000,0,no_voluntary_return_found,1,unknown
+x-20250903-wolf-on-sol,Wolf on Sol,2025-09-03,600000,0,unknown_not_checked,0,dprk_firm_attributed
+20250908-nemo-yield-trading,Nemo Yield Trading,2025-09-08,2590000,0,unknown_not_checked,1,unknown
+x-20250909-jp-thor,JP Thor,2025-09-09,2435000,0,unknown_not_checked,0,dprk_firm_attributed
+20250909-swissborg,SwissBorg,2025-09-09,41500000,0,no_public_record_found,1,unknown
+20250910-evoq-finance,Evoq Finance,2025-09-10,420000,0,unknown_not_checked,1,unknown
+x-20250910-request-singularity,Request / Singularity,2025-09-10,3000000,0,unknown_not_checked,0,dprk_firm_attributed
+20250912-kame-aggregator,Kame Aggregator,2025-09-12,1300000,968500,recovered_documented,1,unknown
+x-20250912-sep-12-theft,Sep 12 Theft,2025-09-12,1137772,0,unknown_not_checked,0,dprk_firm_attributed
+20250913-shibarium,Shibarium,2025-09-13,4100000,0,recovered_unquantified,1,dprk_firm_attributed
+20250914-yala,Yala,2025-09-14,7640000,0,recovered_documented,1,unknown
+20250918-new-gold-protocol,New Gold Protocol,2025-09-18,1900000,0,unknown_not_checked,1,unknown
+20250922-uxlink,UXLINK,2025-09-22,11300000,0,recovered_documented,1,dprk_firm_attributed
+20250923-corepound,Corepound,2025-09-23,400000,0,unknown_not_checked,1,unknown
+20250923-seedify,Seedify,2025-09-23,1200000,200400,recovered_documented,1,dprk_firm_attributed
+20250924-griffinai,GriffinAI,2025-09-24,3000000,0,no_voluntary_return_found,1,unknown
+20250924-sbi-crypto,SBI Crypto,2025-09-24,21000000,0,no_public_record_found,1,dprk_firm_attributed
+20250926-hypervault,HyperVault,2025-09-26,3600000,0,unknown_not_checked,1,unknown
+20250927-hyperdrive-hl-lending,Hyperdrive HL Lending,2025-09-27,782000,0,unknown_not_checked,1,unknown
+x-20250927-september-27-2025-theft,September 27 2025 Theft,2025-09-27,696000,0,unknown_not_checked,0,dprk_firm_attributed
+20250928-dtrinity,dTRINITY,2025-09-28,56000,0,unknown_not_checked,1,unknown
+20251004-abracadabra-spell,Abracadabra Spell,2025-10-04,1700000,0,no_voluntary_return_found,1,unknown
+20251004-min-spell,MIN Spell,2025-10-04,1790000,0,no_voluntary_return_found,1,unknown
+20251007-tokenholder,TokenHolder,2025-10-07,26000,0,unknown_not_checked,1,unknown
+20251009-astera-fi,Astera.fi,2025-10-09,573000,0,no_voluntary_return_found,1,unknown
+20251015-typus-perp,Typus Perp,2025-10-15,3440000,0,no_voluntary_return_found,1,unknown
+20251019-astra-nova,Astra Nova,2025-10-19,9090000,0,no_voluntary_return_found,1,unknown
+20251020-sharwa-finance,Sharwa.Finance,2025-10-20,146000,0,no_voluntary_return_found,1,unknown
+20251021-doodipals,DoodiPals,2025-10-21,171000,0,no_voluntary_return_found,1,unknown
+20251027-402bridge,402bridge,2025-10-27,17693,0,unknown_not_checked,1,unknown
+20251030-garden,Garden,2025-10-30,11400000,0,no_voluntary_return_found,1,dprk_firm_attributed
+20251103-balancer-v2,Balancer V2,2025-11-03,128000000,27648000,recovered_documented,1,unknown
+20251103-berachain,Berachain,2025-11-03,12800000,12800000,recovered_documented,1,unknown
+20251104-moonwell-lending,Moonwell Lending,2025-11-04,1000000,0,unknown_not_checked,1,unknown
+20251107-dimo,DIMO,2025-11-07,40000,0,no_voluntary_return_found,1,unknown
+20251110-drlvaultv3,DRLVaultV3,2025-11-10,100000,97600,recovered_documented,1,unknown
+20251111-impermax-v3,Impermax V3,2025-11-11,380000,0,unknown_not_checked,1,unknown
+20251111-polymarket,Polymarket,2025-11-11,500000,0,unknown_not_checked,1,unknown
+20251113-hyperliquid,Hyperliquid,2025-11-13,4950000,0,unknown_not_checked,1,unknown
+20251120-dmt-dexmaxai,DMT 空投(@dexmaxai),2025-11-20,130000,0,unknown_not_checked,1,unknown
+20251120-dexmax-ai,Dexmax AI,2025-11-20,130000,0,unknown_not_checked,1,unknown
+20251120-gana-payment,GANA Payment,2025-11-20,3100000,0,no_voluntary_return_found,1,unknown
+20251121-aerodrome-v1,Aerodrome V1,2025-11-21,700000,0,unknown_not_checked,1,unknown
+20251122-raga-finance,Raga Finance,2025-11-22,18500,0,unknown_not_checked,1,unknown
+20251123-port3-network,Port3 Network,2025-11-23,166000,0,no_voluntary_return_found,1,unknown
+20251124-agentic-fof,Agentic FoF,2025-11-24,531000,0,unknown_not_checked,1,unknown
+20251126-upbit,Upbit,2025-11-26,36000000,1692000,recovered_documented,1,unknown
+20251130-yearn-ether,Yearn Ether,2025-11-30,9000000,2403000,recovered_documented,1,unknown
+20251202-goldfinch,Goldfinch,2025-12-02,330000,0,unknown_not_checked,1,unknown
+20251204-us-permissionless-dollar,US Permissionless Dollar,2025-12-04,1000000,0,no_voluntary_return_found,1,unknown
+20251204-uspd,USPD,2025-12-04,1000000,0,unknown_not_checked,1,unknown
+x-20251210-december-10-2025-overlaps-jup,December 10 2025 (Overlaps JUP),2025-12-10,1100000,0,unknown_not_checked,0,dprk_firm_attributed
+20251211-0g-foundation,0G Foundation,2025-12-11,520000,0,unknown_not_checked,1,unknown
+20251211-0g-labs,0G Labs,2025-12-11,516000,0,no_voluntary_return_found,1,unknown
+x-20251211-december-10-2025-overlaps-sololabs,December 10 2025 (Overlaps Sololabs),2025-12-11,9100000,0,unknown_not_checked,0,dprk_firm_attributed
+20251212-ribbon,Ribbon,2025-12-12,2700000,0,no_voluntary_return_found,1,unknown
+20251212-zerobase,ZEROBASE,2025-12-12,250000,0,unknown_not_checked,1,unknown
+x-20251213-fake-teams-meet,Fake Teams Meet,2025-12-13,1700000,124100,recovered_documented,1,unknown
+x-20251213-fake-teams-meet,Fake Teams Meet,2025-12-13,1700000,0,unknown_not_checked,0,dprk_firm_attributed
+20251214-aevo,Aevo,2025-12-14,2700000,0,no_voluntary_return_found,1,unknown
+20251214-mars-perps,Mars Perps,2025-12-14,960000,0,no_voluntary_return_found,1,unknown
+20251216-futureswap,FutureSwap,2025-12-16,270000,0,unknown_not_checked,1,unknown
+20251216-yearn-finance,Yearn Finance,2025-12-16,300000,0,no_voluntary_return_found,1,unknown
+20251218-rari-capital,Rari Capital,2025-12-18,2000000,0,unknown_not_checked,1,unknown
+20251225-trust-wallet-wallet,Trust Wallet Wallet,2025-12-25,8500000,0,unknown_not_checked,1,unknown
+20251226-filda,FilDA,2025-12-26,166800,0,unknown_not_checked,1,unknown
+20251227-debot,Debot,2025-12-27,255000,0,unknown_not_checked,1,unknown
+20251227-flow,Flow,2025-12-27,3900000,0,no_voluntary_return_found,1,unknown
+20251228-mscst,MSCST,2025-12-28,129900,0,unknown_not_checked,1,unknown
+20251230-unleash-protocol,Unleash Protocol,2025-12-30,3900000,0,no_voluntary_return_found,1,unknown
+20260101-prxvt,PRXVT,2026-01-01,97000,0,unknown_not_checked,1,unknown
+x-20260101-tenexium,Tenexium,2026-01-01,2000000,0,unknown_not_checked,0,dprk_firm_attributed
+20260105-tmx-tribe,TMX TRIBE,2026-01-05,1400000,0,no_voluntary_return_found,1,unknown
+20260105-usdgambit-and-tlp,USDGambit and TLP,2026-01-05,1500000,0,no_voluntary_return_found,1,unknown
+20260106-fusion-by-ipor,Fusion by IPOR,2026-01-06,336000,294672,recovered_documented,1,unknown
+20260107-polycule,Polycule,2026-01-07,230000,0,no_voluntary_return_found,1,unknown
+20260108-truebit,Truebit,2026-01-08,26400000,0,no_public_record_found,1,unknown
+20260110-futureswap,FutureSwap,2026-01-10,395000,0,unknown_not_checked,1,unknown
+x-20260113-fake-teams-jan-2026,Fake Teams Jan 2026,2026-01-13,747609,0,unknown_not_checked,0,dprk_firm_attributed
+20260113-yo-protocol,YO Protocol,2026-01-13,3600000,0,no_voluntary_return_found,1,unknown
+20260117-meteora-damm-v2,Meteora DAMM V2,2026-01-17,1500000,0,unknown_not_checked,1,unknown
+20260120-makina,Makina,2026-01-20,4200000,4200000,recovered_documented,1,unknown
+20260120-synaplogic,SynapLogic,2026-01-20,144000,0,unknown_not_checked,1,unknown
+20260121-saga,Saga,2026-01-21,7000000,0,no_recovery_in_sources_checked,1,unknown
+20260125-aperture-lm,Aperture LM,2026-01-25,3670000,0,unknown_not_checked,1,unknown
+20260125-matcha,Matcha,2026-01-25,13430000,0,unknown_not_checked,1,unknown
+20260125-swapnet,SwapNet,2026-01-25,13430000,0,unknown_not_checked,1,unknown
+20260127-pgnlz,PGNLZ,2026-01-27,100000,0,unknown_not_checked,1,unknown
+20260129-revert-lend,Revert Lend,2026-01-29,50000,0,unknown_not_checked,1,unknown
+20260131-step-finance,Step Finance,2026-01-31,40000000,4720000,recovered_documented,1,dprk_firm_attributed
+20260201-crosscurve,CrossCurve,2026-02-01,3000000,0,unknown_not_checked,1,unknown
+x-20260202-fake-sally-feb-2026,Fake Sally Feb 2026,2026-02-02,850000,0,unknown_not_checked,0,dprk_firm_attributed
+20260215-moonwell-lending,Moonwell Lending,2026-02-15,1780000,0,unknown_not_checked,1,unknown
+20260219-velar-perps,Velar Perps,2026-02-19,401000,0,no_voluntary_return_found,1,unknown
+20260221-iotex,IoTeX,2026-02-21,4400000,0,unknown_not_checked,1,unknown
+20260221-veil-cash,Veil Cash,2026-02-21,5000,4310,recovered_documented,1,unknown
+20260222-blend-pools-v2,Blend Pools V2,2026-02-22,10970000,7295050,recovered_documented,1,unknown
+20260222-laxo,LAXO,2026-02-22,190000,0,no_voluntary_return_found,1,unknown
+20260223-dgld,DGLD,2026-02-23,250000,0,no_voluntary_return_found,1,unknown
+20260225-holdstation,Holdstation,2026-02-25,462000,0,unknown_not_checked,1,unknown
+20260226-ploutos-money,Ploutos Money,2026-02-26,390000,0,no_voluntary_return_found,1,unknown
+20260227-stake-nova,Stake Nova,2026-02-27,137014,0,no_voluntary_return_found,1,unknown
+20260228-wise-lending-v2,Wise Lending V2,2026-02-28,66000,0,unknown_not_checked,1,unknown
+x-20260301-bitrefill,Bitrefill,2026-03-01,2500000,0,unknown_not_checked,0,dprk_firm_attributed
+20260302-curve-llamalend,Curve LlamaLend,2026-03-02,240000,0,no_voluntary_return_found,1,unknown
+20260302-foom-cash,FOOM Cash,2026-03-02,2260000,0,unknown_not_checked,1,unknown
+20260302-inverse-finance,Inverse Finance,2026-03-02,240000,0,unknown_not_checked,1,unknown
+20260306-solvbtc,SolvBTC,2026-03-06,2700000,0,no_voluntary_return_found,1,unknown
+20260307-molt-evm,Molt EVM,2026-03-07,127000,0,no_voluntary_return_found,1,unknown
+20260309-gondi-v3,Gondi V3,2026-03-09,230000,0,no_voluntary_return_found,1,unknown
+20260310-mt-wbnb-liquidity-pool,MT-WBNB liquidity pool,2026-03-10,242000,0,unknown_not_checked,1,unknown
+20260310-movie-token,Movie Token,2026-03-10,242000,0,unknown_not_checked,1,unknown
+20260311-bonk-fun,BONK Fun,2026-03-11,30000,0,unknown_not_checked,1,unknown
+20260311-dbxen,DBXen,2026-03-11,150000,0,unknown_not_checked,1,unknown
+20260312-am,AM,2026-03-12,131572,0,unknown_not_checked,1,unknown
+20260312-aave-v3,Aave V3,2026-03-12,862000,0,unknown_not_checked,1,unknown
+20260312-stake-dao-yield,Stake DAO Yield,2026-03-12,176000,140624,recovered_documented,1,unknown
+20260314-goose-finance,Goose Finance,2026-03-14,8435,0,unknown_not_checked,1,unknown
+20260315-venus-core-pool,Venus Core Pool,2026-03-15,3700000,0,unknown_not_checked,1,unknown
+20260316-checkoutpool,CheckoutPool,2026-03-16,85700,0,unknown_not_checked,1,unknown
+x-20260317-incident-1,Incident #1,2026-03-17,1250000,0,unknown_not_checked,0,dprk_firm_attributed
+20260317-dtrinity-dlend,dTRINITY dLEND,2026-03-17,257000,0,no_voluntary_return_found,1,unknown
+20260318-neutrl,Neutrl,2026-03-18,0,0,unknown_not_checked,1,unknown
+x-20260320-march-20-2026-theft,March 20 2026 Theft,2026-03-20,1062067,0,unknown_not_checked,0,dprk_firm_attributed
+20260321-resolv-usr,Resolv USR,2026-03-21,24500000,0,recovered_unquantified,1,unknown
+20260322-cyrus-finance,Cyrus Finance,2026-03-22,5000000,0,unknown_not_checked,1,unknown
+20260323-bce,BCE,2026-03-23,679000,0,unknown_not_checked,1,unknown
+20260323-bce-usdt-liquidity-pool,BCE-USDT liquidity pool,2026-03-23,679000,0,unknown_not_checked,1,unknown
+20260323-bitcoin-depot,Bitcoin Depot,2026-03-23,3665000,0,unknown_not_checked,1,unknown
+20260324-udonfi-lending,UdonFi Lending,2026-03-24,0,0,unknown_not_checked,1,unknown
+20260326-tur-staking,TUR Staking,2026-03-26,133000,0,unknown_not_checked,1,unknown
+20260326-unknown-stake-contract,Unknown Stake Contract,2026-03-26,133000,0,no_voluntary_return_found,1,unknown
+20260328-goonfi,GoonFi,2026-03-28,254000,0,unknown_not_checked,1,unknown
+20260328-vtswaphook,VTSwapHook,2026-03-28,0,0,unknown_not_checked,1,unknown
+20260331-lml-usdt-staking-protocol,LML/USDT staking protocol,2026-03-31,950000,0,unknown_not_checked,1,unknown
+20260331-whalebit,WhaleBit,2026-03-31,10500,0,unknown_not_checked,1,unknown
+20260401-drift-trade,Drift Trade,2026-04-01,295000000,3245000,recovered_documented,1,dprk_firm_attributed
+20260403-silo-v2,Silo V2,2026-04-03,359000,0,unknown_not_checked,1,unknown
+20260404-bsc-tmm-usdt,BSC TMM/USDT,2026-04-04,1665000,0,unknown_not_checked,1,unknown
+20260405-denaria-vamm,Denaria vAMM,2026-04-05,165618,0,unknown_not_checked,1,unknown
+x-20260406-zignaly,Zignaly,2026-04-06,3106135,0,unknown_not_checked,0,dprk_firm_attributed
+20260407-squidmulticall,SquidMulticall,2026-04-07,517000,0,unknown_not_checked,1,unknown
+20260409-aethir,Aethir,2026-04-09,400000,0,unknown_not_checked,1,unknown
+x-20260409-april-9-2026-theft,April 9 2026 Theft,2026-04-09,5914982,0,unknown_not_checked,0,dprk_firm_attributed
+20260412-hyperbridge,Hyperbridge,2026-04-12,2500000,0,no_voluntary_return_found,1,unknown
+20260412-subquery-network,SubQuery Network,2026-04-12,134000,0,unknown_not_checked,1,unknown
+20260413-dango,Dango,2026-04-13,1900000,410400,recovered_documented,1,unknown
+20260413-mona,MONA,2026-04-13,60950,0,unknown_not_checked,1,unknown
+20260414-cow-swap,CoW Swap,2026-04-14,1200000,0,no_voluntary_return_found,1,unknown
+20260414-zerion-wallet,Zerion Wallet,2026-04-14,100000,0,no_voluntary_return_found,1,unknown
+20260416-grinex,Grinex,2026-04-16,13740000,0,unknown_not_checked,1,unknown
+20260416-rhea-lend,Rhea Lend,2026-04-16,18400000,11224000,recovered_documented,1,unknown
+20260418-kelp,Kelp,2026-04-18,293000000,71199000,recovered_documented,1,dprk_firm_attributed
+20260419-custom-savax-rebalancer,Custom sAVAX Rebalancer,2026-04-19,64000,64000,recovered_documented,1,unknown
+20260420-juicebox-v3,Juicebox V3,2026-04-20,52000,0,unknown_not_checked,1,unknown
+20260420-thetanuts-finance,Thetanuts Finance,2026-04-20,50000,0,unknown_not_checked,1,unknown
+20260420-transit-finance,Transit Finance,2026-04-20,257800,0,unknown_not_checked,1,unknown
+20260421-volo-vault,Volo Vault,2026-04-21,3500000,0,no_voluntary_return_found,1,unknown
+20260422-kipseli,Kipseli,2026-04-22,72350,64247,recovered_documented,1,unknown
+x-20260423-apr-23-2026-theft,Apr 23 2026 Theft,2026-04-23,1950000,0,unknown_not_checked,0,dprk_firm_attributed
+20260423-giddy,Giddy,2026-04-23,1300000,0,unknown_not_checked,1,unknown
+20260425-purrlend,Purrlend,2026-04-25,1500000,0,unknown_not_checked,1,unknown
+20260426-litecoin,Litecoin,2026-04-26,0,0,unknown_not_checked,1,unknown
+20260426-scallop-lend,Scallop Lend,2026-04-26,142000,0,unknown_not_checked,1,unknown
+20260427-singularity-finance,Singularity Finance,2026-04-27,413000,0,unknown_not_checked,1,unknown
+20260427-zetachain,ZetaChain,2026-04-27,333868,0,unknown_not_checked,1,unknown
+20260428-judao,JUDAO,2026-04-28,228000,0,no_voluntary_return_found,1,unknown
+20260428-quant,Quant,2026-04-28,138000,0,no_voluntary_return_found,1,unknown
+20260428-yieldcore-3rd-deal,YieldCore-3rd-deal,2026-04-28,398764,0,unknown_not_checked,1,unknown
+20260429-aftermath-perps,Aftermath Perps,2026-04-29,1140000,0,unknown_not_checked,1,unknown
+20260429-sweat-foundation,Sweat Foundation,2026-04-29,3500000,0,no_voluntary_return_found,1,unknown
+20260429-syndicate,Syndicate,2026-04-29,380000,0,no_voluntary_return_found,1,unknown
+20260430-wasabi-perps,Wasabi Perps,2026-04-30,5500000,0,unknown_not_checked,1,unknown
+20260501-bisq,Bisq,2026-05-01,550000,0,unknown_not_checked,1,unknown
+20260501-sharwa-finance,Sharwa.Finance,2026-05-01,32850,0,unknown_not_checked,1,unknown
+20260504-smartcredit,SmartCredit,2026-05-04,72000,0,unknown_not_checked,1,unknown
+20260504-squidroutermodule,SquidRouterModule,2026-05-04,3200000,0,unknown_not_checked,1,unknown
+20260505-ekubo,Ekubo,2026-05-05,1400000,0,unknown_not_checked,1,unknown
+x-20260505-may-1-2026-theft,May 1 2026 Theft,2026-05-05,41297094,0,unknown_not_checked,0,dprk_firm_attributed
+x-20260505-may-5-2026-theft,May 5 2026 Theft,2026-05-05,16219375,0,unknown_not_checked,0,dprk_firm_attributed
+20260507-trustedvolumes,TrustedVolumes,2026-05-07,6700000,2003300,recovered_documented,1,unknown
+20260510-renegade,Renegade,2026-05-10,209000,189981,recovered_documented,1,unknown
+20260511-huma,Huma,2026-05-11,101400,0,no_voluntary_return_found,1,unknown
+20260511-ink-finance,INK Finance,2026-05-11,140000,0,unknown_not_checked,1,unknown
+20260511-tac-protocol,TAC Protocol,2026-05-11,2854486,2569037,recovered_documented,1,unknown
+20260512-aurellion,Aurellion,2026-05-12,456442,0,no_voluntary_return_found,1,unknown
+20260512-boosthook,BoostHook,2026-05-12,187000,0,unknown_not_checked,1,unknown
+20260512-iexcbp,IEXCBP,2026-05-12,97000,0,unknown_not_checked,1,unknown
+20260512-sq-protocol,SQ Protocol,2026-05-12,346137,0,unknown_not_checked,1,unknown
+20260513-shapeshift-fox-colony,ShapeShift FOX Colony,2026-05-13,132700,0,no_voluntary_return_found,1,unknown
+20260513-transit-finance,Transit Finance,2026-05-13,1880000,0,unknown_not_checked,1,unknown
+20260515-thorchain-dex,THORChain DEX,2026-05-15,10700000,0,no_voluntary_return_found,1,unknown
+20260516-adshares,Adshares,2026-05-16,628000,0,unknown_not_checked,1,unknown
+20260517-metasea,MetaSea,2026-05-17,110000,0,unknown_not_checked,1,unknown
+20260517-sea-token,SEA Token,2026-05-17,153000,0,unknown_not_checked,1,unknown
+20260517-verus-ethereum-bridge,Verus-Ethereum Bridge,2026-05-17,11500000,8498500,recovered_documented,1,unknown
+20260518-echo-bridge,Echo Bridge,2026-05-18,821000,0,unknown_not_checked,1,unknown
+20260519-bankr,Bankr,2026-05-19,170000,136000,recovered_documented,1,unknown
+20260519-elevatefi,ElevateFi,2026-05-19,16000,0,unknown_not_checked,1,unknown
+20260519-hermesvault,HermesVault,2026-05-19,30000,0,unknown_not_checked,1,unknown
+20260520-butter-bridge,Butter Bridge,2026-05-20,180000,0,unknown_not_checked,1,unknown
+20260520-map-protocol,MAP Protocol,2026-05-20,110000,0,unknown_not_checked,1,unknown
+20260520-retoswap,RetoSwap,2026-05-20,2700000,0,no_voluntary_return_found,1,unknown
+20260522-polymarket,Polymarket,2026-05-22,700000,163800,recovered_documented,1,unknown
+20260523-mure,Mure,2026-05-23,11700,0,unknown_not_checked,1,unknown
+20260523-stablr,StablR,2026-05-23,2800000,0,unknown_not_checked,1,dprk_firm_attributed
+20260524-fractal-protocol,Fractal Protocol,2026-05-24,13700,0,unknown_not_checked,1,unknown
+20260525-bitmor,Bitmor,2026-05-25,6000,0,unknown_not_checked,1,unknown
+20260525-new-market-trading,New Market Trading,2026-05-25,3980000,0,unknown_not_checked,1,unknown
+20260525-third-party-gnosis-safe-module-squidrout,Third-party Gnosis Safe Module (SquidRouterModule),2026-05-25,3200000,0,unknown_not_checked,1,unknown
+20260525-wusd-fi-glove,WUSD.fi/Glove,2026-05-25,200000,0,unknown_not_checked,1,unknown
+20260526-skp,SKP,2026-05-26,212000,0,unknown_not_checked,1,unknown
+20260527-superfortune-ai,SUPERFORTUNE AI,2026-05-27,15180000,0,no_public_record_found,1,unknown
+20260527-stake-dao-yield,Stake DAO Yield,2026-05-27,91000,0,unknown_not_checked,1,unknown
+20260528-dxsale,DxSale,2026-05-28,7300000,0,unknown_not_checked,1,unknown
+20260528-ontr,ONTR,2026-05-28,98200,0,unknown_not_checked,1,unknown
+20260530-afi-protocol,AFI Protocol,2026-05-30,480000,0,unknown_not_checked,1,unknown
+20260530-alephium-bridge,Alephium Bridge,2026-05-30,815000,0,unknown_not_checked,1,unknown
+20260530-gravity-bridge,Gravity Bridge,2026-05-30,5400000,0,no_voluntary_return_found,1,unknown
+20260531-aros,AROS,2026-05-31,295000,0,unknown_not_checked,1,unknown
+20260531-fluid-lending,Fluid Lending,2026-05-31,215000,0,unknown_not_checked,1,unknown
+20260601-gnosis-pay,Gnosis Pay,2026-06-01,1500000,0,unknown_not_checked,1,unknown
+x-20260601-korporatio,Korporatio,2026-06-01,550000,0,unknown_not_checked,0,dprk_firm_attributed
+20260601-tsr,TSR,2026-06-01,2500000,0,no_voluntary_return_found,1,unknown
+20260601-tesseradao,TesseraDAO,2026-06-01,2400000,0,no_voluntary_return_found,1,unknown
+20260603-atm,ATM,2026-06-03,243000,0,no_voluntary_return_found,1,unknown
+20260603-gpu-net,GPU.NET,2026-06-03,10600,0,unknown_not_checked,1,unknown
+20260607-ambient,Ambient,2026-06-07,110600,0,unknown_not_checked,1,unknown
+20260607-syscoin-bridge,Syscoin Bridge,2026-06-07,10000000,0,unknown_not_checked,1,unknown
+20260608-flooring-protocol,Flooring Protocol,2026-06-08,500000,0,no_voluntary_return_found,1,unknown
+20260608-humanity,Humanity,2026-06-08,32000000,0,claimed_unverified,1,dprk_firm_attributed
+20260609-asterix,Asterix,2026-06-09,40000,0,unknown_not_checked,1,unknown
+20260609-haedal-vault,Haedal Vault,2026-06-09,915179,0,unknown_not_checked,1,unknown
+20260609-novabox,NovaBox,2026-06-09,107000,0,unknown_not_checked,1,unknown
+20260609-token-of-power,Token of Power,2026-06-09,1580000,0,unknown_not_checked,1,unknown
+20260610-axelar-secret-ibc-bridge,Axelar Secret IBC Bridge,2026-06-10,4670000,0,unknown_not_checked,1,unknown
+20260610-raydium-amm,Raydium AMM,2026-06-10,1340000,0,unknown_not_checked,1,unknown
+20260614-aztec-connect,Aztec Connect,2026-06-14,2100000,0,no_voluntary_return_found,1,unknown
+20260615-thetanuts-finance,Thetanuts Finance,2026-06-15,105472,105472,recovered_documented,1,unknown
+20260616-retoswap,RetoSwap,2026-06-16,2700000,0,no_voluntary_return_found,1,unknown
+20260617-aztec-bridge,Aztec Bridge,2026-06-17,2000000,0,unknown_not_checked,1,unknown
+20260617-dip,DIP,2026-06-17,111000,0,unknown_not_checked,1,unknown
+20260617-little-boy-plus,Little Boy Plus,2026-06-17,367000,0,unknown_not_checked,1,unknown
+20260619-jb,JB,2026-06-19,50000,0,unknown_not_checked,1,unknown
+20260619-namada-shielded-pools,Namada Shielded Pools,2026-06-19,600000,0,unknown_not_checked,1,unknown
+20260619-secret-network,Secret Network,2026-06-19,4670000,0,no_voluntary_return_found,1,unknown
+20260619-myswap-cl,mySwap CL,2026-06-19,305000,0,unknown_not_checked,1,unknown
+20260620-jaredfromsubway-mev-bot,JaredFromSubway MEV Bot,2026-06-20,7500000,0,unknown_not_checked,1,unknown
+20260620-labubu-olpc,LABUBU/OLPC,2026-06-20,1100000,0,unknown_not_checked,1,unknown
+20260621-quicksilver-zone,Quicksilver Zone,2026-06-21,3500,0,unknown_not_checked,1,unknown
+20260621-taiko-bridge,Taiko Bridge,2026-06-21,1700000,0,no_recovery_in_sources_checked,1,unknown
+20260623-royal-io,Royal.io,2026-06-23,263000,0,unknown_not_checked,1,unknown
+20260623-secondfi,SecondFi,2026-06-23,2400000,0,unknown_not_checked,1,unknown
+20260624-dlmc,DLMC,2026-06-24,222600,0,unknown_not_checked,1,unknown
+20260625-lixir-finance,Lixir Finance,2026-06-25,12300,0,unknown_not_checked,1,unknown
+20260625-ocean-protocol,Ocean Protocol,2026-06-25,127861,0,unknown_not_checked,1,unknown
+20260625-polymarket-international,Polymarket International,2026-06-25,3000000,0,unknown_not_checked,1,unknown
+20260628-aidc,AIDC,2026-06-28,121000,0,unknown_not_checked,1,unknown
+20260630-edel,Edel,2026-06-30,403000,0,unknown_not_checked,1,unknown
+20260702-hinkal,Hinkal,2026-07-02,820000,0,unknown_not_checked,1,unknown
+20260705-lazy-summer-protocol,Lazy Summer Protocol,2026-07-05,6040000,0,unknown_not_checked,1,unknown
+20260706-bonkdao,BonkDAO,2026-07-06,20000000,0,claimed_unverified,1,unknown
+20260708-bfb,BFB,2026-07-08,197800,0,unknown_not_checked,1,unknown
+20260711-bluemove-dex,BlueMove DEX,2026-07-11,529000,0,unknown_not_checked,1,unknown
+20260711-bonzo-lend,Bonzo Lend,2026-07-11,9050000,0,unknown_not_checked,1,unknown
+20260712-phx,PHX,2026-07-12,89500,0,unknown_not_checked,1,unknown
+20260713-chi-protocol,Chi Protocol,2026-07-13,8500,0,unknown_not_checked,1,unknown
+20260713-lumi-finance,Lumi Finance,2026-07-13,270000,0,no_voluntary_return_found,1,unknown
+x-20260713-oro,Oro,2026-07-13,3100000,0,unknown_not_checked,0,dprk_firm_attributed
+20260714-barnbridge,BarnBridge,2026-07-14,776000,0,unknown_not_checked,1,unknown
+20260714-drips-network,Drips Network,2026-07-14,24883,0,unknown_not_checked,1,unknown
+20260715-cascade-liquidity-strategy,Cascade Liquidity Strategy,2026-07-15,1340000,0,unknown_not_checked,1,unknown
+20260715-ostium,Ostium,2026-07-15,23750000,0,no_public_record_found,1,unknown
+20260715-sonic-icp,Sonic ICP,2026-07-15,276000,0,unknown_not_checked,1,unknown
+20260715-teleswap,TeleSwap,2026-07-15,735000,0,unknown_not_checked,1,unknown
+20260716-crowdringcircle,CrowdRingCircle,2026-07-16,209100,0,unknown_not_checked,1,unknown
+20260716-defituna-lending,DefiTuna Lending,2026-07-16,580000,0,no_voluntary_return_found,1,unknown
+20260717-across,Across,2026-07-17,4500000,625500,recovered_documented,1,unknown
+20260717-flycow,FlyCow,2026-07-17,65300,0,unknown_not_checked,1,unknown
+20260719-allbridge-core,Allbridge Core,2026-07-19,1650000,0,unknown_not_checked,1,unknown
+20260721-42dao,42DAO,2026-07-21,912000,0,unknown_not_checked,1,unknown
+20260721-flashtrade,FlashTrade,2026-07-21,98000,0,unknown_not_checked,1,unknown
+20260721-wanchain,Wanchain,2026-07-21,10000000,0,recovered_documented,1,unknown
+20260722-afx-bridge,AFX Bridge,2026-07-22,24150000,0,no_public_record_found,1,dprk_firm_attributed
+20260722-verus-ethereum-bridge,Verus-Ethereum Bridge,2026-07-22,7530000,0,unknown_not_checked,1,unknown
+20260722-zilliqa,Zilliqa,2026-07-22,1640000,0,unknown_not_checked,1,unknown
+20260723-lien,Lien,2026-07-23,542000,0,unknown_not_checked,1,unknown
+20260723-solido-cash,Solido Cash,2026-07-23,900000,0,unknown_not_checked,1,unknown
+20260724-triple-a,Triple-A,2026-07-24,9700000,0,unknown_not_checked,1,unknown
+20260725-bankr,Bankr,2026-07-25,479885,0,unknown_not_checked,1,unknown
+20260725-projekt,Projekt,2026-07-25,560000,0,unknown_not_checked,1,unknown
+20260726-chainconnect,ChainConnect,2026-07-26,650000,0,unknown_not_checked,1,unknown
+20260726-garden,Garden,2026-07-26,450000,0,unknown_not_checked,1,unknown
+20260726-wemix-fi-lend,WEMIX.FI Lend,2026-07-26,737000,0,unknown_not_checked,1,unknown
+20260728-crypto-dao,Crypto DAO,2026-07-28,8200000,0,unknown_not_checked,1,unknown
+20260728-lula,LULA,2026-07-28,578000,0,unknown_not_checked,1,unknown
+20260730-set-protocol,Set Protocol,2026-07-30,9600,0,unknown_not_checked,1,unknown
+20260730-swan-treasury,Swan Treasury,2026-07-30,625000,0,unknown_not_checked,1,unknown
+20260731-coldcard,COLDCARD,2026-07-31,116000000,4524000,recovered_documented,1,unknown
+20260802-loopsdao,LOOPSDAO,2026-08-02,693500,0,unknown_not_checked,1,unknown
+20260802-moke,MOKE,2026-08-02,907000,0,unknown_not_checked,1,unknown
+20260803-risex,RISEx,2026-08-03,673012,0,no_voluntary_return_found,1,unknown
+20260805-kite-foundation,KITE Foundation,2026-08-05,13340000,0,unknown_not_checked,1,unknown
+20260805-unistreets,Unistreets,2026-08-05,17750,0,unknown_not_checked,1,unknown
+20260806-hyperliquid-malaysia,Hyperliquid Malaysia,2026-08-06,0,0,unknown_not_checked,1,unknown
+20260806-panther-protocol,Panther Protocol,2026-08-06,7578,0,unknown_not_checked,1,unknown
+20260806-rrwallet,RRWallet,2026-08-06,2000000,0,unknown_not_checked,1,unknown
+20260807-ravencoin,Ravencoin,2026-08-07,0,0,unknown_not_checked,1,unknown
+20260808-atomic-green,Atomic Green,2026-08-08,29984,0,unknown_not_checked,1,unknown
+20260808-oraichain,Oraichain,2026-08-08,1000000,0,unknown_not_checked,1,unknown
+20260809-coinsbuy,Coinsbuy,2026-08-09,7900000,0,recovered_documented,1,unknown
+20260809-coreum-bridge,Coreum Bridge,2026-08-09,200000,0,unknown_not_checked,1,unknown
+20260809-usm,USM,2026-08-09,136000,0,unknown_not_checked,1,unknown
+20260811-harmony-bridge,Harmony Bridge,2026-08-11,3200000,0,unknown_not_checked,1,unknown
+20260814-bodega-market,Bodega Market,2026-08-14,3600,0,unknown_not_checked,1,unknown
+20260815-fox-market,Fox Market,2026-08-15,120000,0,unknown_not_checked,1,unknown
+20260815-foxmarket,FoxMarket,2026-08-15,118700,0,unknown_not_checked,1,unknown
+20260818-maya-protocol,Maya Protocol,2026-08-18,1700000,0,unknown_not_checked,1,unknown
+20260819-allbridge,Allbridge,2026-08-19,191000,0,unknown_not_checked,1,unknown
+20260819-bouncebit,BounceBit,2026-08-19,3000000,0,unknown_not_checked,1,unknown
+20260821-mantra-chain,MANTRA Chain,2026-08-21,0,0,unknown_not_checked,1,unknown
+20260822-kiichain,KiiChain,2026-08-22,9700000,0,unknown_not_checked,1,unknown
+20260822-tac,TAC,2026-08-22,7500000,0,unknown_not_checked,1,unknown
+20260822-the-sandbox,The Sandbox,2026-08-22,675000,0,unknown_not_checked,1,unknown
+20260823-arrakis-v1,Arrakis V1,2026-08-23,7100,0,unknown_not_checked,1,unknown
+20260823-surf-lending,Surf Lending,2026-08-23,0,0,unknown_not_checked,1,unknown
+20260823-termfinance-vaults,TermFinance Vaults,2026-08-23,8500000,0,unknown_not_checked,1,unknown
+20260823-warp-green,warp.green,2026-08-23,93000,0,unknown_not_checked,1,unknown
+20260824-nesa,Nesa,2026-08-24,50000000,0,no_public_record_found,1,unknown
+20260824-pacaswap-dex,PacaSwap DEX,2026-08-24,90750,0,unknown_not_checked,1,unknown
+20260825-cometdex,CometDEX,2026-08-25,717000,0,unknown_not_checked,1,unknown
+20260825-enjin,Enjin,2026-08-25,162000,0,unknown_not_checked,1,unknown
+20260825-fh-token,FH Token,2026-08-25,20000,0,unknown_not_checked,1,unknown
+20260827-ccc,CCC,2026-08-27,117000,0,unknown_not_checked,1,unknown
+20260827-cashcowcoin,CashCowCoin,2026-08-27,117400,0,unknown_not_checked,1,unknown
+20260827-moonwell-lending,Moonwell Lending,2026-08-27,8700000,0,unknown_not_checked,1,unknown
+20260828-ajna-v2,Ajna V2,2026-08-28,775400,0,unknown_not_checked,1,unknown
+20260828-avici,Avici,2026-08-28,500859,0,unknown_not_checked,1,unknown
+20260828-fogo-foundation,Fogo Foundation,2026-08-28,3000000,0,unknown_not_checked,1,unknown
+20260828-virtue,Virtue,2026-08-28,894500,0,unknown_not_checked,1,unknown
+20260829-full-sail,Full Sail,2026-08-29,0,0,unknown_not_checked,1,unknown
+20260829-permapod,Permapod,2026-08-29,0,0,unknown_not_checked,1,unknown
+20260830-balancer-v1,Balancer V1,2026-08-30,234000,0,unknown_not_checked,1,unknown
+20260830-tectonic,Tectonic,2026-08-30,124470000,111151710,recovered_documented,1,unknown
+20260830-weft-v2,Weft V2,2026-08-30,47200,0,unknown_not_checked,1,unknown
+20260831-ankr,Ankr,2026-08-31,410000,0,unknown_not_checked,1,unknown
+20260831-aquifer,Aquifer,2026-08-31,2469729,0,unknown_not_checked,1,unknown
+20260831-float-protocol,Float Protocol,2026-08-31,28000,0,unknown_not_checked,1,unknown
+20260831-radix,Radix,2026-08-31,1249946,0,unknown_not_checked,1,unknown
+20260903-xrph-wallet,XRPH Wallet,2026-09-03,452000,0,unknown_not_checked,1,unknown
+20260904-notional-v2,Notional V2,2026-09-04,1727782,0,unknown_not_checked,1,unknown
+20260905-dream-health-chain,Dream Health Chain,2026-09-05,71800,0,unknown_not_checked,1,unknown
+20260905-reddio-redsonic,Reddio RedSonic,2026-09-05,22800,0,unknown_not_checked,1,unknown
+20260905-rocket-perp,Rocket Perp,2026-09-05,287666,287666,recovered_documented,1,unknown
+20260905-secured-finance-lending,Secured Finance Lending,2026-09-05,104000,0,unknown_not_checked,1,unknown
+20260906-liquid-network,Liquid Network,2026-09-06,320000000,266560000,recovered_documented,1,unknown
+20260907-cozy-v2,Cozy V2,2026-09-07,163326,0,unknown_not_checked,1,unknown
+20260908-wealthmanagementv2,WealthManagementV2,2026-09-08,26414,0,unknown_not_checked,1,unknown
+20260909-amnext,Amnext,2026-09-09,116100,0,unknown_not_checked,1,unknown
+20260909-beatxswap,BeatXswap,2026-09-09,77512,0,unknown_not_checked,1,unknown
+20260909-nomic,Nomic,2026-09-09,3150000,0,recovered_documented,1,unknown
+20260909-zentra-finance,Zentra Finance,2026-09-09,140030,0,unknown_not_checked,1,unknown
+20260910-dominion,Dominion,2026-09-10,0,0,unknown_not_checked,1,unknown
+20260910-symbiosis,Symbiosis,2026-09-10,336000,0,unknown_not_checked,1,unknown
+20260911-ether-fi-liquid,ether.fi Liquid,2026-09-11,43260,0,unknown_not_checked,1,unknown
+20260912-chainflip-amm,Chainflip AMM,2026-09-12,736442,0,unknown_not_checked,1,unknown
+20260914-long-bridge,Long Bridge,2026-09-14,118000,0,unknown_not_checked,1,unknown
+20260915-bonfire,Bonfire,2026-09-15,47400,0,unknown_not_checked,1,unknown
+20260915-unknown-gnosis-safe-wallet,Unknown Gnosis Safe Wallet,2026-09-15,7730000,0,unknown_not_checked,1,unknown
+20260916-flamincome,Flamincome,2026-09-16,595000,0,unknown_not_checked,1,unknown
+20260916-nimiq,Nimiq,2026-09-16,50400,0,unknown_not_checked,1,unknown
+20260916-startale,Startale,2026-09-16,2876,0,unknown_not_checked,1,unknown
+20260917-nostra-money-market,Nostra Money Market,2026-09-17,3500000,0,unknown_not_checked,1,unknown
+20260919-fetch-ai,Fetch.ai,2026-09-19,1530000,0,unknown_not_checked,1,unknown
+20260919-multiversx,MultiversX,2026-09-19,0,0,unknown_not_checked,1,unknown
+20260919-nunet,NuNet,2026-09-19,462730,0,unknown_not_checked,1,unknown
+20260921-doingud,DoinGud,2026-09-21,35486,0,unknown_not_checked,1,unknown
+20260921-rwc-token,RWC Token,2026-09-21,109461,0,unknown_not_checked,1,unknown
+20260921-the-internet-token,The Internet Token,2026-09-21,16380,0,unknown_not_checked,1,unknown
+20260922-astroport,Astroport,2026-09-22,4900000,0,unknown_not_checked,1,unknown
+20260922-drop,Drop,2026-09-22,4400000,0,unknown_not_checked,1,unknown
+20260923-meter,Meter,2026-09-23,0,0,unknown_not_checked,1,unknown
+20260924-bitget,Bitget,2026-09-24,387000000,1161000,recovered_documented,1,dprk_firm_attributed
+20260924-duelbits,Duelbits,2026-09-24,7000000,0,unknown_not_checked,1,unknown
+20260924-limit-break-payment-processor,Limit Break Payment Processor,2026-09-24,1800000,0,unknown_not_checked,1,unknown
+20260924-payy-network,Payy Network,2026-09-24,1828589,0,unknown_not_checked,1,unknown
+20260925-demex-perp,Demex Perp,2026-09-25,191929,0,unknown_not_checked,1,unknown
+20260927-fake-giwa-bridge,Fake GIWA Bridge,2026-09-27,2080000,0,unknown_not_checked,1,unknown
+20260930-skydao,SKYDAO,2026-09-30,183483,0,unknown_not_checked,1,unknown
+20261001-flashloopadapter,FlashLoopAdapter,2026-10-01,305000,0,unknown_not_checked,1,unknown
+20261001-near-intents,NEAR Intents,2026-10-01,3800000,0,unknown_not_checked,1,unknown
+20261002-goldpesa,GoldPesa,2026-10-02,114900,0,unknown_not_checked,1,unknown
+20261006-makerdao-eth-a-liquidation-keeper-bot,MakerDAO ETH-A Liquidation Keeper Bot,2026-10-06,538000,0,unknown_not_checked,1,unknown
+20261006-set-protocol,Set Protocol,2026-10-06,21873,0,unknown_not_checked,1,unknown
+20261007-79th-vault,79th Vault,2026-10-07,12500000,0,unknown_not_checked,1,unknown
+20261007-locus-finance,Locus Finance,2026-10-07,18000,0,unknown_not_checked,1,unknown
+20261008-bitbay,BitBay,2026-10-08,14838,0,unknown_not_checked,1,unknown
+20261008-ethervista,Ethervista,2026-10-08,18600,0,unknown_not_checked,1,unknown
+20261009-ledger-supply-chain,Ledger (Supply Chain),2026-10-09,93000000,10044000,recovered_documented,0,unknown
+20261010-papertrade,Papertrade,2026-10-10,1280000,0,unknown_not_checked,1,unknown
+20261013-gamdom,Gamdom,2026-10-13,4208000,0,unknown_not_checked,1,unknown
+20261014-uncx-network-v2,UNCX Network V2,2026-10-14,86000,0,unknown_not_checked,1,unknown
+20261016-affluent,Affluent,2026-10-16,1053000,0,unknown_not_checked,1,unknown
+20261016-pirate-chain,Pirate Chain,2026-10-16,0,0,unknown_not_checked,1,unknown
+20261017-qubic,Qubic,2026-10-17,1300000,0,unknown_not_checked,1,unknown
+20261018-coffer,Coffer,2026-10-18,1,0,unknown_not_checked,1,unknown
+20261019-alpscon-ai-trade-hub,AlpsCon AI Trade Hub,2026-10-19,152809,0,unknown_not_checked,1,unknown

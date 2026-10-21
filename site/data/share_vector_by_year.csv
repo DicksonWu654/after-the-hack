@@ -1,0 +1,100 @@
+year,vector,n,loss_usd,pct_of_year_loss,pct_of_year_count
+2016,access-control,1,2000000,1.5,20.0
+2016,oracle/price-manipulation,0,0,0.0,0.0
+2016,other,0,0,0.0,0.0
+2016,private-key/compromised-infra,3,73730000,54.3,60.0
+2016,reentrancy,1,60000000,44.2,20.0
+2016,rug/insider,0,0,0.0,0.0
+2016,smart-contract logic,0,0,0.0,0.0
+2016,social-engineering,0,0,0.0,0.0
+2016,supply-chain,0,0,0.0,0.0
+2017,access-control,1,30000000,21.5,14.3
+2017,oracle/price-manipulation,0,0,0.0,0.0
+2017,other,0,0,0.0,0.0
+2017,private-key/compromised-infra,3,99750010,71.3,42.9
+2017,reentrancy,0,0,0.0,0.0
+2017,rug/insider,0,0,0.0,0.0
+2017,smart-contract logic,0,0,0.0,0.0
+2017,social-engineering,1,1000000,0.7,14.3
+2017,supply-chain,2,9100000,6.5,28.6
+2018,access-control,2,207200000,23.0,7.7
+2018,oracle/price-manipulation,2,600000,0.1,7.7
+2018,other,2,13400000,1.5,7.7
+2018,private-key/compromised-infra,7,659513600,73.1,26.9
+2018,reentrancy,1,38000,0.0,3.8
+2018,rug/insider,0,0,0.0,0.0
+2018,smart-contract logic,12,21160392,2.3,46.2
+2018,social-engineering,0,0,0.0,0.0
+2018,supply-chain,0,0,0.0,0.0
+2019,access-control,2,15150000,7.2,10.0
+2019,oracle/price-manipulation,0,0,0.0,0.0
+2019,other,1,100000,0.0,5.0
+2019,private-key/compromised-infra,14,191159029,90.4,70.0
+2019,reentrancy,0,0,0.0,0.0
+2019,rug/insider,1,4270000,2.0,5.0
+2019,smart-contract logic,2,699500,0.3,10.0
+2019,social-engineering,0,0,0.0,0.0
+2019,supply-chain,0,0,0.0,0.0
+2020,access-control,3,1009885,0.2,5.8
+2020,oracle/price-manipulation,10,67815000,12.1,19.2
+2020,other,3,74500000,13.3,5.8
+2020,private-key/compromised-infra,12,321074000,57.3,23.1
+2020,reentrancy,5,35340000,6.3,9.6
+2020,rug/insider,1,12464316,2.2,1.9
+2020,smart-contract logic,15,46231037,8.2,28.8
+2020,social-engineering,2,371000,0.1,3.8
+2020,supply-chain,1,2000000,0.4,1.9
+2021,access-control,14,157170845,5.9,10.4
+2021,oracle/price-manipulation,19,377387444,14.2,14.2
+2021,other,5,40509013,1.5,3.7
+2021,private-key/compromised-infra,15,691045000,26.0,11.2
+2021,reentrancy,9,86324999,3.2,6.7
+2021,rug/insider,7,143730000,5.4,5.2
+2021,smart-contract logic,56,954220358,35.9,41.8
+2021,social-engineering,6,70050000,2.6,4.5
+2021,supply-chain,3,138800000,5.2,2.2
+2022,access-control,32,56344243,1.6,16.3
+2022,oracle/price-manipulation,30,256795879,7.3,15.3
+2022,other,9,193101004,5.5,4.6
+2022,private-key/compromised-infra,29,935350300,26.4,14.8
+2022,reentrancy,13,107858638,3.0,6.6
+2022,rug/insider,6,20849000,0.6,3.1
+2022,smart-contract logic,52,1326999188,37.5,26.5
+2022,social-engineering,14,635993000,18.0,7.1
+2022,supply-chain,11,7506600,0.2,5.6
+2023,access-control,36,43440381,2.6,15.7
+2023,oracle/price-manipulation,30,50692826,3.1,13.1
+2023,other,10,13671500,0.8,4.4
+2023,private-key/compromised-infra,34,690425498,42.1,14.8
+2023,reentrancy,19,101014018,6.2,8.3
+2023,rug/insider,12,60193000,3.7,5.2
+2023,smart-contract logic,67,394443282,24.0,29.3
+2023,social-engineering,14,176300628,10.7,6.1
+2023,supply-chain,7,110447000,6.7,3.1
+2024,access-control,41,71782992,3.9,17.4
+2024,oracle/price-manipulation,24,64131000,3.5,10.2
+2024,other,8,10262000,0.6,3.4
+2024,private-key/compromised-infra,34,716160300,39.2,14.5
+2024,reentrancy,11,37878264,2.1,4.7
+2024,rug/insider,9,69989400,3.8,3.8
+2024,smart-contract logic,84,214308259,11.7,35.7
+2024,social-engineering,20,638675000,35.0,8.5
+2024,supply-chain,4,3854000,0.2,1.7
+2025,access-control,31,131470613,5.1,18.8
+2025,oracle/price-manipulation,22,40276822,1.6,13.3
+2025,other,6,6560000,0.3,3.6
+2025,private-key/compromised-infra,29,377173693,14.7,17.6
+2025,reentrancy,4,44596700,1.7,2.4
+2025,rug/insider,5,4314600,0.2,3.0
+2025,smart-contract logic,55,465361550,18.1,33.3
+2025,social-engineering,8,58830000,2.3,4.8
+2025,supply-chain,5,1440900000,56.1,3.0
+2026,access-control,51,75176564,3.2,16.6
+2026,oracle/price-manipulation,45,82810646,3.6,14.6
+2026,other,13,54489578,2.3,4.2
+2026,private-key/compromised-infra,36,1027044144,44.1,11.7
+2026,reentrancy,2,23300,0.0,0.6
+2026,rug/insider,1,7300000,0.3,0.3
+2026,smart-contract logic,148,672739644,28.9,48.1
+2026,social-engineering,5,299159885,12.8,1.6
+2026,supply-chain,7,111240000,4.8,2.3

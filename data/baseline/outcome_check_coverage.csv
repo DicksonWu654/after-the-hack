@@ -1,0 +1,5 @@
+scope,n,loss_usd,n_full,loss_full,n_partial,loss_partial,n_none,loss_none,n_recovered_any,recovered_usd,recovered_pct_of_all_loss,checked_(full+partial)_n_recovered,checked_pct_count_recovered,checked_pct_loss_recovered,full_n_recovered,full_pct_count_recovered,full_pct_loss_recovered
+top 150 by loss,150,14105460010,147,14062160010,2,28500000,1,14800000,58,2804395437,19.8816,58,38.9,19.9,58,39.5,19.94
+top 100 by loss,100,13120900010,100,13120900010,0,0,0,0,43,2628319160,20.0315,43,43.0,20.03,43,43.0,20.03
+>= $1M,659,16320109764,147,14062160010,265,1281947122,247,976002632,141,3095140364,18.9652,141,34.2,20.17,58,39.5,19.94
+all headline scope,1377,16516848367,147,14062160010,445,1347810718,785,1106877638,179,3105350612,18.8011,179,30.2,20.15,58,39.5,19.94

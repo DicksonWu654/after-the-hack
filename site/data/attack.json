@@ -1,0 +1,576 @@
+{
+ "built_from": {
+  "canonical_generated": "2026-10-21",
+  "entries": [
+   "K1",
+   "K2",
+   "K3",
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K8",
+   "K9"
+  ]
+ },
+ "sources": [
+  "data/canonical_numbers.json (K1-K9)",
+  "data/attack_contracts.csv",
+  "data/ai_incident_claims.csv",
+  "data/tables/t0b_monthly_counts_2024_2026.csv",
+  "data/tables/t1b_vector_share_pct_dhl_sample.csv",
+  "data/tables/t2c_ethereum_tornado_share_by_era.csv",
+  "data/tables/t3_flash_loan_share_by_era.csv",
+  "data/tables/t4_deploy_to_attack_lag_by_era.csv",
+  "data/tables/t5_frontrun_protection_signals_by_era.csv",
+  "data/tables/t9b_documented_copycat_waves.csv",
+  "hacked.slowmist.io (parsed records)"
+ ],
+ "k1": {
+  "eras": [
+   {
+    "era": "2020-22",
+    "label": "2020 to 2022",
+    "n": 95,
+    "ctor": 0,
+    "ctor_pct": 0.0,
+    "same_or_block": 0,
+    "same_or_block_pct": 0.0,
+    "usd_pct": 0.0,
+    "usd_rows": 71
+   },
+   {
+    "era": "2023",
+    "label": "2023",
+    "n": 190,
+    "ctor": 9,
+    "ctor_pct": 4.7,
+    "same_or_block": 12,
+    "same_or_block_pct": 6.3,
+    "usd_pct": 0.9,
+    "usd_rows": 157
+   },
+   {
+    "era": "2024",
+    "label": "2024",
+    "n": 182,
+    "ctor": 26,
+    "ctor_pct": 14.3,
+    "same_or_block": 28,
+    "same_or_block_pct": 15.4,
+    "usd_pct": 25.1,
+    "usd_rows": 156
+   },
+   {
+    "era": "2025",
+    "label": "2025",
+    "n": 153,
+    "ctor": 62,
+    "ctor_pct": 40.5,
+    "same_or_block": 75,
+    "same_or_block_pct": 49.0,
+    "usd_pct": 8.2,
+    "usd_rows": 129
+   },
+   {
+    "era": "2026",
+    "label": "2026 (to 18 Oct)",
+    "n": 138,
+    "ctor": 47,
+    "ctor_pct": 34.1,
+    "same_or_block": 61,
+    "same_or_block_pct": 44.2,
+    "usd_pct": 10.9,
+    "usd_rows": 106
+   }
+  ],
+  "precision": [
+   24,
+   25
+  ],
+  "fp": "Fortress Loans (2022)"
+ },
+ "k2": {
+  "eras": [
+   {
+    "era": "2020-22",
+    "label": "2020 to 2022",
+    "n": 44,
+    "median_min": 10.3,
+    "zero_pct": 0.0,
+    "strict_pct": 0.0,
+    "n_nonzero": 44,
+    "median_nonzero_min": 10.3
+   },
+   {
+    "era": "2023",
+    "label": "2023",
+    "n": 90,
+    "median_min": 4.2,
+    "zero_pct": 10.0,
+    "strict_pct": 8.9,
+    "n_nonzero": 81,
+    "median_nonzero_min": 5.2
+   },
+   {
+    "era": "2024",
+    "label": "2024",
+    "n": 97,
+    "median_min": 4.2,
+    "zero_pct": 23.7,
+    "strict_pct": 21.6,
+    "n_nonzero": 74,
+    "median_nonzero_min": 10.9
+   },
+   {
+    "era": "2025",
+    "label": "2025",
+    "n": 84,
+    "median_min": 0.0,
+    "zero_pct": 71.4,
+    "strict_pct": 60.7,
+    "n_nonzero": 24,
+    "median_nonzero_min": 185.4
+   },
+   {
+    "era": "2026",
+    "label": "2026 (to 18 Oct)",
+    "n": 75,
+    "median_min": 0.0,
+    "zero_pct": 66.7,
+    "strict_pct": 53.3,
+    "n_nonzero": 25,
+    "median_nonzero_min": 6.0
+   }
+  ]
+ },
+ "k3": {
+  "eras": [
+   "2020 to 2022",
+   "2023",
+   "2024",
+   "2025",
+   "2026 (to 18 Oct)"
+  ],
+  "vectors": [
+   {
+    "key": "oracle_price_manipulation",
+    "label": "Oracle or price manipulation",
+    "pct": [
+     27.4,
+     25.8,
+     15.9,
+     20.3,
+     19.6
+    ]
+   },
+   {
+    "key": "access_control",
+    "label": "Access control",
+    "pct": [
+     9.5,
+     10.5,
+     21.4,
+     20.3,
+     21.7
+    ]
+   },
+   {
+    "key": "business_logic_accounting",
+    "label": "Business logic or accounting",
+    "pct": [
+     24.2,
+     39.5,
+     30.8,
+     39.2,
+     31.2
+    ]
+   },
+   {
+    "key": "reentrancy",
+    "label": "Reentrancy",
+    "pct": [
+     6.3,
+     7.9,
+     7.7,
+     1.3,
+     2.9
+    ]
+   }
+  ],
+  "flash_pct": [
+   61.1,
+   72.1,
+   56.6,
+   51.6,
+   53.6
+  ]
+ },
+ "k4": {
+  "eras": [
+   {
+    "era": "A",
+    "label": "Before the sanctions",
+    "dates": "to 7 Aug 2022",
+    "n": 31,
+    "direct": 11,
+    "hop": 1,
+    "direct_pct": 35.5,
+    "incl_hop_pct": 38.7,
+    "railgun": 0
+   },
+   {
+    "era": "B",
+    "label": "During the sanctions",
+    "dates": "8 Aug 2022 to 20 Mar 2025",
+    "n": 189,
+    "direct": 57,
+    "hop": 14,
+    "direct_pct": 30.2,
+    "incl_hop_pct": 37.6,
+    "railgun": 0
+   },
+   {
+    "era": "C",
+    "label": "After the delisting",
+    "dates": "from 21 Mar 2025",
+    "n": 86,
+    "direct": 26,
+    "hop": 3,
+    "direct_pct": 30.2,
+    "incl_hop_pct": 33.7,
+    "railgun": 13
+   }
+  ]
+ },
+ "k5": {
+  "months": [
+   {
+    "ym": "2025-01",
+    "year": 2025,
+    "month": 1,
+    "defillama": 12,
+    "slowmist": 40
+   },
+   {
+    "ym": "2025-02",
+    "year": 2025,
+    "month": 2,
+    "defillama": 11,
+    "slowmist": 16
+   },
+   {
+    "ym": "2025-03",
+    "year": 2025,
+    "month": 3,
+    "defillama": 15,
+    "slowmist": 13
+   },
+   {
+    "ym": "2025-04",
+    "year": 2025,
+    "month": 4,
+    "defillama": 14,
+    "slowmist": 19
+   },
+   {
+    "ym": "2025-05",
+    "year": 2025,
+    "month": 5,
+    "defillama": 10,
+    "slowmist": 15
+   },
+   {
+    "ym": "2025-06",
+    "year": 2025,
+    "month": 6,
+    "defillama": 9,
+    "slowmist": 17
+   },
+   {
+    "ym": "2025-07",
+    "year": 2025,
+    "month": 7,
+    "defillama": 13,
+    "slowmist": 14
+   },
+   {
+    "ym": "2025-08",
+    "year": 2025,
+    "month": 8,
+    "defillama": 10,
+    "slowmist": 9
+   },
+   {
+    "ym": "2025-09",
+    "year": 2025,
+    "month": 9,
+    "defillama": 16,
+    "slowmist": 15
+   },
+   {
+    "ym": "2025-10",
+    "year": 2025,
+    "month": 10,
+    "defillama": 9,
+    "slowmist": 12
+   },
+   {
+    "ym": "2025-11",
+    "year": 2025,
+    "month": 11,
+    "defillama": 14,
+    "slowmist": 15
+   },
+   {
+    "ym": "2025-12",
+    "year": 2025,
+    "month": 12,
+    "defillama": 15,
+    "slowmist": 17
+   },
+   {
+    "ym": "2026-01",
+    "year": 2026,
+    "month": 1,
+    "defillama": 17,
+    "slowmist": 22
+   },
+   {
+    "ym": "2026-02",
+    "year": 2026,
+    "month": 2,
+    "defillama": 9,
+    "slowmist": 13
+   },
+   {
+    "ym": "2026-03",
+    "year": 2026,
+    "month": 3,
+    "defillama": 26,
+    "slowmist": 28
+   },
+   {
+    "ym": "2026-04",
+    "year": 2026,
+    "month": 4,
+    "defillama": 35,
+    "slowmist": 41
+   },
+   {
+    "ym": "2026-05",
+    "year": 2026,
+    "month": 5,
+    "defillama": 45,
+    "slowmist": 41
+   },
+   {
+    "ym": "2026-06",
+    "year": 2026,
+    "month": 6,
+    "defillama": 33,
+    "slowmist": 38
+   },
+   {
+    "ym": "2026-07",
+    "year": 2026,
+    "month": 7,
+    "defillama": 39,
+    "slowmist": 34
+   },
+   {
+    "ym": "2026-08",
+    "year": 2026,
+    "month": 8,
+    "defillama": 48,
+    "slowmist": 37
+   },
+   {
+    "ym": "2026-09",
+    "year": 2026,
+    "month": 9,
+    "defillama": 37,
+    "slowmist": 51
+   }
+  ]
+ },
+ "k9": {
+  "wave": [
+   {
+    "name": "HundredFinance",
+    "date": "2023-04-15",
+    "loss": 7000000.0
+   },
+   {
+    "name": "BaoCommunity",
+    "date": "2023-07-04",
+    "loss": 46000.0
+   },
+   {
+    "name": "WiseLending",
+    "date": "2023-10-13",
+    "loss": 260000.0
+   },
+   {
+    "name": "kTAF",
+    "date": "2023-10-19",
+    "loss": 8000.0
+   },
+   {
+    "name": "OnyxProtocol",
+    "date": "2023-11-01",
+    "loss": 2000000.0
+   },
+   {
+    "name": "Raft_fi",
+    "date": "2023-11-10",
+    "loss": 3200000.0
+   },
+   {
+    "name": "MahaLend",
+    "date": "2023-11-11",
+    "loss": 20000.0
+   },
+   {
+    "name": "MetaLend",
+    "date": "2023-11-25",
+    "loss": 4000.0
+   },
+   {
+    "name": "bZxProtocol",
+    "date": "2023-12-02",
+    "loss": 208000.0
+   },
+   {
+    "name": "ChannelsFinance",
+    "date": "2023-12-30",
+    "loss": 320000.0
+   },
+   {
+    "name": "RadiantCapital",
+    "date": "2024-01-02",
+    "loss": 4500000.0
+   },
+   {
+    "name": "Sonne Finance",
+    "date": "2024-05-14",
+    "loss": 20000000.0
+   }
+  ],
+  "other": [
+   {
+    "label": "Read-only reentrancy",
+    "n": 7,
+    "span": "Oct 2022 to Jul 2023"
+   },
+   {
+    "label": "ERC-2771 forwarder or unchecked multicall",
+    "n": 6,
+    "span": "May 2025 to Sep 2026"
+   }
+  ]
+ },
+ "ai": {
+  "verified_exploits": 0,
+  "claims_n": 28,
+  "grades": {
+   "credible claim": 10,
+   "verified": 12,
+   "speculation": 6
+  },
+  "scans": {
+   "dhl_solidity_files_scanned": 936,
+   "dhl_scan_hits": 1,
+   "attacker_contracts_scanned": 15,
+   "attacker_contracts_with_llm_markers": 0
+  },
+  "capability": [
+   {
+    "title": "SCONE-bench, Anthropic",
+    "body": "Ten models wrote working exploits for 207 of 405 historical contracts (51.1%, best of 8 attempts) in a simulator, worth $550.1M of simulated value.",
+    "when": "1 Dec 2025",
+    "url": "https://www.anthropic.com/research/smart-contracts",
+    "grade": "verified",
+    "id": "K7"
+   },
+   {
+    "title": "A1 agent, Gervais and Zhou",
+    "body": "An agent exploited 63% of 36 real vulnerable contracts, up to $8.59M per exploit. The authors' simulation of historical attacks puts success at 86-89% if run at disclosure and 6-21% a week later.",
+    "when": "Jul 2025",
+    "url": "https://arxiv.org/abs/2507.05558",
+    "grade": "verified",
+    "id": "K7"
+   },
+   {
+    "title": "EVMbench, Paradigm and OpenAI",
+    "body": "Vendor-reported: top models exploited under 20% of critical Code4rena bugs earlier, and GPT-5.3-Codex over 70%.",
+    "when": "18 Feb 2026",
+    "url": "https://www.paradigm.xyz/2026/02/evmbench",
+    "grade": "verified",
+    "id": "K7"
+   }
+  ],
+  "attacker_use": [
+   {
+    "title": "Google GTIG, UNC1069 and Gemini",
+    "body": "A North Korea-linked group used Gemini for crypto research, wallet-data locations and lures, and tried to develop crypto-theft code. Accounts were disabled.",
+    "when": "5 Nov 2025",
+    "url": "https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools",
+    "grade": "verified",
+    "id": "K8"
+   },
+   {
+    "title": "Anthropic, DPRK IT workers",
+    "body": "North Korean operatives used Claude to get and keep remote jobs at US tech firms. The report does not mention crypto theft.",
+    "when": "27 Aug 2025",
+    "url": "https://www.anthropic.com/news/detecting-countering-misuse-aug-2025",
+    "grade": "verified",
+    "id": "K8"
+   },
+   {
+    "title": "Anthropic, September 2026 threat report",
+    "body": "Covers December 2025 to August 2026. Documents AI-assisted exploit development, including automated exploit foundries run by a China-based espionage group against security appliances. It describes no in-the-wild crypto or DeFi exploit.",
+    "when": "10 Sep 2026",
+    "url": "https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf",
+    "grade": "verified",
+    "id": "K8"
+   },
+   {
+    "title": "s1ngularity npm malware",
+    "body": "Malware in a popular build tool ran victims' installed claude, gemini and q command-line tools to hunt for wallet files and secrets.",
+    "when": "26 to 27 Aug 2025",
+    "url": "https://stepsecurity.io/blog/supply-chain-security-alert-popular-nx-build-system-package-compromised-with-data-stealing-malware",
+    "grade": "verified",
+    "id": "K8"
+   },
+   {
+    "title": "Huntress, BlueNoroff deepfake Zoom",
+    "body": "An employee at a cryptocurrency foundation joined a Zoom call with several deepfakes of senior leaders from their own company and external contacts, who pushed a malicious extension.",
+    "when": "18 Jun 2025",
+    "url": "https://www.huntress.com/blog/inside-bluenoroff-web3-intrusion-analysis",
+    "grade": "verified",
+    "id": "K8"
+   }
+  ],
+  "not_counted": [
+   {
+    "title": "TRM Labs via Bloomberg on the April 2026 heists",
+    "body": "Called AI help \"highly likely\" for the two April heists, reported as Drift and Kelp, with no evidence offered. Neither incident involved exploit code: Drift was a six-month social-engineering operation and Kelp a single verifier plus compromised RPC nodes.",
+    "url": "https://cybersecurity-docket.beehiiv.com/p/ai-hacking-threat-pushes-130b-crypto-sector-to-the-brink",
+    "grade": "speculation"
+   },
+   {
+    "title": "Chainalysis on unverified contracts",
+    "body": "Says AI is \"likely accelerating\" attacks on four incidents worth $36.7M but attributes none of them to AI. Headlines that say otherwise overstate it.",
+    "url": "https://www.chainalysis.com/blog/attackers-exploiting-unverified-smart-contracts/",
+    "grade": "speculation"
+   },
+   {
+    "title": "Opinion pieces",
+    "body": "Warnings from an Immunefi executive and a former OpenZeppelin CTO name no incident, transaction or protocol.",
+    "url": "https://letsdatascience.com/news/immunefi-ceo-links-ai-models-to-resurgence-in-defi-hacks-ee19ce13",
+    "grade": "speculation"
+   }
+  ]
+ }
+}

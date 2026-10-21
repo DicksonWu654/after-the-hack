@@ -1,0 +1,13 @@
+stratum,team_reached_out,yes,no,unknown,n,known,share_of_known,lower_bound,upper_bound
+pooled,yes,80,139,82,301,219,0.365,0.266,0.538
+pooled,no,9,247,26,282,256,0.035,0.032,0.124
+pooled,unknown,9,91,395,495,100,0.09,0.018,0.816
+inherited_unverified,yes,0,7,66,73,7,0.0,0.0,0.904
+inherited_unverified,no,0,34,0,34,34,0.0,0.0,0.0
+inherited_unverified,unknown,0,0,1,1,0,,0.0,1.0
+inherited_verified,yes,73,115,7,195,188,0.388,0.374,0.41
+inherited_verified,no,7,102,8,117,109,0.064,0.06,0.128
+inherited_verified,unknown,2,14,13,29,16,0.125,0.069,0.517
+swept,yes,7,17,9,33,24,0.292,0.212,0.485
+swept,no,2,111,18,131,113,0.018,0.015,0.153
+swept,unknown,7,77,381,465,84,0.083,0.015,0.834

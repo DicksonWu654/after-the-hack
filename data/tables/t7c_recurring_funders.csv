@@ -1,0 +1,17 @@
+funder_address,funding_label,funding_source,n
+0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936,Tornado.Cash: 1 ETH,tornado_cash,53
+0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc,Tornado.Cash: 0.1 ETH,tornado_cash,31
+0xac9f360ae85469b27aeddeafc579ef2d052ad405,Railgun RelayAdapt (contract source names Railgun),railgun,13
+0x910cbd523d972eb0a6f4cae4618ad62622b39dbf,Tornado.Cash: 10 ETH,tornado_cash,7
+0xba8da9dcf11b50b03fd5284f164ef5cdef910705,Multichain: Router V6,bridge,4
+0xff1f2b4adb9df6fc8eafecdcbf96a2b351680455,TransparentUpgradeableProxy,other_contract,4
+0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97,Titan Builder,other_labeled,4
+0x5ad095de83693ba063941f2f2c5a0df02383b651,Unwrapper,other_contract,4
+0xb8901acb165ed027e32754e0ffe830802919727f,Hop Protocol: Ethereum Bridge,bridge,3
+0x5c7bcd6e7de5423a257d81b442095a1a6ced35c5,ERC1967Proxy,other_contract,3
+0x4727250679294802377dd6ca6541b8e459077c95,FixedFloat: Hot Wallet,instant_exchange,3
+0x267be1c1d684f78cb4f6a176c4911b741e4ffdc0,Kraken 4,cex,3
+0xe7351fd770a37282b91d153ee690b63579d6dd7f,TransparentUpgradeableProxy,other_contract,3
+0xa160cdab225685da1d56aa342ad8841c3b53f291,Tornado.Cash: 100 ETH,tornado_cash,3
+0x09aea4b2242abc8bb4bb78d537a67a245a7bec64,ERC1967Proxy,other_contract,2
+0x9696f59e4d72e237be84ffd425dcad154bf96976,Binance 18,cex,2

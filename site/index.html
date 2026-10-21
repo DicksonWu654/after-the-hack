@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After the Hack</title>
+<meta name="description" content="What actually happens to stolen crypto: returns, freezes, arrests and North Korea, measured across 1,377 hacks from 2016 to October 2026.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://after-the-hack.shadow654.chatgpt.site/">
+<meta property="og:title" content="After the Hack">
+<meta property="og:description" content="What actually happens to stolen crypto: returns, freezes, arrests and North Korea, measured across 1,377 hacks from 2016 to October 2026.">
+<meta property="og:image" content="https://after-the-hack.shadow654.chatgpt.site/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="After the Hack: a grid of dots, one per hack, with the few that led to an arrest or charge in red.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="After the Hack">
+<meta name="twitter:description" content="What actually happens to stolen crypto: returns, freezes, arrests and North Korea, measured across 1,377 hacks from 2016 to October 2026.">
+<meta name="twitter:image" content="https://after-the-hack.shadow654.chatgpt.site/assets/og-card.png">
+<script>
+  // Apply a saved theme before first paint. Storage can be unavailable; the page works without it.
+  try { var t = localStorage.getItem("ath-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2315212d'/%3E%3Crect x='6' y='13' width='4' height='6' fill='%235b8fe0'/%3E%3Crect x='11' y='13' width='3' height='6' fill='%23bc7f1a'/%3E%3Crect x='15' y='13' width='11' height='6' fill='%23596473'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the story</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">After the Hack</a>
+    <nav aria-label="Sections">
+      <a class="opt" href="#negotiation">Negotiation</a>
+      <a class="opt" href="#recovery">Recovery</a>
+      <a class="opt" href="#consequences">Arrests</a>
+      <a class="opt" href="#dprk">North Korea</a>
+      <a class="opt" href="#attack-anatomy">Attacks</a>
+      <a href="#methods">Data</a>
+      <button class="theme-btn" type="button" id="theme-btn" aria-label="Switch colour theme">Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p class="sr-only" id="kbd-hint">Numbers with a dotted underline open a definition. Press Tab to reach the first number in each paragraph, Left and Right arrow to move between numbers in a paragraph, Enter to open the definition and move into it, and Escape to close it.</p>
+<div class="wrap">
+
+<!-- ================================================================ HERO -->
+<section class="hero" id="top" aria-labelledby="title">
+  <p class="scope">A data study of <span data-n="S1.n|int"></span> crypto hacks and exploits, <span data-n="meta.period|x"></span></p>
+  <h1 id="title">After the Hack</h1>
+  <p class="lead">
+    Since 2016, <span data-n="S1.total_usd|B1"></span> has been stolen in hacks with a published loss.
+    About <span data-n="C1.pct|p0"></span> of it has come back by any route, more than half of that handed back by the attackers themselves.
+    <span data-n="E1.top100_strict|int"></span> of the 100 biggest hacks have led to an arrest or charge for the theft.
+  </p>
+
+  <div class="ledger" role="group" aria-labelledby="ledger-h">
+    <h2 id="ledger-h">Where every stolen dollar ended up, <span data-n="S1.total_usd|B2"></span> in total</h2>
+    <div class="ledger-bar" id="ledger-bar" aria-hidden="true"></div>
+    <div class="ledger-key">
+      <div style="--k: var(--s1)"><b data-n="R2.pct_of_all|p1"></b><span>returned by the attacker or an insider, <span data-n="R2.voluntary_usd|B2"></span></span></div>
+      <div style="--k: var(--s2)"><b data-n="C4.master_pct|p1"></b><span>frozen, seized, halted or rescued, <span data-n="C4.master_usd|B2"></span></span></div>
+      <div style="--k: var(--lost)"><b data-n="d.unrecovered_pct|p1"></b><span>no documented recovery, <span data-n="d.unrecovered_usd|B2"></span></span></div>
+    </div>
+    <p class="ledger-note">USD at the time of each theft; each recovery is capped at its incident's loss. Based on all <span data-n="S1.n|int"></span> headline incidents, including <span data-n="d.unchecked_ge1m|int"></span> hacks of $1M or more not yet searched for an outcome. Pledges by victims or backers to make users whole are tracked separately from recovered funds.</p>
+  </div>
+
+  <ol class="route" aria-label="The story, in order of time after the hack">
+    <li><a href="#scale"><span class="t">The theft</span><span class="h">How much, and how</span></a></li>
+    <li><a href="#negotiation"><span class="t">Hours to days</span><span class="h">The on-chain negotiation</span></a></li>
+    <li><a href="#recovery"><span class="t">Minutes to years</span><span class="h">Who gets money back</span></a></li>
+    <li><a href="#consequences"><span class="t">Months to years</span><span class="h">Arrests and courts</span></a></li>
+    <li><a href="#dprk"><span class="t">Throughout</span><span class="h">North Korea</span></a></li>
+    <li><a href="#attack-anatomy"><span class="t">Before and during the theft</span><span class="h">How attacks are built, and AI</span></a></li>
+    <li><a href="#cases"><span class="t">2025 to 2026</span><span class="h">Recent cases</span></a></li>
+  </ol>
+</section>
+
+<!-- ================================================================ SCALE -->
+<section class="chapter" id="scale" aria-labelledby="scale-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">T 0</span><span class="what">The theft</span></div>
+    <h2 id="scale-h">A few large thefts carry most of the money</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>Our dataset counts <span data-n="S1.n|int"></span> hacks and exploits with a published USD loss between <span data-n="meta.period|x"></span>, worth <span data-n="S1.total_usd|B2"></span> at the time of each theft. It merges public trackers (DeFiLlama, SlowMist, Rekt, DeFiHackLabs and others), so it is a floor for all crypto theft.</p>
+      <p>Losses are lumpy. The median incident is <span data-n="S3.median_usd|usd"></span>, and <span data-n="S3.n_under_1m|int"></span> of the <span data-n="S1.n|int"></span> are under $1M. The 10 largest account for <span data-n="S3.top10_pct|p1"></span> of every dollar; Bybit alone is <span data-n="S3.bybit_pct_of_total|p1"></span>.</p>
+    </div>
+
+    <figure class="fig full" id="fig-annual">
+      <p class="ft">Dollars stolen per year</p>
+      <p class="fs">Headline incidents, USD at the time of the theft. 2026 runs to 21 October. Hover a column for the count and the largest incident.</p>
+      <div class="chart" data-chart="annual"></div>
+      <figcaption>Coverage of small incidents improves after 2020, so dollars compare across years more reliably than counts. Source: <a href="data/annual_totals.csv">annual_totals.csv</a>; definition <a href="#def-S2">S2</a>.</figcaption>
+    </figure>
+
+    <h3>Keys and people lose the most dollars; contract bugs are the most common</h3>
+    <div class="prose">
+      <p>By dollars, compromised private keys and infrastructure lead with <span data-n="V1.pct_dollars.private-key/compromised-infra|p1"></span>, ahead of smart-contract logic bugs at <span data-n="V1.pct_dollars.smart-contract logic|p1"></span>. Add social engineering (<span data-n="V1.pct_dollars.social-engineering|p1"></span>) and supply-chain attacks (<span data-n="V1.pct_dollars.supply-chain|p1"></span>) and operational failures make up <span data-n="V1.operational_share_pct|p1"></span> of all stolen dollars. By count the order flips: contract logic bugs are <span data-n="V1.pct_count.smart-contract logic|p1"></span> of incidents, and the three operational vectors together are <span data-n="d.operational_count_pct|p1"></span>.</p>
+    </div>
+
+    <figure class="fig full" id="fig-vectors">
+      <p class="ft">Share of incidents and share of dollars, by attack vector</p>
+      <p class="fs">All <span data-n="S1.n|int"></span> headline incidents, 2016 to October 2026. Rows sorted by share of dollars.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>People, keys and infrastructure</li>
+        <li><i style="--c: var(--s2)"></i>Code and protocol logic</li>
+        <li><i style="--c: var(--lost)"></i>Other and insider</li>
+      </ul>
+      <div class="chart" data-chart="vectors"></div>
+      <figcaption>Vector is a coarse nine-class taxonomy mapped from DeFiLlama's classification and curated where needed. Source: <a href="data/share_vector_by_year.csv">share_vector_by_year.csv</a>; definition <a href="#def-V1">V1</a>.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>The shift is recent. From 2024 to October 2026, key and infrastructure compromise took <span data-n="V3.pct_2024_2026.private-key/compromised-infra|p1"></span> of dollars, supply chain <span data-n="V3.pct_2024_2026.supply-chain|p1"></span> and social engineering <span data-n="V3.pct_2024_2026.social-engineering|p1"></span>, while contract logic fell to <span data-n="V3.pct_2024_2026.smart-contract logic|p1"></span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ NEGOTIATION -->
+<section class="chapter" id="negotiation" aria-labelledby="neg-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">T + <span data-n="R4.median_days_from_incident|d1"></span> days</span><span class="what">Median time to an attacker's first return</span></div>
+    <h2 id="neg-h">The negotiation happens on chain, in public, and the price is 10%</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>After an exploit, the team often has one way to reach the attacker: a transaction to the attacker's address with a message in its input data. Attackers answer the same way. Below are <span data-n="d.quotes_n|int"></span> of those messages, decoded from chain data and matched against the transaction record. Project messages sit on the left, attacker messages on the right.</p>
+    </div>
+    <div class="full">
+      <div class="thread-key" aria-hidden="true"><span style="--c: var(--s1)">Project side</span><span style="--c: var(--s2)">Attacker side</span></div>
+      <div class="thread" id="thread"></div>
+    </div>
+
+    <h3>10% is the going rate</h3>
+    <div class="prose">
+      <p>Of <span data-n="R3.openings_n|int"></span> opening bounty offers recorded on chain, <span data-n="R3.openings_exactly_10|int"></span> offered exactly 10%, and the median opening was 10% in every year since 2021. Attackers who settled kept a median <span data-n="R3.kept_median_pct|p0"></span> of the loss (<span data-n="R3.kept_n|int"></span> cases; <span data-n="f.kept_offer_exact|x"></span>). The tail runs higher: Verus kept <span data-n="f.verus_kept|x"></span>, Mango <span data-n="f.mango_kept|x"></span>. In <span data-n="R3.recent_sample_n|int"></span> recent negotiated settlements the median attacker kept <span data-n="R3.recent_sample_retained_median_pct|p1"></span>.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Opening bounty offers, by size</p>
+      <p class="fs">Each square is one opening offer from a team to an attacker, as a share of the loss.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>Exactly 10%</li>
+        <li><i style="--c: var(--s2)"></i>More than 10%</li>
+        <li><i style="--c: var(--lost)"></i>Less than 10%</li>
+      </ul>
+      <div class="chart" data-chart="openings"></div>
+      <figcaption>The split above and below 10% comes from the <span data-n="d.openings_table_n|int"></span> openings dated 2020 or later. Source: <a href="#def-R3">R3</a>, on-chain messages paper table <code>terms__opening_pct_by_year</code>.</figcaption>
+    </figure>
+
+    <h3>About <span data-n="R1.paper_rate|in"></span> attackers in large exploits gives money back</h3>
+    <div class="prose">
+      <p>Across <span data-n="R1.paper_frame_n|int"></span> large exploits and key compromises, an estimated <span data-n="R1.paper_rate|fp1"></span> ended with the attacker voluntarily returning funds (<span data-n="R1.paper_returns|int"></span> confirmed returns; <span data-n="R1.paper_known_rate|fp0"></span> among cases with a known outcome). For stolen-key hacks it is rarer: <span data-n="f.key_known_cases|x"></span> known cases.</p>
+      <p>The returned dollars are concentrated. Of <span data-n="S1.total_usd|B2"></span> stolen, <span data-n="R2.voluntary_usd|B2"></span> (<span data-n="R2.pct_of_all|p1"></span>) came back voluntarily, and three cases (Poly Network, Liquid Network, Euler) make up nearly two thirds of it. Without them the voluntary share is <span data-n="R2.pct_ex_top3_numerator|p1"></span>.</p>
+    </div>
+
+    <h3>When money comes back, it comes fast</h3>
+    <div class="prose">
+      <p>Among <span data-n="R4.n_dated|int"></span> dated returns, the median first return arrived <span data-n="R4.median_days_from_incident|d1"></span> days after the hack; <span data-n="R4.within_7d|int"></span> of the <span data-n="R4.n_dated|int"></span> came inside a week, and all <span data-n="R4.n_dated|int"></span> inside 30 days if TrustedVolumes' 15 May transfer counts as its return (<span data-n="R4.within_30d_if_trustedvolumes_july|int"></span> if only its July return does). Counted from the team's first message, the median was <span data-n="R4.median_hours_from_first_message|int"></span> hours (<span data-n="R4.n_from_message|int"></span> cases). These are the larger, better documented returns, so the typical return is probably slower.</p>
+      <p>Five of the <span data-n="R4.n_dated|int"></span> rows rest on thinner evidence and are drawn hollow below. Without them the median is <span data-n="R4.median_days_strict_18|d1"></span> days, with <span data-n="R4.within_7d_strict_18|int"></span> of <span data-n="d.return_strict_n|int"></span> inside a week. Without Shezmu alone, whose reported 80% return is unconfirmed on chain (its first, small return is confirmed), the median is <span data-n="R4.median_days_excl_shezmu|d1"></span> days.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Days from hack to the attacker's first return</p>
+      <p class="fs">Each dot is one dated voluntary return (<span data-n="R4.n_dated|int"></span> cases), measured from the exploit transaction to the first substantive return transaction. Log scale.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>Return, as audited</li>
+        <li><i class="hollow" style="--c: var(--s1)"></i>Flagged: Shezmu, Value DeFi, TrustedVolumes, Makina, Nomad</li>
+      </ul>
+      <div class="chart" data-chart="returns"></div>
+      <figcaption>Source: <a href="data/return_latency_audit.csv">return_latency_audit.csv</a>, every return transaction re-read against block timestamps on 21 Oct 2026; definition <a href="#def-R4">R4</a>. Hover a hollow dot for why it is flagged. Many first returns are partial.</figcaption>
+    </figure>
+
+    <h3>Teams that write get money back more often</h3>
+    <div class="prose">
+      <p>Teams that reached out saw a return in <span data-n="R5.outreach_return_pct|p1"></span> of known cases (<span data-n="d.outreach_yes_returned|int"></span> of <span data-n="d.outreach_yes_known|int"></span>) against <span data-n="R5.no_outreach_return_pct|p1"></span> without outreach (<span data-n="d.outreach_no_returned|int"></span> of <span data-n="d.outreach_no_known|int"></span>). Teams also write to attackers who already look willing, and outreach roughly doubled from 2020 to 2026 while the return rate held at <span data-n="f.returns_band|x"></span>, so the link is an association. Offer size, deadline, legal threat, non-pursuit promise and tone each showed no measurable effect. The strongest correlate is a reply: <span data-n="f.reply_return|x"></span> attackers who replied returned funds, against <span data-n="f.reply_silent|x"></span> who stayed silent.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Return rate with and without team outreach</p>
+      <p class="fs">Known-outcome cases in the frame of large exploits and key compromises.</p>
+      <div class="chart" data-chart="outreach"></div>
+      <figcaption>Source: on-chain messages paper, <code>cond__return_by_outreach</code> (pooled); definition <a href="#def-R5">R5</a>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================================================================ RECOVERY -->
+<section class="chapter" id="recovery" aria-labelledby="rec-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">T + minutes to years</span><span class="what">Freezes in hours, seizures in years</span></div>
+    <h2 id="rec-h">Most recovered money is the attacker's choice; the rest is a race</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>Counting every channel, <span data-n="C1.recovered_usd|B2"></span> of <span data-n="S1.total_usd|B2"></span> has been recovered: <span data-n="C1.pct|p1"></span>. Of the recovered dollars, <span data-n="C3.channels.0.pct|p1"></span> came back from attackers or insiders. Issuer, exchange and protocol freezes recovered <span data-n="C3.channels.1.pct|p1"></span>, law-enforcement seizures and court orders <span data-n="C3.channels.2.pct|p1"></span>, chain halts and validator freezes <span data-n="C3.channels.3.pct|p1"></span>, hard forks and rollbacks <span data-n="C3.channels.4.pct|p1"></span>, and white-hat or MEV rescues <span data-n="C3.channels.5.pct|p1"></span>.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Recovered dollars by channel</p>
+      <p class="fs"><span data-n="C1.recovered_usd|B2"></span> recovered in total. Each incident is assigned a primary channel; mixed cases are split.</p>
+      <div class="chart" data-chart="channels"></div>
+      <figcaption>The <span data-n="C3.channels.0.usd|B2"></span> shown for attacker returns is the same <span data-n="R2.voluntary_usd|B2"></span> returned-funds total used in the ledger and the text. Each incident is assigned wholly to its primary channel. Source: <a href="data/recovery_channel_mix.csv">recovery_channel_mix.csv</a>; definition <a href="#def-C3">C3</a>.</figcaption>
+    </figure>
+    <div class="prose">
+      <p>By count, <span data-n="C2.documented|int"></span> of the <span data-n="C2.n_ge1m|int"></span> hacks of $1M or more (<span data-n="C2.pct|p1"></span>) have a documented recovery. <span data-n="d.unchecked_ge1m|int"></span> of them have not yet been searched for an outcome; among the <span data-n="C2.checked|int"></span> that have, the rate is <span data-n="C2.pct_checked|p1"></span>. Of the 100 biggest hacks, <span data-n="C2.top100.0|int"></span> recovered something, <span data-n="C2.top100.1|p1"></span> of their dollars. Three cases (Poly Network, Liquid Network and KuCoin) are a third of all recovered dollars; without them the any-channel rate is <span data-n="C1.pct_ex_top3|p1"></span>.</p>
+    </div>
+
+    <h3>Minutes decide freezes; years decide courts</h3>
+    <div class="prose">
+      <p>Containment works while funds are still in reach. Cronos detected the attack in <span data-n="f.cronos_minutes|x"></span>, then halted its chain and rolled it back, restoring <span data-n="f.cronos_pct|x"></span>. Chain halts and validator freezes landed a median <span data-n="F1.median_days.chain_intervention|d0"></span> day after the hack, issuer freezes <span data-n="F1.median_days.stablecoin_issuer_freeze|d1"></span> days and exchange freezes <span data-n="F1.median_days.exchange_freeze|d0"></span>. The three counted law-enforcement seizures took <span data-n="f.le_range|x"></span> (median <span data-n="F1.median_days.law_enforcement_seizure|int"></span>); Bitfinex took <span data-n="f.bitfinex_days|x"></span> days and is left out of the median. A freeze also needs something freezable: issuer freezes caught <span data-n="f.issuer_freeze_range|x"></span> of a loss in the counted cases, and Tether froze <span data-n="f.bybit_tether|x"></span> in the <span data-n="M2.loss_usd|B2"></span> Bybit theft after the attackers had swapped into ETH.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">The clock after a hack</p>
+      <p class="fs">Time from the theft to each recovery action, attacker return and first arrest. Each dot is one case; the bar marks the median. The arrest row is a separate sample of 16 cases from the law-enforcement case list (two predate 2016 and some are laundering-side); its bar marks the <span data-n="E3.n_2016_plus_in_headline_scope|int"></span> cases inside our data. Hollow dots are flagged returns or cases outside our 1,377. Log scale.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>Attacker returns funds</li>
+        <li><i style="--c: var(--s2)"></i>Freeze, halt or rescue</li>
+        <li><i style="--c: var(--stolen)"></i>Police and courts</li>
+      </ul>
+      <div class="chart" data-chart="clock"></div>
+      <figcaption>Small samples per channel (n shown per row); same-day actions are drawn at one hour. Sources: <a href="data/recovery_events.csv">recovery_events.csv</a> (counted rows), <a href="data/return_latency_audit.csv">return_latency_audit.csv</a>, <a href="data/law_enforcement_stats.json">law_enforcement_stats.json</a>; definitions <a href="#def-F1">F1</a>, <a href="#def-R4">R4</a>, <a href="#def-E3">E3</a>.</figcaption>
+    </figure>
+
+    <h3>North Korean thefts almost never come back</h3>
+    <div class="prose">
+      <p>For hacks attributed to North Korea by a government or a forensics firm (<span data-n="D1.gov_plus_firm.n|int"></span> incidents, <span data-n="D1.gov_plus_firm.usd|B2"></span>), <span data-n="D3.gov_plus_firm_pct|p1"></span> of dollars has been recovered, and <span data-n="D3.gov_plus_firm_ex_outliers_pct|p1"></span> once KuCoin's exchange-claimed recovery and the Munchables insider return are set aside. Government-attributed cases alone: <span data-n="D3.gov_only_pct|p1"></span>. Every other hack: <span data-n="D3.non_dprk_pct|p1"></span>, or <span data-n="D3.non_dprk_ex_top3_pct|p1"></span> without the three largest returns.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Share of stolen dollars recovered, North Korea and everyone else</p>
+      <p class="fs">Any channel, theft-date USD, over the loss of the same set of incidents.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s3)"></i>Attributed to North Korea</li>
+        <li><i style="--c: var(--s1)"></i>All other hacks</li>
+      </ul>
+      <div class="chart" data-chart="dprkrec"></div>
+      <figcaption>Definition <a href="#def-D3">D3</a>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================================================================ CONSEQUENCES -->
+<section class="chapter" id="consequences" aria-labelledby="con-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">T + <span data-n="E3.median_days_2016_plus_in_headline_scope|d1"></span> days</span><span class="what">Median wait for a first arrest or charge (<span data-n="E3.n_2016_plus_in_headline_scope|int"></span> dated cases)</span></div>
+    <h2 id="con-h"><span data-n="E1.top100_strict|int"></span> of the 100 biggest hacks ended with someone charged</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>Of the 100 largest hacks in our data, <span data-n="E1.top100_strict|int"></span> have a person arrested or charged for the theft itself (<span data-n="E1.top100_broad|int"></span> counting the <span data-n="d.top100_laundering|int"></span> laundering-side cases: Coincheck, Bitfinex and StableMagnet, where people were charged for handling or buying the loot). For <span data-n="d.top100_none_found|int"></span>, searches found no arrest or charge; <span data-nz="d.top100_not_checked"><span data-n="d.top100_not_checked|int"></span> have not been searched, </span>and <span data-n="d.top100_other_enf|int"></span> have a civil action or an arrest on other grounds. Across all <span data-n="E2.master_all.1|int"></span> incidents it is <span data-n="E2.master_all.0|int"></span> (<span data-n="d.arrest_all_pct|p1"></span>); among hacks of $1M or more, <span data-n="E2.master_ge1m.0|int"></span> of <span data-n="E2.master_ge1m.1|int"></span> (<span data-n="d.arrest_ge1m_pct|p1"></span>). Arrests were searched for the largest incidents and a list of known cases, so the count for small incidents is a floor.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">The 100 largest hacks, and who was charged</p>
+      <p class="fs">One square per incident, ranked by loss from the top left. Hover a square for its name; the table lists all 100.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>Person arrested or charged for the hack</li>
+        <li><i class="hollow" style="--c: var(--s1)"></i>Laundering-side arrests only</li>
+        <li><i class="out"></i>None found for the hack</li>
+        <li><i class="dash"></i>Not checked</li>
+        <li><i class="ring" style="--c: var(--s3)"></i>Government-attributed to North Korea</li>
+      </ul>
+      <div class="chart" data-chart="top100"></div>
+      <figcaption>Ranks and status from <a href="data/top100_master_enforcement.csv">top100_master_enforcement.csv</a> (the master dataset, by reported loss). "None found" marks hacks where the sources searched turned up no public record. One flag (NiceHash) rests on a DOJ indictment matched by inference. <span id="top100-note"></span> Definition <a href="#def-E1">E1</a>.</figcaption>
+    </figure>
+
+    <h3>The wait is measured in years</h3>
+    <div class="prose">
+      <p>Across the <span data-n="E3.n_2016_plus_in_headline_scope|int"></span> cases in our data with a dated first arrest, indictment or detention, the median wait from hack is <span data-n="E3.median_days_2016_plus_in_headline_scope|d1"></span> days, about 14.5 months. This sample differs from the <span data-n="E2.master_all.0|int"></span> incidents counted above: it adds the Bitfinex and Coincheck laundering-side cases and a detained CoinDCX engineer, and covers only incidents with a dated first action. Add Mt. Gox (2011) and Silk Road (2012), which fall outside our 1,377, and the sample is <span data-n="E3.n|int"></span> cases with a median of <span data-n="E3.median_days|int"></span> days, about 20 months (middle half <span data-n="E3.q1_q3.0|int"></span> to <span data-n="E3.q1_q3.1|int"></span> days). The sample holds cases that have produced an arrest so far, so waits for the remaining cases run longer. The fast cases were attackers who touched a KYC'd exchange or kept a public identity: <span data-n="f.platypus_days|x"></span>, <span data-n="f.mango_days|x"></span> days.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Days from hack to first arrest or charge</p>
+      <p class="fs">A separate sample of <span data-n="E3.n|int"></span> cases with a dated public action against a person; some are pre-2016 or laundering-side. Hollow dots are outside our 1,377. Log scale.</p>
+      <div class="chart" data-chart="arrests"></div>
+      <figcaption>Source: <a href="data/law_enforcement_stats.json">law_enforcement_stats.json</a>, <a href="data/law_enforcement_cases.csv">law_enforcement_cases.csv</a>; definition <a href="#def-E3">E3</a>.</figcaption>
+    </figure>
+
+    <h3>What happened to the <span data-n="E4.individuals|int"></span> people charged</h3>
+    <div class="prose">
+      <p>Of <span data-n="E4.individuals|int"></span> people charged or arrested over a hack or its laundering, <span data-n="E4.outcomes.convicted_or_pleaded|int"></span> were convicted or pleaded guilty, <span data-n="E4.outcomes.at_large_or_not_in_custody|int"></span> are charged and not in custody, <span data-n="E4.outcomes.pending|int"></span> are pending (as of 21 Oct 2026, including the two Peraire-Bueno brothers awaiting a retrial), <span data-n="E4.outcomes.acquitted|int"></span> were acquitted, <span data-n="E4.outcomes.conviction_vacated_or_acquitted_appeal_pending|int"></span> had a conviction vacated with a US appeal pending (as of 21 Oct 2026), and <span data-n="E4.outcomes.outcome_unknown|int"></span> have no known outcome. Most convictions were guilty pleas. The prison terms on record are <span data-n="f.prison_terms|x"></span>.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">Outcomes for the <span data-n="E4.individuals|int"></span> people charged</p>
+      <p class="fs">One dot per person. Hover a dot for the name and status; the table lists everyone.</p>
+      <div class="chart" data-chart="outcomes"></div>
+      <figcaption>Case rows verified against DOJ releases and dockets on 21 Oct 2026. Definition <a href="#def-E4">E4</a>.</figcaption>
+    </figure>
+
+    <h3>Code is law, in court</h3>
+    <div class="prose">
+      <p>Several defendants argued that the code allowed what they did. Charges brought under computer-fraud and money-laundering statutes have held so far; wire-fraud and commodities theories have struggled on venue and on whether a trade on a permissionless platform involves a misrepresentation.</p>
+    </div>
+    <div class="tblwrap full" style="max-width: 900px">
+      <table class="score" id="defences">
+        <caption class="sr" style="text-align:left; font-family: var(--sans); font-size: 14px; color: var(--ink-2); padding-bottom: 8px;">"Code is law" and "public functions" defences, from the unpublished project notes on arrests and prosecutions, section 6</caption>
+        <thead><tr><th scope="col">Case</th><th scope="col">Defence</th><th scope="col">Result</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h3>Who gets caught</h3>
+    <div class="prose">
+      <p>Nearly everyone prosecuted is a US person or was reachable by a cooperating state: a security engineer, a trader, MIT-educated brothers, a SIM-swap crew. The trail usually ran through a KYC'd exchange, coins moved or spent years later, or a public identity. North Korean operators of exchange and bridge thefts in custody: <span data-n="D4.dprk_hackers_arrested|int"></span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ DPRK -->
+<section class="chapter" id="dprk" aria-labelledby="dprk-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">T + <span data-n="f.bybit_btc_days|x"></span></span><span class="what">Bybit's stolen ETH converted to bitcoin</span></div>
+    <h2 id="dprk-h">Hacks attributed to North Korea: few incidents, most of the money, no operators in custody</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>Government attributions (FBI, DOJ, OFAC, UN monitors, Korean and Japanese police)<a class="fn" href="#fn-dprk" aria-label="Note on sources">*</a> tie North Korea to <span data-n="D1.gov.pct|p1"></span> of the dollars stolen since 2016: <span data-n="D1.gov.usd|B2"></span> across <span data-n="D1.gov.n|int"></span> incidents. Adding attributions by forensics firms such as Chainalysis, TRM and Elliptic raises it to <span data-n="D1.gov_plus_firm_ex_researcher_list.pct|p1"></span>, or <span data-n="D1.gov_plus_firm.pct|p1"></span> (<span data-n="D1.gov_plus_firm.n|int"></span> incidents) when rows that rest on a researcher list are included. By count those <span data-n="D1.gov_plus_firm.n|int"></span> incidents are <span data-n="d.dprk_count_pct|p1"></span> of all <span data-n="S1.n|int"></span>.</p>
+    </div>
+    <p class="fnote" id="fn-dprk">* The government tier mixes source grades: <span data-n="d.dprk_gov_secondary_rows|int"></span> of its <span data-n="d.dprk_gov_rows|int"></span> rows (<span data-n="d.dprk_gov_secondary_usd|B2"></span> of <span data-n="d.dprk_gov_usd_all|B2"></span>) rest on secondary sources such as Wikipedia, press, a tabulation of UN monitor reports or a recalled statement whose government page we could not read. Bybit's attribution rests on a primary source we read and matched directly. See the <code>attribution_source_grade</code> column in <a href="data/incidents_master.csv">incidents_master.csv</a>.</p>
+    <figure class="fig full">
+      <p class="ft">Share of dollars against share of incidents</p>
+      <p class="fs">North Korea-attributed incidents as a share of all <span data-n="S1.n|int"></span> headline incidents, by attribution tier.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s3)"></i>Share of dollars</li>
+        <li><i style="--c: var(--lost)"></i>Share of incidents</li>
+      </ul>
+      <div class="chart" data-chart="dprkshare"></div>
+      <figcaption>Definitions <a href="#def-D1">D1</a>, <a href="#def-D2">D2</a>.</figcaption>
+    </figure>
+    <figure class="fig full">
+      <p class="ft">North Korea's share of each year's stolen dollars</p>
+      <p class="fs">Government attribution, and government plus firm attribution.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s3)"></i>Government-attributed</li>
+        <li><i style="--c: var(--lost)"></i>Adding firm attribution</li>
+      </ul>
+      <div class="chart" data-chart="dprkyear"></div>
+      <figcaption>Source: <a href="data/dprk_by_year.csv">dprk_by_year.csv</a>; definition <a href="#def-D1">D1</a>. 2026 has no government attribution yet for Drift, KelpDAO or Bitget.</figcaption>
+    </figure>
+
+    <h3>The way in is people and infrastructure</h3>
+    <div class="prose">
+      <p>Of <span data-n="d.dprk_rows|int"></span> North Korea incident rows, <span data-n="d.dprk_contract_rows|int"></span> is a classic smart-contract exploit. The money comes from compromised keys and servers, a supply-chain compromise of a wallet vendor (Bybit, through a Safe{Wallet} developer machine) and social engineering: fake recruiters, fake contractors and, in 2026, an in-person approach at Drift.</p>
+    </div>
+    <figure class="fig full">
+      <p class="ft">How North Korean operators got in, by dollars stolen</p>
+      <p class="fs">Initial access class for each row of the DPRK incident file; row counts in brackets.</p>
+      <div class="chart" data-chart="dprkaccess"></div>
+      <figcaption>Access classes are assigned in the DPRK incident file; WazirX is coded supply chain because the compromise ran through a custody vendor's signing flow. Source: <a href="data/dprk_incidents.csv">dprk_incidents.csv</a>.</figcaption>
+    </figure>
+
+    <h3>Laundering is fast at the front and slow at the end</h3>
+    <div class="prose">
+      <p>Bybit's <span data-n="M2.loss_usd|B2"></span> was converted from ETH to bitcoin in about <span data-n="f.bybit_btc_days|x"></span>, <span data-n="f.bybit_thorchain|x"></span> of it through THORChain. About <span data-n="M2.frozen_corroborated_usd|M1"></span> (<span data-n="M2.frozen_pct|p1"></span>) was frozen in the first days. In 2026, ZachXBT reports that <span data-n="f.drift_bridged|x"></span> of USDC left Drift over <span data-n="f.drift_hours|x"></span>, and BlockSec estimates that <span data-n="f.bitget_thorchain|x"></span> of the Bitget haul passed through THORChain after it declined to halt.</p>
+      <p>Prosecutors indicted North Korean hackers in absentia (Park Jin Hyok, Jon Chang Hyok and Kim Il, in 2021), and they are sanctioned. People in custody are US and Ukrainian IT-worker facilitators, with <span data-n="f.it_worker_pleas|x"></span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ ATTACK ANATOMY (charts and evidence cards read data/attack.json, built by build.py) -->
+<section class="chapter" id="attack-anatomy" aria-labelledby="attack-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">0 seconds</span><span class="what">Median wait between deploying an attack contract and using it, 2025 and 2026</span></div>
+    <h2 id="attack-h">More exploits now start and finish in a single transaction</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p>This chapter looks at how attacks are built. It uses its own set: <span data-n="K1.sample_n|int"></span> EVM exploits that someone reproduced as a DeFiHackLabs proof of concept. The set leans toward BSC and small and mid-size protocols and is made up of contract exploits, so every share below is a share of those exploits by count unless it says dollars.</p>
+    </div>
+
+    <h3>Same-transaction attacks went from almost none to about four in ten</h3>
+    <div class="prose">
+      <p>An attacker can run the whole exploit from the constructor of a fresh contract, so deployment and attack happen in one transaction with no gap for anyone to notice. None of the <span data-n="K1.by_era.2020-22.n|int"></span> sampled exploits from 2020 to 2022 did this. The share was <span data-n="K1.by_era.2023.ctor_pct|p1"></span> in 2023 (<span data-n="K1.by_era.2023.ctor|int"></span> of <span data-n="K1.by_era.2023.n|int"></span>), <span data-n="K1.by_era.2024.ctor_pct|p1"></span> in 2024 (<span data-n="K1.by_era.2024.ctor|int"></span> of <span data-n="K1.by_era.2024.n|int"></span>), <span data-n="K1.by_era.2025.ctor_pct|p1"></span> in 2025 (<span data-n="K1.by_era.2025.ctor|int"></span> of <span data-n="K1.by_era.2025.n|int"></span>) and <span data-n="K1.by_era.2026.ctor_pct|p1"></span> in 2026 to 18 October (<span data-n="K1.by_era.2026.ctor|int"></span> of <span data-n="K1.by_era.2026.n|int"></span>). If the attack may instead land in the same block as a separate deployment transaction, the share is <span data-n="K1.by_era.2025.sametx_or_block_pct|p1"></span> in 2025 (<span data-n="K1.by_era.2025.sametx_or_block|int"></span> of <span data-n="K1.by_era.2025.n|int"></span>) and <span data-n="K1.by_era.2026.sametx_or_block_pct|p1"></span> in 2026 (<span data-n="K1.by_era.2026.sametx_or_block|int"></span> of <span data-n="K1.by_era.2026.n|int"></span>).</p>
+    </div>
+
+    <figure class="fig full" id="fig-sametx">
+      <p class="ft">Attacks that run inside the attack contract's own deployment</p>
+      <p class="fs">Share of the sampled EVM exploits in each year. 2026 runs to 18 October. Hover a column for the counts.</p>
+      <div class="seg" role="group" aria-label="Choose what the columns show">
+        <button type="button" data-view="ctor" aria-pressed="true">Same transaction</button>
+        <button type="button" data-view="block" aria-pressed="false">Same transaction or same block</button>
+        <button type="button" data-view="usd" aria-pressed="false">By dollars</button>
+      </div>
+      <div class="chart" data-chart="sametx" data-view="ctor"></div>
+      <figcaption>One false positive (Fortress Loans, 2022) is removed from the counts. Sources: <a href="data/attack_contracts.csv">attack_contracts.csv</a> and <a href="data/t5_frontrun_protection_signals_by_era.csv">t5</a>; definition <a href="#def-K1">K1</a>.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>Measured in dollars the shift is much smaller. Among rows with a USD figure, same-transaction attacks were <span data-n="K1.by_era.2024.usd_share_pct|p1"></span> of dollars lost in 2024 (<span data-n="K1.by_era.2024.usd_known_rows|int"></span> rows), <span data-n="K1.by_era.2025.usd_share_pct|p1"></span> in 2025 (<span data-n="K1.by_era.2025.usd_known_rows|int"></span> rows) and <span data-n="K1.by_era.2026.usd_share_pct|p1"></span> in 2026 (<span data-n="K1.by_era.2026.usd_known_rows|int"></span> rows). The move to single-transaction attacks is concentrated among small and mid-size exploits.</p>
+      <p>We hand-checked 25 flagged attacks against chain data: <span data-n="K1.precision_lenient.0|int"></span> of <span data-n="K1.precision_lenient.1|int"></span> were confirmed as run from the contract-creation transaction. A stricter reading that also needs value to reach the attacker inside that transaction confirms <span data-n="K1.precision_strict.0|int"></span> of <span data-n="K1.precision_strict.1|int"></span>, so the exact levels are softer than the trend.</p>
+    </div>
+
+    <h3>For some attackers, the wait between deploying and attacking disappeared</h3>
+    <div class="prose">
+      <p>Among attacker-deployed contracts the median gap between deployment and attack was <span data-n="K2.by_era.2020-22.median_min|d1"></span> minutes in 2020 to 2022, <span data-n="K2.by_era.2023.median_min|d1"></span> in 2023, <span data-n="K2.by_era.2024.median_min|d1"></span> in 2024, and 0 seconds in 2025 and 2026 (<span data-n="K2.by_era.2020-22.n|int"></span>, <span data-n="K2.by_era.2023.n|int"></span>, <span data-n="K2.by_era.2024.n|int"></span>, <span data-n="K2.by_era.2025.n|int"></span> and <span data-n="K2.by_era.2026.n|int"></span> contracts). That fall comes from the same-transaction pattern: strictly inside the deployment transaction is <span data-n="K2.strict_same_tx_pct_2025|p1"></span> of the <span data-n="K2.by_era.2025.n|int"></span> contracts in 2025 and <span data-n="K2.strict_same_tx_pct_2026|p1"></span> of the <span data-n="K2.by_era.2026.n|int"></span> in 2026, and the other zero-lag rows are same-block, separate transactions.</p>
+      <p>Without the zero-lag attacks the median stays at about <span data-n="K2.flat_range_min.0|d0"></span> to <span data-n="K2.flat_range_min.1|d0"></span> minutes in most eras. 2025 is the exception and rests on <span data-n="K2.by_era.2025.n_nonzero|int"></span> cases, with a median of <span data-n="K2.by_era.2025.median_nonzero_min|d1"></span> minutes; 2026 has <span data-n="K2.by_era.2026.n_nonzero|int"></span>. All of this rests on small samples.</p>
+    </div>
+
+    <figure class="fig full" id="fig-lag">
+      <p class="ft">Median minutes from deployment to attack, without the zero-lag attacks</p>
+      <p class="fs">Attacker-deployed contracts only; the number in each label is how many contracts that median covers. Hollow dots rest on fewer than 30 contracts.</p>
+      <div class="chart" data-chart="lag"></div>
+      <figcaption>Log scale. Sources: <a href="data/t4_deploy_to_attack_lag_by_era.csv">t4</a> and the K2 breakdown; definition <a href="#def-K2">K2</a>.</figcaption>
+    </figure>
+
+    <h3>Oracle manipulation faded while access-control bugs about doubled</h3>
+    <div class="prose">
+      <p>Among the <span data-n="K1.sample_n|int"></span> exploits, oracle and price manipulation fell from <span data-n="K3.oracle_pct.2020-22|p1"></span> of incidents in 2020 to 2022 to <span data-n="K3.oracle_pct.2024|p1"></span> in 2024 and <span data-n="K3.oracle_pct.2026|p1"></span> in 2026, though not in a straight line. Access-control bugs went from <span data-n="K3.access_control_pct.2020-22|p1"></span> to <span data-n="K3.access_control_pct.2024|p1"></span> in 2024 and <span data-n="K3.access_control_pct.2026|p1"></span> in 2026. Reentrancy faded after 2023 (<span data-n="K3.reentrancy_pct.2023|p1"></span> then, <span data-n="K3.reentrancy_pct.2026|p1"></span> in 2026), while business-logic and accounting bugs stayed the largest class at <span data-n="K3.business_logic_pct.2024|p1"></span> to <span data-n="K3.business_logic_pct.2023|p1"></span> from 2023. Flash loans appear in between <span data-n="K3.flash_loan_pct.2025|p1"></span> and <span data-n="K3.flash_loan_pct.2023|p1"></span> of exploits in every era.</p>
+      <p>Point values are approximate: the labels come from keyword matching on DeFiHackLabs descriptions, and this sample and DeFiLlama's own classes agree on the direction.</p>
+    </div>
+
+    <figure class="fig full" id="fig-drift">
+      <p class="ft">Attack-vector share of incidents, by era</p>
+      <p class="fs">Percent of the sampled exploits in each era. Every panel uses the same 0 to 45% scale. 2026 runs to 18 October.</p>
+      <div class="chart" data-chart="drift"></div>
+      <figcaption>Sources: <a href="data/t1b_vector_share_pct_dhl_sample.csv">t1b</a> and <a href="data/t3_flash_loan_share_by_era.csv">t3</a>; definition <a href="#def-K3">K3</a>.</figcaption>
+    </figure>
+
+    <h3>Once a bug class is public, its forks are hit one after another</h3>
+    <div class="prose">
+      <p><span data-n="K9.compound_v2_wave.n|int"></span> lending-market exploits of one bug class (empty-market donation or rounding inflation), across Compound- and Aave-style forks, came in <span data-n="K9.compound_v2_wave.months|int"></span> months, from HundredFinance on <span data-n="K9.compound_v2_wave.first|date"></span> to Sonne Finance on <span data-n="K9.compound_v2_wave.last|date"></span>. The reported losses of those <span data-n="K9.compound_v2_wave.usd_known_n|int"></span> forks sum to <span data-n="K9.compound_v2_wave.usd_known_sum|M0"></span>. DeFiHackLabs headings show other waves: read-only reentrancy (<span data-n="K9.read_only_reentrancy_n|int"></span> incidents, Oct 2022 to Jul 2023) and ERC-2771 forwarder or unchecked-multicall bugs (<span data-n="d.k9_erc_wave_n|int"></span> incidents, May 2025 to Sep 2026). In 2026 a bot replayed a revealed attack within a block twice (<span data-n="f.mev_replay|x"></span>). Waves are read from incident headings and dates, so "same bug class" follows the labels.</p>
+    </div>
+
+    <figure class="fig full" id="fig-waves">
+      <p class="ft">Twelve lending-market exploits, one bug class</p>
+      <p class="fs">Each dot is one incident, placed by date. Dot size is the reported loss.</p>
+      <div class="chart" data-chart="waves"></div>
+      <figcaption>Sources: <a href="data/t9b_documented_copycat_waves.csv">t9b</a> and <a href="data/attack_contracts.csv">attack_contracts.csv</a>; definition <a href="#def-K9">K9</a>.</figcaption>
+    </figure>
+
+    <h3>Tornado Cash funding held up after the sanctions</h3>
+    <div class="prose">
+      <p>Take Ethereum attacker wallets whose first funder could be resolved: <span data-n="K4.by_era.A.n|int"></span> before the 8 Aug 2022 OFAC sanctions on Tornado Cash, <span data-n="K4.by_era.B.n|int"></span> during them and <span data-n="K4.by_era.C.n|int"></span> after the 21 Mar 2025 delisting. Direct funding from a Tornado Cash pool was <span data-n="K4.by_era.A.direct_pct|p1"></span> (<span data-n="K4.by_era.A.direct|int"></span> of <span data-n="K4.by_era.A.n|int"></span>), <span data-n="K4.by_era.B.direct_pct|p1"></span> (<span data-n="K4.by_era.B.direct|int"></span> of <span data-n="K4.by_era.B.n|int"></span>) and <span data-n="K4.by_era.C.direct_pct|p1"></span> (<span data-n="K4.by_era.C.direct|int"></span> of <span data-n="K4.by_era.C.n|int"></span>). Counting one pass-through hop via an unlabelled wallet it was <span data-n="K4.by_era.A.incl_hop_pct|p1"></span>, <span data-n="K4.by_era.B.incl_hop_pct|p1"></span> and <span data-n="K4.by_era.C.incl_hop_pct|p1"></span>. Half-year shares swing between <span data-n="f.halfyear_range|x"></span>, so the finding is persistence through the sanctions era.</p>
+      <p>Railgun, a different privacy protocol, funded <span data-n="K4.railgun_total|int"></span> sampled wallets, <span data-n="K4.railgun_mar_oct_2026|int"></span> of them between March and October 2026: <span data-n="K4.railgun_mar_oct_2026|int"></span> of the <span data-n="K4.eth_2026_resolved|int"></span> resolved Ethereum wallets that year (<span data-n="f.railgun_pct|x"></span>). One of the <span data-n="K4.railgun_total|int"></span> is matched only by a same-named contract and is unconfirmed. Funder labels are an October 2023 snapshot, so every non-Tornado category is a lower bound.</p>
+    </div>
+
+    <figure class="fig full" id="fig-funding">
+      <p class="ft">How Ethereum attacker wallets got their first funds, by sanctions era</p>
+      <p class="fs">Share of wallets with a resolved funder. One group of bars per era.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--s1)"></i>Direct from a Tornado Cash pool</li>
+        <li><i class="hollow" style="--c: var(--s1)"></i>Direct, or one hop through an unlabelled wallet</li>
+        <li><i style="--c: var(--s2)"></i>From Railgun</li>
+      </ul>
+      <div class="chart" data-chart="funding"></div>
+      <figcaption>Ethereum only, where funders resolve for nearly every row. Sources: <a href="data/t2c_ethereum_tornado_share_by_era.csv">t2c</a> and <a href="data/attack_contracts.csv">attack_contracts.csv</a>; definition <a href="#def-K4">K4</a>.</figcaption>
+    </figure>
+
+    <h3>Recorded exploits roughly tripled from 2025 to March to September 2026, but dollars rose far less</h3>
+    <div class="prose">
+      <p>DeFiLlama logged <span data-n="K5.dl25_pm|d1"></span> hacks a month in 2025 (<span data-n="K5.dl25|int"></span> records) against <span data-n="K5.dl26_pm|d1"></span> a month from March to September 2026 (<span data-n="K5.dl26|int"></span> records), <span data-n="f.surge_ratio|x"></span> as many. SlowMist, an independent tracker, went from <span data-n="K5.sm25_pm|d1"></span> to <span data-n="K5.sm26_pm|d1"></span> a month (<span data-n="K5.sm25|int"></span> records in 2025, <span data-n="K5.sm26|int"></span> in the same seven months of 2026). DeFiLlama incidents of $1M or more rose from <span data-n="K5.dl25_m_pm|d1"></span> to <span data-n="K5.dl26_m_pm|d1"></span> a month. Dollars rose far less: <span data-n="f.usd26_surge|x"></span> in the seven months of March to September 2026, against <span data-n="f.usd25_surge|x"></span> in all twelve months of 2025, which is <span data-n="f.usd_third|x"></span>.</p>
+    </div>
+    <p class="honest">These are counts of records. The rise could reflect more attacks, wider tracker coverage, or both; the two trackers may have widened their scope together, and recent months may be revised upward later.</p>
+
+    <figure class="fig full" id="fig-monthly">
+      <p class="ft">Recorded incidents per month, 2025 against 2026</p>
+      <p class="fs">Records dated in each month by two independent trackers. 2026 shows January to September; October is partial.</p>
+      <ul class="legend">
+        <li><i style="--c: var(--stolen)"></i>2025</li>
+        <li><i style="--c: var(--s1)"></i>2026</li>
+      </ul>
+      <div class="chart" data-chart="monthly"></div>
+      <figcaption>Sources: <a href="data/attack_monthly_counts.csv">attack_monthly_counts.csv</a> (from <a href="data/t0b_monthly_counts_2024_2026.csv">t0b</a> and <a href="data/slowmist_parsed_2026-10-21.csv">SlowMist records</a>); definition <a href="#def-K5">K5</a>.</figcaption>
+    </figure>
+
+    <h3>No verified case of an AI-written exploit</h3>
+    <div class="prose">
+      <p>We looked for a post-mortem, security-firm statement, proof-of-concept comment or verified attacker contract that ties a real exploit to an AI model, and found none. The finding covers public evidence: <span data-n="f.unverified_pct|x"></span> of the sample's contracts are unverified, which hides their source style. Our own scans agree. A search of <span data-n="K6.dhl_solidity_files_scanned|int"></span> DeFiHackLabs test files for AI terms found <span data-n="K6.dhl_scan_hits|int"></span> hit, a post-mortem link tagged utm_source=chatgpt.com, and <span data-n="K6.attacker_contracts_scanned|int"></span> verified attacker contracts since 2024 showed <span data-n="K6.attacker_contracts_with_llm_markers|int"></span> LLM-style markers.</p>
+    </div>
+
+    <div class="ai full" id="ai-panel" aria-label="Evidence on AI and exploits"></div>
+
+    <div class="prose">
+      <p>The shift to same-transaction attacks, just-in-time wallets and the 2026 count surge are consistent with both scripted pipelines and people reusing public proof-of-concept templates; the data fits either. The capability and attacker-use cards link primary sources read on 21 Oct 2026; the claims we did not count link the secondary coverage we could read. Definitions <a href="#def-K6">K6</a>, <a href="#def-K7">K7</a> and <a href="#def-K8">K8</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ CASES -->
+<section class="chapter" id="cases" aria-labelledby="cases-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">2025 to 2026</span><span class="what">Recent cases</span></div>
+    <h2 id="cases-h">Eight recent cases, eight different endings</h2>
+  </div>
+  <div class="body">
+    <div class="full cases-key" aria-hidden="true"><span class="dprk">Attributed to North Korea (government or firm)</span><span>Other</span></div>
+    <ol class="cases full" id="cases-list" style="max-width: 900px">
+      <li data-case="M2" class="dprk"><div class="when"></div><div>
+        <h3>Bybit <span class="loss"></span></h3>
+        <p>Taken through a compromised Safe{Wallet} developer machine; the FBI attributed it to North Korea on 26 Feb 2025. About <span data-n="M2.frozen_corroborated_usd|M1"></span> was frozen in the first days, and Bybit claims <span data-n="M2.company_claim_usd|M1"></span> by 2026. Bybit filed its own civil suit against North Korea; no DOJ criminal or forfeiture action is on record.</p>
+        <div class="back" data-back="M2.frozen_pct" data-kind="frozen"></div></div></li>
+      <li data-case="M5"><div class="when"></div><div>
+        <h3>Cetus <span class="loss"></span></h3>
+        <p>Sui validators froze <span data-n="M5.frozen_usd|M0"></span> by the next day, and <span data-n="f.cetus_vote|x"></span> of stake voted to move it to a recovery multisig. Cetus's offer to the attacker for the rest drew no reply.</p>
+        <div class="back" data-back="M5.frozen_pct" data-kind="frozen"></div></div></li>
+      <li data-case="M4" class="dprk"><div class="when"></div><div>
+        <h3>KelpDAO <span class="loss"></span></h3>
+        <p>A forged LayerZero message after RPC nodes were compromised. Arbitrum's Security Council froze <span data-n="f.kelp_eth|x"></span> (about <span data-n="M4.frozen_usd|M0"></span>) <span data-n="M4.days_to_freeze|int"></span> days later, which holders of court judgments against North Korea then tried to restrain. Attribution to North Korea comes from firms and the victim side.</p>
+        <div class="back" data-back="M4.frozen_pct" data-kind="frozen"></div></div></li>
+      <li data-case="M8" class="dprk"><div class="when"></div><div>
+        <h3>Drift <span class="loss"></span></h3>
+        <p>ZachXBT reports that <span data-n="f.drift_bridged|x"></span> of USDC was bridged away in <span data-n="f.drift_hours|x"></span>. No freeze or return is on record, so recovered funds stand at <span data-n="M8.recovered_usd|usd"></span>. Firms attribute it to North Korea on preliminary indicators.</p>
+        <div class="back" data-back="M8.recovered_usd" data-kind="zero"></div></div></li>
+      <li data-case="M7"><div class="when"></div><div>
+        <h3>Verus-Ethereum bridge <span class="loss"></span></h3>
+        <p>The attacker took a 24-hour offer, returned <span data-n="M7.returned_eth|int"></span> ETH and kept <span data-n="M7.kept_eth|int"></span> ETH (<span data-n="M7.kept_pct|p2"></span>), the largest realized cut in the settlement sample.</p>
+        <div class="back" data-back="M7.kept_pct" data-kind="returned-inverse" data-unit="by ETH units"></div></div></li>
+      <li data-case="M1"><div class="when"></div><div>
+        <h3>Liquid Network <span class="loss"></span></h3>
+        <p>The attacker returned <span data-n="M1.returned_btc|int"></span> BTC <span data-n="f.liquid_hours|x"></span> after the drain and held back <span data-n="M1.withheld_btc|d1"></span> BTC (<span data-n="M1.withheld_pct|p2"></span>) as leverage for a 10% bounty. Blockstream refused: "It is not white-hat activity. It is theft." Unresolved as of <span data-n="M1.status_date|date"></span>; no arrest or charge on record.</p>
+        <div class="back" data-back="M1.returned_pct_units" data-kind="returned" data-unit="by BTC units"></div></div></li>
+      <li data-case="M3" class="dprk"><div class="when"></div><div>
+        <h3>Bitget <span class="loss"></span></h3>
+        <p>Issuer freezes caught about <span data-n="M3.frozen_usd_low|M2"></span>; Bitget's CEO puts it at <span data-n="M3.frozen_usd_ceo_claim|M2"></span>. THORChain declined to halt as <span data-n="f.bitget_thorchain|x"></span> passed through. Attribution to North Korea so far comes from firms only.</p>
+        <div class="back" data-back="M3.frozen_usd_low" data-of="M3.loss_usd" data-kind="frozen"></div></div></li>
+      <li data-case="M6"><div class="when"></div><div>
+        <h3>NEAR Intents <span class="loss"></span></h3>
+        <p>NEAR told the attacker publicly, "We have identified you," without naming anyone, and set a <span data-n="f.near_deadline|x"></span> deadline. All of it came back within <span data-n="M6.hours_from_detection|int"></span> hours of detection, with no bounty reported.</p>
+        <div class="back" data-back="M6.returned_pct" data-kind="returned"></div></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================================================================ METHODS -->
+<section class="chapter methods" id="methods" aria-labelledby="methods-h">
+  <div class="chapter-head">
+    <div class="clock"><span class="t">Methods</span><span class="what">Scope, limits, data</span></div>
+    <h2 id="methods-h">How the numbers were built</h2>
+  </div>
+  <div class="body">
+    <div class="prose">
+      <p><b>Scope.</b> The headline set is <span data-n="S1.n|int"></span> hacks and exploits with a published USD loss, <span data-n="meta.period|x"></span>, totalling <span data-n="S1.total_usd|B2"></span> at the USD value on the day of each theft. It merges DeFiLlama, SlowMist, Rekt, DeFiHackLabs and researcher lists, de-duplicated. Chainalysis and CertiK publish larger totals because their scope adds categories such as phishing of individuals, most rug pulls and the LuBian outlier.</p>
+      <p><b>Recovery.</b> Documented recovery through any channel, valued at the theft-date price and capped at each incident's loss, over all <span data-n="S1.total_usd|B2"></span>. Pledges and payments by victims or parent companies to make users whole are tracked separately from recovered funds. <span data-n="d.unchecked_ge1m|int"></span> of <span data-n="C2.n_ge1m|int"></span> hacks of $1M or more have not yet been searched for an outcome and count as unrecovered, so count-based recovery rates are floors. Company claims (Bybit, KuCoin) are included and flagged; with Bybit at its independently corroborated freeze the any-channel rate is <span data-n="C1.pct_bybit_corroborated|p1"></span>.</p>
+      <p><b>Returns and negotiation.</b> Return rates come from an earlier on-chain messages study of <span data-n="R1.paper_frame_n|int"></span> large exploits and key compromises, with bounds of <span data-n="R1.paper_bounds.0|fp1"></span> to <span data-n="R1.paper_bounds.1|fp1"></span> depending on how unresolved cases behave. Message texts were decoded from public RPC calldata and compared against the datasets' copies: of 48 checked rows, 16 matched exactly and 21 differed only in line breaks, spacing, case or truncation (each card says which, and every quoted passage is an exact substring of the decoded message; the other 11 rows mismatched or could not be found, so they are left unquoted); 42 of the 43 EVM transactions were confirmed on two endpoints. Sender roles come from dataset coding and message pairing, and each card says which.</p>
+      <p><b>Attribution and arrests.</b> North Korea attribution is tiered: government (FBI, DOJ, OFAC, UN monitors, Korean and Japanese police) and firm (Chainalysis, TRM, Elliptic, ZachXBT, victim forensics). Arrest counts are lower bounds from public records searched for most of the largest 150 incidents<span data-nz="d.top100_not_checked"> (<span data-n="d.top100_not_checked|int"></span> of the top 100 have not been searched)</span> and a sibling case list; "none found" marks hacks where the sources searched turned up no public record. Where a dollar figure in a table is the master dataset's and differs from the text, the table says so.</p>
+      <p><b>Attack anatomy.</b> The attack chapter uses a separate, narrower set: <span data-n="K1.sample_n|int"></span> EVM exploits that someone reproduced as a DeFiHackLabs proof of concept, with the attack transaction, attacker contract, funder and deployment time read from chain data. Its shares are by count within that set, which is made up of contract exploits. Monthly record counts come from DeFiLlama and SlowMist. AI claims are graded verified, credible claim or speculation from the primary page, and only verified items are described as findings.</p>
+      <p><b>Confidence.</b> Every underlined number opens its definition, denominator, sources and a confidence grade (high, medium or low). The full list is below.</p>
+    </div>
+    <p class="honest">Compiled with AI research agents, so there will be mistakes. Every number links to its definition and sources; corrections welcome.</p>
+
+    <h3>Data downloads</h3>
+    <div class="prose"><p style="font-size: 16px">The full write-up is in the <a href="paper.html">paper</a>, and the code and data live in the <a href="https://github.com/DicksonWu654/after-the-hack">After the Hack repository</a>. Code is MIT licensed; data and text are CC BY 4.0.</p></div>
+    <div class="tblwrap full downloads" style="max-width: 900px">
+      <table id="downloads"><thead><tr><th scope="col">File</th><th scope="col">Contents</th><th scope="col" class="r">Size</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <h3>Every headline number, defined</h3>
+    <div class="defs full" id="defs" style="max-width: 900px"></div>
+
+    <h3>Sources</h3>
+    <div class="prose"><p style="font-size: 16px">The external sources named in the definitions above are listed here. A few definitions also cite unpublished project notes, marked as such in the definition. Court and DOJ records, on-chain explorers and project post-mortems are preferred over press reports.</p></div>
+    <ul class="sources full" id="sources"></ul>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">After the Hack. Data snapshot <span data-n="meta.generated|date"></span>. Built from <code>data/canonical_numbers.json</code> and the project CSVs; every file is served from this site. <a href="paper.html">Paper</a> and <a href="https://github.com/DicksonWu654/after-the-hack">code and data</a> (<a href="https://github.com/DicksonWu654/after-the-hack">repository</a>). Code MIT, data and text CC BY 4.0.<br>Compiled with AI research agents, so there will be mistakes. Every number links to its definition and sources; corrections welcome.</div>
+</footer>
+
+<div class="pop" id="pop" role="dialog" aria-labelledby="pop-q" tabindex="-1" hidden></div>
+<div class="tip" id="tip" role="status" aria-live="polite" hidden></div>
+<noscript><p style="font-family: sans-serif; padding: 16px">This page fills its numbers and charts from the bundled data with JavaScript. The raw files are in the <a href="data/">data</a> folder.</p></noscript>
+
+<script src="data/bundle.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/charts.js"></script>
+</body>
+</html>

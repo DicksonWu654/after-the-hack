@@ -1,0 +1,101 @@
+rank,id,name,date,loss_usd_reported,enforcement_status,arrest_status,attribution,attribution_source_grade
+1,20250221-bybit,Bybit,2025-02-21,1400000000,none_found,none_found,dprk_gov_attributed,primary_read
+2,20220323-ronin-bridge,Ronin Bridge,2022-03-23,624000000,none_found,none_found,dprk_gov_attributed,primary_cited_not_read
+3,20210810-poly-network,Poly Network,2021-08-10,611000000,none_found,none_found,unknown,
+4,20221006-binance-bridge,BNB Chain Token Hub bridge (DeFiLlama name: Binance Bridge),2022-10-06,570000000,none_found,none_found,unknown,
+5,20180126-coincheck,Coincheck,2018-01-26,534000000,laundering_side_only,related_or_laundering_side,dprk_gov_attributed,secondary_wikipedia_or_press
+6,20221112-ftx,FTX,2022-11-12,450000000,charged_for_hack,charged_or_arrested_for_hack,other_known,
+7,20260924-bitget,Bitget,2026-09-24,387000000,none_found,none_found,dprk_firm_attributed,firm_report
+8,20220202-portal,Wormhole (DeFiLlama name: Portal),2022-02-02,326000000,none_found,none_found,unknown,
+9,20260906-liquid-network,Liquid Network,2026-09-06,320000000,none_found,none_found,unknown,
+10,20240531-dmm-bitcoin,DMM Bitcoin,2024-05-31,305000000,none_found,none_found,dprk_gov_attributed,primary_read
+11,20260401-drift-trade,Drift Trade,2026-04-01,295000000,none_found,none_found,dprk_firm_attributed,firm_report
+12,20260418-kelp,Kelp,2026-04-18,293000000,none_found,none_found,dprk_firm_attributed,firm_report
+13,20240209-playdapp,PlayDapp,2024-02-09,290000000,none_found,none_found,dprk_firm_attributed,firm_report
+14,20200929-kucoin,KuCoin,2020-09-29,281000000,none_found,none_found,dprk_firm_attributed,firm_report
+15,20240718-wazirx-india,WazirX: India,2024-07-18,234900000,none_found,none_found,dprk_gov_attributed,secondary_msmt_via_tayvano
+16,20250522-cetus-clmm,Cetus CLMM,2025-05-22,223000000,none_found,none_found,unknown,
+17,20230923-mixin-network,Mixin Network,2023-09-23,200000000,none_found,none_found,unknown,
+18,20230313-euler-v1,Euler V1,2023-03-13,197000000,none_found,,unknown,
+19,20211204-bitmart,Bitmart,2021-12-04,196000000,none_found,none_found,unknown,
+20,20220801-nomad,Nomad,2022-08-01,190000000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+21,20220417-beanstalk,Beanstalk,2022-04-17,181000000,none_found,none_found,unknown,
+22,20180212-bitgrail,BitGrail,2018-02-12,170000000,civil_or_regulatory_only,civil_or_regulatory_only,unknown,
+23,20220920-wintermute,Wintermute,2022-09-20,160000000,none_found,none_found,unknown,
+24,20211213-vulcan-forged,Vulcan Forged,2021-12-13,140000000,none_found,none_found,unknown,
+25,20211030-bxh,BXH,2021-10-30,139000000,none_found,none_found,unknown,
+26,20211027-cream-lending,CREAM Lending,2021-10-27,130000000,none_found,none_found,unknown,
+27,20251103-balancer-v2,Balancer V2,2025-11-03,128000000,none_found,none_found,unknown,
+28,20230707-multichain,Multichain,2023-07-07,126000000,not_for_the_hack,not_for_the_hack,unknown,
+29,20231110-poloniex,Poloniex,2023-11-10,126000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+30,20260830-tectonic,Tectonic,2026-08-30,120400000,none_found,none_found,unknown,
+31,20211202-badger-dao,Badger DAO,2021-12-02,120000000,none_found,none_found,unknown,
+32,20260731-coldcard,COLDCARD,2026-07-31,116000000,none_found,none_found,unknown,
+33,20221011-mango-markets-v3,Mango Markets V3,2022-10-11,115000000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+34,20240131-chris-larsen,Chris Larsen,2024-01-31,112500000,none_found,,unknown,
+35,20210518-venus-protocol,Venus Protocol,2021-05-18,100000000,none_found,none_found,unknown,
+36,20220623-harmony-bridge,Harmony Bridge,2022-06-23,100000000,none_found,none_found,dprk_gov_attributed,secondary_wikipedia_or_press
+37,20230603-atomic-wallet,Atomic Wallet,2023-06-03,100000000,none_found,none_found,dprk_gov_attributed,secondary_wikipedia_or_press
+38,20261009-ledger-supply-chain,Ledger (Supply Chain),2026-10-09,93000000,none_found,none_found,unknown,
+39,20210819-liquid-global,Liquid Global,2021-08-19,91350000,none_found,none_found,dprk_firm_attributed,firm_report
+40,20211008-mirror,Mirror,2021-10-08,90000000,none_found,none_found,unknown,
+41,20231122-heco-bridge,Heco Bridge,2023-11-22,86600000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+42,20250123-phemex,Phemex,2025-01-23,85000000,none_found,none_found,dprk_gov_attributed,secondary_msmt_via_tayvano
+43,20231231-orbit-bridge,Orbit Bridge,2023-12-31,81700000,none_found,none_found,unknown,
+44,20220128-qubit,Qubit,2022-01-28,80000000,none_found,none_found,dprk_firm_attributed,firm_report
+45,20220501-rari-capital,Rari Capital,2022-05-01,80000000,none_found,none_found,unknown,
+46,20211211-ascendex,AscenDEX,2021-12-11,77000000,none_found,none_found,unknown,
+47,20160802-bitfinex,Bitfinex,2016-08-02,72000000,laundering_side_only,related_or_laundering_side,other_known,
+48,20250401-upcx,UPCX,2025-04-01,70000000,none_found,none_found,unknown,
+49,20171208-nicehash,NiceHash,2017-12-08,64000000,charged_for_hack,charged_or_arrested_for_hack,dprk_firm_attributed,firm_researcher_list_only
+50,20240326-munchables,Munchables,2024-03-26,62500000,none_found,none_found,dprk_firm_attributed,firm_report
+51,20230730-curve-dex,Curve DEX,2023-07-30,61700000,none_found,none_found,unknown,
+52,20160617-the-dao,The DAO,2016-06-17,60000000,none_found,none_found,unknown,
+53,20180914-zaif,Zaif,2018-09-14,60000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+54,20211029-anubisdao,AnubisDAO,2021-10-29,60000000,none_found,none_found,unknown,
+55,20210419-easyfi,EasyFi,2021-04-19,59000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+56,20210428-uranium-finance,Uranium Finance,2021-04-28,57200000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+57,20230912-coinex,CoinEx,2023-09-12,55000000,none_found,none_found,dprk_firm_attributed,firm_report
+58,20240622-btcturk,BtcTurk,2024-06-22,54000000,none_found,none_found,unknown,
+59,20220323-cashio,Cashio,2022-03-23,52800000,none_found,none_found,unknown,
+60,20241016-radiant-v2,Radiant V2,2024-10-16,50000000,none_found,none_found,dprk_gov_attributed,secondary_msmt_via_tayvano
+61,20250224-infini,Infini,2025-02-24,49500000,none_found,none_found,unknown,
+62,20191127-upbit,Upbit,2019-11-27,49300000,none_found,,dprk_gov_attributed,secondary_wikipedia_or_press
+63,20231122-kyberswap-elastic,KyberSwap Elastic,2023-11-22,48000000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+64,20250814-btcturk,BtcTurk,2025-08-14,48000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+65,20210519-bunny,Bunny,2021-05-19,45000000,none_found,none_found,unknown,
+66,20240419-hedgey,Hedgey,2024-04-19,44700000,none_found,none_found,unknown,
+67,20250719-coindcx,CoinDCX,2025-07-19,44200000,not_for_the_hack,not_for_the_hack,unknown,
+68,20240920-bingx,BingX,2024-09-20,43300000,none_found,none_found,dprk_gov_attributed,secondary_msmt_via_tayvano
+69,20250709-gmx-v1-evm,GMX V1 EVM,2025-07-09,42000000,none_found,none_found,unknown,
+70,20250909-swissborg,SwissBorg,2025-09-09,41500000,none_found,none_found,unknown,
+71,20230904-stake-com,Stake.com,2023-09-04,41300000,civil_or_regulatory_only,civil_or_regulatory_only,dprk_gov_attributed,secondary_wikipedia_or_press
+72,20190507-binance,Binance,2019-05-07,40000000,none_found,none_found,unknown,
+73,20260131-step-finance,Step Finance,2026-01-31,40000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+74,20210213-alpha-finance,Alpha Finance,2021-02-13,37500000,none_found,none_found,unknown,
+75,20230722-coinspaid,CoinsPaid,2023-07-22,37300000,none_found,,dprk_gov_attributed,primary_read_inferred_match
+76,20180610-coinrail,Coinrail,2018-06-10,37200000,charged_for_hack,charged_or_arrested_for_hack,dprk_firm_attributed,firm_researcher_list_only
+77,20200222-josh-jones,Josh Jones,2020-02-22,36500000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+78,20220212-ira-financial-gemini,IRA Financial / Gemini,2022-02-12,36000000,charged_for_hack,charged_or_arrested_for_hack,unknown,
+79,20210921-vee-finance,Vee Finance,2021-09-21,34000000,none_found,none_found,unknown,
+80,20220118-crypto-com,Crypto.com,2022-01-18,33700000,none_found,none_found,unknown,
+81,20260608-humanity,Humanity,2026-06-08,32000000,none_found,none_found,dprk_firm_attributed,firm_researcher_list_only
+82,20211130-monox,MonoX,2021-11-30,31400000,none_found,none_found,unknown,
+83,20180621-bithumb,Bithumb,2018-06-21,31000000,none_found,none_found,unknown,
+84,20210304-meerkat-finance,Meerkat Finance,2021-03-04,31000000,none_found,none_found,unknown,
+85,20171119-tether,Tether,2017-11-19,30950010,none_found,none_found,unknown,
+86,20210502-spartan,Spartan,2021-05-02,30500000,none_found,none_found,unknown,
+87,20251126-upbit,Upbit,2025-11-26,30400000,none_found,none_found,unknown,
+88,20170701-parity,Parity,2017-07-01,30000000,none_found,none_found,unknown,
+89,20211111-curve-finance,Curve Finance,2021-11-11,30000000,none_found,,unknown,
+90,20211218-grim-finance,Grim Finance,2021-12-18,30000000,none_found,none_found,unknown,
+91,20221002-transit-swap,Transit Swap,2022-10-02,28900000,none_found,,unknown,
+92,20221101-deribit,Deribit,2022-11-01,28000000,none_found,,dprk_firm_attributed,firm_researcher_list_only
+93,20190712-bitpoint,BitPoint,2019-07-12,27600000,none_found,,unknown,
+94,20210305-paid-network,Paid Network,2021-03-05,27000000,none_found,,dprk_firm_attributed,firm_researcher_list_only
+95,20210623-stablemagnet,StableMagnet,2021-06-23,27000000,laundering_side_only,related_or_laundering_side,other_known,
+96,20240903-penpie,Penpie,2024-09-03,27000000,none_found,,unknown,
+97,20250716-bigone,BigONE,2025-07-16,27000000,none_found,,dprk_gov_attributed,secondary_msmt_via_tayvano
+98,20260108-truebit,Truebit,2026-01-08,26400000,none_found,,unknown,
+99,20240218-fixedfloat,FixedFloat,2024-02-18,26100000,none_found,,unknown,
+100,20231118-kronos-research,Kronos Research,2023-11-18,26000000,none_found,,dprk_firm_attributed,firm_researcher_list_only

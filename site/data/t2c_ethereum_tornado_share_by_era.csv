@@ -1,0 +1,4 @@
+tornado_era,n_resolved,tornado_direct_or_hop2,railgun,any_privacy_tool,any_privacy_tool_pct,tornado_share_pct
+A_pre_sanction(<2022-08-08),31,12,0,12,38.7,38.7
+B_sanctioned(2022-08-08..2025-03-20),189,71,0,71,37.6,37.6
+C_post_delisting(>=2025-03-21),86,29,13,42,48.8,33.7

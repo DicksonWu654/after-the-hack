@@ -1,0 +1,44 @@
+era,vector_primary,size,mean
+2020-22,access_control,9,0.333
+2020-22,arbitrary_call_or_input_validation,17,0.235
+2020-22,arithmetic_rounding,4,0.25
+2020-22,bridge_cross_chain,3,0.0
+2020-22,business_logic_accounting,23,0.783
+2020-22,governance_attack,4,0.25
+2020-22,key_compromise_or_rug,2,0.0
+2020-22,oracle_price_manipulation,26,1.0
+2020-22,reentrancy,6,0.833
+2020-22,unclassified,1,0.0
+2023,access_control,20,0.25
+2023,arbitrary_call_or_input_validation,17,0.176
+2023,arithmetic_rounding,13,0.923
+2023,business_logic_accounting,75,0.747
+2023,oracle_price_manipulation,49,0.98
+2023,reentrancy,15,0.8
+2023,unclassified,1,1.0
+2024,access_control,39,0.128
+2024,arbitrary_call_or_input_validation,27,0.481
+2024,arithmetic_rounding,12,0.5
+2024,business_logic_accounting,56,0.714
+2024,key_compromise_or_rug,2,0.0
+2024,oracle_price_manipulation,29,0.931
+2024,reentrancy,14,0.643
+2024,unclassified,3,1.0
+2025,access_control,31,0.323
+2025,arbitrary_call_or_input_validation,22,0.273
+2025,arithmetic_rounding,2,0.5
+2025,business_logic_accounting,60,0.6
+2025,key_compromise_or_rug,4,0.0
+2025,oracle_price_manipulation,31,0.806
+2025,reentrancy,2,0.5
+2025,unclassified,1,0.0
+2026 (to 18 Oct),access_control,30,0.167
+2026 (to 18 Oct),arbitrary_call_or_input_validation,20,0.3
+2026 (to 18 Oct),arithmetic_rounding,7,0.429
+2026 (to 18 Oct),bridge_cross_chain,1,1.0
+2026 (to 18 Oct),business_logic_accounting,43,0.744
+2026 (to 18 Oct),governance_attack,3,0.0
+2026 (to 18 Oct),key_compromise_or_rug,2,1.0
+2026 (to 18 Oct),oracle_price_manipulation,27,0.815
+2026 (to 18 Oct),reentrancy,4,0.75
+2026 (to 18 Oct),unclassified,1,0.0

@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1600">
+<title>After the Hack: thread cards</title>
+<!--
+  One template for every card. render.py injects window.CARD_DATA (canonical numbers + verified on-chain quotes);
+  the card to draw and the theme come from the query string: template.html?card=ledger&theme=light|dark.
+  Nothing here hard-codes a figure. Type sizes are chosen for a 600px-wide phone view (scale 0.375):
+  body text >= 34px, source line 26px.  Visual language is shared with article/site (fonts, palette, bar specs).
+-->
+<style>
+@font-face { font-family: "Schibsted Grotesk"; src: url(../site/assets/fonts/schibsted.woff2) format("woff2"); font-weight: 400 800; }
+@font-face { font-family: "Newsreader"; src: url(../site/assets/fonts/newsreader.woff2) format("woff2"); font-weight: 300 700; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url(../site/assets/fonts/newsreader-italic.woff2) format("woff2"); font-weight: 300 700; font-style: italic; }
+@font-face { font-family: "IBM Plex Mono"; src: url(../site/assets/fonts/plexmono-400.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url(../site/assets/fonts/plexmono-500.woff2) format("woff2"); font-weight: 500; }
+
+:root {
+  --page: #f2f3f5; --surface: #fbfbfc; --ink: #15212d; --ink-2: #4a5563; --muted: #636c78;
+  --rule: #d7dbe0; --grid: #e3e6ea; --axis: #b9c0c8;
+  --s1: #2f62b0; --s2: #c17a12; --s3: #b23a48;
+  --lost: #c9ced6; --stolen: #56606d;
+  --s1-wash: rgba(47,98,176,.09); --s2-wash: rgba(193,122,18,.10); --s3-wash: rgba(178,58,72,.08);
+  --s3-soft: #d99aa2;
+  --dot: #c9ced6;
+  --sans: "Schibsted Grotesk", system-ui, sans-serif;
+  --serif: "Newsreader", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+:root[data-theme="dark"] {
+  --page: #0e1318; --surface: #161c23; --ink: #e6eaee; --ink-2: #b2bbc5; --muted: #98a2ae;
+  --rule: #29313b; --grid: #222a33; --axis: #3a4450;
+  --s1: #5b8fe0; --s2: #cf8f22; --s3: #e0617a;
+  --lost: #3d4752; --stolen: #8b95a1;
+  --s1-wash: rgba(91,143,224,.14); --s2-wash: rgba(207,143,34,.14); --s3-wash: rgba(224,97,122,.12);
+  --s3-soft: #8a4a58;
+  --dot: #3d4752;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #888; }
+body { width: 1600px; height: 900px; }
+#card {
+  width: 1600px; height: 900px; background: var(--surface); color: var(--ink);
+  font-family: var(--sans); padding: 64px 88px 44px; display: flex; flex-direction: column; overflow: hidden;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "kern", "liga";
+}
+.claim { font-weight: 700; font-size: 56px; line-height: 1.12; letter-spacing: -0.022em; max-width: 1380px; flex: none; text-wrap: balance; }
+.claim.sm { font-size: 50px; }
+.main { flex: 1; min-height: 0; position: relative; padding-top: 36px; display: flex; flex-direction: column; justify-content: center; }
+.main > * { flex: none; }
+.main > .col2 { height: auto; }
+.foot { flex: none; display: flex; justify-content: space-between; align-items: baseline; gap: 40px; border-top: 2px solid var(--rule); padding-top: 16px; font-size: 28px; color: var(--muted); line-height: 1.25; }
+.foot .src { max-width: 1180px; }
+.foot .mark { font-weight: 800; color: var(--ink); letter-spacing: -0.015em; white-space: nowrap; font-size: 28px; }
+.n { font-weight: 800; letter-spacing: -0.045em; line-height: .86; font-feature-settings: "kern", "lnum"; }
+.lab { font-size: 38px; line-height: 1.22; color: var(--ink-2); font-weight: 500; letter-spacing: -0.01em; }
+.lab b { color: var(--ink); font-weight: 700; }
+.note { font-size: 36px; line-height: 1.25; color: var(--ink-2); font-weight: 500; }
+.note b { color: var(--ink); font-weight: 700; }
+.sw { display: inline-block; width: 26px; height: 26px; border-radius: 6px; vertical-align: -3px; margin-right: 12px; }
+
+/* bars: 4px-ish rounded data end, square at the baseline, 2px surface gaps */
+.brow { display: grid; grid-template-columns: var(--lw, 440px) 1fr; align-items: center; column-gap: 28px; }
+.blab { font-size: 38px; font-weight: 600; line-height: 1.12; color: var(--ink); letter-spacing: -0.01em; }
+.blab small { display: block; font-size: 30px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+.btrack { position: relative; height: var(--bh, 44px); }
+.bfill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 0 7px 7px 0; }
+.bval { position: absolute; top: 50%; transform: translateY(-50%); font-size: 38px; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+.bval small { font-size: 28px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 10px; }
+.legend { display: flex; gap: 48px; font-size: 32px; font-weight: 600; color: var(--ink-2); }
+
+/* dot grids */
+.dots { display: grid; gap: var(--g, 8px); }
+.dots i { display: block; width: var(--d, 22px); height: var(--d, 22px); border-radius: 50%; background: var(--dot); }
+
+/* transaction cards */
+.tx { background: var(--page); border-radius: 16px; border-left: 12px solid var(--side, var(--s1)); padding: 20px 32px 22px; }
+.txhead { display: flex; align-items: center; gap: 24px; font-size: 30px; color: var(--ink-2); font-weight: 500; flex-wrap: nowrap; white-space: nowrap; }
+.txhead .chain { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); }
+.txhead .chain i { width: 16px; height: 16px; border-radius: 50%; background: var(--side, var(--s1)); display: inline-block; }
+.txhead .hash { font-family: var(--mono); font-weight: 500; font-size: 29px; color: var(--ink); }
+.txhead .role { margin-left: auto; font-weight: 700; color: var(--ink); }
+.txmsg { font-size: 40px; line-height: 1.24; font-weight: 500; letter-spacing: -0.012em; margin-top: 14px; white-space: pre-line; overflow-wrap: anywhere; }
+.txmsg .addr { font-family: var(--mono); font-size: 0.66em; letter-spacing: 0; font-weight: 500; }
+.gap { font-size: 32px; font-weight: 600; color: var(--muted); padding: 12px 0 12px 44px; display: flex; align-items: center; gap: 14px; }
+.gap::before { content: ""; width: 3px; height: 26px; background: var(--axis); display: inline-block; margin-right: 6px; }
+
+.col2 { display: grid; gap: 0 72px; height: 100%; }
+</style>
+</head>
+<body>
+<div id="card"></div>
+<script>
+(function () {
+  "use strict";
+  var D = window.CARD_DATA, X = D.x;
+  var qs = new URLSearchParams(location.search);
+  var theme = qs.get("theme") === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", theme);
+  var id = qs.get("card");
+
+  // ------------------------------------------------------------ format helpers
+  var int = function (v) { return Math.round(v).toLocaleString("en-US"); };
+  var pc = function (v) { return v + "%"; };
+  var bn = function (usd, d) { return "$" + (usd / 1e9).toFixed(d === undefined ? 2 : d) + "B"; };
+  var mn = function (usd) { return "$" + Math.round(usd / 1e6).toLocaleString("en-US") + "M"; };
+  var esc = function (s) { return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); };
+  var pct0 = function (v) { return Math.round(v) + "%"; };
+  var pctOf = function (a, b) { return (100 * a / b); };
+  var MONTHS_S = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var DS = D.meta.dataset;
+  var SRC = "Source: " + DS.replace(/(\d{4})\u2013/, "$1 to ");
+
+  // ------------------------------------------------------------ building blocks
+  // horizontal bar row.  v and max are in the same unit; label text is escaped here.
+  function bar(label, v, max, color, o) {
+    o = o || {};
+    var w = Math.max(0.35, v / max * 100);
+    var val = o.val !== undefined ? o.val : pc(v);
+    var sub = o.sub ? "<small>" + esc(o.sub) + "</small>" : "";
+    return '<div class="brow" style="' + (o.style || "") + '"><div class="blab">' + esc(label) + (o.lsub ? "<small>" + esc(o.lsub) + "</small>" : "") + '</div>' +
+      '<div class="btrack"><div class="bfill" style="width:' + w + '%;background:' + color + '"></div>' +
+      '<span class="bval" style="left:calc(' + w + '% + 16px)">' + val + sub + '</span></div></div>';
+  }
+  function dots(n, filled, o) {
+    o = o || {};
+    var cols = o.cols, h = "";
+    for (var i = 0; i < n; i++) {
+      var f = i < filled;
+      h += '<i style="' + (f ? "background:" + (o.color || "var(--s1)") : "") + (o.second && i >= filled && i < filled + o.second.n ? "background:" + o.second.color : "") + '"></i>';
+    }
+    return '<div class="dots" style="grid-template-columns:repeat(' + cols + ',var(--d));--d:' + (o.d || 22) + 'px;--g:' + (o.g || 8) + 'px">' + h + "</div>";
+  }
+  function chrome(claim, body, src, o) {
+    o = o || {};
+    return (claim ? '<div class="claim' + (o.sm ? " sm" : "") + '">' + claim + "</div>" : "") +
+      '<div class="main" style="' + (claim ? "" : "padding-top:0;") + (o.mainStyle || "") + '">' + body + "</div>" +
+      '<div class="foot"><span class="src">' + src + '</span><span class="mark">After the Hack</span></div>';
+  }
+  function utc(iso, secs) {
+    var d = new Date(iso);
+    var mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getUTCMonth()];
+    var p = function (x) { return String(x).padStart(2, "0"); };
+    return d.getUTCDate() + " " + mon + " " + d.getUTCFullYear() + ", " + p(d.getUTCHours()) + ":" + p(d.getUTCMinutes()) + (secs ? ":" + p(d.getUTCSeconds()) : "") + " UTC";
+  }
+  function gapText(a, b) {
+    var s = Math.round((new Date(b) - new Date(a)) / 1000);
+    var dd = Math.floor(s / 86400), hh = Math.floor((s % 86400) / 3600), mm = Math.floor((s % 3600) / 60), ss = s % 60;
+    if (dd) return dd + " days " + hh + " hours later";
+    if (hh) return hh + " h " + mm + " min later";
+    return mm + " min " + ss + " s later";
+  }
+  function shortHash(h) { return h.slice(0, 8) + "…" + h.slice(-6); }
+  var CHAIN = { ethereum: "Ethereum", bitcoin: "Bitcoin" };
+  function addrify(text) { // wrap 0x addresses in mono; text is verbatim
+    return esc(text).replace(/0x[0-9a-fA-F]{40}/g, function (a) { return '<span class="addr">' + a + "</span>"; });
+  }
+  function tx(q, role, side, secs) {
+    return '<div class="tx" style="--side:' + side + '"><div class="txhead"><span class="chain"><i></i>' + CHAIN[q.chain] + '</span>' +
+      '<span class="hash">tx ' + shortHash(q.tx) + '</span><span>' + utc(q.time, secs) + '</span><span class="role">' + esc(role) + '</span></div>' +
+      '<p class="txmsg">' + addrify(q.text) + "</p></div>";
+  }
+  // beeswarm: place dots on a shared axis, stacking vertically (0, +1, -1, +2, ...) so none overlap.
+  function swarm(vals, scale, r) {
+    var placed = [], gapPx = 2 * r + 3;
+    vals.slice().sort(function (a, b) { return a - b; }).forEach(function (v) {
+      var x = v * scale, k = 0, slot = 0;
+      for (;;) {
+        var y = slot === 0 ? 0 : (slot % 2 ? 1 : -1) * Math.ceil(slot / 2) * gapPx;
+        var ok = placed.every(function (p) { return Math.hypot(p.x - x, p.y - y) >= gapPx; });
+        if (ok) { placed.push({ v: v, x: x, y: y }); break; }
+        slot++;
+      }
+    });
+    return placed;
+  }
+  var dayLabel = function (d) { return d < 1 ? Math.round(d * 24) + " hours" : (d === 1 ? "1 day" : (Math.round(d * 10) / 10) + " days"); };
+  var Q = D.quotes.items;
+  function chainSrc(qs_, extra) {
+    var ex = qs_.map(function (q) { return shortHash(q.tx); }).join(" and ");
+    return "Source: " + (qs_[0].chain === "bitcoin" ? "Bitcoin OP_RETURN" : "Ethereum calldata") + ", tx " + ex + ", verified on chain " + D.quotes.run_date + ". " + (extra || "Sender roles come from dataset attributions and message pairing.");
+  }
+
+  // ------------------------------------------------------------ cards
+  var CARD = {};
+
+  // 01 cover: every dot is one hack in the dataset; the dark ones led to an arrest or charge
+  CARD.cover = function () {
+    var n = D.meta.n, k = D.E2.master_all[0];
+    function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+    var r = rng(7), pick = {};
+    while (Object.keys(pick).length < k) pick[Math.floor(r() * n)] = 1;
+    var cols = 85, h = "";
+    for (var i = 0; i < n; i++) h += pick[i] ? '<i class="hit"></i>' : "<i></i>";
+    var css = '<style>.cv .dots{--d:12px;--g:4px;margin-top:0;justify-content:space-between}.cv .dots i.hit{background:var(--s3);width:22px;height:22px;margin:-5px;position:relative;outline:5px solid var(--surface)}</style>';
+    var inner = '<div class="cv" style="display:flex;flex-direction:column;height:100%">' +
+      '<div style="font-size:204px;font-weight:800;letter-spacing:-0.055em;line-height:.9;margin-left:-8px">After the Hack</div>' +
+      '<div style="font-size:46px;font-weight:500;letter-spacing:-0.018em;line-height:1.2;margin-top:22px;color:var(--ink-2)">What happens to stolen crypto: returns, freezes and arrests</div>' +
+      '<div style="margin-top:auto"><div class="dots" style="grid-template-columns:repeat(' + cols + ',12px)">' + h + '</div>' +
+      '<div class="lab" style="margin-top:24px;margin-bottom:26px;font-size:38px"><b>' + n.toLocaleString("en-US") + ' hacks, ' + bn(D.meta.total_usd, 1) + ' stolen.</b> Each dot is one hack. The ' + k + ' red ones led to someone being arrested or charged.</div></div></div>';
+    return css + chrome("", inner, SRC + ".", { mainStyle: "padding-top:0;justify-content:flex-start;" });
+  };
+
+  // 02 where the stolen dollars ended up
+  CARD.ledger = function () {
+    var v = D.R2.pct_of_all, o = D.C4.master_pct, lost = X.unrecovered_pct, tot = D.C1.pct;
+    var body =
+      '<div style="display:flex;align-items:flex-end;gap:56px"><div class="n" style="font-size:300px;color:var(--ink)">' + pct0(tot) + '</div>' +
+      '<div class="lab" style="padding-bottom:6px;font-size:46px;line-height:1.16;max-width:760px"><b>of stolen dollars</b> has come back by any route</div></div>' +
+      '<div style="display:flex;gap:2px;height:92px;margin-top:44px;border-radius:8px;overflow:hidden">' +
+      '<div style="width:' + v + '%;background:var(--s1)"></div><div style="width:' + o + '%;background:var(--s2)"></div><div style="width:' + lost + '%;background:var(--lost)"></div></div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:36px;margin-top:26px;font-size:34px;line-height:1.2;color:var(--ink-2);font-weight:500">' +
+      [[v,"var(--s1)","returned by the attacker or an insider"],[o,"var(--s2)","frozen, seized or halted"],[lost,"var(--lost)","no documented recovery"]].map(function(c){return '<div style="border-top:8px solid '+c[1]+';padding-top:12px"><b style="display:block;font-size:64px;color:var(--ink);letter-spacing:-0.03em;line-height:1">'+pc(c[0])+'</b>'+c[2]+'</div>';}).join("") + '</div>' +
+      '<div class="note" style="margin-top:30px">Without ' + esc(X.top3_recoveries) + ', the figure falls to <b>' + pc(Math.round(D.C1.pct_ex_top3 * 10) / 10) + '</b>.</div>';
+    return chrome("", body, SRC + ". Dollar values at theft-date prices.");
+  };
+
+  // 03 vector mix, dollars vs count
+  CARD.vectors = function () {
+    var V = D.V1, rows = [
+      ["Keys and infrastructure", "private-key/compromised-infra"],
+      ["Smart-contract logic", "smart-contract logic"],
+      ["Oracle manipulation", "oracle/price-manipulation"],
+      ["Access control", "access-control"]];
+    var max = 40, body = '<div class="legend" style="margin-bottom:22px"><span><i class="sw" style="background:var(--s1)"></i>Share of dollars lost</span><span><i class="sw" style="background:var(--s2)"></i>Share of incidents</span></div>' +
+      '<div style="display:grid;row-gap:22px">' +
+      rows.map(function (r) {
+        return '<div class="brow" style="--lw:430px;--bh:38px;align-items:center"><div class="blab">' + r[0] + '</div><div style="display:grid;row-gap:6px">' +
+          bar("", V.pct_dollars[r[1]], max, "var(--s1)", { style: "display:block", lsub: "" }).replace('<div class="blab"></div>', "") +
+          bar("", V.pct_count[r[1]], max, "var(--s2)", { style: "display:block" }).replace('<div class="blab"></div>', "") + "</div></div>";
+      }).join("") + "</div>";
+    return chrome("By dollars, the biggest share of crypto is lost to compromised keys and infrastructure. By count, contract bugs lead.", body,
+      SRC + ". Four of nine vector classes shown.", { sm: true });
+  };
+
+  // 04 channels
+  CARD.channels = function () {
+    var L = { "voluntary return (attacker/insider)": "Returned by attacker or insider", "issuer / exchange / protocol freeze": "Issuer, exchange or protocol freeze",
+      "law-enforcement seizure / court": "Law-enforcement seizure or court", "chain-level: halt / validator / security council": "Chain halt or validator freeze",
+      "chain-level: hard fork / rollback": "Hard fork or rollback", "white-hat / MEV rescue": "White-hat or MEV rescue", "other / unspecified": "Other" };
+    var ch = D.C3.channels;
+    var left = '<div><div class="n" style="font-size:172px;color:var(--s1)">' + pc(ch[0].pct) + '</div><div class="lab" style="margin-top:22px;font-size:40px">of recovered dollars were handed back by the attacker or an insider</div>' +
+      '<div class="note" style="margin-top:28px">About <b>1 in ' + X.one_in_n_voluntary + '</b> large exploits ends with a voluntary return.</div></div>';
+    var right = '<div style="display:grid;row-gap:20px;align-content:start">' + ch.map(function (c, i) {
+      return bar(L[c.channel], c.pct, 72, i === 0 ? "var(--s1)" : "var(--s2)", { style: "--lw:390px;--bh:34px", val: pc(c.pct) });
+    }).join("") + "</div>";
+    return chrome("", '<div class="col2" style="grid-template-columns:520px 1fr;align-items:center">' + left + right + "</div>",
+      SRC + ". Share of the " + bn(D.C1.recovered_usd, 2) + " recovered, by primary channel.");
+  };
+
+  // 05 bounty norm: 183 openings, 104 exactly 10%
+  CARD.bounty = function () {
+    var n = D.R3.openings_n, k = D.R3.openings_exactly_10;
+    var left = '<div><div class="n" style="font-size:300px;color:var(--s1)">' + D.R3.kept_median_pct + '%</div><div class="lab" style="margin-top:22px;font-size:42px"><b>is the going rate.</b> The median opening bounty offer has been ' + D.R3.kept_median_pct + '% every year since 2021.</div></div>';
+    var right = '<div style="display:flex;flex-direction:column;align-items:flex-start;gap:26px">' + dots(n, k, { cols: 15, d: 28, g: 9 }) +
+      '<div class="lab" style="font-size:38px"><span class="sw" style="background:var(--s1);border-radius:50%"></span><b>' + k + ' of ' + n + '</b> offers were exactly ' + D.R3.kept_median_pct + '%</div></div>';
+    var foot = '<div class="note" style="margin-top:18px">Attackers who settled kept a median <b>' + D.R3.kept_median_pct + '%</b> (n=' + D.R3.kept_n + '). The tail: Verus kept <b>' + Math.round(D.M7.kept_pct) + '%</b>, Mango <b>' + X.mango_kept_pct + '%</b>.</div>';
+    return chrome("", '<div style="display:flex;flex-direction:column;height:100%"><div class="col2" style="grid-template-columns:660px 1fr;align-items:center;flex:1">' + left + right + "</div>" + foot + "</div>",
+      SRC + ". On-chain offers with a stated percentage.");
+  };
+
+  // 06 Shezmu
+  CARD.shezmu = function () {
+    var a = Q[2], b = Q[3];
+    var body = tx(a, "Exploiter", "var(--s2)", true) + '<div class="gap">' + gapText(a.time, b.time) + "</div>" + tx(b, "Shezmu team", "var(--s1)", true);
+    return chrome("Shezmu offered a 10% bounty. The exploiter asked for 20%, and the team agreed.", body, chainSrc([a, b]), { sm: true });
+  };
+
+  // 07 speed: every documented return on a 0-23 day axis (data/return_latency_audit.csv, checked against canonical R4)
+  CARD.speed = function () {
+    var R = D.R4, n = R.n_dated, w = R.within_7d, L = D.latency;
+    var W = 820, maxd = 24, sc = W / maxd, r = 13, base = 150;
+    var pts = swarm(L.map(function (l) { return l.days; }), sc, r);
+    var late = {}; L.forEach(function (l) { if (l.days > 7) late[l.days] = l.name; });
+    var svg = '<svg width="' + (W + 20) + '" height="360" viewBox="-10 0 ' + (W + 20) + ' 360" style="overflow:visible;font-family:Schibsted Grotesk">' +
+      '<rect x="0" y="40" width="' + (7 * sc) + '" height="260" fill="var(--s1-wash)" rx="6"/>' +
+      '<text x="' + (7 * sc / 2) + '" y="24" text-anchor="middle" font-size="30" font-weight="600" fill="var(--ink-2)">first week</text>';
+    [0, 7, 14, 21].forEach(function (t) {
+      svg += '<line x1="' + (t * sc) + '" x2="' + (t * sc) + '" y1="40" y2="306" stroke="var(--grid)" stroke-width="2"/><text x="' + (t * sc) + '" y="346" text-anchor="' + (t === 0 ? "start" : "middle") + '" font-size="30" fill="var(--muted)" font-weight="500">' + (t === 0 ? "hack" : t + " d") + "</text>";
+    });
+    svg += '<line x1="0" x2="' + W + '" y1="' + (base + 20) + '" y2="' + (base + 20) + '" stroke="var(--axis)" stroke-width="2"/>';
+    pts.forEach(function (p) {
+      svg += '<circle cx="' + p.x + '" cy="' + (base + p.y + 20) + '" r="' + r + '" fill="' + (p.v <= 7 ? "var(--s1)" : "var(--s2)") + '" stroke="var(--surface)" stroke-width="3"/>';
+    });
+    // median marker
+    svg += '<line x1="' + (R.median_days_from_incident * sc) + '" x2="' + (R.median_days_from_incident * sc) + '" y1="46" y2="296" stroke="var(--ink)" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>';
+    pts.filter(function (p) { return p.v > 7; }).forEach(function (p) {
+      var up = p.v > 20;
+      svg += '<text x="' + p.x + '" y="' + (base + 20 + (up ? -30 : 52)) + '" text-anchor="' + (up ? "end" : "start") + '" font-size="28" font-weight="600" fill="var(--ink-2)" dx="' + (up ? 8 : -8) + '">' + esc(late[p.v]) + " " + Math.round(p.v) + " d</text>";
+    });
+    svg += "</svg>";
+    var left = '<div><div class="n" style="font-size:230px;color:var(--ink)">' + R.median_days_from_incident.toFixed(1) + '<span style="font-size:84px;letter-spacing:-0.03em;margin-left:16px">days</span></div>' +
+      '<div class="lab" style="margin-top:26px;font-size:40px">median time from the hack to the first return</div>' +
+      '<div class="note" style="margin-top:20px;font-size:34px">Dotted line marks the median.</div></div>';
+    var right = '<div style="display:flex;flex-direction:column;gap:6px">' + svg +
+      '<div class="lab" style="font-size:34px;line-height:1.45"><span class="sw" style="background:var(--s1);border-radius:50%"></span><b>' + w + ' of ' + n + '</b> returns landed inside a week<br><span class="sw" style="background:var(--s2);border-radius:50%"></span>' + (n - w) + ' took longer, both inside 30 days</div></div>';
+    return chrome("Returns that happen are fast.", '<div class="col2" style="grid-template-columns:520px 1fr;align-items:center;gap:0 40px">' + left + right + "</div>",
+      SRC + ". Each dot is one documented return (the larger, better documented cases), timed by block timestamps. Median " + R.median_hours_from_first_message + " hours after the team's first message (n=" + R.n_from_message + ").");
+  };
+
+  // 08 outreach
+  CARD.outreach = function () {
+    var R = D.R5;
+    var body = '<div style="display:grid;row-gap:48px;margin-top:14px">' +
+      bar("Team reached out", R.outreach_return_pct, 52, "var(--s1)", { style: "--lw:420px;--bh:104px", lsub: X.outreach_yes_ret + " of " + X.outreach_yes_n + " known cases", val: '<span style="font-size:100px;letter-spacing:-0.04em">' + pc(R.outreach_return_pct) + "</span>" }) +
+      bar("No outreach", R.no_outreach_return_pct, 52, "var(--stolen)", { style: "--lw:420px;--bh:104px", lsub: X.outreach_no_ret + " of " + X.outreach_no_n + " known cases", val: '<span style="font-size:100px;letter-spacing:-0.04em">' + pc(R.no_outreach_return_pct) + "</span>" }) +
+      '</div><div class="note" style="margin-top:44px">Share of hacks where money came back. Attackers who reply tend to return funds; offer size, deadlines and legal threats showed <b>no measurable effect</b>.</div>';
+    return chrome("Teams that reached out saw returns far more often.", body, SRC + ". An association across known-outcome cases.");
+  };
+
+  // 09 Euler
+  CARD.euler = function () {
+    var a = Q[7], b = Q[6];
+    var body = tx(a, "Euler (project address)", "var(--s1)") + '<div class="gap">' + gapText(a.time, b.time) + "</div>" + tx(b, "Attacker address", "var(--s2)");
+    return chrome("Euler threatened a $1M arrest reward. The attacker answered.", body, chainSrc([a, b]), { sm: true });
+  };
+
+  // 10 Bybit freeze
+  CARD.bybit = function () {
+    var L = D.M2.loss_usd, f = X.bybit_tether_usd, pctv = f / L * 100;
+    var body = '<div style="display:flex;align-items:flex-end;gap:56px"><div class="n" style="font-size:300px;color:var(--ink)">$' + Math.round(f / 1000) + 'k</div>' +
+      '<div class="lab" style="padding-bottom:10px;font-size:46px;max-width:760px"><b>frozen by Tether</b> in the ' + bn(L, 2) + ' Bybit theft</div></div>' +
+      '<div style="margin-top:72px"><div style="height:84px;background:var(--lost);border-radius:8px;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--s1);border-radius:3px"></div></div>' +
+      '<div style="display:flex;justify-content:space-between;margin-top:14px;font-size:32px;font-weight:600;color:var(--ink-2)"><span><i class="sw" style="background:var(--s1);width:6px;border-radius:3px"></i>Frozen: <b style="color:var(--ink)">' + pctv.toFixed(3) + '%</b> of the loss</span><span>Stolen: <b style="color:var(--ink)">' + bn(L, 2) + '</b></span></div></div>' +
+      '<div class="note" style="margin-top:46px">Freezes only work on tokens someone controls. Across all routes, about <b>' + mn(D.M2.frozen_corroborated_usd) + '</b> (<b>' + pc(D.M2.frozen_pct) + '</b>) of the Bybit loss is corroborated as frozen. Issuer freezes elsewhere caught <b>' + D.F2.issuer_freeze_pct_of_loss_range[0] + '% to ' + D.F2.issuer_freeze_pct_of_loss_range[1] + '%</b>.</div>';
+    return chrome("", body, SRC + ". Bybit loss per FBI and Elliptic. Freeze figure is the independently corroborated one; Bybit's own larger claim is a company figure.");
+  };
+
+  // 11 chain freezes vs time to recover (log dot plot, labels inside the svg)
+  CARD.freezes = function () {
+    var med = D.F1.median_days, d0 = 0.01, d1 = 4000, W = 780;
+    var x = function (d) { return Math.log(d / d0) / Math.log(d1 / d0) * W; };
+    var rows = [
+      ["Cronos: attack detected", X.cronos_min / 1440, "~" + X.cronos_min + " min", null],
+      ["Chain halts, median", med.chain_intervention, dayLabel(med.chain_intervention), null],
+      ["Issuer freezes, median", med.stablecoin_issuer_freeze, dayLabel(med.stablecoin_issuer_freeze), null],
+      ["Exchange freezes, median", med.exchange_freeze, dayLabel(med.exchange_freeze), null],
+      ["Law-enforcement seizures", med.law_enforcement_seizure, "median " + int(med.law_enforcement_seizure) + " d", [X.seizure_lo, X.seizure_hi]]];
+    var ticks = [[1 / 24, "1 hour"], [1, "1 day"], [30, "1 month"], [365, "1 year"]];
+    var rh = 84, H = rows.length * rh + 70, TW = W + 40;
+    var svg = '<svg width="' + TW + '" height="' + H + '" viewBox="0 0 ' + TW + " " + H + '" style="overflow:visible;font-family:Schibsted Grotesk">';
+    ticks.forEach(function (t) { svg += '<line x1="' + x(t[0]) + '" x2="' + x(t[0]) + '" y1="0" y2="' + (rows.length * rh) + '" stroke="var(--grid)" stroke-width="2"/><text x="' + x(t[0]) + '" y="' + (rows.length * rh + 58) + '" text-anchor="middle" font-size="28" fill="var(--muted)" font-weight="500">' + t[1] + "</text>"; });
+    rows.forEach(function (r, i) {
+      var y0 = i * rh, y = y0 + 50;
+      svg += '<text x="0" y="' + (y0 + 26) + '" font-size="32" font-weight="600" fill="var(--ink-2)">' + r[0] + "</text>";
+      if (r[3]) svg += '<line x1="' + x(r[3][0]) + '" x2="' + x(r[3][1]) + '" y1="' + y + '" y2="' + y + '" stroke="var(--stolen)" stroke-width="7" stroke-linecap="round"/>' +
+        '<circle cx="' + x(r[3][1]) + '" cy="' + y + '" r="9" fill="var(--stolen)" stroke="var(--surface)" stroke-width="3"/>' +
+        '<text x="' + x(r[3][1]) + '" y="' + (y + 44) + '" text-anchor="end" font-size="28" font-weight="600" fill="var(--ink-2)">' + X.seizure_lo + " days to " + X.seizure_hi_label + "</text>";
+      svg += '<circle cx="' + x(r[1]) + '" cy="' + y + '" r="16" fill="' + (i === 0 ? "var(--s1)" : i === 4 ? "var(--stolen)" : "var(--s2)") + '" stroke="var(--surface)" stroke-width="4"/>';
+      var lx = r[3] ? x(r[3][0]) - 30 : x(r[1]) + 30, anchor = r[3] ? "end" : "start";
+      svg += '<text x="' + lx + '" y="' + (y + 12) + '" text-anchor="' + anchor + '" font-size="36" font-weight="800" fill="var(--ink)" letter-spacing="-0.5">' + r[2] + "</text>";
+    });
+    svg += "</svg>";
+    var left = '<div style="display:flex;flex-direction:column;gap:46px">' +
+      '<div><div class="n" style="font-size:160px;color:var(--s1)">' + pc(D.M5.frozen_pct) + '</div><div class="note" style="margin-top:14px">of Cetus\'s ' + mn(D.M5.loss_usd) + ' frozen by Sui validators</div></div>' +
+      '<div><div class="n" style="font-size:160px;color:var(--s1)">' + pc(X.cronos_pct) + '</div><div class="note" style="margin-top:14px">of Cronos\'s loss restored: detected in ~' + X.cronos_min + ' min, then halted and rolled back</div></div></div>';
+    var right = '<div><div class="note" style="margin-bottom:16px;font-weight:700;color:var(--ink)">Time from hack to recovery (log scale)</div>' + svg + "</div>";
+    return chrome("", '<div class="col2" style="grid-template-columns:470px 1fr;align-items:center;gap:0 56px">' + left + right + "</div>",
+      SRC + ". The Cronos dot marks detection time. Seizure whisker: " + X.seizure_lo + " days to " + X.seizure_hi_label + " (" + int(X.seizure_hi) + " days, Bitfinex).");
+  };
+
+  // 12 arrests: 1 in 10
+  CARD.arrests = function () {
+    var k = D.E1.top100_strict, a = D.E2.master_all;
+    var left = '<div><div class="n" style="font-size:300px;color:var(--ink)">1 in 10</div><div class="lab" style="margin-top:26px;font-size:44px"><b>of the 100 biggest hacks</b> (' + k + ' to be exact) has led to someone being charged for the hack itself</div>' +
+      '<div class="note" style="margin-top:34px">Across all <b>' + int(a[1]) + '</b> hacks it is <b>' + a[0] + '</b>, about <b>1 in ' + D.E2.one_in + '</b> (' + (a[0] / a[1] * 100).toFixed(1) + '%).</div></div>';
+    var right = '<div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px">' + dots(100, k, { cols: 10, d: 44, g: 14, color: "var(--s3)" }) +
+      '<div class="lab" style="font-size:34px"><span class="sw" style="background:var(--s3);border-radius:50%"></span><b>' + k + ' of 100</b> charged or arrested</div></div>';
+    return chrome("", '<div class="col2" style="grid-template-columns:760px 1fr;align-items:center">' + left + right + "</div>",
+      SRC + ". The 100 largest by loss; charged or arrested for the hack itself.");
+  };
+
+  // 12b arrest delay: the 14 cases in our dataset with a dated first arrest or charge (canonical E3, in-scope figure)
+  CARD.delay = function () {
+    var days = X.e3_days, med = X.e3_scope_median, W = 1380, d1 = 2100, sc = W / d1;
+    var months = Math.round(med / (365.25 / 12) * 2) / 2;
+    var pts = swarm(days, sc, 18), base = 20, H = 250;
+    var svg = '<svg width="' + (W + 40) + '" height="' + H + '" viewBox="-10 0 ' + (W + 40) + " " + H + '" style="overflow:visible;font-family:Schibsted Grotesk">';
+    [0, 1, 2, 3, 4, 5].forEach(function (y) {
+      var t = y * 365;
+      svg += '<line x1="' + (t * sc) + '" x2="' + (t * sc) + '" y1="20" y2="' + (base + 150) + '" stroke="var(--grid)" stroke-width="2"/><text x="' + (t * sc) + '" y="' + (base + 190) + '" text-anchor="' + (t === 0 ? "start" : "middle") + '" font-size="30" fill="var(--muted)" font-weight="500">' + (t === 0 ? "hack" : y + (y === 1 ? " year" : " years")) + "</text>";
+    });
+    svg += '<line x1="' + (med * sc) + '" x2="' + (med * sc) + '" y1="20" y2="' + (base + 150) + '" stroke="var(--s3)" stroke-width="7" stroke-linecap="round"/>' +
+      '<text x="' + (med * sc + 18) + '" y="46" font-size="32" font-weight="800" fill="var(--s3)">median ' + (Math.round(med * 10) / 10) + ' days</text>';
+    pts.forEach(function (p) {
+      var fast = p.v === X.e3_fast.PLAT || p.v === X.e3_fast.MANGO;
+      svg += '<circle cx="' + p.x + '" cy="' + (base + 96 + p.y) + '" r="18" fill="' + (fast ? "var(--ink)" : "var(--s3-soft)") + '" stroke="var(--surface)" stroke-width="3"/>';
+    });
+    svg += "</svg>";
+    var body = '<div style="display:flex;align-items:flex-end;gap:48px"><div class="n" style="font-size:230px;color:var(--ink)">' + months + '<span style="font-size:96px;letter-spacing:-0.03em;margin-left:14px">months</span></div>' +
+      '<div class="lab" style="padding-bottom:4px;font-size:36px;max-width:780px"><b>median wait</b> from hack to first arrest or charge, across the ' + X.e3_scope_n + ' cases in our dataset with a dated first action (' + (Math.round(med * 10) / 10) + ' days)</div></div>' +
+      '<div style="margin-top:12px">' + svg + "</div>" +
+      '<div class="note" style="margin-top:4px;font-size:32px"><b>' + X.e3_over_year + ' of ' + X.e3_scope_n + '</b> took over a year. The two fastest (the highlighted dots), Platypus (' + X.e3_fast.PLAT + ' days) and Mango (' + X.e3_fast.MANGO + '), involved a KYC\'d exchange or a public identity.</div>';
+    return chrome("", body, SRC + ". Each dot is one case: first public arrest, charge or detention of a person, 2016 onward, inside the dataset (n=" + X.e3_scope_n + ").");
+  };
+
+  // 13 outcomes of the 23 charged
+  CARD.outcomes = function () {
+    var o = D.E4.outcomes, tot = D.E4.individuals;
+    var rows = [
+      ["Convicted or plea on file", o.convicted_or_pleaded, "var(--s1)"],
+      ["Charged, not in custody", o.at_large_or_not_in_custody, "var(--stolen)"],
+      ["Case pending", o.pending, "var(--stolen)"],
+      ["Acquitted", o.acquitted, "var(--stolen)"],
+      ["Outcome unknown", o.outcome_unknown, "var(--stolen)"],
+      ["Conviction vacated, appeal pending", o.conviction_vacated_or_acquitted_appeal_pending, "var(--stolen)"]];
+    var sum = rows.reduce(function (a, r) { return a + r[1]; }, 0);
+    if (sum !== tot) throw new Error("E4 outcomes do not sum to individuals");
+    var body = '<div style="display:grid;row-gap:12px;margin-top:0">' + rows.map(function (r) {
+      return bar(r[0], r[1], 9, r[2], { style: "--lw:640px;--bh:54px", val: r[1] });
+    }).join("") + "</div>";
+    body += '<div class="note" style="margin-top:22px;font-size:32px;border-left:6px solid var(--s1);padding-left:22px">On 7 Oct 2026 a jury convicted Jonathan Spalletta on all counts over the Uranium Finance hacks.</div>';
+    return chrome("Of " + tot + " people charged over a hack or its laundering, " + o.convicted_or_pleaded + " were convicted or have a plea on file.", body,
+      SRC + ". People charged or arrested for a hack or its laundering.", { sm: true });
+  };
+
+  // 14 DPRK share of dollars vs incidents: the government-attribution tier leads, the broader tier is secondary
+  CARD.dprk = function () {
+    var n = D.D1.gov, nf = D.D1.gov_plus_firm;
+    var g = { usd: D.D1.pairing.gov_dollars_pct, cnt: D.D1.pairing.gov_incidents_pct };
+    var gf = { usd: D.D1.pairing.gov_plus_firm_dollars_pct, cnt: D.D1.pairing.gov_plus_firm_incidents_pct };
+    function grp(title, sub, o, big) {
+      var h = big ? 60 : 36, lw = big ? 330 : 330;
+      return '<div><div style="font-size:' + (big ? 40 : 32) + 'px;font-weight:700;margin-bottom:12px' + (big ? "" : ";color:var(--ink-2)") + '">' + title + '<span style="font-weight:500;color:var(--muted);font-size:30px;margin-left:14px">' + sub + "</span></div>" +
+        '<div style="display:grid;row-gap:10px">' + bar("Share of dollars", o.usd, 48, big ? "var(--s3)" : "var(--s3-soft)", { style: "--lw:" + lw + "px;--bh:" + h + "px" }) +
+        bar("Share of incidents", o.cnt, 48, big ? "var(--s3-soft)" : "var(--lost)", { style: "--lw:" + lw + "px;--bh:" + h + "px" }) + "</div></div>";
+    }
+    var body = '<div style="display:grid;row-gap:38px;margin-top:0">' +
+      grp("Government attribution", n.n + " incidents", g, true) + grp("Adding firm and researcher attributions", nf.n + " incidents", gf, false) + "</div>" +
+      '<div class="note" style="margin-top:30px">In 2025 the government-attributed share was <b>' + pc(X.dprk_2025_gov_pct) + '</b> of dollars, mostly Bybit.</div>';
+    return chrome("Governments attribute " + pc(g.usd) + " of stolen dollars to North Korea, from " + pc(g.cnt) + " of incidents.", body,
+      SRC + ". Attribution tier shown on each pair; the broader tier includes researcher-list rows.", { sm: true });
+  };
+
+  // 15 DPRK recovery
+  CARD.dprk_recovery = function () {
+    var R = D.D3;
+    var chart = '<div style="display:grid;row-gap:24px">' +
+      bar("DPRK-attributed hacks", R.gov_plus_firm_pct, 30, "var(--s3-soft)", { style: "--lw:460px;--bh:46px", lsub: "all " + D.D2.gov_plus_firm[0] + " incidents" }) +
+      bar("DPRK, minus two outliers", R.gov_plus_firm_ex_outliers_pct, 30, "var(--s3)", { style: "--lw:460px;--bh:46px", lsub: "KuCoin and Munchables removed" }) +
+      bar("Everything else", R.non_dprk_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px" }) +
+      bar("Everything else, minus top 3", R.non_dprk_ex_top3_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px", lsub: "three largest returns removed" }) + "</div>";
+    var left = '<div>' + '<div class="note" style="margin-bottom:22px;font-weight:600">Share of stolen dollars recovered</div>' + chart + "</div>";
+    var right = '<div style="border-left:2px solid var(--rule);padding-left:52px"><div class="n" style="font-size:300px;color:var(--s3)">' + D.D4.dprk_hackers_arrested + '</div><div class="lab" style="margin-top:22px;font-size:38px"><b>operators in custody</b> for exchange or bridge thefts. Several are indicted in absentia.</div></div>';
+    return chrome("Hacks attributed to North Korea almost never come back.", '<div class="col2" style="grid-template-columns:1fr 460px;align-items:center">' + left + right + "</div>",
+      SRC + ". DPRK = government plus firm attribution.", {});
+  };
+
+  // 16 same-transaction attacks by year (canonical K1, DeFiHackLabs EVM sample)
+  CARD.sametx = function () {
+    var endDay = D.meta.sample_end;
+    var K = D.K1, eras = ["2020-22", "2023", "2024", "2025", "2026"];
+    var usd = [K.usd_weighted_pct["2024"], K.usd_weighted_pct["2025"], K.usd_weighted_pct["2026"]];
+    var lo = Math.round(Math.min.apply(null, usd)), hi = Math.round(Math.max.apply(null, usd));
+    var W = 1380, Hc = 300, bw = 170, gap = (W - eras.length * bw) / (eras.length - 1), max = 50;
+    var yv = function (v) { return Hc - v / max * Hc; };
+    var svg = '<svg width="' + (W + 40) + '" height="' + (Hc + 110) + '" viewBox="-20 -40 ' + (W + 40) + " " + (Hc + 110) + '" style="overflow:visible;font-family:Schibsted Grotesk">';
+    [0, 10, 20, 30, 40, 50].forEach(function (t) {
+      svg += '<line x1="0" x2="' + W + '" y1="' + yv(t) + '" y2="' + yv(t) + '" stroke="' + (t === 0 ? "var(--axis)" : "var(--grid)") + '" stroke-width="2"/>' +
+        '<text x="-10" y="' + (yv(t) + 10) + '" text-anchor="end" font-size="28" fill="var(--muted)" font-weight="500" style="display:none">' + t + "%</text>";
+    });
+    eras.forEach(function (e, i) {
+      var v = K.by_era[e].ctor_pct, x0 = i * (bw + gap), h = Math.max(4, Hc - yv(v));
+      svg += '<path d="M' + x0 + " " + Hc + " V" + (Hc - h + 8) + " a8 8 0 0 1 8 -8 H" + (x0 + bw - 8) + " a8 8 0 0 1 8 8 V" + Hc + ' Z" fill="' + (v >= 30 ? "var(--s1)" : "var(--s1)") + '"' + (v < 1 ? ' opacity=".35"' : "") + "/>" +
+        '<text x="' + (x0 + bw / 2) + '" y="' + (Hc - h - 16) + '" text-anchor="middle" font-size="46" font-weight="800" fill="var(--ink)" letter-spacing="-1">' + (v < 0.5 ? (v === 0 ? "0 of " + K.by_era[e].n : "<1%") : v + "%") + "</text>" +
+        '<text x="' + (x0 + bw / 2) + '" y="' + (Hc + 42) + '" text-anchor="middle" font-size="34" font-weight="700" fill="var(--ink)">' + e + "</text>" +
+        '<text x="' + (x0 + bw / 2) + '" y="' + (Hc + 78) + '" text-anchor="middle" font-size="26" font-weight="500" fill="var(--muted)">n=' + K.by_era[e].n + (e === "2026" ? ", to " + endDay : "") + "</text>";
+    });
+    svg += "</svg>";
+    var body = '<div style="display:grid;grid-template-columns:1fr;row-gap:6px"><div style="margin-left:0">' + svg + "</div></div>" +
+      '<div class="note" style="margin-top:22px;font-size:34px">Mostly small and mid-size exploits (USD-weighted share since 2024: <b>' + lo + '% to ' + hi + '%</b>).</div>';
+    return chrome("A growing share of exploits run the whole attack inside the attack contract's own deployment transaction.", body,
+      SRC + ". DeFiHackLabs EVM exploits (n=" + K.sample_n + "), share flagged as same-transaction (constructor) attacks. 2026 is a partial year (to " + endDay + ").", { sm: true });
+  };
+
+  // 17 AI: what is and is not established (K5, K6, K7)
+  CARD.ai = function () {
+    var A = D.K6, B = D.K7, C = D.K5;
+    function col(color, big, lab, viz, last) {
+      return '<div style="padding:0 40px;' + (last ? "" : "border-right:2px solid var(--rule);") + 'display:flex;flex-direction:column;gap:20px">' +
+        '<div class="n" style="font-size:124px;line-height:1;color:' + color + ';white-space:nowrap">' + big + '</div><div class="lab" style="font-size:32px;line-height:1.22">' + lab + "</div>" + (viz || "") + "</div>";
+    }
+    var ratio = '<div style="display:flex;height:34px;border-radius:7px;overflow:hidden;gap:2px;margin-top:6px"><div style="width:' + B.scone_pct + '%;background:var(--s1)"></div><div style="flex:1;background:var(--lost)"></div></div>';
+    var mo = function (v, c) { return '<div style="height:34px;width:' + (v / 40 * 100) + '%;background:' + c + ';border-radius:0 7px 7px 0"></div>'; };
+    var months = '<div style="display:grid;row-gap:6px;margin-top:6px">' + mo(C.dl25_pm, "var(--s2)") + mo(C.dl26_pm, "var(--s2)") + "</div>";
+    var body = '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;margin:0 -40px">' +
+      col("var(--ink)", "0", "<b>verified AI-written exploits</b> in real hacks, across " + A.claims_n + " AI-related claims logged.", '<div style="margin-top:6px">' + dots(A.claims_n, 0, { cols: 14, d: 22, g: 8 }) + "</div>", false) +
+      col("var(--s1)", int(B.scone_reproduced) + '<span style="font-size:52px;letter-spacing:-0.03em;margin-left:10px;color:var(--ink-2)">of ' + int(B.scone_total) + "</span>", "<b>past exploits reproduced</b> by AI agents in simulation (SCONE-bench), run on known bugs.", ratio, false) +
+      col("var(--s2)", Math.round(C.dl25_pm) + '<span style="font-size:52px;letter-spacing:-0.03em;margin:0 12px;color:var(--ink-2)">to</span>' + Math.round(C.dl26_pm), "<b>recorded exploits a month</b>, 2025 vs Mar to Sep 2026 (DeFiLlama; SlowMist " + Math.round(C.sm25_pm) + " to " + Math.round(C.sm26_pm) + ").", months, true) + "</div>" +
+      '<div class="note" style="margin-top:34px;border-top:2px solid var(--rule);padding-top:20px;font-size:33px">Dollars per month rose about ' + Math.round(((C.usd26/7)/(C.usd25/12)-1)*100) + '% (<b>$' + C.usd26.toFixed(1) + 'B</b> in Mar to Sep 2026 vs <b>$' + C.usd25.toFixed(1) + 'B</b> in all of 2025). The count rise may reflect more attacks, wider tracker coverage, or both.</div>';
+    return chrome("No verified AI-written exploit, but counts rose from 2025 to Mar-Sep 2026.", body,
+      SRC + ". SCONE-bench: Anthropic, " + B.scone_published + ". Exploit counts: DeFiLlama and SlowMist trackers.", { sm: true });
+  };
+
+  // 18 Liquid
+  CARD.liquid = function () {
+    var q = Q[9], M = D.M1;
+    var status = (function () { var d = new Date(M.status_date + "T00:00:00Z"); return d.getUTCDate() + " " + MONTHS_S[d.getUTCMonth()] + " " + d.getUTCFullYear(); })();
+    var body = '<style>.liq .txmsg{font-size:54px;line-height:1.2;margin-top:20px}</style><div class="liq">' + tx(q, "Exploiter address (TRM attribution)", "var(--s2)", false) +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px"><div class="note" style="border-left:6px solid var(--s2);padding-left:22px"><b>' + int(M.returned_btc) + ' BTC</b> returned about ' + X.liquid_hours + ' hours after the drain. <b>' + M.withheld_btc + ' BTC</b> held back for a bounty. Unresolved as of ' + status + '.</div>' +
+      '<div class="note" style="border-left:6px solid var(--s1);padding-left:22px">Blockstream, publicly: <b>"' + esc(X.blockstream_quote) + '"</b></div></div></div>';
+    return chrome("Liquid Network, " + mn(M.loss_usd) + ": the attacker wants a bounty paid from Blockstream's own money.", body,
+      chainSrc([q], "Blockstream reply is from press coverage. Sender attribution is TRM's. Status as of " + status + "."), { sm: true });
+  };
+
+  // 19 NEAR Intents
+  CARD.near = function () {
+    var M = D.M6, W = 1240, dl = X.near_deadline_h, h = M.hours_from_detection;
+    var x = function (t) { return t / dl * W; };
+    var svg = '<svg width="' + (W + 60) + '" height="150" viewBox="-6 0 ' + (W + 60) + ' 150" style="overflow:visible">' +
+      '<rect x="0" y="40" width="' + W + '" height="28" rx="6" fill="var(--lost)"/><rect x="0" y="40" width="' + x(h) + '" height="28" rx="6" fill="var(--s1)"/>' +
+      '<line x1="' + W + '" x2="' + W + '" y1="22" y2="86" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>' +
+      '<circle cx="' + x(h) + '" cy="54" r="19" fill="var(--s1)" stroke="var(--surface)" stroke-width="5"/>' +
+      '<text x="' + x(h) + '" y="126" text-anchor="middle" font-size="34" font-weight="800" fill="var(--ink)" font-family="Schibsted Grotesk">funds back at ~' + h + ' h</text>' +
+      '<text x="' + W + '" y="8" text-anchor="end" font-size="32" font-weight="600" fill="var(--ink-2)" font-family="Schibsted Grotesk">public ' + dl + '-hour deadline</text>' +
+      '<text x="0" y="126" font-size="30" font-weight="500" fill="var(--muted)" font-family="Schibsted Grotesk">detected</text></svg>';
+    var body = '<div style="display:flex;align-items:flex-end;gap:52px"><div class="n" style="font-size:310px;color:var(--s1)">' + M.returned_pct + '%</div>' +
+      '<div class="lab" style="padding-bottom:10px;font-size:44px;max-width:700px"><b>returned</b> within about ' + h + ' hours of detection. No bounty reported.</div></div>' +
+      '<div style="margin-top:40px">' + svg + '</div>' +
+      '<div class="note" style="margin-top:26px">NEAR told the attacker publicly <b>"' + esc(X.near_quote) + ', sir."</b> and set a ' + dl + '-hour deadline. Loss: about <b>$' + (M.loss_usd / 1e6).toFixed(1) + 'M</b>.</div>';
+    return chrome("", body, SRC + ". NEAR Intents incident, Sep to Oct 2026.");
+  };
+
+  // 20 closing: sources, no links (the URLs live in the tweet)
+  CARD.closing = function () {
+    var items = [["Site", "Every figure with its sources"], ["Paper", "Definitions, methods and caveats"], ["Data", "The incident dataset behind the cards"]];
+    var inner = '<div style="display:flex;flex-direction:column;height:100%">' +
+      '<div style="font-size:150px;font-weight:800;letter-spacing:-0.05em;line-height:.92;margin-left:-6px">After the Hack</div>' +
+      '<div style="font-size:48px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;margin-top:26px">Data, paper and site</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:96px">' + items.map(function (it, i) {
+        return '<div style="border-top:8px solid ' + ["var(--s1)", "var(--s2)", "var(--stolen)"][i] + ';padding-top:16px"><div style="font-size:76px;font-weight:800;letter-spacing:-0.03em;line-height:1">' + it[0] + '</div><div class="lab" style="font-size:38px;margin-top:14px">' + it[1] + "</div></div>";
+      }).join("") + "</div>" +
+      '<div class="note" style="margin-top:auto;margin-bottom:28px;font-size:34px;line-height:1.3">A swarm of AI agents helped compile this, so there will be mistakes. Every claim links its source; corrections welcome.<br>github.com/DicksonWu654/after-the-hack</div></div>';
+    return chrome("", inner, SRC + ".", { mainStyle: "padding-top:0;justify-content:flex-start;" });
+  };
+
+  // ------------------------------------------------------------ mount
+  var el = document.getElementById("card");
+  if (!CARD[id]) { el.textContent = "unknown card " + id; window.__ready = true; return; }
+  el.innerHTML = CARD[id]();
+  if (id === "cover") el.style.paddingTop = "48px";
+
+  window.__overflow = function () {
+    var c = el.getBoundingClientRect(), bad = [];
+    el.querySelectorAll("*").forEach(function (n) {
+      if (n.closest("svg") && n.tagName !== "svg") return;
+      var r = n.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      if (r.right > c.right - 40 + 1 || r.left < c.left + 40 - 1 || r.bottom > c.bottom + 1) bad.push((n.className && n.className.baseVal === undefined ? n.className : n.tagName) + ":" + Math.round(r.right) + "," + Math.round(r.bottom));
+    });
+    var m = el.querySelector(".main"), f = el.querySelector(".foot");
+    if (m && f && m.scrollHeight > m.clientHeight + 2) bad.push("main overflows by " + (m.scrollHeight - m.clientHeight));
+    return bad.slice(0, 6).join(" | ");
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+    return Promise.all(["800 40px 'Schibsted Grotesk'", "500 20px 'IBM Plex Mono'"].map(function (f) { return document.fonts.load(f); }));
+  }).then(function () { window.__ready = true; });
+})();
+</script>
+</body>
+</html>

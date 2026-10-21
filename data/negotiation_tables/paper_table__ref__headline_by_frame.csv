@@ -1,0 +1,10 @@
+frame,n,share_of_known,imputed_at_swept_rate,lower_bound,upper_bound
+paper: tier 1-2 exploits and key compromises,1078,0.17,0.125,0.091,0.558
+"all live incidents with loss >= $1M, any type",955,0.165,0.125,0.093,0.529
+exploits and key compromises with loss >= $1M,577,0.182,0.143,0.118,0.47
+"all types except rug pulls, loss >= $1M",773,0.183,0.134,0.102,0.545
+"all live tier 1-2 incidents, any type",2090,0.138,0.102,0.062,0.611
+whole live frame,5261,0.143,0.085,0.027,0.841
+paper frame restricted to loss >= $100k (drops signal-admitted small rows),1042,0.164,0.122,0.088,0.55
+paper frame without outreach coded from a press statement,1064,0.171,0.124,0.09,0.562
+paper frame without outreach coded from a press statement or a tweet,1032,0.16,0.118,0.083,0.564

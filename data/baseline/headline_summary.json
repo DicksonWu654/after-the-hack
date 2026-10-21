@@ -1,0 +1,731 @@
+{
+ "all": {
+  "n": 1377,
+  "loss": 16516848367,
+  "recovered": 3105350612,
+  "pct_all": 18.8011,
+  "pct_ex_chain": 16.1344,
+  "pct_ex_top3": 12.9985,
+  "top3": [
+   [
+    "Poly Network",
+    610000000
+   ],
+   [
+    "Liquid Network",
+    266500000
+   ],
+   [
+    "KuCoin",
+    239450000
+   ]
+  ],
+  "pct_ex_unverified": 18.6228,
+  "n_ge1m": 659,
+  "n_ge1m_documented": 150,
+  "pct_count_ge1m": 22.7618,
+  "n_ge1m_checked": 412,
+  "n_ge1m_documented_of_checked": 150,
+  "pct_count_checked": 36.4078,
+  "n_ge1m_unchecked": 247,
+  "n_quantified": 179,
+  "n_documented": 190,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1681375837,
+    103,
+    54.1
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    534307471,
+    32,
+    17.2
+   ],
+   [
+    "law-enforcement seizure / court",
+    329974815,
+    11,
+    10.6
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    261066300,
+    9,
+    8.4
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    179386549,
+    3,
+    5.8
+   ],
+   [
+    "white-hat / MEV rescue",
+    70446208,
+    19,
+    2.3
+   ],
+   [
+    "other / unspecified",
+    48793433,
+    13,
+    1.6
+   ]
+  ]
+ },
+ "top150": {
+  "n": 150,
+  "loss": 14105460010,
+  "recovered": 2804395437,
+  "pct_all": 19.8816,
+  "pct_ex_chain": 17.0154,
+  "pct_ex_top3": 13.0954,
+  "top3": [
+   [
+    "Poly Network",
+    610000000
+   ],
+   [
+    "Liquid Network",
+    266500000
+   ],
+   [
+    "KuCoin",
+    239450000
+   ]
+  ],
+  "pct_ex_unverified": 19.6728,
+  "n_ge1m": 150,
+  "n_ge1m_documented": 58,
+  "pct_count_ge1m": 38.6667,
+  "n_ge1m_checked": 149,
+  "n_ge1m_documented_of_checked": 58,
+  "pct_count_checked": 38.9262,
+  "n_ge1m_unchecked": 1,
+  "n_quantified": 58,
+  "n_documented": 58,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1482738549,
+    21,
+    52.9
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    515175771,
+    20,
+    18.4
+   ],
+   [
+    "law-enforcement seizure / court",
+    326774815,
+    9,
+    11.7
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    233100000,
+    2,
+    8.3
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    171200000,
+    2,
+    6.1
+   ],
+   [
+    "white-hat / MEV rescue",
+    38306335,
+    4,
+    1.4
+   ],
+   [
+    "other / unspecified",
+    37099967,
+    4,
+    1.3
+   ]
+  ],
+  "arrest_strict": 11,
+  "arrest_broad": 16,
+  "arrest_flag_any": 22,
+  "arrest_classes": {
+   "none_found": 71,
+   "related_or_laundering_side": 5,
+   "charged_or_arrested_for_hack": 11,
+   "civil_or_regulatory_only": 3,
+   "not_for_the_hack": 3,
+   "": 57
+  },
+  "verified_check": {
+   "": [
+    5,
+    10000000
+   ],
+   "checked_none_found": [
+    59,
+    0
+   ],
+   "corrected": [
+    33,
+    1135712967
+   ],
+   "not_corroborated": [
+    9,
+    29450000
+   ],
+   "verified_agree": [
+    44,
+    1629232470
+   ]
+  }
+ },
+ "top100": {
+  "n": 100,
+  "loss": 13120900010,
+  "recovered": 2628319160,
+  "pct_all": 20.0315,
+  "pct_ex_chain": 16.9502,
+  "pct_ex_top3": 12.6995,
+  "top3": [
+   [
+    "Poly Network",
+    610000000
+   ],
+   [
+    "Liquid Network",
+    266500000
+   ],
+   [
+    "KuCoin",
+    239450000
+   ]
+  ],
+  "pct_ex_unverified": 19.8071,
+  "n_ge1m": 100,
+  "n_ge1m_documented": 43,
+  "pct_count_ge1m": 43.0,
+  "n_ge1m_checked": 100,
+  "n_ge1m_documented_of_checked": 43,
+  "pct_count_checked": 43.0,
+  "n_ge1m_unchecked": 0,
+  "n_quantified": 43,
+  "n_documented": 43,
+  "channel_mix": [
+   [
+    "voluntary return (attacker/insider)",
+    1327570000,
+    11,
+    50.5
+   ],
+   [
+    "issuer / exchange / protocol freeze",
+    494918010,
+    15,
+    18.8
+   ],
+   [
+    "law-enforcement seizure / court",
+    326774815,
+    9,
+    12.4
+   ],
+   [
+    "chain-level: halt / validator / security council",
+    233100000,
+    2,
+    8.9
+   ],
+   [
+    "chain-level: hard fork / rollback",
+    171200000,
+    2,
+    6.5
+   ],
+   [
+    "white-hat / MEV rescue",
+    38306335,
+    4,
+    1.5
+   ],
+   [
+    "other / unspecified",
+    36450000,
+    3,
+    1.4
+   ]
+  ],
+  "arrest_strict": 9,
+  "arrest_broad": 12,
+  "arrest_flag_any": 16,
+  "arrest_classes": {
+   "none_found": 71,
+   "related_or_laundering_side": 3,
+   "charged_or_arrested_for_hack": 9,
+   "civil_or_regulatory_only": 2,
+   "not_for_the_hack": 2,
+   "": 13
+  },
+  "verified_check": {
+   "": [
+    1,
+    10000000
+   ],
+   "checked_none_found": [
+    35,
+    0
+   ],
+   "corrected": [
+    25,
+    1122238000
+   ],
+   "not_corroborated": [
+    9,
+    29450000
+   ],
+   "verified_agree": [
+    30,
+    1466631160
+   ]
+  }
+ },
+ "dprk": {
+  "n_gov": 32,
+  "loss_gov": 3737290000,
+  "pct_gov": 22.6271,
+  "n_firm": 63,
+  "loss_firm": 2716072000,
+  "n_gov_firm": 95,
+  "loss_gov_firm": 6453362000,
+  "pct_gov_firm": 39.0714,
+  "recovered_pct_dprk": 8.3124,
+  "recovered_pct_non_dprk": 25.5272
+ },
+ "vec_pct": {
+  "access-control": [
+   4.8,
+   214
+  ],
+  "oracle/price-manipulation": [
+   5.7,
+   182
+  ],
+  "other": [
+   2.5,
+   57
+  ],
+  "private-key/compromised-infra": [
+   35.0,
+   216
+  ],
+  "reentrancy": [
+   2.9,
+   65
+  ],
+  "rug/insider": [
+   2.0,
+   42
+  ],
+  "smart-contract logic": [
+   24.8,
+   491
+  ],
+  "social-engineering": [
+   11.4,
+   70
+  ],
+  "supply-chain": [
+   11.0,
+   40
+  ]
+ },
+ "cat_pct": {
+  "bridge": [
+   22.6,
+   117
+  ],
+  "cex": [
+   33.8,
+   92
+  ],
+  "defi": [
+   35.3,
+   1055
+  ],
+  "other": [
+   4.9,
+   88
+  ],
+  "wallet": [
+   3.3,
+   25
+  ]
+ },
+ "bridge_2022": 54,
+ "bridge_2026": 33,
+ "supply_2025": 56,
+ "voluntary": {
+  "total": 1681375837,
+  "top3": [
+   [
+    "Poly Network",
+    610000000
+   ],
+   [
+    "Liquid Network",
+    266500000
+   ],
+   [
+    "Euler V1",
+    197000000
+   ]
+  ],
+  "ex_top3": 607875837
+ },
+ "status_top150": {
+  "recovered_documented": 58,
+  "no_recovery_in_sources_checked": 5,
+  "claimed_unverified": 11,
+  "no_public_record_found": 65,
+  "recovered_unquantified": 8,
+  "unknown_not_checked": 1,
+  "no_voluntary_return_found": 2
+ },
+ "status_big": {
+  "no_voluntary_return_found": 161,
+  "recovered_documented": 150,
+  "unknown_not_checked": 247,
+  "no_public_record_found": 65,
+  "no_recovery_in_sources_checked": 16,
+  "claimed_unverified": 11,
+  "recovered_unquantified": 9
+ },
+ "top150_not_rechecked": [
+  "Ledger (Supply Chain)",
+  "Floating Point Group",
+  "Rain",
+  "Drift Trade",
+  "Furucombo"
+ ],
+ "top150_not_corroborated": [
+  [
+   "PlayDapp",
+   0
+  ],
+  [
+   "Vulcan Forged",
+   0
+  ],
+  [
+   "Poloniex",
+   0
+  ],
+  [
+   "Badger DAO",
+   0
+  ],
+  [
+   "Heco Bridge",
+   0
+  ],
+  [
+   "Phemex",
+   0
+  ],
+  [
+   "AscenDEX",
+   0
+  ],
+  [
+   "Hedgey",
+   0
+  ],
+  [
+   "Meerkat Finance",
+   29450000
+  ]
+ ],
+ "claimed_or_unquantified_top150": [
+  "Drift Trade",
+  "PlayDapp",
+  "Vulcan Forged",
+  "Poloniex",
+  "Badger DAO",
+  "Harmony Bridge",
+  "Heco Bridge",
+  "Phemex",
+  "AscenDEX",
+  "Cashio",
+  "Hedgey",
+  "CoinsPaid",
+  "Coinrail",
+  "IRA Financial / Gemini",
+  "Grim Finance",
+  "BigONE",
+  "Bald",
+  "Electrum",
+  "Electrum"
+ ],
+ "year_big": {
+  "2016": [
+   5,
+   135730000
+  ],
+  "2017": [
+   7,
+   139850010
+  ],
+  "2018": [
+   26,
+   901911992
+  ],
+  "2019": [
+   20,
+   211378529
+  ],
+  "2020": [
+   52,
+   560805238
+  ],
+  "2021": [
+   134,
+   2659237659
+  ],
+  "2022": [
+   196,
+   3540797852
+  ],
+  "2023": [
+   229,
+   1640628133
+  ],
+  "2024": [
+   235,
+   1827041215
+  ],
+  "2025": [
+   165,
+   2569483978
+  ],
+  "2026": [
+   308,
+   2329983761
+  ]
+ },
+ "largest_2025_share": 54,
+ "cap_flagged": [
+  [
+   "flash.sx / vaults.sx",
+   "raw returned+frozen 13432000 exceeds loss 13000000: capped at 100% of loss (double-count g"
+  ],
+  [
+   "Eleven Finance",
+   "raw returned+frozen 8700000 exceeds loss 4500000: capped at 100% of loss (double-count gua"
+  ],
+  [
+   "XDX Swap",
+   "raw returned+frozen 5000000 exceeds loss 176000: capped at 100% of loss (double-count guar"
+  ],
+  [
+   "Acala Network",
+   "raw returned+frozen 2970000000 exceeds loss 1600000: capped at 100% of loss (double-count "
+  ],
+  [
+   "NEKO",
+   "raw returned+frozen 3800000 exceeds loss 2200000: capped at 100% of loss (double-count gua"
+  ],
+  [
+   "Safemoon",
+   "raw returned+frozen 15000468 exceeds loss 8900000: capped at 100% of loss (double-count gu"
+  ],
+  [
+   "HTX",
+   "raw returned+frozen 8200000 exceeds loss 8000000: capped at 100% of loss (double-count gua"
+  ],
+  [
+   "Munchables",
+   "raw returned+frozen 62800000 exceeds loss 62500000: capped at 100% of loss (double-count g"
+  ],
+  [
+   "Nexera",
+   "raw returned+frozen 1360000 exceeds loss 449000: capped at 100% of loss (double-count guar"
+  ],
+  [
+   "KiloEx",
+   "raw returned+frozen 12850000 exceeds loss 7500000: capped at 100% of loss (double-count gu"
+  ],
+  [
+   "Makina",
+   "raw returned+frozen 6590000 exceeds loss 4200000: capped at 100% of loss (double-count gua"
+  ],
+  [
+   "Thetanuts Finance",
+   "raw returned+frozen 2000000 exceeds loss 105472: capped at 100% of loss (double-count guar"
+  ]
+ ],
+ "verified_check_all": {
+  "": 1226,
+  "checked_none_found": 59,
+  "corrected": 33,
+  "not_corroborated": 9,
+  "verified_agree": 44,
+  "verified_legal": 3,
+  "verified_recent_events": 3
+ },
+ "top150_names": [
+  "Bybit",
+  "Ronin Bridge",
+  "Poly Network",
+  "BNB Chain Token Hub bridge (",
+  "Coincheck",
+  "FTX",
+  "Bitget",
+  "Wormhole (DeFiLlama name: Po",
+  "Liquid Network",
+  "DMM Bitcoin",
+  "Drift Trade",
+  "Kelp",
+  "PlayDapp",
+  "KuCoin",
+  "WazirX: India",
+  "Cetus CLMM",
+  "Mixin Network",
+  "Euler V1",
+  "Bitmart",
+  "Nomad",
+  "Beanstalk",
+  "BitGrail",
+  "Wintermute",
+  "Vulcan Forged",
+  "BXH",
+  "CREAM Lending",
+  "Balancer V2",
+  "Multichain",
+  "Poloniex",
+  "Tectonic",
+  "Badger DAO",
+  "COLDCARD",
+  "Mango Markets V3",
+  "Chris Larsen",
+  "Venus Protocol",
+  "Harmony Bridge",
+  "Atomic Wallet",
+  "Ledger (Supply Chain)",
+  "Liquid Global",
+  "Mirror",
+  "Heco Bridge",
+  "Phemex",
+  "Orbit Bridge",
+  "Qubit",
+  "Rari Capital",
+  "AscenDEX",
+  "Bitfinex",
+  "UPCX",
+  "NiceHash",
+  "Munchables",
+  "Curve DEX",
+  "The DAO",
+  "Zaif",
+  "AnubisDAO",
+  "EasyFi",
+  "Uranium Finance",
+  "CoinEx",
+  "BtcTurk",
+  "Cashio",
+  "Radiant V2",
+  "Infini",
+  "Upbit",
+  "KyberSwap Elastic",
+  "BtcTurk",
+  "Bunny",
+  "Hedgey",
+  "CoinDCX",
+  "BingX",
+  "GMX V1 EVM",
+  "SwissBorg",
+  "Stake.com",
+  "Binance",
+  "Step Finance",
+  "Alpha Finance",
+  "CoinsPaid",
+  "Coinrail",
+  "Josh Jones",
+  "IRA Financial / Gemini",
+  "Vee Finance",
+  "Crypto.com",
+  "Humanity",
+  "MonoX",
+  "Bithumb",
+  "Meerkat Finance",
+  "Tether",
+  "Spartan",
+  "Upbit",
+  "Parity",
+  "Curve Finance",
+  "Grim Finance",
+  "Transit Swap",
+  "Deribit",
+  "BitPoint",
+  "Paid Network",
+  "StableMagnet",
+  "Penpie",
+  "BigONE",
+  "Truebit",
+  "FixedFloat",
+  "Kronos Research",
+  "ThalaSwap",
+  "Indodax",
+  "dForce Lending",
+  "Resolv USR",
+  "AFX Bridge",
+  "Harvest Finance",
+  "xToken",
+  "Ostium",
+  "Bancor V3",
+  "Bitrue",
+  "Bald",
+  "AlphaPo",
+  "Lykke",
+  "Gala",
+  "Elephant Money",
+  "Electrum",
+  "Pando Rings",
+  "Bilaxy",
+  "DEXX",
+  "SBI Crypto",
+  "Popsicle Finance",
+  "3Commas",
+  "MEV-Boost Relay",
+  "Sonne Finance",
+  "UwU Lend",
+  "US Government Crypto Wallet",
+  "BonkDAO",
+  "Pickle",
+  "Bithumb",
+  "CREAM Lending",
+  "Lympo",
+  "Rhea Lend",
+  "Snowdog",
+  "Bitcoin Gold",
+  "BearnFi",
+  "Wintermute",
+  "Cryptopia",
+  "Electrum",
+  "Indexed Finance",
+  "Curio",
+  "Team Finance",
+  "Farmers World",
+  "Inverse Finance Frontier",
+  "SUPERFORTUNE AI",
+  "PEPE",
+  "Eminence",
+  "Floating Point Group",
+  "Rain",
+  "Drift Trade",
+  "Furucombo"
+ ]
+}

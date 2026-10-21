@@ -1,0 +1,29 @@
+era,chain,size,median,median_min
+2020-22,arbitrum,1,3698.0,61.6
+2020-22,avalanche,3,66.0,1.1
+2020-22,bsc,12,840.0,14.0
+2020-22,ethereum,27,684.0,11.4
+2020-22,optimism,1,210.0,3.5
+2023,avalanche,4,3.0,0.0
+2023,base,2,112.0,1.9
+2023,bsc,11,347.0,5.8
+2023,ethereum,71,276.0,4.6
+2023,optimism,2,1798.0,30.0
+2024,arbitrum,3,0.0,0.0
+2024,base,3,52.0,0.9
+2024,blast,1,0.0,0.0
+2024,bsc,17,126.0,2.1
+2024,ethereum,70,462.0,7.7
+2024,mantle,1,0.0,0.0
+2024,optimism,2,261.0,4.4
+2025,arbitrum,4,0.0,0.0
+2025,avalanche,2,0.0,0.0
+2025,base,5,0.0,0.0
+2025,bsc,17,0.0,0.0
+2025,ethereum,56,0.0,0.0
+2026 (to 18 Oct),arbitrum,4,0.0,0.0
+2026 (to 18 Oct),base,6,0.0,0.0
+2026 (to 18 Oct),bsc,9,0.0,0.0
+2026 (to 18 Oct),ethereum,52,0.0,0.0
+2026 (to 18 Oct),optimism,2,492.0,8.2
+2026 (to 18 Oct),polygon,2,16.0,0.3
