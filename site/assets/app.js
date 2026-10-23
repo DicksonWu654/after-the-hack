@@ -29,6 +29,8 @@
     M2: function (v) { return "$" + fixed(v / 1e6, 2) + "M"; },
     usd: function (v) { return "$" + Math.round(v).toLocaleString("en-US"); },
     "in": function (v) { return "1 in " + Math.round(1 / v); },
+    mo0: function (v) { return fixed(v / 30.4375, 0); },
+    mo1: function (v) { return fixed(v / 30.4375, 1); },
     date: function (v) { return dateText(v); },
     x: function (v) { return String(v); }
   };
@@ -71,6 +73,7 @@
       el.textContent = f(r.v);
       if (r.src.kind !== "meta") {
         el.classList.add("n");
+        if (el.hasAttribute("data-flat")) el.classList.add("flat");
         el.setAttribute("tabindex", "0");
         el.setAttribute("role", "button");
         el.setAttribute("aria-haspopup", "dialog");
@@ -79,15 +82,18 @@
       }
     });
   }
-  window.ATHfmt = { FMT: FMT, money: money, esc: esc, dateText: dateText, resolve: resolve, byId: byId };
+  window.ATHfmt = { FMT: FMT, money: money, esc: esc, dateText: dateText, resolve: resolve, byId: byId, srcItem: srcItem };
 
   // ------------------------------------------------------------ definition popover
   var pop = document.getElementById("pop");
   var popFor = null, hideTimer = null;
   // A source string is either "URL" or "URL (annotation)" or plain text (e.g. "project brief (not published): research/x.md").
   // Only the first whitespace-delimited token is ever a link, and only when it starts with http(s)://; the rest is text.
+  var REPO = "https://github.com/DicksonWu654/after-the-hack/blob/main/";
   function srcItem(s) {
     s = String(s == null ? "" : s).trim();
+    var rp = /^(data\/[A-Za-z0-9_.\/-]+?\.(?:csv|json|md))([,;.]*)(?:\s+([\s\S]*))?$/.exec(s);
+    if (rp) return '<a href="' + REPO + esc(rp[1]) + '" rel="noopener" target="_blank">' + esc(rp[1]) + "</a>" + esc(rp[2] || "") + (rp[3] ? " " + esc(rp[3]) : "");
     var m = /^(https?:\/\/\S+)(?:\s+([\s\S]*))?$/.exec(s);
     if (!m) return esc(s);
     var url = m[1], note = m[2] || "", tail = /[,;.]+$/.exec(url);
@@ -198,7 +204,7 @@
   var btn = document.getElementById("theme-btn");
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
   function current() { return document.documentElement.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); }
-  function label() { var c = current(); btn.textContent = c === "dark" ? "Light" : "Dark"; btn.setAttribute("aria-label", "Switch to " + (c === "dark" ? "light" : "dark") + " theme"); }
+  function label() { btn.setAttribute("aria-pressed", current() === "dark" ? "true" : "false"); }
   btn.addEventListener("click", function () {
     var next = current() === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
@@ -213,6 +219,7 @@
     var bar = document.getElementById("ledger-bar");
     var total = byId.S1.numeric.total_usd;
     var parts = [[byId.R2.numeric.voluntary_usd, "var(--s1)"], [byId.C4.numeric.master_usd, "var(--s2)"], [A.derived.unrecovered_usd.v, "var(--lost)"]];
+    if (!bar) return;
     bar.innerHTML = parts.map(function (p) { return '<span style="flex:' + (p[0] / total) + ' 1 0; background:' + p[1] + '"></span>'; }).join("");
   })();
 
@@ -225,6 +232,11 @@
       if (/etherscan\.io/.test(link)) return "Etherscan";
       if (/mempool\.space/.test(link)) return "mempool.space";
       return "explorer";
+    }
+    // The context starts with a short "Case (date, amount)." label; the one-line note is the sentence after it.
+    function firstSentence(t) {
+      var parts = String(t || "").replace(/([.!?])\s+(?=[A-Z0-9'"])/g, "$1\u0001").split("\u0001");
+      return (parts.length > 1 && parts[0].length < 70 ? parts[1] : parts[0]).trim();
     }
     function short(h) { return h.length > 16 ? h.slice(0, 8) + "…" + h.slice(-6) : h; }
     function when(iso) { var t = iso.slice(11, 16); return dateText(iso) + ", " + t + " UTC"; }
@@ -253,11 +265,11 @@
           '<div class="tx-top"><span class="who">' + esc(q.role_label) + "</span><span>" + esc(when(q.time)) + "</span></div>" +
           '<div class="tx-hex" aria-hidden="true">' + esc(hexText) + "</div>" +
           '<blockquote class="tx-msg">' + msg + "</blockquote>" +
-          '<p class="tx-ctx">' + esc(q.context) + "</p>" +
+          '<p class="tx-ctx">' + esc(firstSentence(q.context)) + "</p>" +
           '<div class="tx-meta"><span>' + esc(CHAIN[q.chain] || q.chain) + "</span><span>Block " + Number(q.block).toLocaleString("en-US") + "</span>" +
           '<span>' + (q.complete ? "Full decoded message" : "Excerpts of the decoded message") + "</span>" +
           '<a href="' + esc(q.link) + '" rel="noopener" target="_blank" aria-label="View transaction on ' + explorer(q.link) + '">' + esc(short(q.hash)) + "</a></div>" +
-          "<details><summary>How this was checked</summary><p><b>Text:</b> " + esc(q.text_match_note) + "</p><p><b>Sender:</b> " + esc(q.role_evidence) + "</p></details>" +
+          "<details><summary>Context and checks</summary>" + (firstSentence(q.context) !== q.context ? "<p><b>Context:</b> " + esc(q.context) + "</p>" : "") + "<p><b>Text:</b> " + esc(q.text_match_note) + "</p><p><b>Sender:</b> " + esc(q.role_evidence) + "</p></details>" +
           "</article>";
         return html;
       }).join("") + "</section>";
@@ -277,12 +289,17 @@
     var r = resolve(back.getAttribute("data-back"));
     var kind = back.getAttribute("data-kind");
     var pct = r ? r.v : 0;
-    if (back.getAttribute("data-of")) pct = 100 * r.v / resolve(back.getAttribute("data-of")).v;
+    if (back.getAttribute("data-of") && r) pct = 100 * r.v / resolve(back.getAttribute("data-of")).v;
     if (kind === "returned-inverse") pct = 100 - pct;
-    if (kind === "zero") pct = 0;
-    var txt = (pct === 0 ? "0" : pct < 1 ? fixed(pct, 2) : fixed(pct, 1)) + "%";
     var words = kind === "frozen" ? " frozen or recovered" : kind === "zero" ? " recovered" : " returned by the attacker";
     var unit = back.getAttribute("data-unit");
+    // a missing or zero figure is shown as "No recovery recorded", never as a drawn 0% bar
+    if (kind === "zero" && r && r.v > 0) pct = 100 * r.v / n.loss_usd;
+    if (!r || (kind === "zero" && !(r.v > 0)) || (kind !== "returned-inverse" && pct === 0)) {
+      back.innerHTML = '<span class="back-none">' + (r ? "No recovery recorded" : "Figure not available") + "</span>";
+      return;
+    }
+    var txt = (pct < 1 ? fixed(pct, 2) : fixed(pct, 1)) + "%";
     back.innerHTML = '<div class="track" role="img" aria-label="' + txt + words + '"><span class="fill' + (kind === "frozen" ? " frozen" : "") + '" style="width:' + Math.max(0, Math.min(100, pct)) + '%"></span></div><span>' + txt + words + (unit ? " (" + esc(unit) + ")" : "") + "</span>";
   });
   // the loss spans become plain numbers with a definition (formatted above)
@@ -393,7 +410,7 @@
       blk.__ns.push(el);
     });
     blocks.forEach(function (blk) {
-      blk.__ns.forEach(function (el, i) { el.__sibs = blk.__ns; el.setAttribute("tabindex", i ? "-1" : "0"); });
+      blk.__ns.forEach(function (el, i) { el.__sibs = blk.__ns; el.setAttribute("tabindex", i ? "-1" : "0"); if (!i) el.classList.add("n-first"); });
     });
     window.ATHtabstops = blocks.length;
   })();

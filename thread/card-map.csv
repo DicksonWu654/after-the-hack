@@ -1,20 +1,20 @@
 tweet_no,card_file,numbers_on_card,numbers_in_tweet,notes
 1,01-cover.png,"1,377 hacks; $16.5B; 16 red dots (arrest or charge)","1,377; $16.5B",Tweet omits the 16; card carries it
-2,02-recovery-ledger.png,"19%; 10.2%; 8.6%; 81.2%; 13.0% without Poly Network, Liquid, KuCoin",19%; 10.2%; 8.6%; 81.2%; 13.0%,
+2,02-recovery-ledger.png,"19%; 10.0%; 9.0%; 81.0%; 13.2% without Poly Network, Liquid, KuCoin",19%; 10.0%; 9.0%; 81.0%; 13.2%,
 3,03-vector-mix.png,35.0% / 15.7% keys and infra (dollars / incidents); 24.8% / 35.7% contract logic; 5.7% / 13.2% oracle; 4.8% / 15.5% access control,35.0%; 24.8%; 35.7%; 15.7%,Oracle and access-control sentence uses card pairs without repeating the numbers
-4,04-recovery-channels.png,54% (54.1%); 17%; 10.6%; 8.4%; 5.8%; 2.3%; 1.6%; $3.11B recovered; 1 in 8,54.1%; $3.11B; 17%; 10.6%; 8.4%; 1 in 8,"Card headline shows 54%, bar shows 54.1%; tweet uses 54.1%"
+4,04-recovery-channels.png,52.5%; 19.1%; 10.5%; 8.3%; 5.7%; 2.2%; 1.6%; $3.14B recovered; 1 in 8,52.5%; $3.14B; 19.1%; 10.5%; 8.3%; 1 in 8,"Card headline and bar show 52.5%; tweet uses 52.5%"
 5,10-bybit-freeze.png,$181k; 0.012%; $1.46B; $43M (2.9%); 1% to 11%,$181k; $1.46B; 0.012%; $43M; 2.9%; 1% to 11%,
-6,11-chain-freezes.png,72.6% of $223M (Cetus); 92.4% (Cronos); ~36 min; medians 1 day / 1.5 days / 3 days / 331 d; 169 days to 5+ years,72.6%; $223M; ~36 min; 92.4%; 1.5 days; 3 days; 331 days; 169 days to 5+ years,Tweet omits chain-halt median (1 day)
-7,05-bounty-norm.png,10%; 104 of 183; median kept 10% (n=35); Verus 25%; Mango 41%; since 2021,10%; 2021; 104 of 183; 10% (n=35); 25%; 41%,
+6,11-chain-freezes.png,"72.6% of $223M (Cetus); 92.4% (Cronos); ~36 min; medians 1 day / 1.5 days / 3 days / 779 d; 169 and 1,389 days","72.6%; $223M; ~36 min; 92.4%; 1.5 days; 3 days; 779 days; 169 and 1,389 days",Tweet omits chain-halt median (1 day)
+7,05-bounty-norm.png,10%; 102 of 181; median kept 10% (n=35); Verus 25%; Mango 41%; since 2021,10%; 2021; 102 of 181; 10% (n=35); 25%; 41%,
 8,06-shezmu-onchain.png,20% counter quote; '20% is a deal.'; 5 min 12 s gap; 10% offer in card title,10%; 20%; five minutes; 20%,Quote is a verbatim substring of the on-chain message (tx 0xbe91cdf5...); no return amount claimed (return unverified)
 9,09-euler-onchain.png,$1M reward ultimatum quote; 90% in 24 hours; attacker reply; 5 days 19 hours later,90%; 24 hours; $1M; 5 days 19 hours,Tweet shortens the ultimatum quote at 'arrest' (substring of tx 0x8f2b61a0...)
 10,08-outreach.png,36.5% (80 of 219); 3.5% (9 of 256),36.5%; 80 of 219; 3.5%; 9 of 256,Card footer carries the association note
 11,07-return-speed.png,2.4 days; 21 of 23 inside a week; TrustedVolumes 8 d; SafeMoon 22 d; 42 hours after first message (footer),2.4 days; 21 of 23; 8 and 22 days,"8 and 22 days from data/return_latency_audit.csv (8.33 and 22.33 days), same values the card labels 8 d and 22 d"
 12,12-arrests-1-in-10.png,"1 in 10; 9 of 100; 16 of 1,377; about 1 in 86 (1.2%)","9 of 100; 1 in 10; 1,377; 16; 1 in 86; 1.2%",
 13,12b-arrest-delay.png,14.5 months; 439.5 days; 14 cases; 10 of 14 over a year; Platypus 6 days; Mango 76,14.5 months; 439.5 days; 14; 10 of 14; 6 days; 76,
-14,13-charged-outcomes.png,"23 people; 8 convicted or pleaded; 8 not in custody; 3 pending; 2 acquitted; 1 unknown; 1 vacated, appeal pending",23; 8; 8; 3; 2; 1; 1; plus Spalletta jury conviction on Oct 7,Spalletta sentence is not on the card (DOJ SDNY release 26-285; counted inside the 8 per data/law_enforcement_stats.json). Consider adding a one-line case callout to the card
+14,13-charged-outcomes.png,"23 people; 8 convicted, pleaded guilty, or plea agreement on file; 8 not in custody; 3 pending; 2 acquitted; 1 unknown; 1 vacated, appeal pending",23; 8; 8; 3; 2; 1; 1; plus Spalletta jury conviction on Oct 7,Spalletta jury conviction is on the card (DOJ SDNY release 26-285; counted inside the 8 per data/law_enforcement_stats.json)
 15,14-dprk-share.png,22.6% of dollars; 2.3% of incidents; 32 incidents; 58.9% in 2025; 39.1%; 6.9%; 95 incidents,22.6%; 2.3%; 32; 58.9%; 39.1%; 6.9%; 95,
-16,15-dprk-recovery.png,8.3% (95 incidents); 3.8% minus KuCoin and Munchables; 25.5% everything else; 16.6% minus top 3; 0 in custody,8.3%; 95; 3.8%; 25.5%; none in custody,Tweet omits 16.6%
+16,15-dprk-recovery.png,8.3% (95 incidents); 3.8% minus KuCoin and Munchables; 25.8% everything else; 17.1% minus top 3; 0 in custody,8.3%; 95; 3.8%; 25.8%; none in custody through 21 Oct 2026,Tweet omits 17.1%
 17,16-same-tx-attacks.png,0 of 95 (2020-22); 4.7% (2023); 14.3% (2024); 40.5% (2025); 34.1% (2026 to 18 Oct); USD-weighted 8% to 25% since 2024; n=758,0 of 95; 14.3%; 40.5%; 34.1%; 8% to 25%,Tweet skips 2023 (4.7%)
 18,17-ai-claims.png,0 verified; 28 claims; 207 of 405 (SCONE-bench); 12 to 38 a month (SlowMist 17 to 39); about 34% more dollars per month,28; 0; 207 of 405; 12 to 38,Tweet omits SlowMist and the dollar rise
 19,18-liquid-onchain.png,"$320M; 3,400 BTC returned about 26 hours after drain; 598.5 BTC held back; 'You SHALL pay 10%...'; Blockstream quote; unresolved as of 21 Oct 2026","$320M; 3,400 BTC; 26 hours; 598.5 BTC; 10%; 21 Oct",

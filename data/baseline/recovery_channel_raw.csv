@@ -1,5 +1,5 @@
 channel_first_label,recovered_usd,n
-voluntary return,946452141,37
+voluntary return,947452341,38
 token issuer/project/exchange freezes,239450000,1
 negotiated voluntary return in kind,197000000,1
 sui validator freeze,162000000,1
@@ -13,11 +13,11 @@ issuer freeze,99900000,3
 insider voluntarily surrendered private ,62500000,1
 chain hard fork,60000000,1
 voluntary returns by exploit participant,37500000,1
-negotiated attacker return,32300000,2
+issuer freeze: tether froze $31.5m stole,31500000,1
 issuer blacklist,30950010,1
 law-enforcement-assisted seizure,30000000,1
 insider refund after binance/community i,29450000,1
-white-hat rescues,27700000,1
+project-reported combined recovery appro,27700000,1
 project token freeze,25160000,1
 voluntary attacker returns,24600000,1
 attacker return following tracing and po,24300000,1
@@ -28,6 +28,8 @@ attacker return,22300000,1
 attacker return following fbi outreach,19300000,1
 negotiated return,17860000,4
 token-issuer freeze,17400000,1
+negotiated attacker return,16700000,1
+negotiated attacker return of 17m op,15840000,1
 ~krw 16b,14000000,1
 negotiated attacker/whitehat return,13400000,1
 whitehat rescue during exploit,12800000,1
@@ -101,7 +103,6 @@ white-hat return minus 10% bounty,417600,1
 white-hat fully returned funds,410000,1
 ~112 eth,328000,1
 white-hat recovery,294592,1
-unspecified,287666,1
 white-hat return of 76 eth,283000,1
 voluntary partial refund,252000,1
 htx freeze,200000,1
@@ -109,6 +110,5 @@ negotiated whitehat 90/10 split,190000,1
 partial recovery from four hackers,185000,1
 exchange/security-alliance cooperation,176000,1
 whitehat recovered most funds,105472,1
-all stolen funds returned by attacker,65800,1
 finder returned 80% as white-hat disclos,64276,1
 white-hat/exploiter returned funds,4310,1

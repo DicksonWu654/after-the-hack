@@ -2,6 +2,22 @@
 
 Dates are the data snapshot date. Corrections are welcome: see the README, "Report a correction".
 
+## Data coding corrections, 23 October 2026
+
+The incident and loss denominator stays at 1,377 incidents and $16,516,848,367. Counted recovery rises from $3,105,350,612 (18.8%) to $3,137,737,346 (19.0%). Voluntary recovery changes from $1,681,375,837 (10.2%) to $1,648,736,037 (10.0%); other recovery changes from $1,423,974,776 (8.6%) to $1,489,001,310 (9.0%). The ex-top-three recovery sensitivity changes from 13.0% to 13.2%.
+
+FTX adds the Elliptic-reported $31.5M stolen-USDT freeze. Paxos's separate ~$19M PAXG freeze is documented and excluded pending theft-address reconciliation. Saga 2024 and Rocket Perp retain unverified claims with zero counted recovery. Samudai's $200 return survives percentage rounding. Poly Network allocates ~$578M voluntary and ~$33M frozen. Wintermute's 17M OP attacker return and 1M OP return through Buterin use the same loss-implied $0.88/OP. Norwegian Ronin recovery remains outside additive totals while overlap is unresolved.
+
+The master adds a structured returner field, documented in data/README.md. Opening offers use the shipped 2020-or-later cohort, 102 of 181 exactly 10%, and the timing definition names its 14-case sample and 11 overlaps with the strict enforcement set. The separate event-stream summary and annual channel table rebuild from the corrected inputs.
+
+## Accuracy and provenance corrections, 23 October 2026
+
+In the first correction batch, the data snapshot remained 21 October 2026 and headline incident, loss and recovery totals were unchanged. The subsequent data coding batch above supersedes its recovery totals. Corrections covered legal outcome labels and review dates, the headline filter, stale paper figures, recovery timing and incident-weighted funding descriptions. Liquid's $266.5M return remains explicitly press-reported, with its BTC-unit share stated separately.
+
+Recovery channel figures retain the builder's documented component allocation. Mixed incidents can appear in multiple channel rows; the earlier whole-incident caption was inaccurate. Paid Network's shifted CSV fields are repaired with speculative attribution preserved. Legal placeholder incident dates are blank with precision flags.
+
+Canonical evidence paths point to shipped repository files. A publication-limits note states where detailed prior-study inputs are unavailable. Original source links retain available archive links and source-access limits; the archive lookup attempted 269 URLs and retried all 169 initial rate-limit responses. It found 106 snapshots, 122 successful no-snapshot results and 41 unresolved rate-limit responses. The five named dead-link repairs include a project-reported StakeWise subrow correction from $20.7M to approximately $19.7M, while the master Balancer total remains $27.7M.
+
 ## 2026-10-21: first public release
 
 Data snapshot through 21 October 2026.

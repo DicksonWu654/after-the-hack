@@ -1,16 +1,16 @@
 I dug into every public record I could find of crypto hacks since 2016: what happened to the money, the negotiations, the arrests. 1,377 hacks, $16.5B stolen. I'm open sourcing all of it, and here's what I found.
 ---
-About 19% of stolen dollars has come back by any route. 10.2% was returned by the attacker or an insider, 8.6% was frozen, seized or halted, and 81.2% has no documented recovery.
+About 19% of stolen dollars has come back by any route. 10.0% was returned by the attacker or an insider, 9.0% was frozen, seized or halted, and 81.0% has no documented recovery.
 
-Without Poly Network, Liquid and KuCoin it falls to 13.0%.
+Without Poly Network, Liquid and KuCoin it falls to 13.2%.
 ---
 By dollars, compromised keys and infrastructure lose the most (35.0%), ahead of smart-contract logic (24.8%).
 
 By count, contract bugs lead: 35.7% of incidents vs 15.7% for keys and infra. Oracle manipulation and access control also show up more by count than by dollars.
 ---
-The most common way money comes back is that the attacker hands it over: 54.1% of the $3.11B recovered.
+The most common way money comes back is that the attacker hands it over: 52.5% of the $3.14B recovered.
 
-Issuer, exchange or protocol freezes are 17%, law-enforcement seizures 10.6%, chain halts 8.4%. About 1 in 8 large exploits ends with a voluntary return.
+Issuer, exchange or protocol freezes are 19.1%, law-enforcement seizures 10.5%, chain halts 8.3%. About 1 in 8 large exploits ends with a voluntary return.
 ---
 Freezes work on tokens someone controls. Tether froze $181k in the $1.46B Bybit theft, 0.012% of the loss.
 
@@ -18,9 +18,9 @@ Across all routes about $43M (2.9%) of Bybit is corroborated as frozen. Issuer f
 ---
 Chains can step in too. Sui validators froze 72.6% of Cetus's $223M. Cronos spotted its attack in ~36 min, halted and rolled back, restoring 92.4%.
 
-Median time to recovery: issuer freezes 1.5 days, exchanges 3 days, law-enforcement seizures 331 days (169 days to 5+ years).
+Median time to recovery: issuer freezes 1.5 days, exchanges 3 days, law-enforcement seizures 779 days (169 and 1,389 days).
 ---
-10% is the going rate. The median opening bounty offer has been 10% every year since 2021, and 104 of 183 on-chain offers were exactly 10%.
+10% is the going rate. The median opening bounty offer has been 10% every year since 2021, and 102 of 181 on-chain offers were exactly 10%.
 
 Attackers who settled kept a median 10% (n=35). At the far end, Verus kept 25% and Mango 41%.
 ---
@@ -46,19 +46,19 @@ Across all 1,377 hacks it's 16, about 1 in 86 (1.2%).
 ---
 The wait is long: a median of 14.5 months (439.5 days) from hack to first arrest or charge, across the 14 cases with a dated first action. 10 of 14 took over a year.
 
-The two fastest, Platypus (6 days) and Mango (76), involved a KYC'd exchange or a public identity.
+Two fast cases, Platypus (6 days) and Mango (76), involved a KYC'd exchange or a public identity.
 ---
-Of 23 people charged over a hack or its laundering, 8 were convicted or have a plea on file, 8 are charged but not in custody, 3 pending, 2 acquitted, 1 unknown, 1 vacated, appeal pending.
+Of 23 people charged over a hack or its laundering: 8 convicted, pleaded guilty, or plea agreement on file; 8 charged but not in custody, 3 pending, 2 acquitted, 1 unknown, 1 vacated, appeal pending.
 
-On Oct 7 a jury convicted Spalletta on all counts over the Uranium Finance hacks.
+On Oct 7 a jury convicted Spalletta on all counts over Uranium Finance hacks.
 ---
 Government attribution puts North Korea behind 22.6% of stolen dollars, from 2.3% of incidents (32 incidents). In 2025 it was 58.9% of dollars, mostly Bybit.
 
 Adding firm and researcher attributions it's 39.1% of dollars and 6.9% of incidents (95 incidents).
 ---
-North Korean hacks almost never come back: 8.3% of dollars recovered across 95 incidents (government or firm attribution), 3.8% without KuCoin and Munchables. Everything else: 25.5%.
+North Korean hacks almost never come back: 8.3% of dollars recovered across 95 incidents (government or firm), 3.8% without KuCoin and Munchables. Everything else: 25.8%.
 
-We found none in custody for an exchange or bridge theft, only indictments and sanctions.
+We found none in custody for an exchange or bridge theft in sources searched through 21 Oct 2026.
 ---
 Attackers now run the whole exploit inside the attack contract's own deployment transaction far more often: 0 of 95 in 2020-22, 14.3% in 2024, 40.5% in 2025, 34.1% in 2026 so far.
 

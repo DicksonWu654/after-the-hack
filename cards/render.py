@@ -103,12 +103,14 @@ def build_data():
     ex["one_in_n_voluntary"] = round(1 / D["R1"]["paper_rate"])
     ex["cronos_min"] = txt("F1", r"Cronos detected the attack ~(\d+) min", cast=int)
     ex["cronos_pct"] = txt("F1", r"restoring ([\d.]+)%", cast=float)
-    # "Law-enforcement seizures: 169 days to 5+ years (... Bitfinex ~2,015 days ...)"
-    ex["seizure_lo"] = txt("F1", r"Law-enforcement seizures: ([\d,]+) days to", cast=lambda s: int(s.replace(",", "")))
-    ex["seizure_hi_label"] = txt("F1", r"Law-enforcement seizures: [\d,]+ days to ([\d+]+ years)")
-    ex["seizure_hi"] = txt("F1", r"Bitfinex ~([\d,]+) days", cast=lambda s: int(s.replace(",", "")))
+    # "Law-enforcement seizures: 169 days to 5+ years (the two counted seizures took 169 and 1,389 days, median 779; ... Bitfinex ~2,015 days ...)"
+    toint = lambda s: int(s.replace(",", ""))
+    ex["seizure_lo"], ex["seizure_hi"], ex["seizure_median"] = txt("F1", r"the (?:two|\w+) counted seizures took ([\d,]+) and ([\d,]+) days, median ([\d,]+)", cast=toint)
+    ex["seizure_bitfinex"] = txt("F1", r"Bitfinex ~([\d,]+) days", cast=toint)
+    assert D["F1"]["n"]["law_enforcement_seizure"] == 2, "F1 counted seizures are no longer two"
+    assert ex["seizure_median"] == D["F1"]["median_days"]["law_enforcement_seizure"], "F1 seizure median != canonical numeric"
     ex["bybit_tether_usd"] = txt("F2", r"Bybit Tether \$(\d+)k", cast=int) * 1000
-    ex["mango_kept_pct"] = txt("R3", r"Mango (\d+)%", field="tweet", cast=int)
+    ex["mango_kept_pct"] = txt("R3", r"Mango kept (\d+)%", field="tweet", cast=int)
     ex["platypus_days"] = txt("E3", r"Platypus (\d+) days", cast=int)
     ex["mango_days"] = txt("E3", r"Mango (\d+)\)", cast=int)
     ex["liquid_hours"] = txt("M1", r"(\d+)h(\d+)m after the drain", cast=int)

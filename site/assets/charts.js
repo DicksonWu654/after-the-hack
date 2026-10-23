@@ -60,20 +60,27 @@
       tip.style.left = (left + window.scrollX) + "px"; tip.style.top = (top + window.scrollY) + "px";
     }
     var hot = null;
+    el.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-tip]");
+      if (!t) { tip.hidden = true; return; }
+      var r = t.getBoundingClientRect(); showTip(t.getAttribute("data-tip"), r.left + r.width / 2, r.top);
+    });
     el.addEventListener("pointermove", function (e) {
+      if (e.pointerType === "touch") return;
       var t = e.target.closest("[data-tip]");
       if (hot && hot !== t) hot.classList.remove("is-hot");
       if (!t) { tip.hidden = true; hot = null; return; }
       hot = t; t.classList.add("is-hot");
       showTip(t.getAttribute("data-tip"), e.clientX, e.clientY);
     });
-    el.addEventListener("pointerleave", function () { tip.hidden = true; if (hot) hot.classList.remove("is-hot"); hot = null; });
+    el.addEventListener("pointerleave", function (e) { if (e.pointerType === "touch") return; tip.hidden = true; if (hot) hot.classList.remove("is-hot"); hot = null; });
     el.addEventListener("focusin", function (e) {
       var t = e.target.closest("[data-tip]"); if (!t) return;
       var r = t.getBoundingClientRect(); showTip(t.getAttribute("data-tip"), r.left + r.width / 2, r.top);
     });
     el.addEventListener("focusout", function () { tip.hidden = true; });
   }
+  document.addEventListener("click", function (e) { if (!(e.target.closest && e.target.closest("[data-tip]"))) tip.hidden = true; });
   function tipAttr(html) { return html; } // stored raw; content is built from escaped strings only
 
   var charts = {};
@@ -162,10 +169,10 @@
 
   // ---------------------------------------------------------------- 3. openings waffle
   mount("openings", function (W) {
-    var r3 = byId.R3.numeric, rows = A.charts.openings;
+    var rows = A.charts.openings;
     var gt = rows.reduce(function (s, r) { return s + r.gt_10; }, 0), lt = rows.reduce(function (s, r) { return s + r.lt_10; }, 0);
-    var exact = r3.openings_exactly_10, total = r3.openings_n;
-    var rest = total - exact - gt - lt; // openings outside the by-year table that were not exactly 10%
+    var exact = rows.reduce(function (s, r) { return s + r.exactly_10; }, 0), total = rows.reduce(function (s, r) { return s + r.n; }, 0);
+    var rest = total - exact - gt - lt; // table openings with no stated size class
     var cells = [];
     for (var i = 0; i < exact; i++) cells.push(["s1", "Exactly 10%"]);
     for (i = 0; i < gt; i++) cells.push(["s2", "More than 10%"]);
@@ -295,8 +302,10 @@
   // ---------------------------------------------------------------- 8. DPRK vs others recovery
   mount("dprkrec", function (W) {
     var d = byId.D3.numeric;
-    var rows = [["North Korea, government or firm attribution", d.gov_plus_firm_pct, "s3"], ["North Korea, without KuCoin and Munchables", d.gov_plus_firm_ex_outliers_pct, "s3"],
-      ["North Korea, government attribution only", d.gov_only_pct, "s3"], ["All other hacks", d.non_dprk_pct, "s1"], ["All other hacks, without the three largest returns", d.non_dprk_ex_top3_pct, "s1"]];
+    var all = [["North Korea, government attribution", d.gov_only_pct, "s3"], ["No government or firm attribution to North Korea", d.non_dprk_pct, "s1"],
+      ["North Korea, government or firm attribution", d.gov_plus_firm_pct, "s3"], ["North Korea, government or firm, without KuCoin and Munchables", d.gov_plus_firm_ex_outliers_pct, "s3"],
+      ["No government or firm attribution, without the three largest returns", d.non_dprk_ex_top3_pct, "s1"]];
+    var rows = all.slice(0, 2);
     var rowH = 46, H = rows.length * rowH + 20, x = lin(0, 30, 0, W - 60);
     var out = "";
     [0, 10, 20, 30].forEach(function (g) { out += '<line class="' + (g ? "grid" : "base") + '" x1="' + x(g) + '" x2="' + x(g) + '" y1="0" y2="' + (H - 18) + '"/>' + text(x(g), H - 4, g + "%", "tick", { "text-anchor": g ? "middle" : "start" }); });
@@ -305,8 +314,8 @@
       out += '<g data-tip="' + esc("<b>" + esc(r[0]) + "</b><br>" + pct(r[1]) + " of dollars recovered") + '">' + rect(0, y0, W, rowH, "transparent", { "class": "hit" }) +
         text(0, y0 + 14, r[0], "lab") + hbar(0, y0 + 20, x(r[1]), 16, "var(--" + r[2] + ")") + text(x(r[1]) + 8, y0 + 33, pct(r[1]), "val") + "</g>";
     });
-    return { svg: svg(W, H, out, "Recovered share: North Korea " + pct(d.gov_plus_firm_pct) + " versus " + pct(d.non_dprk_pct) + " for other hacks"),
-      table: table(["Group", "Share of dollars recovered"], rows.map(function (r) { return [r[0], pct(r[1])]; }), [1]) };
+    return { svg: svg(W, H, out, "Recovered share: North Korea, government attribution, " + pct(d.gov_only_pct) + " versus " + pct(d.non_dprk_pct) + " for other hacks"),
+      table: table(["Group", "Share of dollars recovered"], all.map(function (r) { return [r[0], pct(r[1])]; }), [1]) };
   });
 
   // ---------------------------------------------------------------- 9. top 100 grid
@@ -316,25 +325,24 @@
   var GRADE = { primary_read: "primary source read", primary_cited_not_read: "primary source cited, not read", primary_read_inferred_match: "primary source read, match inferred",
     secondary_wikipedia_or_press: "secondary (Wikipedia or press)", secondary_msmt_via_tayvano: "secondary (UN monitors via a tabulation)", secondary_msmt_via_sibling_dataset: "secondary (sibling dataset)",
     secondary_recalled_unread: "secondary (recalled, page unread)", firm_report: "firm report", firm_researcher_list_only: "firm researcher list only" };
-  function lossCell(d) { return money(d.loss) + (d.text_loss ? " (text: " + money(d.text_loss) + ")" : ""); }
+  function cleanName(n) { return String(n).replace(/\s*\(DeFiLlama name:[^)]*\)\s*$/, ""); }
   mount("top100", function (W) {
-    var t = A.charts.top100, cols = 10, gap = 4;
-    var size = Math.min(40, Math.floor((Math.min(W, 520) - (cols - 1) * gap) / cols));
-    var H = 10 * (size + gap);
-    var out = "";
+    // HTML grid: one focusable tile per hack. The 12 largest are drawn as double-size tiles with their names.
+    var t = A.charts.top100, cols = W >= 760 ? 20 : 8, gap = 4;
+    var tile = Math.floor((W - (cols - 1) * gap) / cols);
+    var html = '<div class="t100" style="--cols:' + cols + ";--tile:" + tile + 'px">';
     t.forEach(function (d, i) {
-      var x0 = (i % cols) * (size + gap), y0 = Math.floor(i / cols) * (size + gap);
-      var status = (ENF[d.status] || [d.status])[0];
-      var tt = "<b>#" + d.rank + " " + esc(d.name) + "</b><br>" + lossCell(d) + ", " + d.date.slice(0, 4) + "<br>" + esc(status) + (d.dprk_gov ? "<br>Government-attributed to North Korea" : "");
-      var style = d.arrest ? "fill:var(--s1)" : d.status === "laundering_side_only" ? "fill:var(--surface);stroke:var(--s1);stroke-width:2.5"
-        : d.status === "not_checked" ? "fill:var(--surface);stroke:var(--muted);stroke-width:1;stroke-dasharray:3 2" : "fill:var(--surface);stroke:var(--axis);stroke-width:1";
-      out += '<rect class="mark" x="' + (x0 + 0.5) + '" y="' + (y0 + 0.5) + '" width="' + (size - 1) + '" height="' + (size - 1) + '" rx="3" style="' + style + '" data-tip="' + esc(tt) + '"/>';
-      if (d.dprk_gov) out += '<rect x="' + (x0 + 3) + '" y="' + (y0 + 3) + '" width="' + (size - 6) + '" height="' + (size - 6) + '" rx="2" style="fill:none;stroke:var(--s3);stroke-width:2.5;pointer-events:none"/>';
-      if (size >= 30) out += text(x0 + 5, y0 + 13, String(d.rank), "tick", { style: "font-size:10px;pointer-events:none;fill:" + (d.arrest ? "#fff" : "var(--muted)") });
+      var big = i < 12, status = (ENF[d.status] || [d.status])[0], nm = cleanName(d.name), yr = d.date.slice(0, 4);
+      var cls = "t" + (big ? " big" : "") + (d.arrest ? " c" : "") + (d.status === "laundering_side_only" ? " l" : "") + (d.status === "not_checked" ? " nc" : "") + (d.dprk_gov ? " k" : "");
+      var tt = "<b>#" + d.rank + " " + esc(nm) + "</b><br>" + esc(money(d.loss)) + ", " + yr + "<br>" + esc(status) + (d.dprk_gov ? "<br>Government-attributed to North Korea" : "");
+      var label = "#" + d.rank + ", " + nm + ", " + money(d.loss) + ", " + yr + ". " + status + (d.dprk_gov ? ". Government-attributed to North Korea" : "");
+      var inner = big ? '<span class="rk">#' + d.rank + '</span><span class="nm">' + esc(nm) + '</span><span class="am">' + esc(money(d.loss)) + "</span>"
+        : (tile >= 30 ? '<span class="rk" style="position:absolute;left:4px;top:4px">' + d.rank + "</span>" : "");
+      html += '<button type="button" class="' + cls + '" data-tip="' + esc(tt) + '" aria-label="' + esc(label) + '">' + inner + "</button>";
     });
-    var nA = t.filter(function (d) { return d.arrest; }).length, nD = t.filter(function (d) { return d.dprk_gov; }).length;
-    return { svg: svg(Math.min(W, 520), H, out, nA + " of the 100 largest hacks have a person arrested or charged for the hack; " + nD + " are government-attributed to North Korea and none of those has an arrest for the hack"),
-      table: table(["Rank", "Incident", "Loss (master dataset)", "Year", "Arrest or charge, for the hack", "Gov.-attributed DPRK", "Attribution source"], t.map(function (d) { return [d.rank, d.name, lossCell(d), d.date.slice(0, 4), (ENF[d.status] || ["", d.status])[1], d.dprk_gov ? "yes" : "", d.grade ? (GRADE[d.grade] || d.grade) : ""]; }), [0, 2]) };
+    html += "</div>";
+    return { svg: html,
+      table: table(["Rank", "Incident", "Loss (master dataset)", "Year", "Arrest or charge, for the hack", "Gov.-attributed DPRK", "Attribution source"], t.map(function (d) { return [d.rank, cleanName(d.name), money(d.loss), d.date.slice(0, 4), (ENF[d.status] || ["", d.status])[1], d.dprk_gov ? "yes" : "", d.grade ? (GRADE[d.grade] || d.grade) : ""]; }), [0, 2]) };
   });
 
   // ---------------------------------------------------------------- 10. arrest timing
@@ -369,7 +377,7 @@
   });
 
   // ---------------------------------------------------------------- 11. outcomes for 23 people
-  var OUTLABEL = { convicted_or_pleaded: "Convicted or pleaded guilty", at_large_or_not_in_custody: "Charged, not in custody", pending: "Pending",
+  var OUTLABEL = { convicted_or_pleaded: "Convicted, pleaded guilty, or plea agreement on file", at_large_or_not_in_custody: "Charged, not in custody", pending: "Pending",
     acquitted: "Acquitted", conviction_vacated_or_acquitted_appeal_pending: "Conviction vacated, appeal pending", outcome_unknown: "Outcome unknown" };
   mount("outcomes", function (W) {
     var o = A.charts.outcomes, det = A.charts.outcomes_detail;
@@ -381,7 +389,7 @@
       out += small ? text(0, y0 + 13, OUTLABEL[k] + " (" + o[k] + ")", "lab") : text(labW - 12, cy + 4, OUTLABEL[k], "lab", { "text-anchor": "end" });
       for (var j = 0; j < o[k]; j++) {
         var cx = labW + r + 1 + j * (r * 2 + 5);
-        out += '<circle class="mark ring" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="fill:' + (k === "convicted_or_pleaded" ? "var(--s1)" : "var(--stolen)") + '" data-tip="' + esc("<b>" + esc(names[j] || "Person " + (j + 1)) + "</b><br>" + OUTLABEL[k]) + '"/>';
+        out += '<circle class="mark ring" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="fill:' + (k === "convicted_or_pleaded" ? "var(--charged)" : "var(--stolen)") + '" data-tip="' + esc("<b>" + esc(names[j] || "Person " + (j + 1)) + "</b><br>" + OUTLABEL[k]) + '"/>';
       }
       if (!small) out += text(labW + o[k] * (r * 2 + 5) + 6, cy + 4, String(o[k]), "val");
     });
@@ -473,7 +481,7 @@
     for (var g = 0; g <= maxV; g += 10) {
       out += '<line class="' + (g ? "grid" : "base") + '" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + y(g) + '" y2="' + y(g) + '"/>' + text(m.l - 8, y(g) + 4, g + "%", "tick", { "text-anchor": "end" });
     }
-    var bw = view === "usd" ? Math.min(small ? 22 : 34, band * 0.36) : Math.min(44, band * 0.62);
+    var bw = view === "usd" ? Math.min(small ? 24 : 34, band * 0.4) : Math.min(44, band * 0.62);
     eras.forEach(function (e, i) {
       var cx = m.l + band * i + band / 2;
       var tip = "<b>" + esc(e.label) + "</b><br>" + e.ctor + " of " + e.n + " exploits (" + pc(e.ctor_pct) + ") ran inside the contract's own deployment" +
@@ -485,8 +493,8 @@
         out += vbar(x1, y(0), bw, y(0) - y(e.ctor_pct), "var(--s1)") + vbar(x2, y(0), bw, y(0) - y(e.usd_pct), "var(--s2)");
         if (e.ctor_pct === 0 && e.usd_pct === 0) out += text(cx, y(0) - 7, "0%", "val", { "text-anchor": "middle" });
         else {
-          out += text(x1 + bw / 2, y(e.ctor_pct) - 6, FMT.p1(e.ctor_pct), "val", { "text-anchor": "middle", style: "font-size:" + (small ? 11 : 12.5) + "px" });
-          out += text(x2 + bw / 2, y(e.usd_pct) - 6, FMT.p1(e.usd_pct), "val", { "text-anchor": "middle", style: "font-size:" + (small ? 11 : 12.5) + "px" });
+          out += text(x1 + bw / 2, y(e.ctor_pct) - 6, small ? FMT.p0(e.ctor_pct) : FMT.p1(e.ctor_pct), "val", { "text-anchor": "middle", style: "font-size:12px" });
+          out += text(x2 + bw / 2, y(e.usd_pct) - 6, small ? FMT.p0(e.usd_pct) : FMT.p1(e.usd_pct), "val", { "text-anchor": "middle", style: "font-size:12px" });
         }
       } else {
         var v = view === "block" ? e.same_or_block_pct : e.ctor_pct;
@@ -568,8 +576,8 @@
         var cx = px + band * i + band / 2;
         var tip = "<b>" + esc(v.label) + "</b><br>" + esc(eras[i]) + ": " + pc(val) + " of " + AT.k1.eras[i].n + " exploits";
         out += '<g data-tip="' + esc(tip) + '">' + rect(px + band * i, top - 14, band, base - top + 14, "transparent", { "class": "hit" }) + vbar(cx - bw / 2, base, bw, base - y(val), "var(--s2)") + "</g>";
-        out += text(cx, y(val) - 5, FMT.d1(val), "val", { "text-anchor": "middle", style: "font-size:" + (small ? 10.5 : 11.5) + "px" });
-        out += text(cx, base + 15, small ? "'" + yl[i].slice(2, 4) : (i === 0 ? "20-22" : yl[i]), "tick", { "text-anchor": "middle", style: "font-size:" + (small ? 10.5 : 11.5) + "px" });
+        out += text(cx, y(val) - 5, FMT.d1(val), "val", { "text-anchor": "middle", style: "font-size:12px" });
+        out += text(cx, base + 15, small ? "'" + yl[i].slice(2, 4) : (i === 0 ? "20-22" : yl[i]), "tick", { "text-anchor": "middle", style: "font-size:12px" });
       });
     });
     return {
@@ -648,7 +656,7 @@
       var px = (k % cols) * (pw + gap), py = Math.floor(k / cols) * (ph + 14);
       var m = { l: 30, r: 34, top: py + 44, bot: py + ph - 22 };
       var y = lin(0, 60, m.bot, m.top), xw = pw - m.l - m.r, xs = function (i) { return px + m.l + xw * i / 11; };
-      out += text(px, py + 12, t[1], "lab-strong") + text(px, py + 28, FMT.d1(n5[t[2]]) + " a month in 2025, " + FMT.d1(n5[t[3]]) + " in Mar to Sep 2026", "lab", { style: small ? "font-size:12px" : "" });
+      out += text(px, py + 12, t[1], "lab-strong") + text(px, py + 28, FMT.d1(n5[t[2]]) + " a month in 2025, " + FMT.d1(n5[t[3]]) + " in Mar to Sep 2026", "lab", { style: "font-size:12px" });
       [0, 20, 40, 60].forEach(function (g) {
         out += '<line class="' + (g ? "grid" : "base") + '" x1="' + (px + m.l) + '" x2="' + (px + pw - m.r + 6) + '" y1="' + y(g) + '" y2="' + y(g) + '"/>' + text(px + m.l - 6, y(g) + 4, String(g), "tick", { "text-anchor": "end" });
       });
@@ -665,7 +673,7 @@
         var a = ms.filter(function (r) { return r.year === 2025 && r.month === i + 1; })[0], b = ms.filter(function (r) { return r.year === 2026 && r.month === i + 1; })[0];
         var tip = "<b>" + MON[i] + "</b><br>" + t[1] + " 2025: " + a[t[0]] + (b ? "<br>" + t[1] + " 2026: " + b[t[0]] : "<br>2026: October is partial; November and December are still ahead");
         out += '<g data-tip="' + esc(tip) + '">' + rect(xs(i) - xw / 22, m.top - 8, xw / 11, m.bot - m.top + 8, "transparent", { "class": "hit" }) + "</g>";
-        if (!small || i % 2 === 0) out += text(xs(i), m.bot + 16, MON[i], "tick", { "text-anchor": "middle", style: small ? "font-size:11px" : "" });
+        if (!small || i % 2 === 0) out += text(xs(i), m.bot + 16, MON[i], "tick", { "text-anchor": "middle", style: "font-size:12px" });
       }
     });
     var tbl = [];
@@ -682,6 +690,7 @@
   }
 
   // ---------------------------------------------------------------- render + resize
+  window.ATHcharts = { render: renderAll };
   function go() { renderAll(false); }
   go();
   var t;

@@ -1,0 +1,59 @@
+{
+  "snapshot": "2026-10-21",
+  "correction_date": "2026-10-23",
+  "definition": "Non-voluntary recovery-event rows with include_in_sums=y; company claims and unresolved overlapping components excluded. Raw DeFiLlama 2016-2026 loss denominator excludes LuBian. This stream uses different inclusion rules from the master.",
+  "denominator_usd": 17160583756.128132,
+  "counted_rows": 28,
+  "recovered_usd": 1159340010.0,
+  "recovered_pct": 6.8,
+  "damage_averted_usd": 540200000,
+  "recovered_ex_damage_averted_usd": 619140010.0,
+  "recovered_ex_damage_averted_pct": 3.6,
+  "channels": {
+    "chain_intervention": {
+      "rows": 6,
+      "usd": 836000000.0,
+      "pct": 72.1
+    },
+    "exchange_freeze": {
+      "rows": 4,
+      "usd": 13830000.0,
+      "pct": 1.2
+    },
+    "law_enforcement_seizure": {
+      "rows": 2,
+      "usd": 61000000.0,
+      "pct": 5.3
+    },
+    "multi_channel_freeze": {
+      "rows": 3,
+      "usd": 46230000.0,
+      "pct": 4.0
+    },
+    "protocol_freeze_or_pause": {
+      "rows": 3,
+      "usd": 43200000.0,
+      "pct": 3.7
+    },
+    "stablecoin_issuer_freeze": {
+      "rows": 6,
+      "usd": 109450010.0,
+      "pct": 9.4
+    },
+    "unspecified_recovery": {
+      "rows": 1,
+      "usd": 880000.0,
+      "pct": 0.1
+    },
+    "whitehat_rescue": {
+      "rows": 3,
+      "usd": 48750000.0,
+      "pct": 4.2
+    }
+  },
+  "sources": [
+    "data/recovery_events.csv",
+    "https://api.llama.fi/hacks"
+  ],
+  "generated_by": "scripts/recovery_analysis.py"
+}

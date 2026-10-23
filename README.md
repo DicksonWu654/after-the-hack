@@ -15,15 +15,15 @@ This repository holds the paper, the interactive site, the thread and its cards,
 | Finding | Figure |
 |:---|:---|
 | Dataset | 1,377 incidents, $16.52B (659 of them $1M or more, $16.32B) |
-| Recovered by any route | 18.8% of dollars ($3.11B); 13.0% without the three largest recoveries |
-| Returned voluntarily by the attacker or an insider | about 10% of dollars ($1.68B); about 1 in 8 large exploits and key compromises |
+| Recovered by any route | 19.0% of dollars ($3.14B); 13.2% without the three largest recoveries |
+| Returned voluntarily by the attacker or an insider | 10.0% of dollars ($1.65B); about 1 in 8 large exploits and key compromises |
 | Speed of voluntary returns | median first return 2.4 days after the exploit; 21 of 23 dated returns within a week (a sample biased toward fast, visible returns) |
 | People charged or arrested for the hack | 16 of 1,377 incidents (1.2%); 9 of the 100 largest |
 | North Korea | 22.6% of dollars from 2.3% of incidents on government attribution alone (39.1% of dollars, 95 incidents, with firm attributions); 8.3% of the government-plus-firm money recovered (3.8% without KuCoin and Munchables; 3.4% on government attribution alone); we found no one in custody for an exchange or bridge theft |
 | Attack side (758 EVM exploits) | exploits run inside the attack contract's own deployment transaction rose from about 0% (2020-22) to 40.5% (2025) and 34.1% (2026), though only 8% to 11% of the dollars |
 | Recorded incidents | rose 2.3 to 3.1 times from 2025 to March-September 2026 on two trackers (DeFiLlama 12.3 to 37.6 a month, SlowMist 16.8 to 38.6); dollars rose about a third per month; we found no verified in-the-wild exploit written by AI |
 
-Every figure has a definition, sources and a confidence grade in `data/canonical_numbers.json`.
+Every figure has a definition, sources and a confidence grade in `data/canonical_numbers.json`. The master column dictionary is in [data/README.md](data/README.md).
 
 ## Contents
 
@@ -48,6 +48,7 @@ python3 scripts/export_paper.py   # recompute the paper tables from data/, write
 python3 site/build.py             # rebuild site/data (bundle.js, quotes.json, downloads); exits non-zero if a displayed figure does not match
 playwright install chromium       # once, for the cards
 python3 cards/render.py           # render the cards to cards/out (add --no-dark for light cards only)
+python3 cards/og.py               # render site/assets/og-card.png from canonical figures and the built bundle
 ```
 
 A GitHub Actions workflow (`.github/workflows/rebuild.yml`) runs the paper and site builders on every push and fails if the committed outputs differ from a fresh build.

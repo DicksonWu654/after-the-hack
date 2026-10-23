@@ -104,6 +104,7 @@
  "time_n": 16,
  "time_median_days": 607.5,
  "time_mean_days": 972,
+ "time_definition": "Observed incident-level intervals to a first public person-level action in the case file. Many incidents have no observed action; these medians describe the observed cases and do not estimate waiting time across all hacks.",
  "time_q1_q3": [
   354,
   1650
@@ -133,9 +134,9 @@
    "Morgan",
    "Zhong",
    "Vinnik (US plea; swapped to Russia before sentencing)",
-   "Powell (plea agreement filed 2024-08-07, unsealed 2025-04-14; sentencing not set)",
+   "Powell (plea agreement filed 2024-08-07, unsealed 2025-04-14; no change-of-plea entry seen; no sentencing date found as of 2026-10-21)",
    "Hernandez (sentenced 2025-12-08 to 12 months probation)",
-   "Spalletta (convicted 2026-10-07, sentencing set for 2027-02-16)"
+   "Spalletta (convicted 2026-10-07, sentencing reported for 2027-02-16)"
   ],
   "conviction_vacated_or_acquitted_appeal_pending": [
    "Eisenberg (counts 1-2 vacated for venue, count 3 acquitted; US appeal pending)"
@@ -145,8 +146,8 @@
    "his brother (Platypus, France)"
   ],
   "pending": [
-   "Anton Peraire-Bueno (retrial ordered ready 2027-06-07)",
-   "James Peraire-Bueno (same)",
+   "Anton Peraire-Bueno (retrial ordered ready 2027-06-07; last direct docket check 2026-09-28)",
+   "James Peraire-Bueno (same; last direct docket check 2026-09-28)",
    "the Nomad suspect (arrested in Israel; extradition approved; transfer to US unconfirmed)"
   ],
   "outcome_unknown": [
@@ -163,6 +164,15 @@
    "Li Jiadong"
   ]
  },
+ "individual_outcome_labels": {
+  "convicted_or_pleaded": "convicted, pleaded guilty, or plea agreement on file",
+  "conviction_vacated_or_acquitted_appeal_pending": "conviction vacated or acquittal, appeal pending",
+  "acquitted": "acquitted",
+  "pending": "pending",
+  "outcome_unknown": "outcome unknown",
+  "at_large_or_not_in_custody": "charged, no public custody record found"
+ },
+ "individual_outcomes_definition": "Of 23 individuals charged or arrested for a hack or its laundering, 8 fall in the category \"convicted, pleaded guilty, or plea agreement on file\". Powell is included because a plea agreement was filed and unsealed; no change-of-plea entry was seen. Case records were reviewed on 2026-10-21; source and last direct docket-check dates vary by row.",
  "returnedFunds_flagged_n": 27,
  "returnedFunds_flagged_pct": 2.1
 }

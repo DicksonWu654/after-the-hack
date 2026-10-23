@@ -208,13 +208,13 @@ body { width: 1600px; height: 900px; }
     var v = D.R2.pct_of_all, o = D.C4.master_pct, lost = X.unrecovered_pct, tot = D.C1.pct;
     var body =
       '<div style="display:flex;align-items:flex-end;gap:56px"><div class="n" style="font-size:300px;color:var(--ink)">' + pct0(tot) + '</div>' +
-      '<div class="lab" style="padding-bottom:6px;font-size:46px;line-height:1.16;max-width:760px"><b>of stolen dollars</b> has come back by any route</div></div>' +
+      '<div class="lab" style="padding-bottom:6px;font-size:46px;line-height:1.16;max-width:760px"><b>of reported losses</b> has come back by any route</div></div>' +
       '<div style="display:flex;gap:2px;height:92px;margin-top:44px;border-radius:8px;overflow:hidden">' +
       '<div style="width:' + v + '%;background:var(--s1)"></div><div style="width:' + o + '%;background:var(--s2)"></div><div style="width:' + lost + '%;background:var(--lost)"></div></div>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:36px;margin-top:26px;font-size:34px;line-height:1.2;color:var(--ink-2);font-weight:500">' +
-      [[v,"var(--s1)","returned by the attacker or an insider"],[o,"var(--s2)","frozen, seized or halted"],[lost,"var(--lost)","no documented recovery"]].map(function(c){return '<div style="border-top:8px solid '+c[1]+';padding-top:12px"><b style="display:block;font-size:64px;color:var(--ink);letter-spacing:-0.03em;line-height:1">'+pc(c[0])+'</b>'+c[2]+'</div>';}).join("") + '</div>' +
+      [[v,"var(--s1)","returned by the attacker or an insider"],[o,"var(--s2)","through other recovery channels"],[lost,"var(--lost)","no recorded recovery"]].map(function(c){return '<div style="border-top:8px solid '+c[1]+';padding-top:12px"><b style="display:block;font-size:64px;color:var(--ink);letter-spacing:-0.03em;line-height:1">'+pc(c[0])+'</b>'+c[2]+'</div>';}).join("") + '</div>' +
       '<div class="note" style="margin-top:30px">Without ' + esc(X.top3_recoveries) + ', the figure falls to <b>' + pc(Math.round(D.C1.pct_ex_top3 * 10) / 10) + '</b>.</div>';
-    return chrome("", body, SRC + ". Dollar values at theft-date prices.");
+    return chrome("", body, SRC + ". Losses are tracker-reported USD; valuation exceptions are listed in the definitions.");
   };
 
   // 03 vector mix, dollars vs count
@@ -247,7 +247,7 @@ body { width: 1600px; height: 900px; }
       return bar(L[c.channel], c.pct, 72, i === 0 ? "var(--s1)" : "var(--s2)", { style: "--lw:390px;--bh:34px", val: pc(c.pct) });
     }).join("") + "</div>";
     return chrome("", '<div class="col2" style="grid-template-columns:520px 1fr;align-items:center">' + left + right + "</div>",
-      SRC + ". Share of the " + bn(D.C1.recovered_usd, 2) + " recovered, by primary channel.");
+      SRC + ". Share of the " + bn(D.C1.recovered_usd, 2) + " recovered, by channel; recorded components are split where available.");
   };
 
   // 05 bounty norm: 183 openings, 104 exactly 10%
@@ -347,7 +347,7 @@ body { width: 1600px; height: 900px; }
       svg += '<text x="0" y="' + (y0 + 26) + '" font-size="32" font-weight="600" fill="var(--ink-2)">' + r[0] + "</text>";
       if (r[3]) svg += '<line x1="' + x(r[3][0]) + '" x2="' + x(r[3][1]) + '" y1="' + y + '" y2="' + y + '" stroke="var(--stolen)" stroke-width="7" stroke-linecap="round"/>' +
         '<circle cx="' + x(r[3][1]) + '" cy="' + y + '" r="9" fill="var(--stolen)" stroke="var(--surface)" stroke-width="3"/>' +
-        '<text x="' + x(r[3][1]) + '" y="' + (y + 44) + '" text-anchor="end" font-size="28" font-weight="600" fill="var(--ink-2)">' + X.seizure_lo + " days to " + X.seizure_hi_label + "</text>";
+        '<text x="' + x(r[3][1]) + '" y="' + (y + 44) + '" text-anchor="end" font-size="28" font-weight="600" fill="var(--ink-2)">' + X.seizure_lo + " to " + int(X.seizure_hi) + " days</text>";
       svg += '<circle cx="' + x(r[1]) + '" cy="' + y + '" r="16" fill="' + (i === 0 ? "var(--s1)" : i === 4 ? "var(--stolen)" : "var(--s2)") + '" stroke="var(--surface)" stroke-width="4"/>';
       var lx = r[3] ? x(r[3][0]) - 30 : x(r[1]) + 30, anchor = r[3] ? "end" : "start";
       svg += '<text x="' + lx + '" y="' + (y + 12) + '" text-anchor="' + anchor + '" font-size="36" font-weight="800" fill="var(--ink)" letter-spacing="-0.5">' + r[2] + "</text>";
@@ -358,7 +358,7 @@ body { width: 1600px; height: 900px; }
       '<div><div class="n" style="font-size:160px;color:var(--s1)">' + pc(X.cronos_pct) + '</div><div class="note" style="margin-top:14px">of Cronos\'s loss restored: detected in ~' + X.cronos_min + ' min, then halted and rolled back</div></div></div>';
     var right = '<div><div class="note" style="margin-bottom:16px;font-weight:700;color:var(--ink)">Time from hack to recovery (log scale)</div>' + svg + "</div>";
     return chrome("", '<div class="col2" style="grid-template-columns:470px 1fr;align-items:center;gap:0 56px">' + left + right + "</div>",
-      SRC + ". The Cronos dot marks detection time. Seizure whisker: " + X.seizure_lo + " days to " + X.seizure_hi_label + " (" + int(X.seizure_hi) + " days, Bitfinex).");
+      SRC + ". The Cronos dot marks detection time. Seizure whisker: the two counted seizures, " + int(X.seizure_lo) + " and " + int(X.seizure_hi) + " days; Bitfinex (about " + int(X.seizure_bitfinex) + " days) is left out.");
   };
 
   // 12 arrests: 1 in 10
@@ -375,7 +375,7 @@ body { width: 1600px; height: 900px; }
   // 12b arrest delay: the 14 cases in our dataset with a dated first arrest or charge (canonical E3, in-scope figure)
   CARD.delay = function () {
     var days = X.e3_days, med = X.e3_scope_median, W = 1380, d1 = 2100, sc = W / d1;
-    var months = Math.round(med / (365.25 / 12) * 2) / 2;
+    var months = Math.round(med / (365.25 / 12));
     var pts = swarm(days, sc, 18), base = 20, H = 250;
     var svg = '<svg width="' + (W + 40) + '" height="' + H + '" viewBox="-10 0 ' + (W + 40) + " " + H + '" style="overflow:visible;font-family:Schibsted Grotesk">';
     [0, 1, 2, 3, 4, 5].forEach(function (y) {
@@ -400,7 +400,7 @@ body { width: 1600px; height: 900px; }
   CARD.outcomes = function () {
     var o = D.E4.outcomes, tot = D.E4.individuals;
     var rows = [
-      ["Convicted or plea on file", o.convicted_or_pleaded, "var(--s1)"],
+      ["Convicted, pleaded guilty, or plea agreement on file", o.convicted_or_pleaded, "var(--s1)"],
       ["Charged, not in custody", o.at_large_or_not_in_custody, "var(--stolen)"],
       ["Case pending", o.pending, "var(--stolen)"],
       ["Acquitted", o.acquitted, "var(--stolen)"],
@@ -412,7 +412,7 @@ body { width: 1600px; height: 900px; }
       return bar(r[0], r[1], 9, r[2], { style: "--lw:640px;--bh:54px", val: r[1] });
     }).join("") + "</div>";
     body += '<div class="note" style="margin-top:22px;font-size:32px;border-left:6px solid var(--s1);padding-left:22px">On 7 Oct 2026 a jury convicted Jonathan Spalletta on all counts over the Uranium Finance hacks.</div>';
-    return chrome("Of " + tot + " people charged over a hack or its laundering, " + o.convicted_or_pleaded + " were convicted or have a plea on file.", body,
+    return chrome("Of " + tot + " people charged over a hack or its laundering, " + o.convicted_or_pleaded + " were convicted, pleaded guilty, or have a plea agreement on file.", body,
       SRC + ". People charged or arrested for a hack or its laundering.", { sm: true });
   };
 
@@ -440,9 +440,9 @@ body { width: 1600px; height: 900px; }
     var chart = '<div style="display:grid;row-gap:24px">' +
       bar("DPRK-attributed hacks", R.gov_plus_firm_pct, 30, "var(--s3-soft)", { style: "--lw:460px;--bh:46px", lsub: "all " + D.D2.gov_plus_firm[0] + " incidents" }) +
       bar("DPRK, minus two outliers", R.gov_plus_firm_ex_outliers_pct, 30, "var(--s3)", { style: "--lw:460px;--bh:46px", lsub: "KuCoin and Munchables removed" }) +
-      bar("Everything else", R.non_dprk_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px" }) +
-      bar("Everything else, minus top 3", R.non_dprk_ex_top3_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px", lsub: "three largest returns removed" }) + "</div>";
-    var left = '<div>' + '<div class="note" style="margin-bottom:22px;font-weight:600">Share of stolen dollars recovered</div>' + chart + "</div>";
+      bar("No government or firm attribution", R.non_dprk_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px" }) +
+      bar("Same, minus top 3", R.non_dprk_ex_top3_pct, 30, "var(--stolen)", { style: "--lw:460px;--bh:46px", lsub: "three largest returns removed" }) + "</div>";
+    var left = '<div>' + '<div class="note" style="margin-bottom:22px;font-weight:600">Share of reported losses recovered</div>' + chart + "</div>";
     var right = '<div style="border-left:2px solid var(--rule);padding-left:52px"><div class="n" style="font-size:300px;color:var(--s3)">' + D.D4.dprk_hackers_arrested + '</div><div class="lab" style="margin-top:22px;font-size:38px"><b>operators in custody</b> for exchange or bridge thefts. Several are indicted in absentia.</div></div>';
     return chrome("Hacks attributed to North Korea almost never come back.", '<div class="col2" style="grid-template-columns:1fr 460px;align-items:center">' + left + right + "</div>",
       SRC + ". DPRK = government plus firm attribution.", {});

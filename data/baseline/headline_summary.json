@@ -2,14 +2,14 @@
  "all": {
   "n": 1377,
   "loss": 16516848367,
-  "recovered": 3105350612,
-  "pct_all": 18.8011,
-  "pct_ex_chain": 16.1344,
-  "pct_ex_top3": 12.9985,
+  "recovered": 3137737346,
+  "pct_all": 18.9972,
+  "pct_ex_chain": 16.3305,
+  "pct_ex_top3": 13.2036,
   "top3": [
    [
     "Poly Network",
-    610000000
+    611000000
    ],
    [
     "Liquid Network",
@@ -20,57 +20,57 @@
     239450000
    ]
   ],
-  "pct_ex_unverified": 18.6228,
+  "pct_ex_unverified": 18.8189,
   "n_ge1m": 659,
-  "n_ge1m_documented": 150,
-  "pct_count_ge1m": 22.7618,
+  "n_ge1m_documented": 151,
+  "pct_count_ge1m": 22.9135,
   "n_ge1m_checked": 412,
-  "n_ge1m_documented_of_checked": 150,
-  "pct_count_checked": 36.4078,
+  "n_ge1m_documented_of_checked": 151,
+  "pct_count_checked": 36.6505,
   "n_ge1m_unchecked": 247,
   "n_quantified": 179,
-  "n_documented": 190,
+  "n_documented": 189,
   "channel_mix": [
    [
     "voluntary return (attacker/insider)",
-    1681375837,
-    103,
-    54.1
+    1648736037,
+    104,
+    52.5
    ],
    [
     "issuer / exchange / protocol freeze",
-    534307471,
-    32,
-    17.2
+    598807471,
+    34,
+    19.1
    ],
    [
     "law-enforcement seizure / court",
     329974815,
     11,
-    10.6
+    10.5
    ],
    [
     "chain-level: halt / validator / security council",
     261066300,
     9,
-    8.4
+    8.3
    ],
    [
     "chain-level: hard fork / rollback",
     179386549,
     3,
-    5.8
+    5.7
    ],
    [
     "white-hat / MEV rescue",
     70446208,
     19,
-    2.3
+    2.2
    ],
    [
     "other / unspecified",
-    48793433,
-    13,
+    49319967,
+    12,
     1.6
    ]
   ]
@@ -78,14 +78,14 @@
  "top150": {
   "n": 150,
   "loss": 14105460010,
-  "recovered": 2804395437,
-  "pct_all": 19.8816,
-  "pct_ex_chain": 17.0154,
-  "pct_ex_top3": 13.0954,
+  "recovered": 2837135437,
+  "pct_all": 20.1137,
+  "pct_ex_chain": 17.2475,
+  "pct_ex_top3": 13.3415,
   "top3": [
    [
     "Poly Network",
-    610000000
+    611000000
    ],
    [
     "Liquid Network",
@@ -96,46 +96,46 @@
     239450000
    ]
   ],
-  "pct_ex_unverified": 19.6728,
+  "pct_ex_unverified": 19.905,
   "n_ge1m": 150,
-  "n_ge1m_documented": 58,
-  "pct_count_ge1m": 38.6667,
+  "n_ge1m_documented": 59,
+  "pct_count_ge1m": 39.3333,
   "n_ge1m_checked": 149,
-  "n_ge1m_documented_of_checked": 58,
-  "pct_count_checked": 38.9262,
+  "n_ge1m_documented_of_checked": 59,
+  "pct_count_checked": 39.5973,
   "n_ge1m_unchecked": 1,
-  "n_quantified": 58,
-  "n_documented": 58,
+  "n_quantified": 59,
+  "n_documented": 59,
   "channel_mix": [
    [
     "voluntary return (attacker/insider)",
-    1482738549,
+    1450098549,
     21,
-    52.9
+    51.1
    ],
    [
     "issuer / exchange / protocol freeze",
-    515175771,
-    20,
-    18.4
+    579675771,
+    22,
+    20.4
    ],
    [
     "law-enforcement seizure / court",
     326774815,
     9,
-    11.7
+    11.5
    ],
    [
     "chain-level: halt / validator / security council",
     233100000,
     2,
-    8.3
+    8.2
    ],
    [
     "chain-level: hard fork / rollback",
     171200000,
     2,
-    6.1
+    6.0
    ],
    [
     "white-hat / MEV rescue",
@@ -145,8 +145,8 @@
    ],
    [
     "other / unspecified",
-    37099967,
-    4,
+    37979967,
+    5,
     1.3
    ]
   ],
@@ -154,12 +154,12 @@
   "arrest_broad": 16,
   "arrest_flag_any": 22,
   "arrest_classes": {
-   "none_found": 71,
+   "none_found": 72,
    "related_or_laundering_side": 5,
    "charged_or_arrested_for_hack": 11,
    "civil_or_regulatory_only": 3,
    "not_for_the_hack": 3,
-   "": 57
+   "": 56
   },
   "verified_check": {
    "": [
@@ -167,34 +167,34 @@
     10000000
    ],
    "checked_none_found": [
-    59,
+    58,
     0
    ],
    "corrected": [
-    33,
-    1135712967
+    35,
+    1184052967
    ],
    "not_corroborated": [
     9,
     29450000
    ],
    "verified_agree": [
-    44,
-    1629232470
+    43,
+    1613632470
    ]
   }
  },
  "top100": {
   "n": 100,
   "loss": 13120900010,
-  "recovered": 2628319160,
-  "pct_all": 20.0315,
-  "pct_ex_chain": 16.9502,
-  "pct_ex_top3": 12.6995,
+  "recovered": 2660819160,
+  "pct_all": 20.2792,
+  "pct_ex_chain": 17.1979,
+  "pct_ex_top3": 12.964,
   "top3": [
    [
     "Poly Network",
-    610000000
+    611000000
    ],
    [
     "Liquid Network",
@@ -205,52 +205,52 @@
     239450000
    ]
   ],
-  "pct_ex_unverified": 19.8071,
+  "pct_ex_unverified": 20.0548,
   "n_ge1m": 100,
-  "n_ge1m_documented": 43,
-  "pct_count_ge1m": 43.0,
+  "n_ge1m_documented": 44,
+  "pct_count_ge1m": 44.0,
   "n_ge1m_checked": 100,
-  "n_ge1m_documented_of_checked": 43,
-  "pct_count_checked": 43.0,
+  "n_ge1m_documented_of_checked": 44,
+  "pct_count_checked": 44.0,
   "n_ge1m_unchecked": 0,
-  "n_quantified": 43,
-  "n_documented": 43,
+  "n_quantified": 44,
+  "n_documented": 44,
   "channel_mix": [
    [
     "voluntary return (attacker/insider)",
-    1327570000,
+    1295570000,
     11,
-    50.5
+    48.7
    ],
    [
     "issuer / exchange / protocol freeze",
-    494918010,
-    15,
-    18.8
+    559418010,
+    17,
+    21.0
    ],
    [
     "law-enforcement seizure / court",
     326774815,
     9,
-    12.4
+    12.3
    ],
    [
     "chain-level: halt / validator / security council",
     233100000,
     2,
-    8.9
+    8.8
    ],
    [
     "chain-level: hard fork / rollback",
     171200000,
     2,
-    6.5
+    6.4
    ],
    [
     "white-hat / MEV rescue",
     38306335,
     4,
-    1.5
+    1.4
    ],
    [
     "other / unspecified",
@@ -276,12 +276,12 @@
     10000000
    ],
    "checked_none_found": [
-    35,
+    34,
     0
    ],
    "corrected": [
-    25,
-    1122238000
+    26,
+    1154738000
    ],
    "not_corroborated": [
     9,
@@ -303,7 +303,7 @@
   "loss_gov_firm": 6453362000,
   "pct_gov_firm": 39.0714,
   "recovered_pct_dprk": 8.3124,
-  "recovered_pct_non_dprk": 25.5272
+  "recovered_pct_non_dprk": 25.849
  },
  "vec_pct": {
   "access-control": [
@@ -369,11 +369,11 @@
  "bridge_2026": 33,
  "supply_2025": 56,
  "voluntary": {
-  "total": 1681375837,
+  "total": 1648736037,
   "top3": [
    [
     "Poly Network",
-    610000000
+    578000000
    ],
    [
     "Liquid Network",
@@ -384,11 +384,11 @@
     197000000
    ]
   ],
-  "ex_top3": 607875837
+  "ex_top3": 607236037
  },
  "status_top150": {
-  "recovered_documented": 58,
-  "no_recovery_in_sources_checked": 5,
+  "recovered_documented": 59,
+  "no_recovery_in_sources_checked": 4,
   "claimed_unverified": 11,
   "no_public_record_found": 65,
   "recovered_unquantified": 8,
@@ -397,10 +397,10 @@
  },
  "status_big": {
   "no_voluntary_return_found": 161,
-  "recovered_documented": 150,
+  "recovered_documented": 151,
   "unknown_not_checked": 247,
   "no_public_record_found": 65,
-  "no_recovery_in_sources_checked": 16,
+  "no_recovery_in_sources_checked": 15,
   "claimed_unverified": 11,
   "recovered_unquantified": 9
  },
@@ -516,7 +516,7 @@
    2329983761
   ]
  },
- "largest_2025_share": 54,
+ "largest_2025_share": 54.5,
  "cap_flagged": [
   [
    "flash.sx / vaults.sx",
@@ -569,10 +569,10 @@
  ],
  "verified_check_all": {
   "": 1226,
-  "checked_none_found": 59,
-  "corrected": 33,
+  "checked_none_found": 58,
+  "corrected": 35,
   "not_corroborated": 9,
-  "verified_agree": 44,
+  "verified_agree": 43,
   "verified_legal": 3,
   "verified_recent_events": 3
  },

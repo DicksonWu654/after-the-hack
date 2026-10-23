@@ -75,10 +75,10 @@ def table(header, body, align=None):
 
 
 def headline_rows():
-    """Same scope rule as scripts/baseline_stats.py: headline_scope=1, 2016..2026, positive USD loss."""
+    """Use the explicit 1,377-row headline membership flag, in_headline=1."""
     out = []
     for x in rows("incidents_master.csv"):
-        if x["headline_scope"] != "1" or not ("2016" <= x["date"][:4] <= "2026"):
+        if x["in_headline"] != "1" or not ("2016" <= x["date"][:4] <= "2026"):
             continue
         try:
             x["L"] = float(x["loss_usd_reported"])
@@ -132,7 +132,7 @@ def t_verification_effect():
         return [label, fb, fa]
     body = [
         r("Loss in scope", "%s, %s incidents" % (usd(a["all"]["loss"]), f"{a['all']['n']:,}"), "%s, %s incidents" % (usd(b["all"]["loss"]), f"{b['all']['n']:,}")),
-        r("Recovered, all channels (theft-date USD, capped at 100% per incident)", "%s (%s)" % (usd(a["all"]["recovered"]), pct(a["all"]["pct_all"])), "%s (%s)" % (usd(b["all"]["recovered"]), pct(b["all"]["pct_all"]))),
+        r("Recovered, all channels (counted USD, capped at 100% per incident)", "%s (%s)" % (usd(a["all"]["recovered"]), pct(a["all"]["pct_all"])), "%s (%s)" % (usd(b["all"]["recovered"]), pct(b["all"]["pct_all"]))),
         r("Recovered share excluding chain-level interventions", pct(a["all"]["pct_ex_chain"]), pct(b["all"]["pct_ex_chain"])),
         r("Recovered share excluding the three largest recoveries", pct(a["all"]["pct_ex_top3"]), pct(b["all"]["pct_ex_top3"])),
         r("Incidents of $1M or more with a documented recovery", "%d of %d (%s)" % (a["all"]["n_ge1m_documented"], a["all"]["n_ge1m"], pct(a["all"]["pct_count_ge1m"])), "%d of %d (%s)" % (b["all"]["n_ge1m_documented"], b["all"]["n_ge1m"], pct(b["all"]["pct_count_ge1m"]))),
@@ -168,7 +168,7 @@ def t_coverage():
             x["scope"], f"{int(x['n']):,}", x["n_full"], x["n_partial"], x["n_none"], x["n_recovered_any"],
             usd(x["recovered_usd"]), pct(x["recovered_pct_of_all_loss"]),
         ])
-    return table(["Scope", "Incidents", "Outcome check full", "Partial", "None", "With a recovery", "Recovered (theft-date USD)", "Share of loss"], body)
+    return table(["Scope", "Incidents", "Outcome check full", "Partial", "None", "With a recovery", "Recovered (counted USD)", "Share of loss"], body)
 
 
 def t_annual():
@@ -286,13 +286,15 @@ def t_settlements():
         if x["in_settlement_split_stats"] != "y":
             continue
         rs = float(x["returned_share_of_loss"])
+        if x.get("frozen_or_seized_usd"):
+            rs = min(1.0, (float(x["returned_usd"]) + float(x["frozen_or_seized_usd"])) / float(x["loss_usd"]))
         vals.append(1 - rs)
         body.append([x["incident"], x["incident_date"][:7], usd(x["loss_usd"]), pct(100 * rs), pct(100 * (1 - rs))])
     med = statistics.median(vals)
     check(len(vals) == 10, "settlement sample n=%d" % len(vals))
     check(round(100 * med, 1) == 3.0, "median retained %.2f" % (100 * med))
     body.append(["**Median (n=10)**", "", "", pct(100 * (1 - med)), "**%s**" % pct(100 * med)])
-    return table(["Incident", "Month", "Loss", "Share returned", "Share retained"], body)
+    return table(["Incident", "Month", "Loss", "Share recovered", "Share retained"], body)
 
 
 def _rv(x):
@@ -313,7 +315,7 @@ def t_voluntary_top():
     for v, x in items[:10]:
         body.append([re.sub(r"\s*\(DeFiLlama name:.*?\)", "", x["name"]), x["date"][:4], usd(x["L"]), usd(v), pct(100 * v / x["L"]), pct(100 * v / total)])
     body.append(["**All voluntary returns (%d incidents)**" % sum(1 for v, _ in items if v > 0), "", "", "**%s**" % usd(total), "", "**100%**"])
-    return table(["Incident", "Year", "Loss", "Returned voluntarily (theft-date USD)", "Share of that loss", "Share of all voluntary dollars"], body)
+    return table(["Incident", "Year", "Loss", "Returned voluntarily (counted USD)", "Share of that loss", "Share of all voluntary dollars"], body)
 
 
 def t_recovery_year():
@@ -344,7 +346,7 @@ def t_channels():
     tot = sum(float(x["recovered_usd_at_time"]) for x in allc.values())
     tot150 = sum(float(x["recovered_usd_at_time"]) for x in t150.values())
     body.append(["**Total**", "**%s**" % usd(tot), "", "**100%**", "**%s**" % usd(tot150), "", "**100%**"])
-    return table(["Primary channel per incident", "All scope: recovered", "Incidents", "Share", "Top 150: recovered", "Incidents", "Share"], body)
+    return table(["Allocated recovery channel", "All scope: recovered", "Incidents", "Share", "Top 150: recovered", "Incidents", "Share"], body)
 
 
 def t_speed():
@@ -360,9 +362,11 @@ def t_speed():
         "exchange_freeze": "Exchange freeze",
         "multi_channel_freeze": "Multi-channel freeze (Bybit, Bitget)",
         "law_enforcement_seizure": "Law-enforcement seizure",
+        "unspecified_recovery": "Other recovery (innocent recipient return)",
     }
-    order = ["protocol_freeze_or_pause", "whitehat_rescue", "chain_intervention", "stablecoin_issuer_freeze", "exchange_freeze", "multi_channel_freeze", "law_enforcement_seizure"]
-    check(statistics.median(by["law_enforcement_seizure"]) == 331, "LE seizure median")
+    order = ["protocol_freeze_or_pause", "whitehat_rescue", "chain_intervention", "stablecoin_issuer_freeze", "exchange_freeze", "multi_channel_freeze", "unspecified_recovery", "law_enforcement_seizure"]
+    f1 = next(x["numeric"] for x in CANON["numbers"] if x["id"] == "F1")
+    check(statistics.median(by["law_enforcement_seizure"]) == f1["median_days"]["law_enforcement_seizure"], "LE seizure median")
     check(statistics.median(by["chain_intervention"]) == 1, "chain median")
     check(statistics.median(by["exchange_freeze"]) == 3, "exchange median")
 
@@ -426,7 +430,7 @@ def t_outcomes():
     st = jload("law_enforcement_stats.json")
     det = st["individual_outcomes_detail"]
     lab = {
-        "convicted_or_pleaded": "Convicted or pleaded",
+        "convicted_or_pleaded": st["individual_outcome_labels"]["convicted_or_pleaded"],
         "conviction_vacated_or_acquitted_appeal_pending": "Conviction vacated or acquitted, US appeal pending",
         "acquitted": "Acquitted",
         "pending": "Pending",
@@ -438,7 +442,8 @@ def t_outcomes():
     body = []
     for k in order:
         names = det.get(k, [])
-        body.append([lab[k], st["individual_outcomes"][k], esc("; ".join(names))])
+        label = st["individual_outcome_labels"].get(k, lab[k])
+        body.append([label, st["individual_outcomes"][k], esc("; ".join(names))])
     body.append(["**Total**", "**23**", ""])
     return table(["Outcome", "People", "Who"], body, ["l", "r", "l"])
 
@@ -451,25 +456,25 @@ def t_canonical():
 
 
 RECENT_TAG = {
-    "Infini": "20% offered; no public record of acceptance",
+    "Infini": "20% offered; no public acceptance found through 21 Oct 2026",
     "Bybit": "FBI named DPRK in 5 days; about $42.9M frozen (corroborated; the company later claimed $78.9M, 5.4%); make-whole from balance sheet",
     "KiloEx": "10% offer; returned in about 3 days",
     "Loopscale": "10% plus release; reported full recovery in 2 days (split unverified)",
-    "Cetus (Sui)": "no reply to a roughly $6M offer; validators froze $162M",
+    "Cetus (Sui)": "no public reply found through 21 Oct 2026 to a roughly $6M offer; validators froze $162M",
     "GMX V1": "10% for 90% back in 48h; accepted (on chain)",
     "Verus-Ethereum Bridge": "24h offer; 4,052 ETH returned, 1,350 ETH kept (on chain)",
     "Renegade": "10% offer; over 90% returned in 45 minutes",
-    "Ostium": "no negotiation found; $650k recovered, channel unstated",
-    "Wanchain (Cardano-BNB bridge)": "10% offer; no return reported",
-    "AFX Bridge": "30% offer; no return reported",
-    "Coldcard seed-generation thefts": "white hats secured 52.37 BTC; no attacker negotiation",
-    "Moonwell (MAMO market, Base)": "no bounty, negotiation or return found",
+    "Ostium": "no public negotiation found through 21 Oct 2026; $650k recovered, channel unstated",
+    "Wanchain (Cardano-BNB bridge)": "10% offer; no public return found through 21 Oct 2026",
+    "AFX Bridge": "30% offer; no public return found through 21 Oct 2026",
+    "Coldcard seed-generation thefts": "white hats secured 52.37 BTC; no public attacker negotiation found through 21 Oct 2026",
+    "Moonwell (MAMO market, Base)": "no public bounty, negotiation or return found through 21 Oct 2026",
     "Tectonic / Cronos": "detected about 36 minutes in, then chain halted and rolled back; $111.2M restored",
-    "Liquid Network (Blockstream)": "3,400 BTC returned; 598.5 BTC withheld for a 10% bounty; unresolved",
-    "Bitget": "about $340k frozen by issuers (CEO claims about $1.07M); no negotiation",
+    "Liquid Network (Blockstream)": "3,400 BTC returned; 598.5 BTC withheld; provider swaps enabled 20 Oct, federation peg-outs restricted",
+    "Bitget": "about $340k frozen by issuers (CEO claims about $1.07M); no public negotiation found through 21 Oct 2026",
     "NEAR Intents": "told publicly \"We have identified you\" (not named); 48h ultimatum; 100% returned",
     "79thVault (79AU, BNB Chain)": "10% message (authenticity doubted); 92.3% returned (single source)",
-    "Drift Protocol": "no return, no freeze found; Tether financing is make-whole",
+    "Drift Protocol": "no public return or freeze found through 21 Oct 2026; Tether finances reimbursement",
     "Kelp DAO (rsETH/LayerZero)": "Arbitrum Council froze 30,766 ETH (about $71M); court restraint",
 }
 
@@ -559,7 +564,7 @@ def t_attack_same_tx():
 
 
 def t_attack_funding_era():
-    """Table 24: Ethereum attacker-wallet funding by Tornado Cash sanction era (K4)."""
+    """Table 24: sampled Ethereum incidents with a resolved first funder by sanction era (K4)."""
     k4 = _k("K4")["by_era"]
     t2c = {x["tornado_era"][0]: x for x in rows("tables/t2c_ethereum_tornado_share_by_era.csv")}
     labels = [("A", "Before designation (to 7 Aug 2022)"), ("B", "Sanctioned (8 Aug 2022 to 20 Mar 2025)"), ("C", "After delisting (from 21 Mar 2025)")]
@@ -570,7 +575,7 @@ def t_attack_funding_era():
         anyp = e["direct"] + e["hop"] + e["railgun"]
         check(anyp == int(t["any_privacy_tool"]), "K4 any tool %s" % key)
         body.append([label, e["n"], "%d (%s)" % (e["direct"], pct(e["direct_pct"])), "%d (%s)" % (e["direct"] + e["hop"], pct(e["incl_hop_pct"])), e["railgun"], "%d (%s)" % (anyp, pct(100 * anyp / e["n"]))])
-    return table(["Era", "Wallets with resolved funder", "Tornado, direct", "Tornado, incl. one hop", "Railgun", "Any privacy tool"], body)
+    return table(["Era", "Sampled Ethereum incidents with a resolved first funder", "Tornado, direct", "Tornado, incl. one hop", "Railgun", "Any privacy tool"], body)
 
 
 TABLES = {k[2:]: v for k, v in list(globals().items()) if k.startswith("t_") and callable(v)}

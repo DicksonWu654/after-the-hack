@@ -1,8 +1,8 @@
 channel,recovered_usd_at_time,n_incidents,pct_of_recovered_usd
-voluntary return (attacker/insider),1681375837,103,54.1
-issuer / exchange / protocol freeze,534307471,32,17.2
-law-enforcement seizure / court,329974815,11,10.6
-chain-level: halt / validator / security council,261066300,9,8.4
-chain-level: hard fork / rollback,179386549,3,5.8
-white-hat / MEV rescue,70446208,19,2.3
-other / unspecified,48793433,13,1.6
+voluntary return (attacker/insider),1648736037,104,52.5
+issuer / exchange / protocol freeze,598807471,34,19.1
+law-enforcement seizure / court,329974815,11,10.5
+chain-level: halt / validator / security council,261066300,9,8.3
+chain-level: hard fork / rollback,179386549,3,5.7
+white-hat / MEV rescue,70446208,19,2.2
+other / unspecified,49319967,12,1.6

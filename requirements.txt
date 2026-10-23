@@ -1,5 +1,5 @@
 # paper.html renderer (required by scripts/export_paper.py; run with 3.10.2)
 markdown>=3.5
-# cards/render.py only (also run: playwright install chromium)
+# cards/render.py and cards/og.py (also run: playwright install chromium)
 playwright>=1.40
 pillow>=10
