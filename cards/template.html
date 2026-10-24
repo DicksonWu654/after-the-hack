@@ -362,24 +362,6 @@ html, body { margin: 0; background: var(--bg); }
         </div>` };
   };
 
-  CARDS.ai = () => {
-    const K6 = C.K6, g = K6.grades;
-    need(g.verified + g["credible claim"] + g.speculation === K6.claims_n, "K6 grades sum");
-    const sq = [["verified", "var(--ink)", ""], ["credible claim", "transparent", "border:5px solid var(--ink-2)"], ["speculation", "var(--hatch)", "border:2px solid var(--line-2)"]]
-      .flatMap(([k, bg, bd]) => Array.from({ length: g[k] }, () => `<i style="display:block;height:72px;background:${bg};${bd}"></i>`)).join("");
-    return { tag: "AI", src: `Claims logged and graded from public reports; zero means none found in the sources examined.`,
-      html: `<div style="position:absolute;left:0;top:0;width:620px">
-          <div class="big c-oth" style="font-size:380px">${b(K6.verified_in_the_wild_ai_exploits, "K6.verified_in_the_wild_ai_exploits")}</div>
-          <p class="lab" style="margin:22px 0 0">verified AI-written exploits in real hacks, in the sources examined.</p></div>
-        <div style="position:absolute;right:0;top:0;width:740px">
-          <p style="font:400 46px/1.2 var(--body);margin:0 0 26px"><b>${b(K6.claims_n, "K6.claims_n")}</b> AI-related claims logged</p>
-          <div style="display:grid;grid-template-columns:repeat(7,72px);gap:10px">${sq}</div>
-          <div style="margin-top:26px;display:grid;gap:10px;font:400 34px/1.25 var(--body);color:var(--ink-2)">
-            <span><i class="sw ink"></i> <b style="color:var(--ink)">${b(g.verified, "K6.grades.verified")} verified</b>: lab results, malware tooling, social engineering or defence</span>
-            <span><i class="sw ol"></i> <b style="color:var(--ink)">${b(g["credible claim"], "K6.grades.credible claim")}</b> credible claims</span>
-            <span><i class="sw none"></i> <b style="color:var(--ink)">${b(g.speculation, "K6.grades.speculation")}</b> speculation</span></div></div>` };
-  };
-
   function shotCard(key, title, url) {
     const img = X.shots && X.shots[key];
     need(img, "site screenshot " + key);

@@ -276,7 +276,7 @@
    "section": "Returns",
    "question": "How often do attackers give the money back?",
    "canonical_value": "About 1 in 8 large exploits and key compromises (12.5%); range 8.5% to 14% across frames. Documented count: 110 incidents in our master (8.0% of 1,377), 78 of 659 incidents of $1M or more (11.8%); among those where voluntary return was reviewed, 78 of 364 (21.4%)",
-   "definition": "Canonical rate = prior paper estimate: voluntary return by the attacker (not reimbursement, freeze, seizure, rescue or reversal) among 1,078 exploits and key compromises (loss >= $100k, or $1M-class/any negotiation signal), 2016 to mid-2026; 98 confirmed returns; 12.5% if the 503 unresolved incidents behave like the swept ones (bounds 9.1% to 55.8%; 17% of the 575 with a known outcome). Cross-check = master: voluntary_return_status=yes over in_headline=1 (includes insider and MEV-bot returns, mixed cases). COUNT BASIS: 110 = master incidents flagged voluntary_return_status=yes (104 of them carry a USD amount); 105 incidents contribute the voluntary dollars in R2/C3 (returned_usd capped at the incident recovery); 98 = the prior paper's confirmed returns over its own 1,078-incident frame (a different list, not comparable to the master counts).",
+   "definition": "Canonical rate = prior negotiation-study estimate (see the frame totals and funnel in data/negotiation_tables/): voluntary return by the attacker (not reimbursement, freeze, seizure, rescue or reversal) among 1,078 exploits and key compromises (loss >= $100k, or $1M-class/any negotiation signal), 2016 to mid-2026; 98 confirmed returns; 12.5% if the 503 unresolved incidents behave like the swept ones (bounds 9.1% to 55.8%; 17% of the 575 with a known outcome). Cross-check = master: voluntary_return_status=yes over in_headline=1 (includes insider and MEV-bot returns, mixed cases). COUNT BASIS: 110 = master incidents flagged voluntary_return_status=yes (104 of them carry a USD amount); 105 incidents contribute the voluntary dollars in R2/C3 (returned_usd capped at the incident recovery); 98 = the prior negotiation study's confirmed returns over its own 1,078-incident frame (a different list, not comparable to the master counts).",
    "sources": [
     "data/briefs/publication-limits.md (publication limit: prior-study or audit-linkage inputs unavailable; summary tables alone cannot reproduce the underlying case coding)",
     "data/negotiation_tables/paper_table__ref__headline_by_frame.csv",
@@ -292,7 +292,7 @@
     {
      "figure": "75% of known-outcome large hacks look like returns before checking; 17% after",
      "source": "data/briefs/publication-limits.md (publication limit: prior-study or audit-linkage inputs unavailable; summary tables alone cannot reproduce the underlying case coding)",
-     "why": "the paper re-derived 247 inherited \"returned\" values; only 59 held (aggregator fields mislabel reimbursements, freezes, front-runners)"
+     "why": "the prior negotiation study re-derived 247 inherited \"returned\" values; only 59 held (aggregator fields mislabel reimbursements, freezes, front-runners)"
     },
     {
      "figure": "22.8% of $1M+ incidents (150 of 659) have a documented recovery",
@@ -316,7 +316,7 @@
     }
    ],
    "confidence": "medium",
-   "confidence_reason": "Paper is the most careful estimate but 47% of outcomes are unresolved, the coding is LLM-assisted with a second-pass audit, and the frame is a registry union, not a census. The master documented share (11.8% of $1M+ incidents) independently lands in the same place.",
+   "confidence_reason": "The prior negotiation-study estimate uses the reviewed case coding but 47% of outcomes are unresolved, the coding is LLM-assisted with a second-pass audit, and the frame is a registry union, not a census. The master documented share (11.8% of $1M+ incidents) independently lands in the same place.",
    "tweet": "Roughly 1 in 8 large DeFi exploits ends with the attacker voluntarily giving funds back (12.5% estimated; 17% among cases with a known outcome). For stolen-key hacks it is far rarer: 7 of 138 known cases.",
    "numeric": {
     "paper_rate": 0.125,
@@ -837,7 +837,7 @@
     }
    ],
    "confidence": "medium",
-   "confidence_reason": "Channel labels are judgments (46 of 106 rows were recoded in the prior paper); big single events (Poly, Liquid, KuCoin, Cetus) swing the mix.",
+   "confidence_reason": "Channel labels are judgments (46 of 106 rows were recoded in the prior negotiation study); big single events (Poly, Liquid, KuCoin, Cetus) swing the mix.",
    "tweet": "Of the recovered money, about 53% was handed back by the attacker; freezes by issuers and exchanges ~19%, law enforcement ~10%, chain-level halts and rollbacks ~14%, white-hat rescues ~2%.",
    "numeric": {
     "channels": [
@@ -2744,7 +2744,7 @@
    "id": "K5",
    "section": "Attack contracts & AI",
    "question": "Did the number of recorded exploits surge in 2026?",
-   "canonical_value": "Yes in recorded count, cause untestable. DeFiLlama: 12.3 hacks/month in 2025 (148) vs 37.6/month in Mar-Sep 2026 (263), 3.1x; incidents of $1M or more 5.8 to 13.1/month; SlowMist (independent tracker) 16.8 to 38.6/month. Dollars rose far less (about a third more per month): $2.12B in Mar-Sep 2026 vs $2.71B in all of 2025. DeFiHackLabs shows no surge. No AI attribution is supported.",
+   "canonical_value": "Yes in recorded count, cause untestable. DeFiLlama: 12.3 hacks/month in 2025 (148) vs 37.6/month in Mar-Sep 2026 (263), 3.1x; incidents of $1M or more 5.8 to 13.1/month; SlowMist (independent tracker) 16.8 to 38.6/month. Dollars rose far less (about a third more per month): $2.12B in Mar-Sep 2026 vs $2.71B in all of 2025. DeFiHackLabs shows no surge.",
    "definition": "Counts of records per month: DeFiLlama hacks_2026-10-21.json (1,313 records; 2025 = 148 over 12 months; Mar-Sep 2026 = 263 over 7 months; dates as in scripts/analyze.py), the same restricted to amount >= $1M (69 and 92), and SlowMist hacked.slowmist.io (202 in 2025, 270 in Mar-Sep 2026). Raw reported USD sums are shown for context only. Monthly DeFiLlama counts Mar-Sep 2026: 26, 35, 45, 33, 39, 48, 37. The Mar-Sep window is the period after the early-2026 lull; Oct 2026 is partial and excluded.",
    "sources": [
     "data/tables/t0b_monthly_counts_2024_2026.csv (derived monthly counts; raw tracker snapshot unavailable in this release)",
@@ -2814,82 +2814,11 @@
    "status": "final"
   },
   {
-   "id": "K6",
-   "section": "Attack contracts & AI",
-   "question": "Has any real exploit been verifiably written or found by AI?",
-   "canonical_value": "No verified case. We found no post-mortem, security-firm statement, PoC comment or verified attacker-contract source that attributes an in-the-wild exploit to an AI model. Of 28 AI-related claims logged (data/ai_incident_claims.csv): 12 verified (mostly lab results, tool use in malware, social engineering or defender-side), 10 credible-claim, 6 speculation. Speculation is flagged, not findings: TRM via Bloomberg on the two April 2026 heists, reported as Drift and Kelp (\"highly likely\" AI-assisted, no evidence offered), Chainalysis on unverified contracts (no incident attributed to AI), the Immunefi and OpenZeppelin-alumni opinion pieces. The constructor-attack shift, just-in-time wallets and the 2026 count surge are consistent with scripted pipelines but equally with human use of public PoC templates.",
-   "definition": "\"Verified\" = a primary source (vendor report, paper, repo, GitHub API) was read on 2026-10-21 and supports the claim as worded; \"credible claim\" = named firm or multi-outlet reporting, primary not fully checked; \"speculation\" = opinion or unsourced. Own null scans: a case-insensitive scan of all 936 DeFiHackLabs Solidity test files for claude/chatgpt/gpt/LLM/copilot/codex/AI-generated found 1 hit (a post-mortem URL with utm_source=chatgpt.com, the PoC author's reading aid); scripts/scan_attack_sources.py on the 15 verified attacker contracts since 2024 found no LLM-style markers (n tiny; unverified bytecode carries no comments, so source style is invisible for 94% of the sample). \"No public record found\" is not \"did not happen\". The one place AI authorship is verified is the defender/researcher side: 4 of the last 100 DeFiHackLabs commits (e6330a8b29, ba1f1204cd, b19b01b508, 55dbc8d6f5; 18-20 Oct 2026) carry Claude co-author trailers.",
-   "sources": [
-    "data/ai_incident_claims.csv",
-    "data/briefs/publication-limits.md (publication limit: detailed project research note unavailable; published figures retain the evidence limits stated here)",
-    "data/briefs/publication-limits.md (publication limit: detailed project research note unavailable; published figures retain the evidence limits stated here)",
-    "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/commits/e6330a8b29",
-    "https://www.chainalysis.com/blog/attackers-exploiting-unverified-smart-contracts/",
-    "https://www.trmlabs.com/resources/blog/north-korea-stole-76-of-all-crypto-hack-value-in-2026-with-just-two-attacks (TRM, 30 Apr 2026; analysts \"speculate\" DPRK is adding AI to recon and social engineering)",
-    "data/briefs/publication-limits.md (publication limit: detailed project research note unavailable; published figures retain the evidence limits stated here)"
-   ],
-   "alt_figures": [
-    {
-     "figure": "TRM via Bloomberg, 15 May 2026: the two April 2026 heists (reported as Drift and Kelp) \"highly likely\" AI-assisted; attackers \"appear to have used artificial intelligence to select targets and design exploits\"",
-     "source": "data/ai_incident_claims.csv (read via a newsletter summary, https://cybersecurity-docket.beehiiv.com/p/ai-hacking-threat-pushes-130b-crypto-sector-to-the-brink; Bloomberg original paywalled; the summary does not name the heists)",
-     "why": "speculation by a named TRM investigator with no evidence offered; TRM's own blog says only \"speculate\"; neither incident involved exploit code (Drift was a six-month social-engineering operation, Kelp a 1-of-1 verifier plus compromised RPC nodes)"
-    },
-    {
-     "figure": "Chainalysis, 9 Jun 2026: $36.7M across Truebit, Trusted Volumes, Aperture, Ekubo in unverified contracts, AI \"likely accelerating\"",
-     "source": "https://www.chainalysis.com/blog/attackers-exploiting-unverified-smart-contracts/",
-     "why": "the post does not attribute any listed incident to AI; Truebit is \"methodical\" (an earlier 5 ETH exploit by the same address); several outlets overstate it"
-    },
-    {
-     "figure": "Nx s1ngularity npm malware (26-27 Aug 2025) calling victims' claude/gemini/q CLIs to hunt wallet files and secrets",
-     "source": "https://stepsecurity.io/blog/supply-chain-security-alert-popular-nx-build-system-package-compromised-with-data-stealing-malware",
-     "why": "the closest real attacker-side use, but AI as a data-hunting tool inside malware, not an AI-written contract exploit"
-    },
-    {
-     "figure": "SCONE-bench page: four days after the agent found a flaw in a one-click token-launch contract \"a real attacker independently exploited the same flaw\" for ~$1,000 of fees",
-     "source": "https://www.anthropic.com/research/smart-contracts",
-     "why": "the page does not say the attacker used AI"
-    },
-    {
-     "figure": "Grok/Bankrbot prompt-injection theft (May 2026, ~$155-200k reported); Moonwell cbETH oracle error ($1.78M bad debt, Feb 2026)",
-     "source": "data/ai_incident_claims.csv",
-     "why": "AI as a victim (Grok/Bankrbot) and AI-co-authored defender-side code (Moonwell, \"reported\", causation unproven); neither is an AI-written exploit"
-    }
-   ],
-   "confidence": "medium",
-   "confidence_reason": "The absence is robust across our own scans and an incident-level search, but it is absence of public evidence (power is low for unverified bytecode), the claims log is a search pass of June-Oct 2026 coverage, and several primary sources were read only via summaries.",
-   "tweet": "We found no verified case of an AI-written or AI-found exploit in a real hack. Of 28 AI-related claims we logged, 12 were verified (lab work, malware tooling, social engineering, defense), 6 were pure speculation. More constructor attacks or more hacks is not evidence of AI.",
-   "numeric": {
-    "claims_n": 28,
-    "grades": {
-     "credible claim": 10,
-     "verified": 12,
-     "speculation": 6
-    },
-    "categories": {
-     "ai_agent_victim": 6,
-     "attacker_social_engineering": 4,
-     "capability_research": 4,
-     "attacker_ai_use": 7,
-     "ai_defense": 4,
-     "ai_agent_ecosystem_attack": 1,
-     "ai_defense_failure": 1,
-     "ai_agent_misbehavior": 1
-    },
-    "verified_in_the_wild_ai_exploits": 0,
-    "dhl_solidity_files_scanned": 936,
-    "dhl_scan_hits": 1,
-    "attacker_contracts_scanned": 15,
-    "attacker_contracts_with_llm_markers": 0,
-    "dhl_commits_with_claude_trailers_of_last_100": 4
-   },
-   "status": "final"
-  },
-  {
    "id": "K7",
    "section": "Attack contracts & AI",
    "question": "What do the AI exploit benchmarks actually show?",
    "canonical_value": "Benchmarks measure simulated exploit capability. SCONE-bench (Anthropic, 1 Dec 2025): 10 models produced working exploits for 207 of 405 historical contracts (51.11%, best of 8 attempts), $550.1M of simulated value; on post-cutoff contracts $4.6M; zero-day run on 2,849 contracts found 2 novel bugs ($3,694 simulated, API cost $3,476). A1 agent (Gervais and Zhou, arXiv 2507.05558): 63% success on 36 real vulnerable contracts, up to $8.59M per exploit; the authors' simulation of historical attacks puts success at 86-89% if run at disclosure vs 6-21% after a week. EVMbench (Paradigm and OpenAI, 18 Feb 2026): top models exploited under 20% of critical Code4rena bugs earlier and GPT-5.3-Codex over 70% (vendor-reported).",
-   "definition": "Capability measurements on historical or audit-contest vulnerabilities, run in a simulator or forked chain, not on live networks; verified by reading the primary pages on 2026-10-21 (vendor research: not independently reproduced). SCONE-bench tasks are sourced largely from the DeFiHackLabs catalog, which is also this project's attack-contract sample and is now partly AI-assisted (circularity: benchmark success on DHL-derived tasks and \"AI-shaped\" DHL features are not independent confirmations of each other). The A1 economics (attacker break-even ~$6,000 vs ~$60,000 for defenders) are the paper's argument, not an observation.",
+   "definition": "Capability measurements on historical or audit-contest vulnerabilities, run in a simulator or forked chain, not on live networks; verified by reading the primary pages on 2026-10-21 (vendor research: not independently reproduced). SCONE-bench tasks are sourced largely from the DeFiHackLabs catalog, which is also this project's attack-contract sample and is now partly AI-assisted (circularity: benchmark success on DHL-derived tasks and \"AI-shaped\" DHL features are not independent confirmations of each other). The A1 economics (attacker break-even ~$6,000 vs ~$60,000 for defenders) are the A1 authors' argument, not an observation.",
    "sources": [
     "https://www.anthropic.com/research/smart-contracts",
     "https://arxiv.org/abs/2507.05558",
@@ -2943,8 +2872,8 @@
    "id": "K8",
    "section": "Attack contracts & AI",
    "question": "Are attackers using AI at all?",
-   "canonical_value": "The verified attacker-side examples concern social engineering and tooling. Verified: Google GTIG (5 Nov 2025): DPRK-linked UNC1069 used Gemini for crypto research, wallet-data locations and lures and attempted to develop crypto-theft code; UNC4899 for code and exploit research (accounts disabled; GTIG does not say Gemini made the deepfakes). Anthropic (27 Aug 2025): DPRK operatives used Claude to get and keep remote jobs at US tech firms; separate \"vibe hacking\" extortion of 17+ organizations. s1ngularity npm malware (26-27 Aug 2025) invoked victims' installed claude/gemini/q CLIs to find wallet files and secrets (StepSecurity). Huntress (18 Jun 2025): BlueNoroff/TA444 Zoom call in which an employee at a cryptocurrency foundation met several deepfakes of senior leaders from their own company and external contacts. Anthropic (10 Sep 2026 threat report, covering Dec 2025 to Aug 2026): AI-assisted exploit development including automated exploit foundries run by a China-based espionage group, against security appliances; the report describes no in-the-wild crypto or DeFi exploit. Speculation flagged: TRM on the two April 2026 heists, reported as Drift and Kelp.",
-   "definition": "Each item is a vendor primary report read on 2026-10-21 (vendor attribution, not government; none ties the AI use to a specific stolen-funds incident). Social engineering and developer-machine tooling are the verified attacker-side uses; the attempted theft-code generation in the GTIG report is attempted misuse, not an observed exploit. Anthropic's DPRK section does not mention crypto (it concerns IT-worker infiltration). Chainalysis (13 Jan 2026) found scams with on-chain links to AI vendors earned $3.2M vs $719k per operation (4.5x): a correlation on on-chain data, not proof of causation.",
+   "canonical_value": "The verified attacker-side examples concern social engineering and tooling. Verified: Google GTIG (5 Nov 2025): DPRK-linked UNC1069 used Gemini for crypto research, wallet-data locations and lures and attempted to develop crypto-theft code; UNC4899 for code and exploit research (accounts disabled; GTIG does not say Gemini made the deepfakes). Anthropic (27 Aug 2025): DPRK operatives used Claude to get and keep remote jobs at US tech firms; separate \"vibe hacking\" extortion of 17+ organizations. s1ngularity npm malware (26-27 Aug 2025) invoked victims' installed claude/gemini/q CLIs to find wallet files and secrets (StepSecurity). Huntress (18 Jun 2025): BlueNoroff/TA444 Zoom call in which an employee at a cryptocurrency foundation met several deepfakes of senior leaders from their own company and external contacts. Anthropic (10 Sep 2026 threat report, covering Dec 2025 to Aug 2026): AI-assisted exploit development including automated exploit foundries run by a China-based espionage group, against security appliances (see the source record in data/ai_incident_claims.csv for its scope). Speculation flagged: TRM on the two April 2026 heists, reported as Drift and Kelp.",
+   "definition": "Each item is a vendor primary report read on 2026-10-21 (vendor attribution, not government; each source record in data/ai_incident_claims.csv states its scope and incident linkage). Social engineering and developer-machine tooling are the verified attacker-side uses; the attempted theft-code generation in the GTIG report is attempted misuse, not an observed exploit. Anthropic's DPRK section does not mention crypto (it concerns IT-worker infiltration). Chainalysis (13 Jan 2026) found scams with on-chain links to AI vendors earned $3.2M vs $719k per operation (4.5x): a correlation on on-chain data, not proof of causation.",
    "sources": [
     "https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools",
     "https://www.anthropic.com/news/detecting-countering-misuse-aug-2025",
@@ -2974,7 +2903,7 @@
     {
      "figure": "TRM / Bloomberg: attackers \"appear to have used AI to select targets and design exploits\" (Drift, Kelp)",
      "source": "data/ai_incident_claims.csv",
-     "why": "speculation by a named expert, no evidence; see K6"
+     "why": "speculation by a named expert, no evidence; the evidence grade and source-access limits are in data/ai_incident_claims.csv"
     }
    ],
    "confidence": "high",
@@ -3116,7 +3045,7 @@
      "why": "company claim carried per the recent-events verification text; corroborated figure is $42.9M"
     },
     {
-     "figure": "3.5% (3.54%) returned/recovered share in paper Appendix B and earlier negotiation_cases_public.csv",
+     "figure": "3.5% (3.54%) returned/recovered share in the earlier data/negotiation_cases_public.csv",
      "source": "data/negotiation_cases_public.csv (before 2026-10-21)",
      "why": "a CEO remark from Mar 2025, uncorroborated; matches neither 2.9% ($42.9M / $1.46B) nor 5.4% ($78.9M / $1.46B); retired"
     },
@@ -3142,7 +3071,7 @@
     "claim_pct": 5.4,
     "quote_figure": "corroborated 2.9%; 5.4% only as a company claim",
     "retired_figure_pct": 3.5,
-    "retired_figure_origin": "3.54% = a CEO remark (Mar 2025; the top-150 re-check attributes ~3.5% to the Bitget CEO), logged as returned_share_of_loss=0.0354 in data/negotiation_cases_public.csv and copied into paper Appendix B; it matches neither the corroborated 2.9% nor the company 5.4%; replaced by 0.0294 on 2026-10-21"
+    "retired_figure_origin": "3.54% = a CEO remark (Mar 2025; the top-150 re-check attributes ~3.5% to the Bitget CEO), logged as returned_share_of_loss=0.0354 in data/negotiation_cases_public.csv and repeated in earlier summaries; it matches neither the corroborated 2.9% nor the company 5.4%; replaced by 0.0294 on 2026-10-21"
    },
    "status": "final"
   },
@@ -3314,7 +3243,7 @@
  "reconciliations": [
   {
    "topic": "Any-channel recovery 19.0% vs voluntary ~8-10% vs non-voluntary 6.6%/3.5%",
-   "explanation": "Three different numerators over three different denominators. 19.0% = every documented recovery channel (theft-date USD except Liquid (press-reported USD), capped, make-whole excluded) over all $16.52B of headline losses. Voluntary = attacker/insider return only: 10.0% on the same denominator; 8.2% in the prior paper (571 known-outcome incidents, $16.05B, cutoff 2026-09-05, no Liquid). Non-voluntary = freezes, seizures, halts, rescues: 9.0% in the master vs 6.6% (3.5% ex-\"damage averted\") in the freeze brief, which uses the raw DefiLlama $17.2B denominator, drops company claims (KuCoin, Bybit) and counts the BNB 2022 halt ($429M). They add up to rounding (10.0 + 9.0 = 19.0) and no stream is wrong. Master treatment adopted as canonical because it is the only one covering all channels with one denominator."
+   "explanation": "Three different numerators over three different denominators. 19.0% = every documented recovery channel (theft-date USD except Liquid (press-reported USD), capped, make-whole excluded) over all $16.52B of headline losses. Voluntary = attacker/insider return only: 10.0% on the same denominator; 8.2% in the prior negotiation study (571 known-outcome incidents, $16.05B, cutoff 2026-09-05, no Liquid). Non-voluntary = freezes, seizures, halts, rescues: 9.0% in the master vs 6.6% (3.5% ex-\"damage averted\") in the freeze brief, which uses the raw DefiLlama $17.2B denominator, drops company claims (KuCoin, Bybit) and counts the BNB 2022 halt ($429M). They add up to rounding (10.0 + 9.0 = 19.0) and no stream is wrong. Master treatment adopted as canonical because it is the only one covering all channels with one denominator."
   },
   {
    "topic": "\"1 in 8\" vs 22% of $1M+ incidents",
@@ -3334,7 +3263,7 @@
   },
   {
    "topic": "Bybit: $1.4B vs $1.46B vs $1.5B; recovered 2.9% vs 5.4% vs 5.6% vs 3.5%",
-   "explanation": "Loss: DeFiLlama $1.4B (master), Bybit/Elliptic $1.46B, FBI/Chainalysis ~$1.5B; use $1.46B in text. Recovery: $42.9M is corroborated (The Block, 2025-02-27); $73M and $78.9M are Bybit's shifting company claims. The master carries $78.9M (attributed as a company claim); with $42.9M the all-channel share is 18.8% instead of 19.0%. Valuation convention for Bybit's own recovered share: 2.9% ($42.9M / $1.46B) is the figure to quote; 5.4% ($78.9M / $1.46B) only as a company claim; 5.6% is the same $78.9M over the $1.40B DeFiLlama loss (table-internal); the 3.5% (3.54%) once printed in paper Appendix B was a CEO remark that matches neither and is retired (data/negotiation_cases_public.csv now carries 0.0294)."
+   "explanation": "Loss: DeFiLlama $1.4B (master), Bybit/Elliptic $1.46B, FBI/Chainalysis ~$1.5B; use $1.46B in text. Recovery: $42.9M is corroborated (The Block, 2025-02-27); $73M and $78.9M are Bybit's shifting company claims. The master carries $78.9M (attributed as a company claim); with $42.9M the all-channel share is 18.8% instead of 19.0%. Valuation convention for Bybit's own recovered share: 2.9% ($42.9M / $1.46B) is the figure to quote; 5.4% ($78.9M / $1.46B) only as a company claim; 5.6% is the same $78.9M over the $1.40B DeFiLlama loss (table-internal); the 3.5% (3.54%) once repeated in earlier summaries was a CEO remark that matches neither and is retired (data/negotiation_cases_public.csv now carries 0.0294)."
   },
   {
    "topic": "Arrests: two different 16-sets (E2 headline vs E3 timing)",
@@ -3363,14 +3292,13 @@
  ],
  "attack_contracts_ai": {
   "status": "final",
-  "note": "Attack-contracts and AI-assisted-exploit stream: data/briefs/publication-limits.md (underlying project brief unavailable in this release) as corrected by data/briefs/publication-limits.md (underlying project brief unavailable in this release) (verification wins). Entries K1-K9 are in `numbers`; do_not_cite records claims with insufficient support for use as findings.",
+  "note": "Attack-contracts and AI-assisted-exploit stream: data/briefs/publication-limits.md (underlying project brief unavailable in this release) as corrected by data/briefs/publication-limits.md (underlying project brief unavailable in this release) (verification wins). Entries K1-K5 and K7-K9 are in `numbers`; do_not_cite records claims with insufficient support for use as findings.",
   "entries": [
    "K1",
    "K2",
    "K3",
    "K4",
    "K5",
-   "K6",
    "K7",
    "K8",
    "K9"

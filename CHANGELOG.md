@@ -12,7 +12,7 @@ The master adds a structured returner field, documented in data/README.md. Openi
 
 ## Accuracy and provenance corrections, 23 October 2026
 
-In the first correction batch, the data snapshot remained 21 October 2026 and headline incident, loss and recovery totals were unchanged. The subsequent data coding batch above supersedes its recovery totals. Corrections covered legal outcome labels and review dates, the headline filter, stale paper figures, recovery timing and incident-weighted funding descriptions. Liquid's $266.5M return remains explicitly press-reported, with its BTC-unit share stated separately.
+In the first correction batch, the data snapshot remained 21 October 2026 and headline incident, loss and recovery totals were unchanged. The subsequent data coding batch above supersedes its recovery totals. Corrections covered legal outcome labels and review dates, the headline filter, stale summary figures, recovery timing and incident-weighted funding descriptions. Liquid's $266.5M return remains explicitly press-reported, with its BTC-unit share stated separately.
 
 Recovery channel figures retain the builder's documented component allocation. Mixed incidents can appear in multiple channel rows; the earlier whole-incident caption was inaccurate. Paid Network's shifted CSV fields are repaired with speculative attribution preserved. Legal placeholder incident dates are blank with precision flags.
 
@@ -24,8 +24,7 @@ Data snapshot through 21 October 2026.
 
 What is in it
 
-- The paper, the interactive site, the thread and its card sources, and the public data: 1,377 hacks and exploits with a published USD loss ($16.52B at time of theft), a 758-exploit EVM sample for the attack-side findings, and a 28-claim log of AI-related claims. Headline figures and their definitions are in `data/canonical_numbers.json`.
-- The paper is also served as `site/paper.html`, next to the interactive site.
+- The interactive site, the thread and its card sources, and the public data: 1,377 hacks and exploits with a published USD loss ($16.52B at time of theft), a 758-exploit EVM sample for the attack-side findings, and a 28-claim log of AI-related claims. Headline figures and their definitions are in `data/canonical_numbers.json`.
 
 Method decisions that change what the numbers mean
 

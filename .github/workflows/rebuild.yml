@@ -1,4 +1,4 @@
-# Rebuild the paper and the site data from the shipped files and fail if the committed outputs differ.
+# Rebuild source provenance and site data from the shipped files; fail if outputs differ.
 name: rebuild
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.12"
-      - run: pip install markdown==3.10.2
-      - run: python3 scripts/export_paper.py
+      - run: python3 -I scripts/csv_integrity.py --tree .
+      - run: python3 -I scripts/build_source_provenance.py --root .
       - run: python3 -I site/build.py
       - name: Committed outputs must match a fresh build
         run: git diff --exit-code

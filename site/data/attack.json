@@ -7,7 +7,6 @@
    "K3",
    "K4",
    "K5",
-   "K6",
    "K7",
    "K8",
    "K9"
@@ -471,19 +470,6 @@
   ]
  },
  "ai": {
-  "verified_exploits": 0,
-  "claims_n": 28,
-  "grades": {
-   "credible claim": 10,
-   "verified": 12,
-   "speculation": 6
-  },
-  "scans": {
-   "dhl_solidity_files_scanned": 936,
-   "dhl_scan_hits": 1,
-   "attacker_contracts_scanned": 15,
-   "attacker_contracts_with_llm_markers": 0
-  },
   "capability": [
    {
     "title": "SCONE-bench, Anthropic",
@@ -529,7 +515,7 @@
    },
    {
     "title": "Anthropic, September 2026 threat report",
-    "body": "Covers December 2025 to August 2026. Documents AI-assisted exploit development, including automated exploit foundries run by a China-based espionage group against security appliances. It describes no in-the-wild crypto or DeFi exploit.",
+    "body": "Covers December 2025 to August 2026. Documents AI-assisted exploit development, including automated exploit foundries run by a China-based espionage group against security appliances.",
     "when": "10 Sep 2026",
     "url": "https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf",
     "grade": "verified",

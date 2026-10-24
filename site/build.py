@@ -100,7 +100,6 @@ FACTS = [
     ("usd25_surge", "$2.71B", "K5", "canonical_value"),
     ("usd_third", "about a third more per month", "K5", "canonical_value"),
     ("mev_replay", "SecuredFi 5 Sep 2026, BiFi 17 Oct 2026", "K9", "canonical_value"),
-    ("unverified_pct", "94%", "K6", "definition"),
 ]
 facts = {}
 for key, text, cid, field in FACTS:
@@ -465,7 +464,7 @@ derive("quotes_n", len(quotes), "data/briefs/onchain-verification.md section 2",
 # data/attack.json is generated here from canonical entries K1-K9 plus the chart tables
 # in data/tables/ (and two raw files for the monthly counts), then every figure is
 # re-derived from the underlying rows and checked against the canonical numbers.
-k1, k2, k3, k4, k5, k6, k7, k8, k9 = (byid[f"K{i}"] for i in range(1, 10))
+k1, k2, k3, k4, k5, k7, k8, k9 = (byid[f"K{i}"] for i in (1, 2, 3, 4, 5, 7, 8, 9))
 ERAS = ["2020-22", "2023", "2024", "2025", "2026"]
 ERA_LABEL = {"2020-22": "2020 to 2022", "2023": "2023", "2024": "2024", "2025": "2025", "2026": "2026 (to 18 Oct)"}
 
@@ -615,11 +614,6 @@ monthly_csv = ["ym,defillama_hacks,slowmist_incidents"] + [f"{x['ym']},{x['defil
 
 # AI evidence: each card pulls its URL and evidence grade from data/ai_incident_claims.csv
 claims = rcsv(DATA / "ai_incident_claims.csv")
-check("K6 claims", len(claims), k6["numeric"]["claims_n"])
-grades = {}
-for c in claims:
-    grades[c["evidence_grade"]] = grades.get(c["evidence_grade"], 0) + 1
-check("K6 grades", grades, k6["numeric"]["grades"])
 
 
 def claim(date, start):
@@ -643,9 +637,6 @@ def card(date, start, kid, title, body, when, must):
 
 
 ai = {
-    "verified_exploits": k6["numeric"]["verified_in_the_wild_ai_exploits"],
-    "claims_n": k6["numeric"]["claims_n"], "grades": k6["numeric"]["grades"],
-    "scans": {k: k6["numeric"][k] for k in ("dhl_solidity_files_scanned", "dhl_scan_hits", "attacker_contracts_scanned", "attacker_contracts_with_llm_markers")},
     "capability": [
         card("2025-12-01", "Anthropic SCONE-bench", "K7", "SCONE-bench, Anthropic",
              "Ten models wrote working exploits for 207 of 405 historical contracts (51.1%, best of 8 attempts) in a simulator, worth $550.1M of simulated value.",
@@ -665,8 +656,8 @@ ai = {
              "North Korean operatives used Claude to get and keep remote jobs at US tech firms. The report does not mention crypto theft.",
              "27 Aug 2025", ["remote jobs at US tech firms"]),
         card("2026-09-10", "Anthropic threat report Sep", "K8", "Anthropic, September 2026 threat report",
-             "Covers December 2025 to August 2026. Documents AI-assisted exploit development, including automated exploit foundries run by a China-based espionage group against security appliances. It describes no in-the-wild crypto or DeFi exploit.",
-             "10 Sep 2026", ["automated exploit foundries", "no in-the-wild crypto or DeFi exploit"]),
+             "Covers December 2025 to August 2026. Documents AI-assisted exploit development, including automated exploit foundries run by a China-based espionage group against security appliances.",
+             "10 Sep 2026", ["automated exploit foundries"]),
         card("2025-08-26", "Nx s1ngularity", "K8", "s1ngularity npm malware",
              "Malware in a popular build tool ran victims' installed claude, gemini and q command-line tools to hunt for wallet files and secrets.",
              "26 to 27 Aug 2025", ["s1ngularity", "wallet files"]),
@@ -683,14 +674,9 @@ ai = {
          "url": claim("2026-06-11", "Immunefi")["url"], "grade": "speculation"},
     ],
 }
-for needle in ("TRM via Bloomberg", "\"highly likely\"", "Chainalysis on unverified contracts", "no incident attributed to AI"):
-    if needle not in k6["canonical_value"]:
-        problems.append(f"K6 text no longer contains {needle!r}")
-if ai["grades"].get("speculation") != 6:
-    problems.append("K6 speculation count changed")
 
 attack = {
-    "built_from": {"canonical_generated": canon["generated"], "entries": ["K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9"]},
+    "built_from": {"canonical_generated": canon["generated"], "entries": ["K1", "K2", "K3", "K4", "K5", "K7", "K8", "K9"]},
     "sources": ["data/canonical_numbers.json (K1-K9)", "data/attack_contracts.csv", "data/ai_incident_claims.csv",
                 "data/tables/t0b_monthly_counts_2024_2026.csv", "data/tables/t1b_vector_share_pct_dhl_sample.csv",
                 "data/tables/t2c_ethereum_tornado_share_by_era.csv", "data/tables/t3_flash_loan_share_by_era.csv",

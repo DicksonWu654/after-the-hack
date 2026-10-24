@@ -30,7 +30,8 @@ ARTICLE = ROOT  # cards/ and site/ are siblings; the dev server serves the repo 
 OUT = HERE / "out"
 SITE_URL = "https://after-the-hack.shadow654.chatgpt.site"
 
-# (tweet number in thread-v3-draft.txt, file stem, template card id)
+# (card number, file stem, template card id). The AI card was dropped (owner, 2026-10-23); the site screenshots
+# are cards 12 and 13. The card number is the tweet number in thread/thread-launch.txt.
 CARDS = [
     (1, "01-cover", "cover"),
     (2, "02-recovery-ledger", "ledger"),
@@ -43,9 +44,8 @@ CARDS = [
     (9, "09-arrests-top100", "arrests"),
     (10, "10-court-outcomes", "court"),
     (11, "11-chain-freezes", "chain"),
-    (12, "12-ai-claims", "ai"),
-    (13, "13-site-lookup", "site_lookup"),
-    (14, "14-site-home", "site_home"),
+    (12, "12-site-lookup", "site_lookup"),
+    (13, "13-site-home", "site_home"),
 ]
 CASE_IDS = {"FTX-1", "FTX-2", "FTX-3", "URAN-1", "MANGO-1"}
 
@@ -175,8 +175,9 @@ def write_map(nums):
         w.writerow(["tweet_no", "card_file", "number_on_card", "source_key"])
         for row in nums:
             w.writerow(row)
-        w.writerow([13, "13-site-lookup.png", "(screenshot)", "numbers inside the screenshot are rendered by the site from site/data/bundle.js"])
-        w.writerow([14, "14-site-home.png", "(screenshot)", "numbers inside the screenshot are rendered by the site from site/data/bundle.js"])
+        for tweet, stem, cid in CARDS:
+            if cid.startswith("site_"):
+                w.writerow([tweet, stem + ".png", "(screenshot)", "numbers inside the screenshot are rendered by the site from site/data/bundle.js"])
     print("wrote", dest, f"({len(nums)} numbers)")
 
 

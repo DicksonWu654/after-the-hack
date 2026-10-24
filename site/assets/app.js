@@ -18,6 +18,20 @@
   };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* One-time builds as blocks scroll into view. The final state is the default: the "pre" class that hides
+     marks is only added when JS, IntersectionObserver and motion are all available. */
+  const builds = !reduceMotion && "IntersectionObserver" in window;
+  function onView(node) {
+    if (!node || !builds) return;
+    node.classList.add("pre");
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      node.classList.add("go");
+      node.classList.remove("pre");
+    }, { threshold: 0, rootMargin: "0px 0px -18% 0px" });
+    io.observe(node);
+  }
 
   /* ---------------------------------------------------------------- data access */
   const canon = {};
@@ -250,8 +264,7 @@
     ];
     let geo = [], parts = [], raf = 0, last = 0, running = !reduceMotion, visible = true;
     const btn = $("#motion");
-    btn.removeAttribute("aria-pressed");
-    const setBtn = () => { btn.textContent = running ? "Pause motion" : "Play motion"; };
+    const setBtn = () => { btn.setAttribute("aria-label", running ? "Pause animation" : "Play animation"); btn.setAttribute("aria-pressed", String(!running)); btn.title = running ? "Pause animation" : "Play animation"; };
     setBtn();
 
     function layout() {
@@ -317,75 +330,101 @@
       paint();
       raf = running && visible ? requestAnimationFrame(tick) : 0;
     }
-    const start = () => { if (!raf && running && visible) { last = 0; raf = requestAnimationFrame(tick); } };
+    let grown = reduceMotion;
+    const start = () => { if (grown && !raf && running && visible) { last = 0; raf = requestAnimationFrame(tick); } };
     btn.addEventListener("click", () => { running = !running; setBtn(); if (running) start(); else { cancelAnimationFrame(raf); raf = 0; } });
     new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible) start(); }, { threshold: 0 }).observe(stage);
     document.addEventListener("visibilitychange", () => { visible = !document.hidden; if (visible) start(); });
     let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(layout, 60); }).observe(stage);
-    layout(); start();
+    layout();
+    /* ribbons grow out of the root box once, then the squares start moving */
+    if (!grown) {
+      const w = stage.getBoundingClientRect().width, x0 = geo[0] ? geo[0].x0 : 0;
+      if (svg.animate) svg.animate([{ clipPath: `inset(0 ${Math.max(0, w - x0)}px 0 0)` }, { clipPath: "inset(0 0px 0 0)" }], { duration: 650, easing: "cubic-bezier(.2,.7,.2,1)" });
+      setTimeout(() => { grown = true; start(); }, svg.animate ? 600 : 0);
+    }
+    start();
   }
 
-  /* ---------------------------------------------------------------- famous hacks */
+  /* ---------------------------------------------------------------- famous hacks: scoreboard */
+  const ENF_SHORT = { c: "Arrested or charged", l: "Laundering charges only", v: "Civil or regulatory action only", o: "Arrest on other grounds", n: "No arrest or charge found", u: "Arrest status not established" };
   function caselog() {
     const host = $("#caselog");
     const fam = I.famous.map((id) => byId[id]);
     const scale = Math.max(...fam.map((r) => r.loss));
-    fam.forEach((r) => {
-      const a = el("article", { class: "case", "aria-labelledby": "case-" + r.i });
-      a.innerHTML = `<div><h3 class="case-name" id="case-${r.i}">${esc(r.label)}</h3><p class="case-meta">${esc(fmtDate(r.date))}${r.chain ? ", " + esc(r.chain) : ""}</p></div>
-        <div><div class="case-loss">${money(r.loss)} <span class="small">reported loss</span></div>
-        <div class="case-bar" aria-hidden="true">${barHTML(r, scale)}</div>
-        <p class="case-line">${esc(outcome(r))}</p></div>
-        <div class="case-side"><div class="tags">${tagHTML(r)}</div><button class="btn sm" type="button" data-open="${esc(r.id)}">Show in the look-up</button></div>`;
-      host.appendChild(a);
-    });
-    host.addEventListener("click", (e) => {
-      const b = e.target.closest("[data-open]"); if (!b) return;
-      EX.select(byId[b.getAttribute("data-open")].i, { scroll: true, focus: true });
-      $("#readout").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-    });
+    host.innerHTML = fam.map((r, k) => {
+      const p = ((r.ret + r.oth) / r.loss) * 100;
+      const ptxt = p >= 99.5 ? "100%" : p >= 1 ? Math.round(p) + "%" : p > 0 ? p.toFixed(1) + "%" : "0%";
+      const pcls = r.unver || !p ? "c-none" : (r.ret >= r.oth ? "c-ret" : "c-oth");
+      const d = (ms) => `--d:${k * 70 + ms}ms`;
+      return `<details class="sc"><summary>
+        <span class="sc-top"><span class="sc-name">${esc(r.label)} <small>${esc(r.date.slice(0, 4))}</small></span><span class="sc-loss">${money(r.loss)} <small>reported loss</small></span></span>
+        <span class="case-bar sc-bar" aria-hidden="true">${barHTML(r, scale)}</span>
+        <span class="sc-side"><span class="sc-pct ${pcls} gf" style="${d(380)}">${ptxt}<small>${r.unver ? "reported, not verified" : "recovered"}</small></span><span class="sc-arr${r.enf === "c" ? " on" : ""}">${esc(ENF_SHORT[r.enf] || ENF_SHORT.u)}</span></span>
+        <span class="sc-x" aria-hidden="true"></span>
+      </summary><div class="sc-more"><p class="case-line">${esc(outcome(r))}</p><p class="case-meta">${esc(metaLine(r))}</p><div class="tags">${tagHTML(r)}</div><a class="btn sm" href="#hack=${encodeURIComponent(r.id)}">Show in the look-up</a></div></details>`;
+    }).join("");
+    $$(".sc", host).forEach((s, k) => $$(".sc-bar > span", s).forEach((b, j) => { b.classList.add("gx"); b.style.setProperty("--d", `${k * 70 + (j ? 260 : 0)}ms`); }));
+    onView(host);
   }
 
-  /* ---------------------------------------------------------------- seven numbers */
+  /* ---------------------------------------------------------------- the short version: six tiles */
   function findings() {
-    const S1 = N("S1"), E2 = N("E2"), E3 = N("E3"), R4 = N("R4"), D1 = N("D1"), D3 = N("D3"), K6 = N("K6"), K7 = N("K7");
+    const S1 = N("S1"), E2 = N("E2"), E3 = N("E3"), R4 = N("R4"), D1 = N("D1"), D3 = N("D3");
+    const e3d = E3.median_days_2016_plus_in_headline_scope;
     const list = [
-      { id: "unrecovered", big: fmt(D("unrecovered_pct"), "p0"), cls: "c-none", color: "#e7ebf1",
+      { id: "unrecovered", jump: "recovery", big: fmt(D("unrecovered_pct"), "p0"), cls: "c-none", color: "#e7ebf1",
+        label: "of stolen dollars has no recorded recovery",
         text: `of stolen dollars has no recorded recovery. ${fmt(N("R2").pct_of_all, "p1")} was returned by attackers or insiders and ${fmt(N("C4").master_pct, "p1")} was recovered through other channels, such as freezes, seizures and chain halts.`,
         foot: `Includes company claims and unchecked outcomes, whose results remain unknown. ${int(S1.n)} hacks, tracker-reported USD.${X.unver_note ? " " + X.unver_note : ""}` },
-      { id: "arrests", big: int(E2.master_all[0]), sub: `of ${int(S1.n)}`, cls: "c-arr", color: "#ff5c93",
+      { id: "arrests", jump: "arrests", big: int(E2.master_all[0]), sub: `of ${int(S1.n)}`, cls: "c-arr", color: "#ff5c93",
+        label: "hacks are known to have led to an arrest or charge for the hack itself",
         text: `hacks are known to have led to an arrest or charge for the hack itself. That is about 1 in ${int(E2.one_in)}.`,
         foot: `Arrests were searched for the largest hacks and a list of known cases, so ${int(E2.master_all[0])} is a floor. ${N("E1").top100_strict} of the 100 largest hacks have one. One incident match is inferred.` },
-      { id: "bounty", big: fmt(D("opening_median_pct"), "p"), cls: "c-ink", color: "#e7ebf1",
+      { id: "bounty", jump: "bounties", big: fmt(D("opening_median_pct"), "p"), cls: "c-ret", color: "#44e3bf",
+        label: "median opening bounty offer in the recorded on-chain sample",
         text: `is the usual opening bounty offer. ${D("openings_table_10")} of ${D("openings_table_n")} on-chain openings dated 2020 or later were exactly ${fmt(D("opening_median_pct"), "p")} of the loss.`,
         foot: `The yearly median opening was ${fmt(D("opening_median_pct"), "p")} in every year from ${N("R3").opening_yearly_median_10_since} on.` },
-      { id: "returns", big: String(R4.median_days_from_incident), sub: "days", cls: "c-ret", color: "#44e3bf",
+      { id: "returns", jump: "bounties", big: String(R4.median_days_from_incident), sub: "days", cls: "c-ret", color: "#44e3bf",
+        label: `median time to the first substantive return, in ${R4.n_dated} dated cases`,
         text: `is the median time to the first substantive return, in ${R4.n_dated} dated cases. ${R4.within_7d} came within a week.`,
         foot: "Timed by block timestamps. Includes flagged cases and returns by people other than the main exploiter. These are large, well-documented returns and may not represent other cases." },
-      { id: "wait", big: String(E3.median_days_2016_plus_in_headline_scope), sub: "days", cls: "c-arr", color: "#ff5c93",
-        text: `is the median time from a hack to the first recorded action against a person, about ${fmt(E3.median_days_2016_plus_in_headline_scope, "mo1")} months.`,
+      { id: "wait", jump: "arrests", big: fmt(e3d, "mo0"), sub: "months", cls: "c-arr", color: "#ff5c93",
+        label: `median time to the first recorded action against a person, in ${E3.n_2016_plus_in_headline_scope} dated cases`,
+        text: `is about the median time from a hack to the first recorded action against a person (${e3d} days).`,
         foot: `${E3.n_2016_plus_in_headline_scope} dated cases, including laundering cases and one employee detention.` },
-      { id: "north-korea", big: fmt(D1.gov.pct, "p"), cls: "c-dprk", color: "#ffc34d",
+      { id: "north-korea", jump: "dprk", big: fmt(D1.gov.pct, "p"), cls: "c-dprk", color: "#ffc34d",
+        label: "of stolen dollars came from hacks a government attributes to North Korea",
         text: `of stolen dollars came from hacks a government attributes to North Korea, just ${fmt(D("dprk_gov_count_pct"), "p")} of all hacks. ${fmt(D3.gov_only_pct, "p")} of those dollars were recorded as recovered or frozen.`,
         foot: `Government-attributed tier. The recovery figure counts company claims; with only Bybit's corroborated freeze it is ${fmt(D3.gov_only_bybit_corroborated_pct, "p")}.` },
-      { id: "ai", big: String(K6.verified_in_the_wild_ai_exploits), cls: "c-oth", color: "#8db8ff",
-        text: `verified cases found of an AI-written exploit in a real hack, in the sources examined. ${K6.claims_n} AI-related claims logged.`,
-        foot: `In a simulator, AI agents reproduced ${K7.scone_reproduced} of ${K7.scone_total} past exploits (Anthropic's SCONE-bench).` },
     ];
+    const kickOf = (id) => { const b = $(`#${id} .kick b`); return b ? b.textContent.trim() : ""; };
     const host = $("#finds");
-    list.forEach((f) => {
-      const a = el("article", { class: "find", id: "n-" + f.id, "aria-labelledby": "n-" + f.id + "-t" });
-      a.innerHTML = `<div class="find-n ${f.cls}" id="n-${f.id}-t">${esc(f.big)}${f.sub ? `<small>${esc(f.sub)}</small>` : ""}</div>
-        <div><p class="find-s">${esc(f.text)}</p><p class="find-f">${esc(f.foot)}</p>
-        <div class="find-a"><button class="btn sm" type="button" data-act="link">Copy link</button><button class="btn sm" type="button" data-act="img">Save as image</button></div></div>`;
-      $$("button", a).forEach((b) => b.setAttribute("aria-label", (b.dataset.act === "link" ? "Copy link to " : "Save as image: ") + f.big + (f.sub ? " " + f.sub : "")));
-      a.addEventListener("click", (e) => {
+    list.forEach((f, k) => {
+      const name = f.big + (f.sub ? " " + f.sub : "");
+      const a = el("div", { class: "tile gf", id: "n-" + f.id, style: `--d:${k * 70}ms` });
+      a.innerHTML = `<a class="tile-a" href="#${f.jump}"><span class="tile-n ${f.cls}">${esc(f.big)}${f.sub ? `<small>${esc(f.sub)}</small>` : ""}</span><span class="tile-l">${esc(f.label)}</span><span class="tile-t">${esc(kickOf(f.jump))}</span></a>
+        <button class="tile-sh" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="n-${f.id}-menu" aria-label="Share ${esc(name)}">${SHARE_SVG}</button>
+        <div class="tile-menu" id="n-${f.id}-menu" hidden><button type="button" data-act="link">Copy link</button><button type="button" data-act="img">Save image</button></div>`;
+      const btn = $(".tile-sh", a), menu = $(".tile-menu", a);
+      const close = (refocus) => { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); if (refocus) btn.focus(); };
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = menu.hidden;
+        $$(".tile-menu").forEach((m) => { m.hidden = true; m.previousElementSibling.setAttribute("aria-expanded", "false"); });
+        if (open) { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); $("button", menu).focus(); }
+      });
+      menu.addEventListener("keydown", (e) => { if (e.key === "Escape") close(true); });
+      menu.addEventListener("click", (e) => {
         const b = e.target.closest("[data-act]"); if (!b) return;
         if (b.dataset.act === "link") copy(baseURL() + "#n-" + f.id);
         else saveCard({ big: f.big, sub: f.sub, text: f.text, foot: f.foot, color: f.color, file: `after-the-hack-${f.id}.png` });
+        close(true);
       });
       host.appendChild(a);
     });
+    document.addEventListener("click", (e) => { if (!e.target.closest(".tile-menu, .tile-sh")) $$(".tile-menu").forEach((m) => { if (!m.hidden) { m.hidden = true; m.previousElementSibling.setAttribute("aria-expanded", "false"); } }); });
+    onView(host);
   }
 
   /* ---------------------------------------------------------------- explorer (the dump) */
@@ -558,7 +597,8 @@
   /* ---------------------------------------------------------------- charts */
   function annual() {
     const a = A.charts.annual, max = Math.max(...a.map((r) => r.loss_usd));
-    $("#annual").innerHTML = a.map((r) => `<div class="hbar"><span class="y">${r.year}</span><span class="track"><span class="fill" style="width:${(r.loss_usd / max) * 100}%"></span></span><span class="v"><b>${fmt(r.loss_usd, r.loss_usd >= 1e9 ? "B2" : "usd")}</b>, ${int(r.n)} hacks, largest ${esc(r.largest)}</span></div>`).join("");
+    $("#annual").innerHTML = a.map((r, i) => `<div class="hbar"><span class="y">${r.year}</span><span class="track"><span class="fill gx" style="width:${(r.loss_usd / max) * 100}%;--d:${i * 30}ms"></span></span><span class="v"><b>${fmt(r.loss_usd, r.loss_usd >= 1e9 ? "B2" : "usd")}</b>, ${int(r.n)} hacks, largest ${esc(r.largest)}</span></div>`).join("");
+    onView($("#annual"));
   }
 
   const CHAN = {
@@ -573,8 +613,9 @@
   function channels() {
     const ch = N("C3").channels;
     const host = $("#channels");
-    host.innerHTML = `<div class="stack" role="img" aria-label="${esc(ch.map((c) => `${(CHAN[c.channel] || [c.channel])[0]} ${c.pct}%`).join(", "))}">${ch.map((c) => `<span style="width:${c.pct}%;background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span>`).join("")}</div>
-      <ul class="legend">${ch.map((c) => `<li><span class="sw" style="background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span><span>${esc((CHAN[c.channel] || [c.channel])[0])}<br><span class="small">${fmt(c.usd, c.usd >= 1e9 ? "B2" : "usd")}, ${c.incidents} hacks</span></span><b>${c.pct}%</b></li>`).join("")}</ul>`;
+    host.innerHTML = `<div class="stack gx" role="img" aria-label="${esc(ch.map((c) => `${(CHAN[c.channel] || [c.channel])[0]} ${c.pct}%`).join(", "))}">${ch.map((c) => `<span style="width:${c.pct}%;background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span>`).join("")}</div>
+      <ul class="legend">${ch.map((c, i) => `<li class="gf" style="--d:${120 + i * 50}ms"><span class="sw" style="background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span><span>${esc((CHAN[c.channel] || [c.channel])[0])}<br><span class="small">${fmt(c.usd, c.usd >= 1e9 ? "B2" : "usd")}, ${c.incidents} hacks</span></span><b>${c.pct}%</b></li>`).join("")}</ul>`;
+    onView(host);
   }
 
   function human(d) {
@@ -591,32 +632,35 @@
     host.innerHTML = rowsC.map((r) => {
       const p = x(r.median), left = p > 66;
       return `<div class="clock-row"><div class="clock-l">${esc(r.label)} <small>(${r.n} case${r.n === 1 ? "" : "s"})</small></div>
-        <div class="clock-t" role="img" aria-label="${esc(r.label)}: median ${human(r.median)}"><span class="dot ${r.cls}" style="left:${p}%"></span><span class="lbl" style="${left ? `right:${100 - p}%;` : `left:${p}%;`}">${human(r.median)}</span></div></div>`;
+        <div class="clock-t" role="img" aria-label="${esc(r.label)}: median ${human(r.median)}"><span class="dot ${r.cls}" style="left:${p}%;--t:${Math.round(150 + p * 4.5)}ms"></span><span class="lbl" style="${left ? `right:${100 - p}%;` : `left:${p}%;`}">${human(r.median)}</span></div></div>`;
     }).join("") + `<div class="clock-axis" aria-hidden="true">${[[1 / 24, "1 hour"], [1, "1 day"], [7, "1 week"], [30.4, "1 month"], [365.25, "1 year"], [1826, "5 years"]].map(([d, l]) => `<span style="left:${x(d)}%">${l}</span>`).join("")}</div>`;
+    onView(host);
   }
 
   function offers() {
     const o = A.charts.openings;
-    $("#offers").innerHTML = o.map((r) => {
-      const sq = Array.from({ length: r.n }, (_, i) => `<i class="${i < r.exactly_10 ? "on" : ""}"></i>`).join("");
+    $("#offers").innerHTML = o.map((r, k) => {
+      const sq = Array.from({ length: r.n }, (_, i) => `<i class="gp${i < r.exactly_10 ? " on" : ""}" style="--d:${k * 45 + (i < r.exactly_10 ? 0 : 200)}ms"></i>`).join("");
       return `<div class="offer-row"><span class="y">${r.year}</span><span class="units" role="img" aria-label="${r.year}: ${r.exactly_10} of ${r.n} openings were exactly 10%">${sq}</span><span class="v"><b>${r.exactly_10} of ${r.n}</b> exactly 10%. Median ${pctTxt(r.median)}.</span></div>`;
     }).join("");
+    onView($("#offers"));
   }
 
   function returnsStrip() {
     const R = A.charts.returns, R4 = N("R4");
     const max = Math.ceil(Math.max(...R.map((r) => r.days)) / 7) * 7;
     const bins = {};
-    const pts = R.slice().sort((a, b) => a.days - b.days).map((r) => {
+    const pts = R.slice().sort((a, b) => a.days - b.days).map((r, i) => {
       const b = Math.round(r.days / (max / 46));
       bins[b] = (bins[b] || 0) + 1;
-      return `<span class="pt" title="${esc(r.name)}, ${r.days} days" style="left:${(r.days / max) * 100}%;top:${62 - 6 - (bins[b] - 1) * 12}px"></span>`;
+      return `<span class="pt gp" title="${esc(r.name)}, ${r.days} days" style="left:${(r.days / max) * 100}%;top:${62 - 6 - (bins[b] - 1) * 12}px;--d:${i * 18}ms"></span>`;
     }).join("");
     const ticks = [];
     for (let d = 0; d <= max; d += 7) ticks.push(`<span class="tk${d === 0 ? " first" : d + 7 > max ? " last" : ""}" style="left:${(d / max) * 100}%">${d} days</span>`);
     $("#returns").innerHTML = `<div class="strip" role="img" aria-label="${R4.within_7d} of ${R4.n_dated} first returns came within 7 days. Median ${R4.median_days_from_incident} days.">
       <span class="wk" style="left:${(7 / max) * 100}%"><span>1 week: ${R4.within_7d} of ${R4.n_dated} before this line</span></span>
       <span class="axis"></span>${pts}${ticks.join("")}</div>`;
+    onView($("#returns"));
   }
 
   const cleanName = (s) => s.replace(/ \(DeFiLlama name: .*\)$/, "");
@@ -624,7 +668,7 @@
     const t = A.charts.top100, c = A.charts.top100_counts;
     const cls = { charged_for_hack: "c", laundering_side_only: "l", civil_or_regulatory_only: "v", not_for_the_hack: "v" };
     const g = $("#grid100");
-    g.innerHTML = t.map((r) => `<i class="${cls[r.status] || ""}${r.dprk_gov ? " dg" : ""}" title="#${r.rank} ${esc(cleanName(r.name))}, ${money(r.loss)}"></i>`).join("");
+    g.innerHTML = t.map((r, i) => `<i class="gp ${cls[r.status] || ""}${r.dprk_gov ? " dg" : ""}" style="--d:${i * 4}ms" title="#${r.rank} ${esc(cleanName(r.name))}, ${money(r.loss)}"></i>`).join("");
     g.setAttribute("aria-label", `Of the 100 largest hacks: ${c.charged_for_hack} with a person charged for the hack itself, ${c.laundering_side_only} with charges only for laundering, ${c.civil_or_regulatory_only + c.not_for_the_hack} with civil or regulatory action or an arrest on other grounds, ${c.none_found} with none found.`);
     const dg = t.filter((r) => r.dprk_gov).length;
     $("#grid100-key").innerHTML = `<li><span class="sw arr"></span>Charged for the hack itself (${c.charged_for_hack})</li>
@@ -634,6 +678,7 @@
       <li><span class="sw" style="background:var(--dprk);height:4px"></span>North Korea, government attribution (${dg})</li>`;
     const names = t.filter((r) => r.status === "charged_for_hack").map((r) => cleanName(r.name));
     $("#grid100-names").textContent = `Charged for the hack itself: ${names.join(", ")}.`;
+    onView(g);
   }
 
   function arrestList() {
@@ -656,22 +701,24 @@
   ];
   function people() {
     const o = A.charts.outcomes, d = A.charts.outcomes_detail;
-    $("#people").innerHTML = PEOPLE.map(([k, l, c]) => `<div class="pg"><div class="pg-l"><b>${o[k]}</b>${esc(l)}</div><div class="pg-u" aria-hidden="true">${("<i class=\"" + c + "\"></i>").repeat(o[k])}</div></div>`).join("");
+    $("#people").innerHTML = PEOPLE.map(([k, l, c], g) => `<div class="pg"><div class="pg-l"><b>${o[k]}</b>${esc(l)}</div><div class="pg-u" aria-hidden="true">${Array.from({ length: o[k] }, (_, j) => `<i class="gf ${c}" style="--d:${g * 90 + j * 12}ms"></i>`).join("")}</div></div>`).join("");
+    onView($("#people"));
     $("#people-names").innerHTML = `<dl class="defs">${PEOPLE.map(([k, l]) => `<div><dt>${esc(l)}</dt><dd>${(d[k] || []).map(esc).join("; ")}</dd></div>`).join("")}</dl>`;
   }
 
   function pairRow(label, v, color, note) {
-    return `<div class="pair-r"><div class="pl"><span>${esc(label)}${note ? ` <span class="small">${esc(note)}</span>` : ""}</span><b>${v}%</b></div><div class="pt" role="img" aria-label="${esc(label)}: ${v}%"><span style="width:${v}%;background:${color}"></span></div></div>`;
+    return `<div class="pair-r"><div class="pl"><span>${esc(label)}${note ? ` <span class="small">${esc(note)}</span>` : ""}</span><b>${v}%</b></div><div class="pt" role="img" aria-label="${esc(label)}: ${v}%"><span class="gx" style="width:${v}%;background:${color}"></span></div></div>`;
   }
   function dprk() {
     const D1 = N("D1"), D3 = N("D3");
     $("#dprk-share").innerHTML = pairRow("Share of all hacks", D("dprk_gov_count_pct"), "var(--dprk)") + pairRow("Share of stolen dollars", D1.gov.pct, "var(--dprk)");
     $("#dprk-rec").innerHTML = pairRow("Government attribution to North Korea", D3.gov_only_pct, "var(--dprk)") + pairRow("Outside the government, firm and researcher-list groups", D3.non_dprk_pct, "var(--oth)");
+    onView($("#dprk-share")); onView($("#dprk-rec"));
   }
 
   function hbars(host, items) {
     const max = 100;
-    host.innerHTML = items.map((r) => `<div class="hbar"><span class="y" style="font-size:14px;line-height:1.2">${esc(r.y)}</span><span class="track"><span class="fill" style="width:${(r.v / max) * 100}%;background:${r.color || "var(--ink)"}"></span></span><span class="v"><b>${r.v}%</b> ${esc(r.note)}</span></div>`).join("");
+    host.innerHTML = items.map((r) => `<div class="hbar"><span class="y" style="font-size:14px;line-height:1.2">${esc(r.y)}</span><span class="track"><span class="fill gx" style="width:${(r.v / max) * 100}%;background:${r.color || "var(--ink)"}"></span></span><span class="v"><b>${r.v}%</b> ${esc(r.note)}</span></div>`).join("");
   }
   function attacks() {
     const k1 = A.attack.k1.eras, k4 = A.attack.k4.eras;
@@ -682,9 +729,9 @@
     const VEC = [["private-key/compromised-infra", "Compromised keys or infrastructure"], ["smart-contract logic", "Smart-contract logic bug"], ["social-engineering", "Social engineering"], ["supply-chain", "Supply chain"], ["oracle/price-manipulation", "Oracle or price manipulation"], ["access-control", "Access control"]];
     const vmax = 40;
     $("#vectors").innerHTML = VEC.map(([k, l]) => `<div class="vec-r"><div class="vec-l">${esc(l)}</div><div class="vec-b" role="img" aria-label="${esc(l)}: ${V.pct_dollars[k]}% of dollars, ${V.pct_count[k]}% of hacks">
-      <div><span style="width:${(V.pct_dollars[k] / vmax) * 100}%;background:var(--ink)"></span><em style="left:${(V.pct_dollars[k] / vmax) * 100}%">${V.pct_dollars[k]}%</em></div>
-      <div><span style="width:${(V.pct_count[k] / vmax) * 100}%;background:var(--ink-3)"></span><em style="left:${(V.pct_count[k] / vmax) * 100}%">${V.pct_count[k]}%</em></div></div></div>`).join("");
-    $("#ai-use").innerHTML = A.attack.ai.attacker_use.map((c) => `<li><b>${esc(c.title)}</b> <span class="gr">(${esc(c.when)})</span><br>${esc(c.body)} <a href="${esc(c.url)}">Source</a></li>`).join("");
+      <div><span class="gx" style="width:${(V.pct_dollars[k] / vmax) * 100}%;background:var(--ink)"></span><em style="left:${(V.pct_dollars[k] / vmax) * 100}%">${V.pct_dollars[k]}%</em></div>
+      <div><span class="gx" style="width:${(V.pct_count[k] / vmax) * 100}%;background:var(--ink-3)"></span><em style="left:${(V.pct_count[k] / vmax) * 100}%">${V.pct_count[k]}%</em></div></div></div>`).join("");
+    onView($("#k1")); onView($("#k4")); onView($("#vectors"));
   }
 
   /* ---------------------------------------------------------------- on-chain messages */
@@ -706,19 +753,43 @@
     const text = q.segments.map(esc).join(q.complete ? "\n" : '<span class="el"> [...] </span>');
     const hex = q.hex.replace(/(..)/g, "$1 ").trim();
     return `<article class="msg${opts && opts.reply ? " reply" : ""}" aria-label="${esc(q.role_label)}, ${esc(q.case)}, ${esc(fmtDate(q.time))}">
-      <div class="msg-h"><div class="who"><span><b class="${side}">${esc(q.role_label)}</b>, ${esc(q.case)}</span><span>${esc(fmtDate(q.time))}, ${esc(t.slice(11))} UTC</span></div>
-        <span>tx <a href="${esc(q.link)}">${esc(short(q.hash))}</a> on ${esc(cap(q.chain))}${q.block ? `, block ${esc(int(+q.block))}` : ""}</span>
-        ${q.from ? `<span>from <code>${esc(short(q.from))}</code>${q.to ? ` to <code>${esc(short(q.to))}</code>` : ""}</span>` : ""}</div>
+      <div class="msg-h"><div class="who"><span><b class="${side}">${esc(q.role_label)}</b>, ${esc(q.case)}</span><span>${esc(fmtDate(q.time))}, ${esc(t.slice(11))} UTC</span></div></div>
       <div class="msg-b"><div class="msg-v" role="group" aria-label="View input data as"><button type="button" aria-pressed="true" data-v="txt" aria-controls="${id}">Text</button><button type="button" aria-pressed="false" data-v="hex" aria-controls="${id}">Hex</button></div>
         <div id="${id}"><p class="msg-text">${text}</p><p class="msg-hex" hidden>0x ${hex} ...<br><span class="small">First ${q.hex.length / 2} bytes of the input data.</span></p></div>
-        <p class="msg-ctx">${esc(q.context)}</p></div></article>`;
+        <p class="msg-ctx">${esc(q.context)}</p>${txHTML(q)}</div></article>`;
+  }
+  function txHTML(q) {
+    return `<details class="tx"><summary>Transaction</summary><p>tx <a href="${esc(q.link)}">${esc(short(q.hash))}</a> on ${esc(cap(q.chain))}${q.block ? `, block ${esc(int(+q.block))}` : ""}${q.from ? `<br>from <code>${esc(short(q.from))}</code>${q.to ? ` to <code>${esc(short(q.to))}</code>` : ""}` : ""}</p></details>`;
+  }
+  /* the Shezmu negotiation as a two-sided chat: project on the left, attacker on the right */
+  function chat() {
+    const Q = Object.fromEntries(A.quotes.map((q) => [q.rank, q]));
+    const a = Q[2], b = Q[3];
+    const bub = (q, d) => {
+      const t = q.time.replace("T", " ").replace("Z", "");
+      const text = q.segments.map(esc).join(q.complete ? "\n" : '<span class="el"> [...] </span>');
+      return `<div class="bub ${q.side === "attacker" ? "a" : "p"} gf" style="--d:${d}ms"><div class="bub-h"><b>${esc(q.role_label)}</b><span>${esc(fmtDate(q.time))}, ${esc(t.slice(11))} UTC</span></div>
+        <p class="bub-t">${text}</p>${txHTML(q)}</div>`;
+    };
+    const host = $("#chat");
+    host.innerHTML = `<figure class="chat" aria-label="On-chain messages, ${esc(a.case.replace(/ (attacker|project)$/, ""))}"><figcaption class="chat-cap">${esc(a.context)}</figcaption>
+      ${bub(a, 0)}<div class="chat-gap gf" style="--d:450ms"><span>${gap(a.time, b.time)}</span></div>${bub(b, 800)}
+      <p class="chat-ctx gf" style="--d:1000ms">${esc(b.context)}</p></figure>`;
+    onView($(".chat", host));
+  }
+  /* outreach: two bars, share of known cases where money came back */
+  function outreach() {
+    const R5 = N("R5");
+    const rowsO = [
+      ["Team reached out", R5.outreach_return_pct, D("outreach_yes_returned"), D("outreach_yes_known"), "var(--ret)"],
+      ["No outreach", R5.no_outreach_return_pct, D("outreach_no_returned"), D("outreach_no_known"), "var(--ink-3)"],
+    ];
+    const host = $("#outreach");
+    host.innerHTML = rowsO.map(([l, v, a, n, c], k) => `<div class="cmp-r"><div class="cmp-l"><span>${esc(l)} <span class="small">(${int(a)} of ${int(n)} known cases)</span></span><b style="color:${c}">${v}%</b></div>
+      <div class="cmp-t" role="img" aria-label="${esc(l)}: money came back in ${v}% of known cases, ${int(a)} of ${int(n)}"><span class="gx" style="width:${v}%;background:${c};--d:${k * 160}ms"></span></div></div>`).join("");
+    onView(host);
   }
   function messages() {
-    const Q = Object.fromEntries(A.quotes.map((q) => [q.rank, q]));
-    const thread = (a, b) => `<div class="thread">${msgHTML(Q[a])}<div class="gap">${gap(Q[a].time, Q[b].time)}</div>${msgHTML(Q[b], { reply: true })}</div>`;
-    const feat = $("#msgs-featured");
-    feat.className = "msgs";
-    feat.innerHTML = thread(2, 3) + thread(7, 6) + msgHTML(Q[9]) + msgHTML(Q[8]);
     // all messages, grouped by case; cases by editorial rank, oldest first within a case
     const groups = {};
     A.quotes.forEach((q) => { (groups[q.case] = groups[q.case] || []).push(q); });
@@ -752,6 +823,7 @@
   }
 
   /* ---------------------------------------------------------------- section links, nav, share */
+  const SHARE_SVG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M7 2.8h2V10H7zM8 0l4 4-1.4 1.4L8 2.8 5.4 5.4 4 4zM2 7h3v2H4v5h8V9h-1V7h3v9H2z"/></svg>';
   const LINK_SVG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 2h5v2H4v8h8V9h2v5H2zM9 2h5v5h-2V5.4L7.7 9.7 6.3 8.3 10.6 4H9z"/></svg>';
   function sectionLinks() {
     $$(".sec .h2").forEach((h) => {
@@ -786,9 +858,18 @@
       if (r) { EX.select(r.i, { scroll: true }); setTimeout(() => $("#readout").scrollIntoView({ block: "start" }), 50); }
     } else if (location.hash.length > 1) {
       const t = document.getElementById(location.hash.slice(1));
-      if (t) setTimeout(() => t.scrollIntoView(), 50);
+      if (t) { openAround(t); setTimeout(() => t.scrollIntoView(), 50); }
     }
   }
+  function openAround(t) {
+    if (t.tagName === "DETAILS") t.open = true;
+    for (let d = t.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
+  }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || a.getAttribute("href").length < 2) return;
+    const t = document.getElementById(a.getAttribute("href").slice(1));
+    if (t) openAround(t);
+  });
 
   /* ---------------------------------------------------------------- go */
   fill(document);
@@ -796,7 +877,7 @@
   caselog();
   findings();
   annual(); channels(); clock(); offers(); returnsStrip(); grid100(); arrestList(); people(); dprk(); attacks();
-  messages();
+  chat(); outreach(); messages();
   method();
   sectionLinks();
   trace();

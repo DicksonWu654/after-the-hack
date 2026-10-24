@@ -92,10 +92,5 @@ tweet_no,card_file,number_on_card,source_key
 11,11-chain-freezes.png,92.4%,facts.cronos_pct
 11,11-chain-freezes.png,$120.4M,inc.rows[20260830-tectonic].loss
 11,11-chain-freezes.png,Aug 2026,inc.rows[20260830-tectonic].date
-12,12-ai-claims.png,0,K6.verified_in_the_wild_ai_exploits
-12,12-ai-claims.png,28,K6.claims_n
-12,12-ai-claims.png,12,K6.grades.verified
-12,12-ai-claims.png,10,K6.grades.credible claim
-12,12-ai-claims.png,6,K6.grades.speculation
-13,13-site-lookup.png,(screenshot),numbers inside the screenshot are rendered by the site from site/data/bundle.js
-14,14-site-home.png,(screenshot),numbers inside the screenshot are rendered by the site from site/data/bundle.js
+12,12-site-lookup.png,(screenshot),numbers inside the screenshot are rendered by the site from site/data/bundle.js
+13,13-site-home.png,(screenshot),numbers inside the screenshot are rendered by the site from site/data/bundle.js

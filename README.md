@@ -3,10 +3,9 @@
 What happens to stolen crypto after a hack: how much comes back, by what route, how fast, and who is ever charged. The study follows 1,377 hacks and exploits with a published USD loss (1 Jan 2016 to 21 Oct 2026, $16.52B at time of theft), plus a separate sample of 758 reproducible EVM exploits for the attack-side findings.
 
 - Interactive site: https://after-the-hack.shadow654.chatgpt.site
-- Paper: https://after-the-hack.shadow654.chatgpt.site/paper.html (also `paper/after-the-hack.md` here)
 - Repository: https://github.com/DicksonWu654/after-the-hack
 
-This repository holds the paper, the interactive site, the thread and its cards, and the public data behind them.
+This repository holds the interactive site, the thread and its cards, and the public data behind them.
 
 **Compiled with AI research agents, so there will be mistakes.** Every claim links its source, and corrections are welcome (see "Report a correction" below).
 
@@ -21,7 +20,7 @@ This repository holds the paper, the interactive site, the thread and its cards,
 | People charged or arrested for the hack | 16 of 1,377 incidents (1.2%); 9 of the 100 largest |
 | North Korea | 22.6% of dollars from 2.3% of incidents on government attribution alone (39.1% of dollars, 95 incidents, with firm attributions); 8.3% of the government-plus-firm money recovered (3.8% without KuCoin and Munchables; 3.4% on government attribution alone); we found no one in custody for an exchange or bridge theft |
 | Attack side (758 EVM exploits) | exploits run inside the attack contract's own deployment transaction rose from about 0% (2020-22) to 40.5% (2025) and 34.1% (2026), though only 8% to 11% of the dollars |
-| Recorded incidents | rose 2.3 to 3.1 times from 2025 to March-September 2026 on two trackers (DeFiLlama 12.3 to 37.6 a month, SlowMist 16.8 to 38.6); dollars rose about a third per month; we found no verified in-the-wild exploit written by AI |
+| Recorded incidents | rose 2.3 to 3.1 times from 2025 to March-September 2026 on two trackers (DeFiLlama 12.3 to 37.6 a month, SlowMist 16.8 to 38.6); dollars rose about a third per month |
 
 Every figure has a definition, sources and a confidence grade in `data/canonical_numbers.json`. The master column dictionary is in [data/README.md](data/README.md).
 
@@ -29,29 +28,29 @@ Every figure has a definition, sources and a confidence grade in `data/canonical
 
 | Path | What it is |
 |:---|:---|
-| `paper/after-the-hack.md`, `paper/paper.html` | The paper. `paper/source/after-the-hack.tables.md` is the same text with the markers the table builder needs |
-| `site/` | The built interactive site: a self-contained static directory with relative links (open `site/index.html`, or serve the folder as it is). `site/paper.html` is the rendered paper, so the paper is served next to the site. `site/data/` holds the downloadable CSV/JSON |
+| `site/` | The built interactive site: a self-contained static directory with relative links (open `site/index.html`, or serve the folder as it is). `site/data/` holds the downloadable CSV/JSON |
 | `thread/thread-launch.txt`, `thread/card-map.csv`, `cards/` | The thread and the source for its cards (PNGs are not included) |
 | `CHANGELOG.md`, `LICENSE` | What changed between releases; the licence terms |
 | `data/` | Public data: `incidents_master.csv` (1,573 rows; `in_headline=1` marks the headline set), `canonical_numbers.json`, `law_enforcement_cases.csv`, `law_enforcement_stats.json`, `recovery_events.csv`, `makes_whole_events.csv`, `dprk_incidents.csv`, `negotiation_cases_public.csv`, `onchain_verification.csv`, `onchain_returns.csv`, `return_latency_audit.csv`, `top100_master_enforcement.csv`, `aggregate_recovery_stats.csv`, `attack_contracts.csv`, `ai_incident_claims.csv`, `slowmist_record_links_2026-10-21.csv`, `tables/`, `baseline/`, `negotiation_tables/` |
 | `data/briefs/` | Two excerpts of the working notes that the site builder and card renderer read (the on-chain message shortlist and one paragraph on prosecution defences) |
-| `scripts/` | `build_paper_tables.py` and `export_paper.py` (paper), plus `site/build.py` and `cards/render.py` (cards) |
+| `scripts/` | `build_source_provenance.py` and `source_provenance.py` (source-access annotations), and `csv_integrity.py` (CSV checks); `site/build.py` rebuilds the site data and `cards/render.py` renders cards |
 | `requirements.txt` | Python packages for the builders |
 
 ## Reproduce
 
-Dependencies: Python 3.10 or newer (run with 3.12.3). The paper table builder and `site/build.py` use only the standard library. `scripts/export_paper.py` needs python-markdown (`markdown`, run with 3.10.2); it is the only HTML renderer used and the script stops if it is missing, so `paper.html` does not depend on whether pandoc is installed. `cards/render.py` needs Playwright with Chromium and Pillow (not needed for the paper or the site).
+Dependencies: Python 3.10 or newer (run with 3.12.3). The source-provenance and site builders use only the standard library. `cards/render.py` needs Playwright with Chromium and Pillow (not needed for the site).
 
 ```
 pip install -r requirements.txt
-python3 scripts/export_paper.py   # recompute the paper tables from data/, write paper/after-the-hack.md, paper/paper.html and site/paper.html
+python3 -I scripts/csv_integrity.py --tree .  # check CSV row widths and vocabulary
+python3 -I scripts/build_source_provenance.py --root .  # refresh source-access annotations
 python3 site/build.py             # rebuild site/data (bundle.js, quotes.json, downloads); exits non-zero if a displayed figure does not match
 playwright install chromium       # once, for the cards
 python3 cards/render.py           # render the cards to cards/out (add --no-dark for light cards only)
 python3 cards/og.py               # render site/assets/og-card.png from canonical figures and the built bundle
 ```
 
-A GitHub Actions workflow (`.github/workflows/rebuild.yml`) runs the paper and site builders on every push and fails if the committed outputs differ from a fresh build.
+A GitHub Actions workflow (`.github/workflows/rebuild.yml`) checks CSV integrity and runs the source-provenance and site builders on every push and fails if the committed outputs differ from a fresh build.
 
 What the builders check and what they do not:
 
@@ -66,7 +65,7 @@ What the builders check and what they do not:
 - **Outcomes.** For the 150 largest incidents, research agents with web search checked voluntary return, freeze or seizure, arrest and make-whole; an independent second pass re-checked every field. Unknown is not none: rows with no public record say so.
 - **Law enforcement.** Court dockets and DOJ releases where available; named defendants appear only where an official or court source supports the name, otherwise a role is given.
 - **On-chain checks.** Negotiation messages and return transactions were decoded on public RPC endpoints (`data/onchain_verification.csv`, `data/onchain_returns.csv`). Contact details in decoded messages (email addresses, phone numbers, chat handles and links) were redacted, and every shipped text file was scanned for them with pattern checks. Pattern checks can miss things: if you find a contact detail that should not be here, tell us and we will remove it.
-- **Attack side.** 758 reproducible EVM exploits from the DeFiHackLabs index, enriched with deployment, funding and timing data, and a 28-claim log of AI-related claims graded verified, credible or speculation.
+- **Attack side.** 758 reproducible EVM exploits from the DeFiHackLabs index, enriched with deployment, funding and timing data, with a separate 28-claim log of AI-related records graded verified, credible or speculation in `data/ai_incident_claims.csv`. The log retains each source's scope and evidence limits.
 
 ## Limitations
 
@@ -94,7 +93,7 @@ Open an issue at https://github.com/DicksonWu654/after-the-hack/issues. The most
 ## Licence
 
 - Code (`scripts/`, `site/build.py`, `site/assets/*.js`, `site/assets/style.css`, `cards/`) is released under the MIT License.
-- Data and text (`data/`, `paper/`, `thread/`, `site/paper.html` and the written content of `site/`) are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/ . Attribute as "After the Hack".
+- Data and text (`data/`, `thread/` and the written content of `site/`) are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/ . Attribute as "After the Hack".
 - Fonts in `site/assets/fonts` keep their SIL Open Font License 1.1 (full text in `site/assets/fonts/LICENSE.txt`).
 - Third-party material is not covered by either licence; see "Sources and third-party data".
 

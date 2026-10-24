@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Attach saved source-access evidence to public CSV source fields, without network calls.
 
-Run after the source generators and before baseline/canonical/paper builders. The export
+Run after the source generators and before baseline/canonical builders. The export
 also runs this step so shipped source-only tables receive the same annotations.
 """
 import argparse

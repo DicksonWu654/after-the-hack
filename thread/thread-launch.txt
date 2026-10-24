@@ -68,10 +68,6 @@ Sometimes the chain itself steps in. Sui validators froze $162M stolen from Cetu
 
 ---
 
-What about AI? Across 28 public claims, I found zero verified AI-written exploits in real hacks. It does show up in phishing and tooling.
-
----
-
 You can look up any of the 1,377 hacks and see what happened to the money, as far as the records go:
 https://after-the-hack.shadow654.chatgpt.site
 
@@ -79,7 +75,6 @@ https://after-the-hack.shadow654.chatgpt.site
 
 It's all here, with each number's definition and sources:
 https://after-the-hack.shadow654.chatgpt.site
-Paper: https://after-the-hack.shadow654.chatgpt.site/paper.html
 Code and data: https://github.com/DicksonWu654/after-the-hack
 
 A swarm of AI agents helped compile this, so there will be mistakes. Sources are linked throughout, corrections welcome!
