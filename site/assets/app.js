@@ -262,10 +262,9 @@
       { key: "oth", share: N("C4").master_pct, color: "#8db8ff", node: "#tn-oth" },
       { key: "none", share: D("unrecovered_pct"), color: "#7f8aa0", node: "#tn-none" },
     ];
-    let geo = [], parts = [], raf = 0, last = 0, running = !reduceMotion, visible = true;
-    const btn = $("#motion");
-    const setBtn = () => { btn.setAttribute("aria-label", running ? "Pause animation" : "Play animation"); btn.setAttribute("aria-pressed", String(!running)); btn.title = running ? "Pause animation" : "Play animation"; };
-    setBtn();
+    /* runs unless the OS asks for reduced motion; paused while the hero is off screen or the tab is hidden */
+    let geo = [], parts = [], raf = 0, last = 0, onScreen = true, tabShown = !document.hidden;
+    const running = !reduceMotion;
 
     function layout() {
       const sr = stage.getBoundingClientRect();
@@ -328,13 +327,14 @@
       const dt = last ? Math.min(0.05, (ts - last) / 1000) : 0; last = ts;
       parts.forEach((p) => { p.t += dt * 0.26 * p.v; if (p.t > 1) { p.t -= 1; p.u = Math.random() * 1.6 - 0.8; } });
       paint();
-      raf = running && visible ? requestAnimationFrame(tick) : 0;
+      raf = running && onScreen && tabShown ? requestAnimationFrame(tick) : 0;
     }
     let grown = reduceMotion;
-    const start = () => { if (grown && !raf && running && visible) { last = 0; raf = requestAnimationFrame(tick); } };
-    btn.addEventListener("click", () => { running = !running; setBtn(); if (running) start(); else { cancelAnimationFrame(raf); raf = 0; } });
-    new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible) start(); }, { threshold: 0 }).observe(stage);
-    document.addEventListener("visibilitychange", () => { visible = !document.hidden; if (visible) start(); });
+    const start = () => { if (grown && !raf && running && onScreen && tabShown) { last = 0; raf = requestAnimationFrame(tick); } };
+    if (running) {
+      if ("IntersectionObserver" in window) new IntersectionObserver((es) => { onScreen = es[es.length - 1].isIntersecting; if (onScreen) start(); }, { threshold: 0 }).observe(stage);
+      document.addEventListener("visibilitychange", () => { tabShown = !document.hidden; if (tabShown) start(); });
+    }
     let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(layout, 60); }).observe(stage);
     layout();
     /* ribbons grow out of the root box once, then the squares start moving */
