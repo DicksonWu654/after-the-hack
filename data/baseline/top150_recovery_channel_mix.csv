@@ -1,8 +1,8 @@
 channel,recovered_usd_at_time,n_incidents,pct_of_recovered_usd
-voluntary return (attacker/insider),1450098549,21,51.1
+voluntary return (attacker/insider),1450098549,21,51.2
 issuer / exchange / protocol freeze,579675771,22,20.4
 law-enforcement seizure / court,326774815,9,11.5
 chain-level: halt / validator / security council,233100000,2,8.2
 chain-level: hard fork / rollback,171200000,2,6.0
 white-hat / MEV rescue,38306335,4,1.4
-other / unspecified,37979967,5,1.3
+other / unspecified,35679967,4,1.3

@@ -1,420 +1,806 @@
-/* After the Hack: number filling, definitions, theme, negotiation thread, cases, methods.
-   All figures come from window.ATH (data/bundle.js, built by build.py from the project data). */
+/* After the Hack: page logic. Every number comes from window.ATH (data/bundle.js). */
 (function () {
   "use strict";
-  var A = window.ATH;
-  if (!A) { document.body.insertAdjacentHTML("afterbegin", '<p style="padding:16px;font-family:sans-serif">The data bundle (data/bundle.js) did not load. Run build.py, then reload.</p>'); return; }
+  const A = window.ATH;
+  if (!A) { console.error("data/bundle.js did not load"); return; }
 
-  var byId = {};
-  A.canon.numbers.forEach(function (n) { byId[n.id] = n; });
-  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
-  function fixed(v, d) { return Number(v).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }); }
-  function dateText(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ""); return m ? (+m[3]) + " " + MONTHS[+m[2] - 1] + " " + m[1] : iso; }
-
-  var FMT = {
-    int: function (v) { return Math.round(v).toLocaleString("en-US"); },
-    d0: function (v) { return fixed(v, 0); },
-    d1: function (v) { return fixed(v, 1); },
-    p0: function (v) { return fixed(v, 0) + "%"; },
-    p1: function (v) { return fixed(v, 1) + "%"; },
-    p2: function (v) { return fixed(v, 2) + "%"; },
-    fp0: function (v) { return fixed(v * 100, 0) + "%"; },
-    fp1: function (v) { return fixed(v * 100, 1) + "%"; },
-    B1: function (v) { return "$" + fixed(v / 1e9, 1) + "B"; },
-    B2: function (v) { return "$" + fixed(v / 1e9, 2) + "B"; },
-    M0: function (v) { return "$" + fixed(v / 1e6, 0) + "M"; },
-    M1: function (v) { return "$" + fixed(v / 1e6, 1) + "M"; },
-    M2: function (v) { return "$" + fixed(v / 1e6, 2) + "M"; },
-    usd: function (v) { return "$" + Math.round(v).toLocaleString("en-US"); },
-    "in": function (v) { return "1 in " + Math.round(1 / v); },
-    mo0: function (v) { return fixed(v / 30.4375, 0); },
-    mo1: function (v) { return fixed(v / 30.4375, 1); },
-    date: function (v) { return dateText(v); },
-    x: function (v) { return String(v); }
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const el = (tag, attrs, html) => {
+    const e = document.createElement(tag);
+    if (attrs) for (const k in attrs) {
+      if (k === "class") e.className = attrs[k];
+      else if (k === "text") e.textContent = attrs[k];
+      else if (attrs[k] !== null && attrs[k] !== undefined) e.setAttribute(k, attrs[k]);
+    }
+    if (html !== undefined) e.innerHTML = html;
+    return e;
   };
-  function money(v) { return v >= 1e9 ? FMT.B2(v) : v >= 1e8 ? FMT.M0(v) : v >= 1e6 ? FMT.M1(v) : FMT.usd(v); }
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function periodText() {
-    var p = A.canon.data_snapshot.period.split("..");
-    return dateText(p[0]) + " to " + dateText(p[1]);
+  /* ---------------------------------------------------------------- data access */
+  const canon = {};
+  A.canon.numbers.forEach((n) => { canon[n.id] = n; });
+  const N = (id) => canon[id].numeric;
+  const D = (k) => A.derived[k].v;
+  const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const fmtDate = (iso) => { const [y, m, d] = iso.slice(0, 10).split("-").map(Number); return `${d} ${MON[m - 1]} ${y}`; };
+  const period = A.built_from.snapshot.period.split("..");
+
+  const I = A.inc;
+  const rows = I.rows.map((a, i) => {
+    const m = /(\d{4})(\d{2})(\d{2})/.exec(a[0]);
+    const date = a[11] || (m ? `${m[1]}-${m[2]}-${m[3]}` : "");
+    const r = {
+      i, id: a[0], name: a[1], loss: a[2] || 0, chain: (I.chains[a[3]] || "").split(";").filter(Boolean).join(", "),
+      enf: a[4], rec: a[5], ret: a[6] || 0, oth: a[7] || 0, ch: a[8] || "", dprk: a[9] || 0, alias: a[10] || "",
+      date, who: a[12] || "", ev: a[13] || "", split: a[14] || "",
+    };
+    r.unver = (r.ret > 0 || r.oth > 0) && (r.ev === "x" || "cunvq".includes(r.rec));
+    r.label = I.famous_label[r.id] || r.name;
+    return r;
+  });
+  const byId = Object.fromEntries(rows.map((r) => [r.id, r]));
+  const maxLoss = Math.max(...rows.map((r) => r.loss));
+
+  /* ---------------------------------------------------------------- formatting */
+  const int = (v) => Math.round(v).toLocaleString("en-US");
+  function money(v) {
+    if (v >= 1e9) return "$" + (v / 1e9).toFixed(2) + "B";
+    if (v >= 1e8) return "$" + Math.round(v / 1e6) + "M";
+    if (v >= 1e7) return "$" + (v / 1e6).toFixed(1) + "M";
+    if (v >= 1e6) return "$" + (v / 1e6).toFixed(2) + "M";
+    return "$" + int(v);
+  }
+  const pctTxt = (v) => (Number.isInteger(v) ? String(v) : String(+(+v).toFixed(1))) + "%";
+  function fmt(v, f) {
+    if (v === undefined || v === null || v === "") return "";
+    switch (f) {
+      case "int": return int(v);
+      case "B1": return "$" + (v / 1e9).toFixed(1) + "B";
+      case "B2": return "$" + (v / 1e9).toFixed(2) + "B";
+      case "usd": return money(v);
+      case "p": return v + "%";
+      case "p0": return Math.round(v) + "%";
+      case "p1": return (+v).toFixed(1) + "%";
+      case "n": return String(v);
+      case "mo0": return String(Math.round(v / 30.4375));
+      case "mo1": return (v / 30.4375).toFixed(1);
+      default: return String(v);
+    }
   }
 
-  // Resolve "C1.pct", "C3.channels.0.usd", "d.key", "f.key", "meta.period".
-  function resolve(key) {
-    var parts = key.split(".");
-    var head = parts[0];
-    if (head === "meta") {
-      if (parts[1] === "period") return { v: periodText(), src: { kind: "meta" } };
-      if (parts[1] === "generated") return { v: A.canon.generated, src: { kind: "meta" } };
-    }
-    if (head === "d") { var d = A.derived[parts[1]]; return d ? { v: d.v, src: { kind: "derived", d: d } } : null; }
-    if (head === "f") { var f = A.facts[parts[1]]; return f ? { v: f.v, src: { kind: "canon", id: f.id } } : null; }
-    var n = byId[head];
-    if (!n) return null;
-    // numeric keys may contain dots-free names with spaces or slashes; walk greedily
-    var cur = n.numeric, i = 1;
-    while (i < parts.length && cur != null) {
-      var k = parts[i], j = i;
-      while (!(k in Object(cur)) && j + 1 < parts.length) { j++; k += "." + parts[j]; }
-      cur = cur[k]; i = j + 1;
-    }
-    return cur == null ? null : { v: cur, src: { kind: "canon", id: head } };
+  /* values computed in the page (documented in new-copy-manifest.md) */
+  const X = {
+    since: period[0].slice(0, 4),
+    asof: fmtDate(period[1]),
+    period: `${fmtDate(period[0])} to ${fmtDate(period[1])}`,
+    last_year: period[1].slice(0, 4),
+  };
+  const arrestsBy = Object.fromEntries(A.charts.arrests.map((a) => [a.name, a]));
+  /* C1 still counts recovery amounts the lookup marks "reported, not verified"; say so while the bundle shows a gap */
+  {
+    const C1 = canon.C1.numeric, nU = rows.filter((r) => r.unver).length;
+    const gap = typeof C1.pct_ex_unverified === "number" && Math.abs(C1.pct - C1.pct_ex_unverified) >= 0.05;
+    X.unver_note = nU && gap
+      ? (nU === 1 ? "One recovery amount in these totals is reported but not verified. Without it, the recovered share is "
+                  : `${nU} recovery amounts in these totals are reported but not verified. Without them, the recovered share is `) + (+C1.pct_ex_unverified).toFixed(1) + "%."
+      : "";
   }
+  X.fast_cases = ["Platypus Finance", "Mango Markets"].map((n) => `${n} (${arrestsBy[n].days} days)`).join(" and ");
 
-  var missing = [];
+  function get(key) {
+    const parts = key.split(".");
+    const h = parts.shift();
+    let v;
+    if (h === "d") v = A.derived[parts.shift()]?.v;
+    else if (h === "f") v = A.facts[parts.shift()]?.v;
+    else if (h === "x") v = X[parts.shift()];
+    else v = canon[h] && canon[h].numeric;
+    for (const p of parts) { if (v === undefined || v === null) break; v = v[p]; }
+    return v;
+  }
   function fill(root) {
-    (root || document).querySelectorAll("[data-n]").forEach(function (el) {
-      var spec = el.getAttribute("data-n").split("|");
-      var r = resolve(spec[0]);
-      if (!r) { missing.push(spec[0]); el.textContent = "?"; return; }
-      var f = FMT[spec[1] || "x"] || FMT.x;
-      el.textContent = f(r.v);
-      if (r.src.kind !== "meta") {
-        el.classList.add("n");
-        if (el.hasAttribute("data-flat")) el.classList.add("flat");
-        el.setAttribute("tabindex", "0");
-        el.setAttribute("role", "button");
-        el.setAttribute("aria-haspopup", "dialog");
-        el.setAttribute("aria-expanded", "false");
-        el.__src = r.src;
+    $$("[data-k]", root).forEach((e) => {
+      const k = e.getAttribute("data-k");
+      if (k.startsWith("x.sel_")) return;
+      const v = get(k);
+      if (v === undefined || v === null) { console.warn("missing value", k); return; }
+      e.textContent = fmt(v, e.getAttribute("data-f"));
+    });
+  }
+
+  /* ---------------------------------------------------------------- outcome sentences (new-copy-manifest rules) */
+  const CH = { f: "frozen", s: "seized or recovered by court order", w: "rescued", h: "frozen by the chain", k: "recovered by a fork or rollback", o: "recovered" };
+  const CHS = { f: "frozen by an issuer, exchange or protocol", s: "seized or recovered by court order", w: "rescued", h: "frozen by the chain", k: "recovered by a fork or rollback", o: "recovered", r: "returned" };
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  function ofLoss(a, loss) {
+    if (!loss) return "";
+    const p = (a / loss) * 100;
+    if (!(p >= 0.1 && p <= 99.5)) return "";
+    return ` (${p >= 10 ? Math.round(p) : p.toFixed(1)}% of the loss)`;
+  }
+  function recLine(r) {
+    if (r.unver) return `A recovery of about ${money(r.ret + r.oth)} is reported but not verified.`;
+    const out = [];
+    if (r.ret > 0) {
+      if (r.who === "a") out.push(`The attacker returned ${money(r.ret)}${ofLoss(r.ret, r.loss)}.`);
+      else if (r.who === "b") out.push(`Bot operators returned ${money(r.ret)}.`);
+      else if (r.who === "m") out.push(`An MEV builder returned ${money(r.ret)}.`);
+      else out.push(`${money(r.ret)} was returned${ofLoss(r.ret, r.loss)}.`);
+    }
+    if (r.oth > 0) {
+      if (r.split) {
+        const parts = r.split.split(",").map((p) => { const [c, v] = p.split(":"); return `${money(+v)} ${CHS[c] || "recovered"}`; });
+        out.push(cap(parts.join(" and ")) + ".");
+      } else out.push(`${money(r.oth)} ${CH[r.ch] || "recovered"}.`);
+    }
+    if (out.length) return out.join(" ");
+    switch (r.rec) {
+      case "n": return r.ev === "p" ? "No recovery recorded; the sources were only partly checked." : "No recovery recorded in the sources checked.";
+      case "v": return "No return by the attacker found.";
+      case "c": return "A recovery is claimed but not verified.";
+      case "q": return "Some funds recovered, amount not quantified.";
+      case "r": return "Some funds recovered.";
+      default: return "Recovery outcome not checked.";
+    }
+  }
+  const ENF = {
+    c: "Someone was arrested or charged for the hack.", l: "Charges only for handling the loot.", v: "Civil or regulatory action only.",
+    o: "An arrest on other grounds.", n: "No arrest or charge for this hack found.", u: "Arrest and charge status is not established in this dataset.",
+  };
+  const outcome = (r) => I.lines[r.id] || `${recLine(r)} ${ENF[r.enf] || ENF.u}`;
+  const metaLine = (r) => [fmtDate(r.date), `reported loss ${money(r.loss)}`, r.chain].filter(Boolean).join(", ");
+  function tagsFor(r) {
+    const t = [];
+    if (r.enf === "c") t.push(["arr", "Arrested or charged"]);
+    if (r.unver) t.push(["mut", "Recovery reported, not verified"]);
+    else {
+      if (r.ret > 0) t.push(["ret", { a: "Attacker returned funds", b: "Bot operators returned funds", m: "MEV builder returned funds" }[r.who] || "Recorded return"]);
+      if (r.oth > 0) t.push(["oth", r.split ? "Recovered by more than one channel" : ({ f: "Frozen", s: "Seized or recovered by court order", w: "Rescued", h: "Frozen by the chain", k: "Recovered by a fork or rollback" }[r.ch] || "Other recorded recovery")]);
+    }
+    if (r.dprk) t.push(["dprk", { 2: "North Korea, government attribution", 1: "North Korea, firm attribution", 3: "North Korea, researcher-list lead only" }[r.dprk]]);
+    return t;
+  }
+  const tagHTML = (r) => tagsFor(r).map(([c, l]) => `<span class="tag ${c}">${esc(l)}</span>`).join("");
+  function barHTML(r, scale) {
+    const s = scale || r.loss || 1;
+    const w = (v) => Math.max(0, Math.min(100, (v / s) * 100));
+    const ret = r.unver ? 0 : r.ret, oth = r.unver ? 0 : r.oth;
+    return `<span class="full" style="width:${w(r.loss)}%"></span>` +
+      (ret ? `<span class="seg ret" style="left:0;width:${w(ret)}%"></span>` : "") +
+      (oth ? `<span class="seg oth" style="left:${w(ret)}%;width:${w(oth)}%"></span>` : "");
+  }
+
+  /* ---------------------------------------------------------------- toast, copy, images */
+  let toastT;
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg; t.classList.add("on");
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), 1800);
+  }
+  const baseURL = () => location.href.split("#")[0];
+  async function copy(text, msg) {
+    try { await navigator.clipboard.writeText(text); toast(msg || "Link copied"); }
+    catch (e) {
+      const ta = el("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); toast(msg || "Link copied"); } catch (e2) { toast("Copy failed. The link is " + text); }
+      ta.remove();
+    }
+  }
+  const SITE_HOST = (document.querySelector('link[rel="canonical"]').href || "").replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+  function wrapText(ctx, text, maxW) {
+    const words = text.split(" "); const lines = []; let cur = "";
+    for (const w of words) {
+      const t = cur ? cur + " " + w : w;
+      if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t;
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
+  async function saveCard(o) {
+    try { await Promise.all(["66px Departure", "400 30px Atkinson", "700 30px Atkinson"].map((f) => document.fonts.load(f))); } catch (e) { /* fonts optional */ }
+    const W = 1200, H = 675, c = document.createElement("canvas");
+    c.width = W; c.height = H;
+    const x = c.getContext("2d");
+    x.fillStyle = "#0a0d13"; x.fillRect(0, 0, W, H);
+    x.fillStyle = "rgba(169,179,195,0.10)";
+    for (let gx = 11; gx < W; gx += 22) for (let gy = 11; gy < H; gy += 22) x.fillRect(gx, gy, 1.4, 1.4);
+    x.fillStyle = o.color || "#e7ebf1"; x.fillRect(0, 0, 12, H);
+    x.fillStyle = "#e7ebf1"; x.font = "33px Departure"; x.textBaseline = "alphabetic";
+    x.fillText("After_the_Hack", 64, 84);
+    let y = 84;
+    if (o.kicker) { x.fillStyle = "#a9b3c3"; x.font = "400 26px Atkinson"; x.fillText(o.kicker, 64, 128); y = 128; }
+    x.fillStyle = o.color || "#e7ebf1";
+    let big = o.big, size = o.bigSize || 154;
+    x.font = `${size}px Departure`;
+    while (x.measureText(big).width > W - 128 && size > 44) { size -= 11; x.font = `${size}px Departure`; }
+    y += size + 24;
+    x.fillText(big, 60, y);
+    if (o.sub) { x.fillStyle = "#a9b3c3"; x.font = "44px Departure"; x.fillText(o.sub, 64 + x.measureText(" ").width, y); }
+    x.fillStyle = "#e7ebf1"; x.font = "400 36px Atkinson";
+    const lines = wrapText(x, o.text, W - 128).slice(0, 5);
+    y += 64;
+    lines.forEach((l) => { x.fillText(l, 64, y); y += 48; });
+    if (o.foot) {
+      x.fillStyle = "#7f8aa0"; x.font = "400 23px Atkinson";
+      wrapText(x, o.foot, W - 128).slice(0, 3).forEach((l) => { y += 4; x.fillText(l, 64, y + 18); y += 30; });
+    }
+    x.fillStyle = "#7f8aa0"; x.font = "400 22px Atkinson";
+    x.fillText(SITE_HOST, 64, H - 40);
+    c.toBlob((b) => {
+      if (!b) { toast("Could not make the image"); return; }
+      const a = el("a", { href: URL.createObjectURL(b), download: o.file || "after-the-hack.png" });
+      document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+      toast("Image saved");
+    }, "image/png");
+  }
+
+  /* ---------------------------------------------------------------- hero trace graph */
+  function trace() {
+    const stage = $("#trace-stage"), svg = $("#trace-svg");
+    const NS = "http://www.w3.org/2000/svg";
+    const flows = [
+      { key: "ret", share: N("R2").pct_of_all, color: "#44e3bf", node: "#tn-ret" },
+      { key: "oth", share: N("C4").master_pct, color: "#8db8ff", node: "#tn-oth" },
+      { key: "none", share: D("unrecovered_pct"), color: "#7f8aa0", node: "#tn-none" },
+    ];
+    let geo = [], parts = [], raf = 0, last = 0, running = !reduceMotion, visible = true;
+    const btn = $("#motion");
+    btn.removeAttribute("aria-pressed");
+    const setBtn = () => { btn.textContent = running ? "Pause motion" : "Play motion"; };
+    setBtn();
+
+    function layout() {
+      const sr = stage.getBoundingClientRect();
+      const rr = $("#tn-root").getBoundingClientRect();
+      svg.setAttribute("viewBox", `0 0 ${sr.width} ${sr.height}`);
+      svg.innerHTML = `<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#0f141d"/><rect width="1.6" height="6" fill="rgba(127,138,160,.45)"/></pattern></defs>`;
+      const x0 = rr.right - sr.left, top = rr.top - sr.top + 10, H = rr.height - 20;
+      const total = flows.reduce((s, f) => s + f.share, 0);
+      let acc = 0;
+      geo = flows.map((f) => {
+        const th = (f.share / total) * H;
+        const ys = top + acc + th / 2; acc += th;
+        const tr = $(f.node).getBoundingClientRect();
+        const x1 = tr.left - sr.left, y1 = tr.top - sr.top + tr.height / 2;
+        const th1 = Math.max(4, Math.min(th, tr.height - 14));
+        const xm = (x0 + x1) / 2;
+        const d = `M${x0},${ys - th / 2} C${xm},${ys - th / 2} ${xm},${y1 - th1 / 2} ${x1},${y1 - th1 / 2} L${x1},${y1 + th1 / 2} C${xm},${y1 + th1 / 2} ${xm},${ys + th / 2} ${x0},${ys + th / 2} Z`;
+        const p = document.createElementNS(NS, "path");
+        p.setAttribute("d", d);
+        if (f.key === "none") { p.setAttribute("fill", "url(#hatch)"); p.setAttribute("stroke", "rgba(127,138,160,.55)"); p.setAttribute("stroke-dasharray", "3 3"); }
+        else { p.setAttribute("fill", f.color); p.setAttribute("fill-opacity", "0.30"); p.setAttribute("stroke", f.color); p.setAttribute("stroke-opacity", "0.8"); }
+        p.setAttribute("stroke-width", "1");
+        svg.appendChild(p);
+        return { f, x0, ys, x1, y1, xm, th, th1 };
+      });
+      const g = document.createElementNS(NS, "g");
+      svg.appendChild(g);
+      if (!parts.length) {
+        const TOT = 46;
+        flows.forEach((f, k) => {
+          const n = Math.max(4, Math.round((f.share / total) * TOT));
+          for (let j = 0; j < n; j++) parts.push({ k, t: Math.random(), u: Math.random() * 1.6 - 0.8, v: 0.75 + Math.random() * 0.5 });
+        });
       }
+      parts.forEach((p) => {
+        const r = document.createElementNS(NS, "rect");
+        r.setAttribute("width", "4"); r.setAttribute("height", "4");
+        r.setAttribute("fill", flows[p.k].key === "none" ? "#c7cfdb" : flows[p.k].color);
+        g.appendChild(r); p.el = r;
+      });
+      paint();
+    }
+    function pos(G, t, u) {
+      const mt = 1 - t, b0 = mt * mt * mt, b1 = 3 * mt * mt * t, b2 = 3 * mt * t * t, b3 = t * t * t;
+      const x = b0 * G.x0 + b1 * G.xm + b2 * G.xm + b3 * G.x1;
+      const y = (b0 + b1) * G.ys + (b2 + b3) * G.y1;
+      const half = (b0 + b1) * G.th / 2 + (b2 + b3) * G.th1 / 2;
+      return [x, y + u * half];
+    }
+    function paint() {
+      parts.forEach((p) => {
+        const G = geo[p.k]; if (!G) return;
+        const [x, y] = pos(G, p.t, p.u);
+        p.el.setAttribute("x", (x - 2).toFixed(1)); p.el.setAttribute("y", (y - 2).toFixed(1));
+        const fade = G.f.key === "none" ? Math.max(0, Math.min(1, (1 - p.t) / 0.25)) : Math.min(1, (1 - p.t) / 0.04);
+        p.el.setAttribute("opacity", (Math.min(1, p.t / 0.05) * fade).toFixed(2));
+      });
+    }
+    function tick(ts) {
+      const dt = last ? Math.min(0.05, (ts - last) / 1000) : 0; last = ts;
+      parts.forEach((p) => { p.t += dt * 0.26 * p.v; if (p.t > 1) { p.t -= 1; p.u = Math.random() * 1.6 - 0.8; } });
+      paint();
+      raf = running && visible ? requestAnimationFrame(tick) : 0;
+    }
+    const start = () => { if (!raf && running && visible) { last = 0; raf = requestAnimationFrame(tick); } };
+    btn.addEventListener("click", () => { running = !running; setBtn(); if (running) start(); else { cancelAnimationFrame(raf); raf = 0; } });
+    new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible) start(); }, { threshold: 0 }).observe(stage);
+    document.addEventListener("visibilitychange", () => { visible = !document.hidden; if (visible) start(); });
+    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(layout, 60); }).observe(stage);
+    layout(); start();
+  }
+
+  /* ---------------------------------------------------------------- famous hacks */
+  function caselog() {
+    const host = $("#caselog");
+    const fam = I.famous.map((id) => byId[id]);
+    const scale = Math.max(...fam.map((r) => r.loss));
+    fam.forEach((r) => {
+      const a = el("article", { class: "case", "aria-labelledby": "case-" + r.i });
+      a.innerHTML = `<div><h3 class="case-name" id="case-${r.i}">${esc(r.label)}</h3><p class="case-meta">${esc(fmtDate(r.date))}${r.chain ? ", " + esc(r.chain) : ""}</p></div>
+        <div><div class="case-loss">${money(r.loss)} <span class="small">reported loss</span></div>
+        <div class="case-bar" aria-hidden="true">${barHTML(r, scale)}</div>
+        <p class="case-line">${esc(outcome(r))}</p></div>
+        <div class="case-side"><div class="tags">${tagHTML(r)}</div><button class="btn sm" type="button" data-open="${esc(r.id)}">Show in the look-up</button></div>`;
+      host.appendChild(a);
+    });
+    host.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-open]"); if (!b) return;
+      EX.select(byId[b.getAttribute("data-open")].i, { scroll: true, focus: true });
+      $("#readout").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     });
   }
-  window.ATHfmt = { FMT: FMT, money: money, esc: esc, dateText: dateText, resolve: resolve, byId: byId, srcItem: srcItem };
 
-  // ------------------------------------------------------------ definition popover
-  var pop = document.getElementById("pop");
-  var popFor = null, hideTimer = null;
-  // A source string is either "URL" or "URL (annotation)" or plain text (e.g. "project brief (not published): research/x.md").
-  // Only the first whitespace-delimited token is ever a link, and only when it starts with http(s)://; the rest is text.
-  var REPO = "https://github.com/DicksonWu654/after-the-hack/blob/main/";
-  function srcItem(s) {
-    s = String(s == null ? "" : s).trim();
-    var rp = /^(data\/[A-Za-z0-9_.\/-]+?\.(?:csv|json|md))([,;.]*)(?:\s+([\s\S]*))?$/.exec(s);
-    if (rp) return '<a href="' + REPO + esc(rp[1]) + '" rel="noopener" target="_blank">' + esc(rp[1]) + "</a>" + esc(rp[2] || "") + (rp[3] ? " " + esc(rp[3]) : "");
-    var m = /^(https?:\/\/\S+)(?:\s+([\s\S]*))?$/.exec(s);
-    if (!m) return esc(s);
-    var url = m[1], note = m[2] || "", tail = /[,;.]+$/.exec(url);
-    if (tail) { url = url.slice(0, url.length - tail[0].length); note = (tail[0] + (note ? " " + note : "")).replace(/^[,;.]+\s*$/, ""); }
-    var label = url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-    if (label.length > 70) label = label.slice(0, 69) + "\u2026";
-    return '<a href="' + esc(url) + '" rel="noopener" target="_blank">' + esc(label) + "</a>" + (note ? " " + esc(note) : "");
+  /* ---------------------------------------------------------------- seven numbers */
+  function findings() {
+    const S1 = N("S1"), E2 = N("E2"), E3 = N("E3"), R4 = N("R4"), D1 = N("D1"), D3 = N("D3"), K6 = N("K6"), K7 = N("K7");
+    const list = [
+      { id: "unrecovered", big: fmt(D("unrecovered_pct"), "p0"), cls: "c-none", color: "#e7ebf1",
+        text: `of stolen dollars has no recorded recovery. ${fmt(N("R2").pct_of_all, "p1")} was returned by attackers or insiders and ${fmt(N("C4").master_pct, "p1")} was recovered through other channels, such as freezes, seizures and chain halts.`,
+        foot: `Includes company claims and unchecked outcomes, whose results remain unknown. ${int(S1.n)} hacks, tracker-reported USD.${X.unver_note ? " " + X.unver_note : ""}` },
+      { id: "arrests", big: int(E2.master_all[0]), sub: `of ${int(S1.n)}`, cls: "c-arr", color: "#ff5c93",
+        text: `hacks are known to have led to an arrest or charge for the hack itself. That is about 1 in ${int(E2.one_in)}.`,
+        foot: `Arrests were searched for the largest hacks and a list of known cases, so ${int(E2.master_all[0])} is a floor. ${N("E1").top100_strict} of the 100 largest hacks have one. One incident match is inferred.` },
+      { id: "bounty", big: fmt(D("opening_median_pct"), "p"), cls: "c-ink", color: "#e7ebf1",
+        text: `is the usual opening bounty offer. ${D("openings_table_10")} of ${D("openings_table_n")} on-chain openings dated 2020 or later were exactly ${fmt(D("opening_median_pct"), "p")} of the loss.`,
+        foot: `The yearly median opening was ${fmt(D("opening_median_pct"), "p")} in every year from ${N("R3").opening_yearly_median_10_since} on.` },
+      { id: "returns", big: String(R4.median_days_from_incident), sub: "days", cls: "c-ret", color: "#44e3bf",
+        text: `is the median time to the first substantive return, in ${R4.n_dated} dated cases. ${R4.within_7d} came within a week.`,
+        foot: "Timed by block timestamps. Includes flagged cases and returns by people other than the main exploiter. These are large, well-documented returns and may not represent other cases." },
+      { id: "wait", big: String(E3.median_days_2016_plus_in_headline_scope), sub: "days", cls: "c-arr", color: "#ff5c93",
+        text: `is the median time from a hack to the first recorded action against a person, about ${fmt(E3.median_days_2016_plus_in_headline_scope, "mo1")} months.`,
+        foot: `${E3.n_2016_plus_in_headline_scope} dated cases, including laundering cases and one employee detention.` },
+      { id: "north-korea", big: fmt(D1.gov.pct, "p"), cls: "c-dprk", color: "#ffc34d",
+        text: `of stolen dollars came from hacks a government attributes to North Korea, just ${fmt(D("dprk_gov_count_pct"), "p")} of all hacks. ${fmt(D3.gov_only_pct, "p")} of those dollars were recorded as recovered or frozen.`,
+        foot: `Government-attributed tier. The recovery figure counts company claims; with only Bybit's corroborated freeze it is ${fmt(D3.gov_only_bybit_corroborated_pct, "p")}.` },
+      { id: "ai", big: String(K6.verified_in_the_wild_ai_exploits), cls: "c-oth", color: "#8db8ff",
+        text: `verified cases found of an AI-written exploit in a real hack, in the sources examined. ${K6.claims_n} AI-related claims logged.`,
+        foot: `In a simulator, AI agents reproduced ${K7.scone_reproduced} of ${K7.scone_total} past exploits (Anthropic's SCONE-bench).` },
+    ];
+    const host = $("#finds");
+    list.forEach((f) => {
+      const a = el("article", { class: "find", id: "n-" + f.id, "aria-labelledby": "n-" + f.id + "-t" });
+      a.innerHTML = `<div class="find-n ${f.cls}" id="n-${f.id}-t">${esc(f.big)}${f.sub ? `<small>${esc(f.sub)}</small>` : ""}</div>
+        <div><p class="find-s">${esc(f.text)}</p><p class="find-f">${esc(f.foot)}</p>
+        <div class="find-a"><button class="btn sm" type="button" data-act="link">Copy link</button><button class="btn sm" type="button" data-act="img">Save as image</button></div></div>`;
+      $$("button", a).forEach((b) => b.setAttribute("aria-label", (b.dataset.act === "link" ? "Copy link to " : "Save as image: ") + f.big + (f.sub ? " " + f.sub : "")));
+      a.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-act]"); if (!b) return;
+        if (b.dataset.act === "link") copy(baseURL() + "#n-" + f.id);
+        else saveCard({ big: f.big, sub: f.sub, text: f.text, foot: f.foot, color: f.color, file: `after-the-hack-${f.id}.png` });
+      });
+      host.appendChild(a);
+    });
   }
-  function popHTML(src) {
-    if (src.kind === "derived") {
-      return '<p class="q" id="pop-q">How this number is derived</p><p class="d">' + esc(src.d.def) + '</p><p class="meta">Source: ' + src.d.src.map(srcItem).join("; ") + "</p>";
-    }
-    var n = byId[src.id];
-    var def = n.definition.length > 520 ? n.definition.slice(0, 500).replace(/\s\S*$/, "") + "..." : n.definition;
-    return '<p class="q" id="pop-q">' + esc(n.question) + '</p><p class="d">' + esc(def) + "</p>" +
-      '<p class="meta"><span class="conf">' + esc(n.confidence) + ' confidence</span><a href="#def-' + n.id + '">Full definition (' + n.id + ")</a></p>" +
-      '<p class="meta">Sources: ' + n.sources.slice(0, 3).map(srcItem).join("; ") + (n.sources.length > 3 ? "; and more" : "") + "</p>";
-  }
-  function place(el) {
-    var r = el.getBoundingClientRect();
-    pop.hidden = false;
-    var pw = pop.offsetWidth, ph = pop.offsetHeight, vw = document.documentElement.clientWidth;
-    var left = Math.min(Math.max(8, r.left + r.width / 2 - pw / 2), vw - pw - 8);
-    var top = r.bottom + 8;
-    if (top + ph > window.innerHeight - 8 && r.top - ph - 8 > 56) top = r.top - ph - 8;
-    pop.style.left = (left + window.scrollX) + "px";
-    pop.style.top = (top + window.scrollY) + "px";
-  }
-  function show(el) {
-    clearTimeout(hideTimer);
-    if (popFor && popFor !== el) popFor.setAttribute("aria-expanded", "false");
-    popFor = el;
-    pop.innerHTML = popHTML(el.__src);
-    pop.id = "pop";
-    el.setAttribute("aria-controls", "pop");
-    el.setAttribute("aria-expanded", "true");
-    place(el);
-  }
-  function hideNow() {
-    pop.hidden = true;
-    if (popFor) { popFor.setAttribute("aria-expanded", "false"); popFor.removeAttribute("aria-controls"); }
-    popFor = null;
-  }
-  function hide(now) {
-    clearTimeout(hideTimer);
-    if (now) hideNow(); else hideTimer = setTimeout(hideNow, 180);
-  }
-  // Input modality: touch must not rely on hover or focus (a tap fires emulated mouseover, focus and click in turn),
-  // so on touch the popover opens and closes on click only. Keyboard focus shows it; Enter/Space moves focus inside.
-  var lastInput = "mouse";
-  document.addEventListener("pointerdown", function (e) { lastInput = e.pointerType === "touch" ? "touch" : "mouse"; }, true);
-  document.addEventListener("keydown", function (e) { if (e.key !== "Shift" && e.key !== "Control" && e.key !== "Alt" && e.key !== "Meta") lastInput = "keyboard"; }, true);
-  function isNum(t) { var el = t && t.closest && t.closest(".n"); return el && el.__src ? el : null; }
-  document.addEventListener("mouseover", function (e) {
-    if (lastInput === "touch") return;
-    var el = isNum(e.target);
-    if (el) show(el);
-    else if (e.target.closest && e.target.closest("#pop")) clearTimeout(hideTimer);
-  });
-  document.addEventListener("mouseout", function (e) {
-    if (lastInput === "touch") return;
-    var el = e.target.closest && (e.target.closest(".n") || e.target.closest("#pop"));
-    if (el && !(e.relatedTarget && el.contains(e.relatedTarget)) && !pop.contains(document.activeElement)) hide();
-  });
-  var quiet = false; // set while focus returns to a number after Escape
-  document.addEventListener("focusin", function (e) { var el = isNum(e.target); if (el && !quiet && lastInput === "keyboard") show(el); });
-  document.addEventListener("focusout", function (e) {
-    if (lastInput === "touch" || pop.hidden) return;
-    var to = e.relatedTarget;
-    if (pop.contains(e.target)) { if (!(to && (pop.contains(to) || to === popFor))) hide(true); return; }
-    if (isNum(e.target) && !(to && pop.contains(to)) && !pop.matches(":hover")) hide();
-  });
-  document.addEventListener("click", function (e) {
-    var el = isNum(e.target);
-    if (el) {
-      if (popFor === el && !pop.hidden && lastInput !== "keyboard") hide(true);
-      else { show(el); if (lastInput === "keyboard") pop.focus({ preventScroll: true }); }
-      return;
-    }
-    if (!(e.target.closest && e.target.closest("#pop"))) hide(true);
-  });
-  function closeAndReturn() {
-    var f = popFor; hide(true);
-    if (f) { quiet = true; f.focus({ preventScroll: true }); quiet = false; }
-  }
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !pop.hidden) { e.preventDefault(); closeAndReturn(); return; }
-    var num = isNum(e.target);
-    if (num && (e.key === "Enter" || e.key === " ")) {
-      e.preventDefault(); show(num);
-      pop.focus({ preventScroll: true }); // links inside are now reachable with Tab
-      return;
-    }
-    if (num && (e.key === "ArrowRight" || e.key === "ArrowLeft")) { // roving focus between numbers in the same paragraph
-      var sib = num.__sibs, i = sib ? sib.indexOf(num) : -1, nx = i < 0 ? null : sib[i + (e.key === "ArrowRight" ? 1 : -1)];
-      if (nx) { e.preventDefault(); nx.focus(); }
-      return;
-    }
-    if (e.key === "Tab" && pop.contains(e.target)) { // keep the tab order sane: leaving the dialog returns to its number
-      var links = pop.querySelectorAll("a[href]"), first = links[0], last = links[links.length - 1];
-      var atStart = e.target === pop || e.target === first, atEnd = !links.length || e.target === last;
-      if (e.shiftKey ? atStart : atEnd) { e.preventDefault(); closeAndReturn(); }
-    }
-  });
-  window.addEventListener("scroll", function () { if (popFor && !pop.hidden) place(popFor); }, { passive: true });
 
-  // ------------------------------------------------------------ theme
-  var btn = document.getElementById("theme-btn");
-  var mq = window.matchMedia("(prefers-color-scheme: dark)");
-  function current() { return document.documentElement.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); }
-  function label() { btn.setAttribute("aria-pressed", current() === "dark" ? "true" : "false"); }
-  btn.addEventListener("click", function () {
-    var next = current() === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("ath-theme", next); } catch (e) {}
-    label();
-  });
-  if (mq.addEventListener) mq.addEventListener("change", label);
-  label();
+  /* ---------------------------------------------------------------- explorer (the dump) */
+  const EX = (function () {
+    const dump = $("#dump");
+    const lg = Math.log10(maxLoss / 1e3);
+    rows.forEach((r) => {
+      r.byte = r.loss <= 1e3 ? 0 : Math.max(0, Math.min(255, Math.round((255 * Math.log10(r.loss / 1e3)) / lg)));
+      r.hex = r.byte.toString(16).padStart(2, "0");
+      r.cls = (r.enf === "c" ? "c " : "") + (!r.unver && r.ret > 0 ? "r " : (!r.unver && r.oth > 0 ? "o " : "")) + (r.dprk === 2 ? "dg" : "");
+    });
+    const FILTERS = [
+      { k: "", label: "All hacks", sw: "", test: () => true },
+      { k: "c", label: "Arrested or charged", sw: "arr", test: (r) => r.enf === "c", desc: "a person was arrested or charged for the hack itself" },
+      { k: "r", label: "Recorded returns", sw: "ret", test: (r) => !r.unver && r.ret > 0, desc: "some of the money was recorded as returned" },
+      { k: "o", label: "Other recoveries", sw: "oth", test: (r) => !r.unver && r.oth > 0, desc: "some funds were recovered by freezes, seizures, rescues or other recorded channels" },
+      { k: "dprk", label: "North Korea: government", sw: "dprk", test: (r) => r.dprk === 2, desc: "a government attributes the hack to North Korea" },
+    ];
+    let lastOff = -1, filter = FILTERS[0], cols = 0, tiny = false, sel = byId["20250221-bybit"] ? byId["20250221-bybit"].i : 0, cells = [];
 
-  // ------------------------------------------------------------ hero ledger bar
-  (function () {
-    var bar = document.getElementById("ledger-bar");
-    var total = byId.S1.numeric.total_usd;
-    var parts = [[byId.R2.numeric.voluntary_usd, "var(--s1)"], [byId.C4.numeric.master_usd, "var(--s2)"], [A.derived.unrecovered_usd.v, "var(--lost)"]];
-    if (!bar) return;
-    bar.innerHTML = parts.map(function (p) { return '<span style="flex:' + (p[0] / total) + ' 1 0; background:' + p[1] + '"></span>'; }).join("");
+    const chips = $("#chips");
+    FILTERS.forEach((f) => {
+      const n = rows.filter(f.test).length;
+      const b = el("button", { class: "chip", type: "button", "aria-pressed": f.k ? "false" : "true", "data-f": f.k });
+      b.innerHTML = (f.sw ? `<span class="sw ${f.sw}"></span>` : "") + esc(f.label) + (f.k ? ` <b>${int(n)}</b>` : "");
+      b.addEventListener("click", () => setFilter(f));
+      chips.appendChild(b);
+    });
+    function setFilter(f) {
+      filter = f;
+      $$(".chip", chips).forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.f === f.k)));
+      if (f.k) dump.setAttribute("data-f", f.k); else dump.removeAttribute("data-f");
+      let n = 0;
+      cells.forEach((c, i) => { const hit = f.test(rows[i]); c.classList.toggle("hit", hit); if (hit) n++; });
+      $("#filter-note").textContent = f.k ? `${int(n)} of ${int(rows.length)} hacks: ${f.desc}.` + (f.k !== "c" ? " Pink cells stay pink: they are the arrested or charged ones." : "") : "";
+    }
+
+    function build() {
+      const w = dump.clientWidth - 20;
+      const ncols = w >= 760 ? 32 : (w >= 520 ? 24 : 16);
+      const offW = w >= 520 ? 66 : 0;
+      const cell = (w - offW) / ncols;
+      const isTiny = cell < 18;
+      if (ncols === cols && isTiny === tiny && offW === lastOff && cells.length) return;
+      cols = ncols; tiny = isTiny; lastOff = offW;
+      dump.classList.toggle("tiny", tiny);
+      dump.classList.toggle("nooff", offW === 0);
+      dump.style.setProperty("--cols", cols);
+      dump.innerHTML = "";
+      cells = [];
+      const frag = document.createDocumentFragment();
+      for (let s = 0; s < rows.length; s += cols) {
+        const row = el("div", { class: "dump-row", role: "presentation" });
+        row.appendChild(el("span", { class: "dump-off", "aria-hidden": "true", text: rows[s].date.slice(0, 7) }));
+        const cs = el("div", { class: "dump-cells", role: "presentation" });
+        for (let i = s; i < Math.min(s + cols, rows.length); i++) {
+          const r = rows[i];
+          const c = el("span", { class: "cell " + r.cls, role: "option", id: "cell-" + i, tabindex: "-1", "aria-selected": "false", "aria-label": `${r.label}, ${money(r.loss)}, ${fmtDate(r.date)}`, title: `${r.label}, ${money(r.loss)}`, "data-i": i });
+          c.textContent = r.hex;
+          cs.appendChild(c); cells.push(c);
+        }
+        row.appendChild(cs); frag.appendChild(row);
+      }
+      dump.appendChild(frag);
+      setFilter(filter);
+      mark(sel, false);
+    }
+    function mark(i, focus) {
+      cells.forEach((c) => { if (c.classList.contains("sel")) { c.classList.remove("sel"); c.setAttribute("aria-selected", "false"); c.tabIndex = -1; } });
+      const c = cells[i]; if (!c) return;
+      c.classList.add("sel"); c.setAttribute("aria-selected", "true"); c.tabIndex = 0;
+      if (focus) c.focus({ preventScroll: true });
+    }
+    function show(r) {
+      $("#rd-off").textContent = `cell 0x${r.i.toString(16).padStart(3, "0")} of ${int(rows.length)}`;
+      $("#rd-name").textContent = r.label;
+      const al = $("#rd-alias");
+      if (r.alias) { al.hidden = false; al.textContent = `Also listed as ${r.alias}`; } else al.hidden = true;
+      $("#rd-meta").textContent = metaLine(r);
+      $("#rd-bar").innerHTML = barHTML(r);
+      $("#rd-line").textContent = outcome(r);
+      $("#rd-note").hidden = !(r.ev === "p" && r.rec !== "u");
+      $("#rd-tags").innerHTML = tagHTML(r);
+    }
+    function reveal(c) {
+      if (dump.scrollHeight > dump.clientHeight + 2) dump.scrollTop = c.offsetTop - dump.clientHeight / 2;
+      else c.scrollIntoView({ block: "nearest", behavior: "auto" });
+    }
+    function select(i, opt) {
+      opt = opt || {};
+      sel = Math.max(0, Math.min(rows.length - 1, i));
+      mark(sel, !!opt.focus);
+      show(rows[sel]);
+      if (opt.scroll && cells[sel]) reveal(cells[sel]);
+    }
+    dump.addEventListener("click", (e) => { const c = e.target.closest(".cell"); if (c) select(+c.dataset.i, { focus: true }); });
+    dump.addEventListener("keydown", (e) => {
+      const map = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols, PageDown: cols * 8, PageUp: -cols * 8 };
+      let n = null;
+      if (e.key in map) n = sel + map[e.key];
+      else if (e.key === "Home") n = sel - (sel % cols);
+      else if (e.key === "End") n = Math.min(rows.length - 1, sel - (sel % cols) + cols - 1);
+      if (n === null) return;
+      e.preventDefault();
+      select(Math.max(0, Math.min(rows.length - 1, n)), { focus: true });
+      cells[sel].scrollIntoView({ block: "nearest" });
+    });
+    function step(d) {
+      let i = sel;
+      for (let k = 0; k < rows.length; k++) { i = (i + d + rows.length) % rows.length; if (filter.test(rows[i])) break; }
+      select(i, { scroll: false });
+    }
+    $("#rd-prev").addEventListener("click", () => step(-1));
+    $("#rd-next").addEventListener("click", () => step(1));
+    $("#rd-link").addEventListener("click", () => copy(baseURL() + "#hack=" + encodeURIComponent(rows[sel].id)));
+    $("#rd-img").addEventListener("click", () => {
+      const r = rows[sel];
+      const color = r.enf === "c" ? "#ff5c93" : (!r.unver && r.ret > 0 ? "#44e3bf" : (!r.unver && r.oth > 0 ? "#8db8ff" : "#e7ebf1"));
+      saveCard({ kicker: metaLine(r), big: r.label, bigSize: 99, text: outcome(r), foot: tagsFor(r).map((t) => t[1]).join(". ") + (tagsFor(r).length ? "." : "") + (r.ev === "p" && r.rec !== "u" ? " Recovery sources were checked in part only." : ""), color, file: `after-the-hack-${r.id}.png` });
+    });
+
+    /* search */
+    const q = $("#q"), res = $("#results"), cnt = $("#q-count");
+    const norm = (s) => s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, " ").trim();
+    rows.forEach((r) => { r.key = norm(r.label + " " + r.name + " " + r.alias); });
+    function search() {
+      const s = norm(q.value);
+      res.innerHTML = "";
+      if (!s) { res.hidden = true; cnt.textContent = ""; return []; }
+      const hits = rows.filter((r) => r.key.includes(s));
+      hits.sort((a, b) => ((b.key.startsWith(s) || b.key.includes(" " + s)) - (a.key.startsWith(s) || a.key.includes(" " + s))) || b.loss - a.loss);
+      const top = hits.slice(0, 8);
+      cnt.textContent = !hits.length ? "No hack in the dataset matches that name." : hits.length === 1 ? "1 match." : hits.length > top.length ? `${int(hits.length)} matches. Showing the top ${top.length} matches.` : `${hits.length} matches.`;
+      top.forEach((r) => {
+        const li = el("li");
+        const b = el("button", { type: "button", "data-i": r.i });
+        b.innerHTML = `<span>${esc(r.label)}${r.alias ? ` <span class="small">(${esc(r.alias)})</span>` : ""}</span><span class="rl">${money(r.loss)}, ${r.date.slice(0, 4)}</span>`;
+        li.appendChild(b); res.appendChild(li);
+      });
+      res.hidden = !top.length;
+      return top;
+    }
+    q.addEventListener("input", search);
+    q.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { const t = search(); if (t[0]) { pick(t[0].i); } e.preventDefault(); }
+      else if (e.key === "ArrowDown") { const b = $("button", res); if (b) { b.focus(); e.preventDefault(); } }
+      else if (e.key === "Escape") { q.value = ""; search(); }
+    });
+    res.addEventListener("keydown", (e) => {
+      const bs = $$("button", res), k = bs.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" && k < bs.length - 1) { bs[k + 1].focus(); e.preventDefault(); }
+      else if (e.key === "ArrowUp") { (k > 0 ? bs[k - 1] : q).focus(); e.preventDefault(); }
+      else if (e.key === "Escape") { q.focus(); res.hidden = true; }
+    });
+    function pick(i) {
+      res.hidden = true;
+      select(i, { scroll: true, focus: false });
+      cnt.textContent = `Showing ${rows[i].label}.`;
+    }
+    res.addEventListener("click", (e) => { const b = e.target.closest("button[data-i]"); if (b) pick(+b.dataset.i); });
+
+    let rt;
+    new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(build, 80); }).observe(dump);
+    build();
+    show(rows[sel]);
+    if (cells[sel] && dump.scrollHeight > dump.clientHeight + 2) dump.scrollTop = cells[sel].offsetTop - dump.clientHeight / 2;
+    return { select, build };
   })();
 
-  // ------------------------------------------------------------ negotiation thread
-  (function () {
-    var host = document.getElementById("thread");
-    var CHAIN = { ethereum: "Ethereum", optimism: "Optimism", bitcoin: "Bitcoin", arbitrum: "Arbitrum", polygon: "Polygon" };
-    function explorer(link) {
-      if (/optimistic\.etherscan/.test(link)) return "Optimism Etherscan";
-      if (/etherscan\.io/.test(link)) return "Etherscan";
-      if (/mempool\.space/.test(link)) return "mempool.space";
-      return "explorer";
-    }
-    // The context starts with a short "Case (date, amount)." label; the one-line note is the sentence after it.
-    function firstSentence(t) {
-      var parts = String(t || "").replace(/([.!?])\s+(?=[A-Z0-9'"])/g, "$1\u0001").split("\u0001");
-      return (parts.length > 1 && parts[0].length < 70 ? parts[1] : parts[0]).trim();
-    }
-    function short(h) { return h.length > 16 ? h.slice(0, 8) + "…" + h.slice(-6) : h; }
-    function when(iso) { var t = iso.slice(11, 16); return dateText(iso) + ", " + t + " UTC"; }
-    function gap(a, b) {
-      var s = (Date.parse(b) - Date.parse(a)) / 1000;
-      var d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.round((s % 3600) / 60);
-      if (d) return d + (d === 1 ? " day " : " days ") + h + (h === 1 ? " hour" : " hours") + " later";
-      if (h) return h + (h === 1 ? " hour " : " hours ") + m + " minutes later";
-      return m + " minutes later";
-    }
-    var groups = {}, order = [];
-    A.quotes.forEach(function (q) {
-      if (!groups[q.case]) { groups[q.case] = []; order.push(q.case); }
-      groups[q.case].push(q);
-    });
-    order.sort(function (a, b) {
-      return Math.min.apply(null, groups[a].map(function (q) { return q.rank; })) - Math.min.apply(null, groups[b].map(function (q) { return q.rank; }));
-    });
-    host.innerHTML = order.map(function (c) {
-      var qs = groups[c].slice().sort(function (a, b) { return a.time < b.time ? -1 : 1; });
-      return '<section class="case" aria-label="' + esc(c) + '"><h3 class="case-name">' + esc(c) + "</h3>" + qs.map(function (q, i) {
-        var msg = q.segments.map(function (s) { return esc(s.trim()); }).join('<span class="gap">[…]</span>');
-        var hexText = q.chain === "bitcoin" ? "OP_RETURN " + q.hex : "0x" + q.hex;
-        var html = (i ? '<p class="tx-gap">' + gap(qs[i - 1].time, q.time) + "</p>" : "") +
-          '<article class="tx ' + q.side + '" aria-label="' + esc(q.role_label + ", " + c + ", " + dateText(q.time)) + '">' +
-          '<div class="tx-top"><span class="who">' + esc(q.role_label) + "</span><span>" + esc(when(q.time)) + "</span></div>" +
-          '<div class="tx-hex" aria-hidden="true">' + esc(hexText) + "</div>" +
-          '<blockquote class="tx-msg">' + msg + "</blockquote>" +
-          '<p class="tx-ctx">' + esc(firstSentence(q.context)) + "</p>" +
-          '<div class="tx-meta"><span>' + esc(CHAIN[q.chain] || q.chain) + "</span><span>Block " + Number(q.block).toLocaleString("en-US") + "</span>" +
-          '<span>' + (q.complete ? "Full decoded message" : "Excerpts of the decoded message") + "</span>" +
-          '<a href="' + esc(q.link) + '" rel="noopener" target="_blank" aria-label="View transaction on ' + explorer(q.link) + '">' + esc(short(q.hash)) + "</a></div>" +
-          "<details><summary>Context and checks</summary>" + (firstSentence(q.context) !== q.context ? "<p><b>Context:</b> " + esc(q.context) + "</p>" : "") + "<p><b>Text:</b> " + esc(q.text_match_note) + "</p><p><b>Sender:</b> " + esc(q.role_evidence) + "</p></details>" +
-          "</article>";
-        return html;
-      }).join("") + "</section>";
+  /* ---------------------------------------------------------------- charts */
+  function annual() {
+    const a = A.charts.annual, max = Math.max(...a.map((r) => r.loss_usd));
+    $("#annual").innerHTML = a.map((r) => `<div class="hbar"><span class="y">${r.year}</span><span class="track"><span class="fill" style="width:${(r.loss_usd / max) * 100}%"></span></span><span class="v"><b>${fmt(r.loss_usd, r.loss_usd >= 1e9 ? "B2" : "usd")}</b>, ${int(r.n)} hacks, largest ${esc(r.largest)}</span></div>`).join("");
+  }
+
+  const CHAN = {
+    "voluntary return (attacker/insider)": ["Returned by the attacker or an insider", "#44e3bf"],
+    "issuer / exchange / protocol freeze": ["Frozen by an issuer, exchange or protocol", "#8db8ff"],
+    "law-enforcement seizure / court": ["Seized by police or a court", "#4f7fd6"],
+    "chain-level: halt / validator / security council": ["Chain halt or validator freeze", "#c3d8ff"],
+    "chain-level: hard fork / rollback": ["Hard fork or rollback", "#2f5aa8"],
+    "white-hat / MEV rescue": ["White-hat or MEV rescue", "#e6eeff"],
+    "other / unspecified": ["Other or unspecified", "#7f8aa0"],
+  };
+  function channels() {
+    const ch = N("C3").channels;
+    const host = $("#channels");
+    host.innerHTML = `<div class="stack" role="img" aria-label="${esc(ch.map((c) => `${(CHAN[c.channel] || [c.channel])[0]} ${c.pct}%`).join(", "))}">${ch.map((c) => `<span style="width:${c.pct}%;background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span>`).join("")}</div>
+      <ul class="legend">${ch.map((c) => `<li><span class="sw" style="background:${(CHAN[c.channel] || [0, "#7f8aa0"])[1]}"></span><span>${esc((CHAN[c.channel] || [c.channel])[0])}<br><span class="small">${fmt(c.usd, c.usd >= 1e9 ? "B2" : "usd")}, ${c.incidents} hacks</span></span><b>${c.pct}%</b></li>`).join("")}</ul>`;
+  }
+
+  function human(d) {
+    if (d < 1) { const h = Math.round(d * 24); return `${h} hour${h === 1 ? "" : "s"}`; }
+    return `${d} day${d === 1 ? "" : "s"}`;
+  }
+  function clock() {
+    const CLS = { attacker_return: "ret", law_enforcement_seizure: "slow", first_arrest: "arr" };
+    const rowsC = A.charts.clock.map((c) => ({ label: c.label, median: c.median, n: c.n, cls: CLS[c.key] || "" }));
+    rowsC.sort((a, b) => a.median - b.median);
+    const lo = Math.log10(1 / 24), hi = Math.log10(365.25 * 5);
+    const x = (d) => ((Math.log10(Math.max(d, 1 / 24)) - lo) / (hi - lo)) * 100;
+    const host = $("#clock");
+    host.innerHTML = rowsC.map((r) => {
+      const p = x(r.median), left = p > 66;
+      return `<div class="clock-row"><div class="clock-l">${esc(r.label)} <small>(${r.n} case${r.n === 1 ? "" : "s"})</small></div>
+        <div class="clock-t" role="img" aria-label="${esc(r.label)}: median ${human(r.median)}"><span class="dot ${r.cls}" style="left:${p}%"></span><span class="lbl" style="${left ? `right:${100 - p}%;` : `left:${p}%;`}">${human(r.median)}</span></div></div>`;
+    }).join("") + `<div class="clock-axis" aria-hidden="true">${[[1 / 24, "1 hour"], [1, "1 day"], [7, "1 week"], [30.4, "1 month"], [365.25, "1 year"], [1826, "5 years"]].map(([d, l]) => `<span style="left:${x(d)}%">${l}</span>`).join("")}</div>`;
+  }
+
+  function offers() {
+    const o = A.charts.openings;
+    $("#offers").innerHTML = o.map((r) => {
+      const sq = Array.from({ length: r.n }, (_, i) => `<i class="${i < r.exactly_10 ? "on" : ""}"></i>`).join("");
+      return `<div class="offer-row"><span class="y">${r.year}</span><span class="units" role="img" aria-label="${r.year}: ${r.exactly_10} of ${r.n} openings were exactly 10%">${sq}</span><span class="v"><b>${r.exactly_10} of ${r.n}</b> exactly 10%. Median ${pctTxt(r.median)}.</span></div>`;
     }).join("");
-  })();
-
-  // ------------------------------------------------------------ recent cases
-  document.querySelectorAll("#cases-list li[data-case]").forEach(function (li) {
-    var id = li.getAttribute("data-case");
-    var meta = A.charts.cases.filter(function (c) { return c.id === id; })[0];
-    var n = byId[id].numeric;
-    li.querySelector(".when").textContent = meta ? meta.label : "";
-    var loss = li.querySelector(".loss");
-    loss.textContent = money(n.loss_usd);
-    loss.setAttribute("data-n", id + ".loss_usd|x");
-    var back = li.querySelector(".back");
-    var r = resolve(back.getAttribute("data-back"));
-    var kind = back.getAttribute("data-kind");
-    var pct = r ? r.v : 0;
-    if (back.getAttribute("data-of") && r) pct = 100 * r.v / resolve(back.getAttribute("data-of")).v;
-    if (kind === "returned-inverse") pct = 100 - pct;
-    var words = kind === "frozen" ? " frozen or recovered" : kind === "zero" ? " recovered" : " returned by the attacker";
-    var unit = back.getAttribute("data-unit");
-    // a missing or zero figure is shown as "No recovery recorded", never as a drawn 0% bar
-    if (kind === "zero" && r && r.v > 0) pct = 100 * r.v / n.loss_usd;
-    if (!r || (kind === "zero" && !(r.v > 0)) || (kind !== "returned-inverse" && pct === 0)) {
-      back.innerHTML = '<span class="back-none">' + (r ? "No recovery recorded" : "Figure not available") + "</span>";
-      return;
-    }
-    var txt = (pct < 1 ? fixed(pct, 2) : fixed(pct, 1)) + "%";
-    back.innerHTML = '<div class="track" role="img" aria-label="' + txt + words + '"><span class="fill' + (kind === "frozen" ? " frozen" : "") + '" style="width:' + Math.max(0, Math.min(100, pct)) + '%"></span></div><span>' + txt + words + (unit ? " (" + esc(unit) + ")" : "") + "</span>";
-  });
-  // the loss spans become plain numbers with a definition (formatted above)
-  document.querySelectorAll("#cases-list .loss").forEach(function (el) {
-    var id = el.closest("li").getAttribute("data-case");
-    el.removeAttribute("data-n");
-    el.classList.add("n"); el.setAttribute("tabindex", "0"); el.setAttribute("role", "button"); el.setAttribute("aria-expanded", "false");
-    el.__src = { kind: "canon", id: id };
-  });
-
-  // ------------------------------------------------------------ code-is-law scoreboard
-  document.querySelector("#defences tbody").innerHTML = A.charts.defences.map(function (d) {
-    return "<tr><td>" + esc(d.case) + "</td><td>" + esc(d.defence) + "</td><td>" + esc(d.result) + "</td></tr>";
-  }).join("");
-
-  // ------------------------------------------------------------ downloads, definitions, sources
-  document.querySelector("#downloads tbody").innerHTML = A.downloads.map(function (d) {
-    var kb = d.bytes > 1e6 ? fixed(d.bytes / 1e6, 1) + " MB" : Math.max(1, Math.round(d.bytes / 1e3)) + " KB";
-    return '<tr><td><a href="' + esc(d.file) + '" download>' + esc(d.file.replace("data/", "")) + "</a></td><td>" + esc(d.desc) + '</td><td class="r">' + kb + "</td></tr>";
-  }).join("");
-
-  document.getElementById("defs").innerHTML = A.canon.numbers.map(function (n) {
-    var alts = (n.alt_figures || []).map(function (a) { return "<li>" + esc(a.figure) + ": " + esc(a.why) + "</li>"; }).join("");
-    return '<details id="def-' + n.id + '"><summary><span class="id">' + n.id + "</span><span>" + esc(n.question) + '</span></summary><div class="dbody">' +
-      "<p><b>Canonical value.</b> " + esc(n.canonical_value) + "</p><p><b>Definition.</b> " + esc(n.definition) + "</p>" +
-      "<p><b>Confidence: " + esc(n.confidence) + ".</b> " + esc(n.confidence_reason || "") + "</p>" +
-      "<p><b>Sources</b></p><ul>" + n.sources.map(function (s) { return "<li>" + srcItem(s) + "</li>"; }).join("") + "</ul>" +
-      (alts ? "<p><b>Other published figures and why they differ</b></p><ul>" + alts + "</ul>" : "") + "</div></details>";
-  }).join("") + (A.canon.reconciliations || []).map(function (r, i) {
-    return '<details id="rec-' + i + '"><summary><span class="id">R' + (i + 1) + "</span><span>Reconciliation: " + esc(r.topic) + '</span></summary><div class="dbody"><p>' + esc(r.explanation) + "</p></div></details>";
-  }).join("");
-
-  function openDef() {
-    var h = location.hash;
-    if (!/^#def-/.test(h)) return;
-    var d = document.getElementById(h.slice(1));
-    if (d) { d.open = true; d.classList.add("flash"); setTimeout(function () { d.classList.remove("flash"); }, 1600); }
   }
-  window.addEventListener("hashchange", openDef);
-  document.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="#def-"]');
-    if (a) { var d = document.getElementById(a.getAttribute("href").slice(1)); if (d) d.open = true; hide(true); }
-  });
 
-  var urls = [], seen = {};
-  A.canon.numbers.forEach(function (n) {
-    n.sources.concat((n.alt_figures || []).map(function (a) { return a.source; })).forEach(function (s) {
-      (String(s).match(/https?:\/\/[^\s,;)]+/g) || []).forEach(function (u) { if (!seen[u]) { seen[u] = 1; urls.push(u); } });
+  function returnsStrip() {
+    const R = A.charts.returns, R4 = N("R4");
+    const max = Math.ceil(Math.max(...R.map((r) => r.days)) / 7) * 7;
+    const bins = {};
+    const pts = R.slice().sort((a, b) => a.days - b.days).map((r) => {
+      const b = Math.round(r.days / (max / 46));
+      bins[b] = (bins[b] || 0) + 1;
+      return `<span class="pt" title="${esc(r.name)}, ${r.days} days" style="left:${(r.days / max) * 100}%;top:${62 - 6 - (bins[b] - 1) * 12}px"></span>`;
+    }).join("");
+    const ticks = [];
+    for (let d = 0; d <= max; d += 7) ticks.push(`<span class="tk${d === 0 ? " first" : d + 7 > max ? " last" : ""}" style="left:${(d / max) * 100}%">${d} days</span>`);
+    $("#returns").innerHTML = `<div class="strip" role="img" aria-label="${R4.within_7d} of ${R4.n_dated} first returns came within 7 days. Median ${R4.median_days_from_incident} days.">
+      <span class="wk" style="left:${(7 / max) * 100}%"><span>1 week: ${R4.within_7d} of ${R4.n_dated} before this line</span></span>
+      <span class="axis"></span>${pts}${ticks.join("")}</div>`;
+  }
+
+  const cleanName = (s) => s.replace(/ \(DeFiLlama name: .*\)$/, "");
+  function grid100() {
+    const t = A.charts.top100, c = A.charts.top100_counts;
+    const cls = { charged_for_hack: "c", laundering_side_only: "l", civil_or_regulatory_only: "v", not_for_the_hack: "v" };
+    const g = $("#grid100");
+    g.innerHTML = t.map((r) => `<i class="${cls[r.status] || ""}${r.dprk_gov ? " dg" : ""}" title="#${r.rank} ${esc(cleanName(r.name))}, ${money(r.loss)}"></i>`).join("");
+    g.setAttribute("aria-label", `Of the 100 largest hacks: ${c.charged_for_hack} with a person charged for the hack itself, ${c.laundering_side_only} with charges only for laundering, ${c.civil_or_regulatory_only + c.not_for_the_hack} with civil or regulatory action or an arrest on other grounds, ${c.none_found} with none found.`);
+    const dg = t.filter((r) => r.dprk_gov).length;
+    $("#grid100-key").innerHTML = `<li><span class="sw arr"></span>Charged for the hack itself (${c.charged_for_hack})</li>
+      <li><span class="sw" style="border:2px solid var(--arr)"></span>Charged only for laundering (${c.laundering_side_only})</li>
+      <li><span class="sw" style="background:var(--ink-3)"></span>Civil or regulatory only, or arrest on other grounds (${c.civil_or_regulatory_only + c.not_for_the_hack})</li>
+      <li><span class="sw dim"></span>None found (${c.none_found})</li>
+      <li><span class="sw" style="background:var(--dprk);height:4px"></span>North Korea, government attribution (${dg})</li>`;
+    const names = t.filter((r) => r.status === "charged_for_hack").map((r) => cleanName(r.name));
+    $("#grid100-names").textContent = `Charged for the hack itself: ${names.join(", ")}.`;
+  }
+
+  function arrestList() {
+    const a = A.charts.arrests, max = Math.max(...a.map((r) => r.days));
+    $("#arrest-list").innerHTML = a.map((r) => {
+      const c = !r.in_scope ? "out" : (r.kind ? "side" : "");
+      return `<div class="ar"><div class="ar-n">${esc(r.name)}${r.kind ? `<small>${esc(r.kind)}</small>` : ""}</div><div class="ar-t"><span class="b ${c}" style="width:${(r.days / max) * 100}%"></span><span class="d" style="left:${(r.days / max) * 100}%">${int(r.days)} days</span></div></div>`;
+    }).join("");
+    // keep the day label inside the track for long bars
+    $$("#arrest-list .ar").forEach((row, i) => { if (a[i].days / max > 0.8) { const d = $(".d", row); d.style.left = "auto"; d.style.right = (100 - (a[i].days / max) * 100) + "%"; d.style.paddingRight = "6px"; d.style.color = "var(--ink)"; d.style.top = "-14px"; } });
+  }
+
+  const PEOPLE = [
+    ["convicted_or_pleaded", "Convicted, pleaded guilty, or plea agreement on file", "conv"],
+    ["at_large_or_not_in_custody", "Charged; no public custody record found", "free"],
+    ["pending", "Pending", ""],
+    ["acquitted", "Acquitted", ""],
+    ["conviction_vacated_or_acquitted_appeal_pending", "Conviction vacated or acquitted, appeal pending", ""],
+    ["outcome_unknown", "Outcome unknown", ""],
+  ];
+  function people() {
+    const o = A.charts.outcomes, d = A.charts.outcomes_detail;
+    $("#people").innerHTML = PEOPLE.map(([k, l, c]) => `<div class="pg"><div class="pg-l"><b>${o[k]}</b>${esc(l)}</div><div class="pg-u" aria-hidden="true">${("<i class=\"" + c + "\"></i>").repeat(o[k])}</div></div>`).join("");
+    $("#people-names").innerHTML = `<dl class="defs">${PEOPLE.map(([k, l]) => `<div><dt>${esc(l)}</dt><dd>${(d[k] || []).map(esc).join("; ")}</dd></div>`).join("")}</dl>`;
+  }
+
+  function pairRow(label, v, color, note) {
+    return `<div class="pair-r"><div class="pl"><span>${esc(label)}${note ? ` <span class="small">${esc(note)}</span>` : ""}</span><b>${v}%</b></div><div class="pt" role="img" aria-label="${esc(label)}: ${v}%"><span style="width:${v}%;background:${color}"></span></div></div>`;
+  }
+  function dprk() {
+    const D1 = N("D1"), D3 = N("D3");
+    $("#dprk-share").innerHTML = pairRow("Share of all hacks", D("dprk_gov_count_pct"), "var(--dprk)") + pairRow("Share of stolen dollars", D1.gov.pct, "var(--dprk)");
+    $("#dprk-rec").innerHTML = pairRow("Government attribution to North Korea", D3.gov_only_pct, "var(--dprk)") + pairRow("Outside the government, firm and researcher-list groups", D3.non_dprk_pct, "var(--oth)");
+  }
+
+  function hbars(host, items) {
+    const max = 100;
+    host.innerHTML = items.map((r) => `<div class="hbar"><span class="y" style="font-size:14px;line-height:1.2">${esc(r.y)}</span><span class="track"><span class="fill" style="width:${(r.v / max) * 100}%;background:${r.color || "var(--ink)"}"></span></span><span class="v"><b>${r.v}%</b> ${esc(r.note)}</span></div>`).join("");
+  }
+  function attacks() {
+    const k1 = A.attack.k1.eras, k4 = A.attack.k4.eras;
+    hbars($("#k1"), k1.map((e) => ({ y: e.label.replace(" (to 18 Oct)", ""), v: e.ctor_pct, note: `(${e.ctor} of ${e.n}), ${e.usd_pct}% by dollars` })));
+    hbars($("#k4"), k4.map((e) => ({ y: e.label, v: e.direct_pct, note: `(${e.direct} of ${e.n}), ${e.dates}` })));
+    $$("#k1 .hbar, #k4 .hbar").forEach((h) => h.classList.add("wide"));
+    const V = N("V1");
+    const VEC = [["private-key/compromised-infra", "Compromised keys or infrastructure"], ["smart-contract logic", "Smart-contract logic bug"], ["social-engineering", "Social engineering"], ["supply-chain", "Supply chain"], ["oracle/price-manipulation", "Oracle or price manipulation"], ["access-control", "Access control"]];
+    const vmax = 40;
+    $("#vectors").innerHTML = VEC.map(([k, l]) => `<div class="vec-r"><div class="vec-l">${esc(l)}</div><div class="vec-b" role="img" aria-label="${esc(l)}: ${V.pct_dollars[k]}% of dollars, ${V.pct_count[k]}% of hacks">
+      <div><span style="width:${(V.pct_dollars[k] / vmax) * 100}%;background:var(--ink)"></span><em style="left:${(V.pct_dollars[k] / vmax) * 100}%">${V.pct_dollars[k]}%</em></div>
+      <div><span style="width:${(V.pct_count[k] / vmax) * 100}%;background:var(--ink-3)"></span><em style="left:${(V.pct_count[k] / vmax) * 100}%">${V.pct_count[k]}%</em></div></div></div>`).join("");
+    $("#ai-use").innerHTML = A.attack.ai.attacker_use.map((c) => `<li><b>${esc(c.title)}</b> <span class="gr">(${esc(c.when)})</span><br>${esc(c.body)} <a href="${esc(c.url)}">Source</a></li>`).join("");
+  }
+
+  /* ---------------------------------------------------------------- on-chain messages */
+  const short = (h) => (h && h.length > 14 ? h.slice(0, 8) + "…" + h.slice(-6) : h || "");
+  function gap(a, b) {
+    let s = Math.round((Date.parse(b) - Date.parse(a)) / 1000);
+    const d = Math.floor(s / 86400); s -= d * 86400;
+    const h = Math.floor(s / 3600); s -= h * 3600;
+    const m = Math.floor(s / 60); s -= m * 60;
+    if (d) return `${d}d ${h}h later`;
+    if (h) return `${h}h ${m}m later`;
+    return `${m}m ${s}s later`;
+  }
+  let msgN = 0;
+  function msgHTML(q, opts) {
+    const id = "m" + (msgN++);
+    const side = q.side === "attacker" ? "side-a" : "side-p";
+    const t = q.time.replace("T", " ").replace("Z", "");
+    const text = q.segments.map(esc).join(q.complete ? "\n" : '<span class="el"> [...] </span>');
+    const hex = q.hex.replace(/(..)/g, "$1 ").trim();
+    return `<article class="msg${opts && opts.reply ? " reply" : ""}" aria-label="${esc(q.role_label)}, ${esc(q.case)}, ${esc(fmtDate(q.time))}">
+      <div class="msg-h"><div class="who"><span><b class="${side}">${esc(q.role_label)}</b>, ${esc(q.case)}</span><span>${esc(fmtDate(q.time))}, ${esc(t.slice(11))} UTC</span></div>
+        <span>tx <a href="${esc(q.link)}">${esc(short(q.hash))}</a> on ${esc(cap(q.chain))}${q.block ? `, block ${esc(int(+q.block))}` : ""}</span>
+        ${q.from ? `<span>from <code>${esc(short(q.from))}</code>${q.to ? ` to <code>${esc(short(q.to))}</code>` : ""}</span>` : ""}</div>
+      <div class="msg-b"><div class="msg-v" role="group" aria-label="View input data as"><button type="button" aria-pressed="true" data-v="txt" aria-controls="${id}">Text</button><button type="button" aria-pressed="false" data-v="hex" aria-controls="${id}">Hex</button></div>
+        <div id="${id}"><p class="msg-text">${text}</p><p class="msg-hex" hidden>0x ${hex} ...<br><span class="small">First ${q.hex.length / 2} bytes of the input data.</span></p></div>
+        <p class="msg-ctx">${esc(q.context)}</p></div></article>`;
+  }
+  function messages() {
+    const Q = Object.fromEntries(A.quotes.map((q) => [q.rank, q]));
+    const thread = (a, b) => `<div class="thread">${msgHTML(Q[a])}<div class="gap">${gap(Q[a].time, Q[b].time)}</div>${msgHTML(Q[b], { reply: true })}</div>`;
+    const feat = $("#msgs-featured");
+    feat.className = "msgs";
+    feat.innerHTML = thread(2, 3) + thread(7, 6) + msgHTML(Q[9]) + msgHTML(Q[8]);
+    // all messages, grouped by case; cases by editorial rank, oldest first within a case
+    const groups = {};
+    A.quotes.forEach((q) => { (groups[q.case] = groups[q.case] || []).push(q); });
+    const order = Object.keys(groups).sort((a, b) => Math.min(...groups[a].map((q) => q.rank)) - Math.min(...groups[b].map((q) => q.rank)));
+    $("#msgs-all").innerHTML = order.map((k) => groups[k].sort((a, b) => Date.parse(a.time) - Date.parse(b.time)).map((q) => msgHTML(q)).join("")).join("");
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest(".msg-v button"); if (!b) return;
+      const box = document.getElementById(b.getAttribute("aria-controls"));
+      $$("button", b.parentNode).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      $(".msg-text", box).hidden = b.dataset.v !== "txt";
+      $(".msg-hex", box).hidden = b.dataset.v !== "hex";
     });
-  });
-  // Only external URLs are listed. Some definitions also cite project notes that are not published; those stay plain text inside the definitions.
-  document.getElementById("sources").innerHTML = urls.map(function (u) { return "<li>" + srcItem(u) + "</li>"; }).join("");
+  }
 
-  // ------------------------------------------------------------ attack anatomy (data/attack.json, embedded in the bundle)
-  (function () {
-    var sec = document.getElementById("attack-anatomy");
-    var a = A.attack, host = document.getElementById("ai-panel");
-    if (!sec) return;
-    if (!a || !a.ai || !host) { sec.hidden = true; return; }
-    var ai = a.ai;
-    function host_(u) { var t = String(u).replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""); return t.length > 44 ? t.slice(0, 42) + "..." : t; }
-    function item(c, withGrade) {
-      return '<div class="ai-item"><h5>' + esc(c.title) + "</h5>" + (c.when ? '<p class="when">' + esc(c.when) + (withGrade && c.grade ? ", " + esc(c.grade) : "") + "</p>" : "") +
-        "<p>" + esc(c.body) + "</p>" + (c.url ? '<p class="src">Source: <a href="' + esc(c.url) + '" rel="noopener" target="_blank">' + esc(host_(c.url)) + "</a>" +
-        (c.id ? ", checked in <a href=\"#def-" + c.id + '">' + c.id + "</a>" : "") + "</p>" : "") + "</div>";
+  /* ---------------------------------------------------------------- method */
+  function method() {
+    const linkify = (s) => {
+      const m = /^(https?:\/\/[^\s;,]+)(.*)$/.exec(s.trim());
+      return m ? `<a href="${esc(m[1])}">${esc(m[1])}</a>${esc(m[2])}` : `<code>${esc(s)}</code>`;
+    };
+    $("#canon").innerHTML = A.canon.numbers.map((n) => {
+      const srcs = n.sources.flatMap((s) => s.split(" ; "));
+      return `<details><summary><b>${esc(n.id)}</b><span>${esc(n.question)}</span></summary><div class="cv">
+        <p><strong>${esc(n.canonical_value)}</strong></p>
+        <p>${esc(n.definition)}</p>
+        <p>Confidence: ${esc(n.confidence || "not stated")}${n.confidence_reason ? ". " + esc(n.confidence_reason) : ""}</p>
+        <ul>${srcs.map((s) => `<li>${linkify(s)}</li>`).join("")}</ul></div></details>`;
+    }).join("");
+    const kb = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1e3)) + " KB");
+    $("#dl tbody").innerHTML = A.downloads.map((d) => `<tr><td><a href="${esc(d.file)}" download>${esc(d.file.replace(/^data\//, ""))}</a></td><td>${esc(d.desc)}</td><td class="num">${kb(d.bytes)}</td></tr>`).join("");
+  }
+
+  /* ---------------------------------------------------------------- section links, nav, share */
+  const LINK_SVG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 2h5v2H4v8h8V9h2v5H2zM9 2h5v5h-2V5.4L7.7 9.7 6.3 8.3 10.6 4H9z"/></svg>';
+  function sectionLinks() {
+    $$(".sec .h2").forEach((h) => {
+      const sec = h.closest("section");
+      const b = el("button", { class: "anchor", type: "button", "aria-label": "Copy link to " + h.textContent.trim() }, LINK_SVG);
+      b.addEventListener("click", () => copy(baseURL() + "#" + sec.id));
+      h.appendChild(b);
+    });
+    const links = $$(".nav a");
+    const map = Object.fromEntries(links.map((a) => [a.getAttribute("href").slice(1), a]));
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.removeAttribute("aria-current"));
+        const a = map[e.target.id];
+        if (a) { a.setAttribute("aria-current", "true"); const nav = $(".nav"); const l = a.offsetLeft - 20; if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: l, behavior: "auto" }); }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    $$("main section[id]").forEach((s) => io.observe(s));
+    $("#share-site").addEventListener("click", async () => {
+      const text = `${int(N("S1").n)} crypto hacks since ${X.since}, ${fmt(N("S1").total_usd, "B1")} stolen. Only ${N("E2").master_all[0]} are known to have led to an arrest or charge.`;
+      const url = (document.querySelector('link[rel="canonical"]') || {}).href || baseURL();
+      if (navigator.share) { try { await navigator.share({ title: "After the Hack", text, url }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+      copy(url);
+    });
+  }
+
+  function deepLink() {
+    const m = /^#hack=(.+)$/.exec(location.hash);
+    if (m) {
+      const r = byId[decodeURIComponent(m[1])];
+      if (r) { EX.select(r.i, { scroll: true }); setTimeout(() => $("#readout").scrollIntoView({ block: "start" }), 50); }
+    } else if (location.hash.length > 1) {
+      const t = document.getElementById(location.hash.slice(1));
+      if (t) setTimeout(() => t.scrollIntoView(), 50);
     }
-    var g = ai.grades, total = ai.claims_n;
-    var parts = [["verified", g.verified, "var(--s1)", "verified"], ["credible claim", g["credible claim"], "var(--s2)", "credible claim"], ["speculation", g.speculation, "var(--lost)", "speculation"]];
-    host.innerHTML =
-      '<div class="ai-verdict"><div class="zero" aria-hidden="true">' + ai.verified_exploits + '</div>' +
-      '<p class="claim"><span class="sr-only">' + ai.verified_exploits + " </span>verified AI-written or AI-found exploits in a real hack</p>" +
-      '<div class="grades"><div class="grade-bar" role="img" aria-label="Of ' + total + " AI-related claims logged: " + parts.map(function (p) { return p[1] + " " + p[3]; }).join(", ") + '">' +
-      parts.map(function (p) { return '<span style="flex:' + p[1] + ' 1 0; background:' + p[2] + '"></span>'; }).join("") + "</div>" +
-      '<ul class="grade-key">' + parts.map(function (p) { return '<li><i style="--c:' + p[2] + '"></i>' + esc(p[0]) + ": " + p[1] + " of " + total + " claims</li>"; }).join("") + "</ul>" +
-      '<p class="grade-note">Verified means a primary source was read and supports the claim as worded. Most verified items are lab results, tooling in malware, social engineering or defence. Speculation is listed below, separate from the findings.</p></div></div>' +
-      '<div class="ai-col" style="--k: var(--s1)"><h4>What AI can do, in simulation</h4><p class="sub">Simulation results on known vulnerabilities, as reported by the vendors and labs that ran them.</p>' +
-      ai.capability.map(function (c) { return item(c, false); }).join("") + "</div>" +
-      '<div class="ai-col" style="--k: var(--s2)"><h4>What attackers are documented doing with AI</h4><p class="sub">Vendor reports of AI-assisted lures, job fraud and malware tooling, described at the campaign level.</p>' +
-      ai.attacker_use.map(function (c) { return item(c, false); }).join("") + "</div>" +
-      '<div class="ai-skip"><h4>Unconfirmed claims we reviewed</h4><p class="sub">Opinion and unsourced commentary about AI and hacking.</p><div class="list">' +
-      ai.not_counted.map(function (c) { return item({ title: c.title, body: c.body, url: c.url }, false); }).join("") + "</div></div>";
-    sec.hidden = false;
-  })();
+  }
 
-  // note under the top-100 grid: master losses that differ from the figures used in the text
-  (function () {
-    var host = document.getElementById("top100-note");
-    if (!host) return;
-    var diff = A.charts.top100.filter(function (d) { return d.text_loss; });
-    host.textContent = diff.length ? "Table losses are the master dataset's; in the text " + diff.map(function (d) { return d.name.replace(/ Trade$/, "") + " is " + money(d.text_loss) + " (here " + money(d.loss) + ")"; }).join(", ") + "." : "";
-  })();
-
+  /* ---------------------------------------------------------------- go */
   fill(document);
-
-  // M3: hide a clause whose figure is zero ("were never searched" when nothing was left unsearched)
-  document.querySelectorAll("[data-nz]").forEach(function (el) {
-    var r = resolve(el.getAttribute("data-nz"));
-    if (r && Number(r.v) === 0) el.hidden = true;
-  });
-
-  // One tab stop per paragraph/figure caption/table cell: the first number in each block is tabbable, ArrowLeft/ArrowRight move
-  // between the others. Mouse and touch still reach every number.
-  (function () {
-    var blocks = [];
-    document.querySelectorAll(".n[tabindex]").forEach(function (el) {
-      var blk = el.closest("p,li,figcaption,td,th,h1,h2,h3,h4,h5,dt,dd,.clock,.chapter-head") || el.parentElement;
-      if (!blk.__ns) { blk.__ns = []; blocks.push(blk); }
-      blk.__ns.push(el);
-    });
-    blocks.forEach(function (blk) {
-      blk.__ns.forEach(function (el, i) { el.__sibs = blk.__ns; el.setAttribute("tabindex", i ? "-1" : "0"); if (!i) el.classList.add("n-first"); });
-    });
-    window.ATHtabstops = blocks.length;
-  })();
-  if (missing.length && window.console) console.warn("Unresolved data keys:", missing);
-  window.ATHmissing = missing;
-  if (location.hash) openDef();
+  $$(".unver-note").forEach((e) => { e.textContent = X.unver_note ? " " + X.unver_note : ""; });
+  caselog();
+  findings();
+  annual(); channels(); clock(); offers(); returnsStrip(); grid100(); arrestList(); people(); dprk(); attacks();
+  messages();
+  method();
+  sectionLinks();
+  trace();
+  deepLink();
+  window.addEventListener("hashchange", deepLink);
+  document.documentElement.setAttribute("data-ready", "1");
 })();

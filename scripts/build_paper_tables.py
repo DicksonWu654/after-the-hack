@@ -420,10 +420,10 @@ def t_time_arrest():
             scope = "no (pre-2016 incident, outside the headline set)"
         body.append([inc, c["incident_date"][:4], "{:,}".format(int(days)), esc(c["action_type"])[:70], c["evidence_grade"], scope])
     n = lambda v: "{:,}".format(round(v))
-    body.append(["**Median, this sample (n=16)**", "", "**%s**" % n(st["time_median_days"]), "mean %s; interquartile range %s to %s" % (n(st["time_mean_days"]), n(st["time_q1_q3"][0]), n(st["time_q1_q3"][1])), "", ""])
+    body.append(["**Median, this sample (n=16)**", "", "**%s**" % format(st["time_median_days"], "g"), "mean %s; interquartile range %s to %s" % (n(st["time_mean_days"]), n(st["time_q1_q3"][0]), n(st["time_q1_q3"][1])), "", ""])
     body.append(["**Median, 2016+ incidents inside the headline scope (n=14)**", "", "**%g**" % statistics.median(in_scope), "drops Mt. Gox and Silk Road", "", ""])
     body.append(["**Median, the 11 also in the 16 of Section 6.1**", "", "**%g**" % statistics.median(overlap), "charged for the hack itself", "", ""])
-    return table(["Incident", "Year", "Days to first public action against a person", "First action", "Evidence grade", "Counted in the %d of %s?" % (next(n for n in CANON["numbers"] if n["id"] == "E2")["numeric"]["master_all"][0], f"{N_HEAD:,}")], body, ["l", "r", "r", "l", "l", "l"])
+    return table(["Incident", "Year", "Days to first recorded action against a person", "First action", "Evidence grade", "Counted in the %d of %s?" % (next(n for n in CANON["numbers"] if n["id"] == "E2")["numeric"]["master_all"][0], f"{N_HEAD:,}")], body, ["l", "r", "r", "l", "l", "l"])
 
 
 def t_outcomes():

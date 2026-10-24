@@ -8,6 +8,7 @@ With no paths, all top-level data/*.csv files are checked.
 import argparse
 import csv
 import glob
+import math
 from pathlib import Path
 import sys
 
@@ -21,6 +22,31 @@ VALID_INITIAL_ACCESS_CLASSES = {
     "supply_chain",
     "unknown",
 }
+
+
+def check_recovery_split(record: dict[str, str]) -> list[str]:
+    """An explicit split allocates the counted recovery; it is not an extra amount."""
+    if not record.get("channel_split"):
+        return []
+    try:
+        parts = [part.rsplit("=", 1) for part in record["channel_split"].split(";")]
+        channels = [name.strip() for name, _ in parts]
+        values = [float(value) for _, value in parts]
+        counted = float(record.get("recovered_usd_capped") or 0)
+        returned = min(counted, float(record.get("returned_usd") or 0))
+        if any(not name for name in channels) or len(channels) != len(set(channels)):
+            return ["recovery split has empty or duplicate channels"]
+        if any(not math.isfinite(value) or value < 0 for value in values):
+            return ["recovery split contains a negative or non-finite amount"]
+        if not math.isfinite(counted) or abs(sum(values) - counted) > 1:
+            return ["recovery split does not sum to counted recovery (within $1 rounding)"]
+        voluntary = sum(value for name, value in zip(channels, values)
+                        if name == "voluntary return (attacker/insider)")
+        if abs(voluntary - returned) > 1:
+            return ["recovery split voluntary component differs from counted returned_usd"]
+    except (ValueError, TypeError):
+        return ["malformed recovery split"]
+    return []
 
 
 def check_csv(path: Path) -> list[str]:
@@ -42,6 +68,8 @@ def check_csv(path: Path) -> list[str]:
                     continue
                 if "returner" in header:
                     record = dict(zip(header, row))
+                    errors.extend(f"{path}:{line_number}: {error}"
+                                  for error in check_recovery_split(record))
                     if record["returner"] not in {"attacker", "bot operators", "MEV builder", "not identified"}:
                         errors.append(f"{path}:{line_number}: invalid returner {record['returner']!r}")
                     if record.get("recovery_status") == "claimed_unverified":

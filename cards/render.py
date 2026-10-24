@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
-"""Render the After the Hack thread cards (1600x900 CSS px at 2x) with Playwright.
+"""Render the After the Hack thread cards (1600x900 CSS px at 2x) with Playwright, in the site's design.
 
-Every number on a card is read from data/canonical_numbers.json (structured `numeric` blocks, plus a few
-short facts regex-lifted from the canonical prose) or from data/briefs/onchain-verification.md.
-If a source value moves or disappears, this script fails loudly instead of printing a stale number.
+The cards are drawn by template.html, which reads every number at render time from site/data/bundle.js (built by
+site/build.py from data/canonical_numbers.json and the data files) and from CARD_EXTRA, filled here from
+data/law_enforcement_cases.csv and two screenshots of the built site. Each number on a card is registered with its
+source key; this script writes them to thread/card-map.csv. A missing or moved source value stops the render.
 
 Usage:
-    python3 cards/render.py              # light cards -> out/, dark variants -> out/dark/, contact sheet
-    python3 cards/render.py --only 06,09 # subset (ids as in CARDS)
-    python3 cards/render.py --no-dark
+    python3 cards/render.py              # all cards -> out/, card map, out/contact-600.png
+    python3 cards/render.py --only 03,08 # subset (tweet numbers or card ids)
+    python3 cards/render.py --site-url https://example.org   # host shown in the screenshot cards
+The cards are dark only; --no-dark is accepted for older callers and does nothing.
 """
 import argparse
+import base64
 import csv
 import functools
 import http.server
 import json
-import re
 import socketserver
-import statistics
 import threading
 from pathlib import Path
 
@@ -27,172 +28,52 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 ARTICLE = ROOT  # cards/ and site/ are siblings; the dev server serves the repo root
 OUT = HERE / "out"
+SITE_URL = "https://after-the-hack.shadow654.chatgpt.site"
 
-# (file stem, template card id).  The stem starts with the tweet number it belongs to (thread-final.txt, 20 tweets).
+# (tweet number in thread-v3-draft.txt, file stem, template card id)
 CARDS = [
-    ("01-cover", "cover"),
-    ("02-recovery-ledger", "ledger"),
-    ("03-vector-mix", "vectors"),
-    ("04-recovery-channels", "channels"),
-    ("05-bounty-norm", "bounty"),
-    ("06-shezmu-onchain", "shezmu"),
-    ("07-return-speed", "speed"),
-    ("08-outreach", "outreach"),
-    ("09-euler-onchain", "euler"),
-    ("10-bybit-freeze", "bybit"),
-    ("11-chain-freezes", "freezes"),
-    ("12-arrests-1-in-10", "arrests"),
-    ("12b-arrest-delay", "delay"),
-    ("13-charged-outcomes", "outcomes"),
-    ("14-dprk-share", "dprk"),
-    ("15-dprk-recovery", "dprk_recovery"),
-    ("16-same-tx-attacks", "sametx"),
-    ("17-ai-claims", "ai"),
-    ("18-liquid-onchain", "liquid"),
-    ("19-near-intents", "near"),
-    ("20-closing", "closing"),
+    (1, "01-cover", "cover"),
+    (2, "02-recovery-ledger", "ledger"),
+    (3, "03-poly-network", "poly"),
+    (4, "04-euler-onchain", "euler"),
+    (5, "05-bybit-freeze", "bybit"),
+    (6, "06-north-korea", "dprk"),
+    (7, "07-ftx-charges", "ftx"),
+    (8, "08-bounty-shezmu", "bounty"),
+    (9, "09-arrests-top100", "arrests"),
+    (10, "10-court-outcomes", "court"),
+    (11, "11-chain-freezes", "chain"),
+    (12, "12-ai-claims", "ai"),
+    (13, "13-site-lookup", "site_lookup"),
+    (14, "14-site-home", "site_home"),
 ]
-
-MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+CASE_IDS = {"FTX-1", "FTX-2", "FTX-3", "URAN-1", "MANGO-1"}
 
 
 # ----------------------------------------------------------------------------- data
-def load_canon():
-    canon = json.loads((ROOT / "data" / "canonical_numbers.json").read_text())
-    return canon, {n["id"]: n for n in canon["numbers"]}
+def extra_cases():
+    rows = list(csv.DictReader((ROOT / "data" / "law_enforcement_cases.csv").open(encoding="utf8")))
+    keep = [{k: r[k] for k in ("case_id", "incident", "defendant", "outcome")} for r in rows if r["case_id"] in CASE_IDS]
+    if {r["case_id"] for r in keep} != CASE_IDS:
+        raise SystemExit(f"law_enforcement_cases.csv: missing case rows {CASE_IDS - {r['case_id'] for r in keep}}")
+    return keep
 
 
-def build_data():
-    canon, by = load_canon()
-    D = {cid: n.get("numeric") for cid, n in by.items()}
-
-    def txt(cid, pattern, field="canonical_value", cast=str):
-        m = re.search(pattern, by[cid][field])
-        if not m:
-            raise SystemExit(f"canonical {cid}.{field}: pattern not found: {pattern}")
-        return cast(m.group(1)) if m.lastindex == 1 else tuple(cast(g) for g in m.groups())
-
-    def need(cid, phrase):
-        if phrase not in by[cid]["canonical_value"]:
-            raise SystemExit(f"canonical {cid}: expected phrase missing: {phrase!r}")
-
-    snap = canon["data_snapshot"]
-    y0, y1 = snap["period"].split("..")
-    end = y1.split("-")
-    period = f"{y0[:4]}–{MONTHS[int(end[1]) - 1]} {end[0]}"
-    D["meta"] = {
-        "n": snap["headline_rows"],
-        "total_usd": snap["headline_loss_usd"],
-        "period": period,
-        "generated": canon["generated"],
-        "sample_end": txt("K1", r"2026 to (\d{1,2} [A-Z][a-z]{2})\b", field="definition"),
-        "dataset": f"After the Hack dataset, {snap['headline_rows']:,} incidents {period}",
-    }
-
-    # sanity: the two recovery pieces must add up to the headline
-    # (compared in dollars: the rounded one-decimal shares can differ from the rounded sum by 0.1)
-    assert abs(D["R2"]["voluntary_usd"] + D["C4"]["master_usd"] - D["C1"]["recovered_usd"]) < 1e6, "R2 + C4 != C1"
-    assert abs(D["R2"]["pct_of_all"] + D["C4"]["master_pct"] - D["C1"]["pct"]) < 0.11, "R2 + C4 != C1 (pct)"
-    assert abs(sum(c["pct"] for c in D["C3"]["channels"]) - 100) < 0.5
-    need("E1", "about 1 in 10")
-    need("R4", "21 of 23 inside a week")
-    need("M6", "~36 hours")
-
-    ex = {}
-    ex["unrecovered_pct"] = round(100 - D["C1"]["pct"], 1)
-    ex["one_in_n_voluntary"] = round(1 / D["R1"]["paper_rate"])
-    ex["cronos_min"] = txt("F1", r"Cronos detected the attack ~(\d+) min", cast=int)
-    ex["cronos_pct"] = txt("F1", r"restoring ([\d.]+)%", cast=float)
-    # "Law-enforcement seizures: 169 days to 5+ years (the two counted seizures took 169 and 1,389 days, median 779; ... Bitfinex ~2,015 days ...)"
-    toint = lambda s: int(s.replace(",", ""))
-    ex["seizure_lo"], ex["seizure_hi"], ex["seizure_median"] = txt("F1", r"the (?:two|\w+) counted seizures took ([\d,]+) and ([\d,]+) days, median ([\d,]+)", cast=toint)
-    ex["seizure_bitfinex"] = txt("F1", r"Bitfinex ~([\d,]+) days", cast=toint)
-    assert D["F1"]["n"]["law_enforcement_seizure"] == 2, "F1 counted seizures are no longer two"
-    assert ex["seizure_median"] == D["F1"]["median_days"]["law_enforcement_seizure"], "F1 seizure median != canonical numeric"
-    ex["bybit_tether_usd"] = txt("F2", r"Bybit Tether \$(\d+)k", cast=int) * 1000
-    ex["mango_kept_pct"] = txt("R3", r"Mango kept (\d+)%", field="tweet", cast=int)
-    ex["platypus_days"] = txt("E3", r"Platypus (\d+) days", cast=int)
-    ex["mango_days"] = txt("E3", r"Mango (\d+)\)", cast=int)
-    ex["liquid_hours"] = txt("M1", r"(\d+)h(\d+)m after the drain", cast=int)
-    ex["liquid_hours"] = round(ex["liquid_hours"][0] + ex["liquid_hours"][1] / 60)
-    ex["near_quote"] = txt("M6", r'"(We have identified you)')
-    assert D["M1"]["status_date"] == "2026-10-21"
-    # E3, restricted to the 14 cases that are 2016+ incidents inside the 1,377 scope (canonical median 439.5 days)
-    e3 = [c for c in D["E3"]["e3_set"] if c["in_headline_scope"]]
-    days = sorted(c["days"] for c in e3)
-    med = statistics.median(days)
-    assert len(days) == D["E3"]["n_2016_plus_in_headline_scope"], "E3 in-scope n moved"
-    assert abs(med - D["E3"]["median_days_2016_plus_in_headline_scope"]) < 0.01, "E3 in-scope median moved"
-    by_key = {c["key"]: c["days"] for c in e3}
-    ex["e3_days"] = days
-    ex["e3_scope_n"] = len(days)
-    ex["e3_scope_median"] = med
-    ex["e3_over_year"] = sum(1 for d_ in days if d_ > 365)
-    ex["e3_over_year_pct"] = round(100 * ex["e3_over_year"] / len(days))
-    ex["e3_fast"] = {"PLAT": by_key["PLAT"], "MANGO": by_key["MANGO"]}
-    ex["e3_named"] = {c["key"]: c["incident"] for c in e3}
-    (ex["outreach_yes_ret"], ex["outreach_yes_n"],
-     ex["outreach_no_ret"], ex["outreach_no_n"]) = txt("R5", r"\((\d+) of (\d+) vs (\d+) of (\d+)\)", cast=int)
-    assert (ex["outreach_yes_n"], ex["outreach_no_n"]) == (D["R5"]["outreach_n"], D["R5"]["no_outreach_n"])
-    ex["near_deadline_h"] = txt("M6", r"(\d+)-hour ultimatum", cast=int)
-    ex["blockstream_quote"] = txt("M1", r'refused \("([^"]+)"\)')
-    ex["dprk_2025_gov_pct"] = D["D1"]["by_year"]["2025"]["gov_pct"]
-    ex["top3_recoveries"] = "Poly Network, Liquid and KuCoin"  # names as in the tweet; share is C1.pct_ex_top3
-    D["x"] = ex
-
-    D["quotes"] = parse_verification()
-    D["latency"] = parse_latency(D["R4"])
-    return D
+def check_quotes():
+    """The message cards quote the bundle's verified messages; make sure each quoted text is still in the on-chain
+    verification record the bundle was built from."""
+    md = (ROOT / "data" / "briefs" / "onchain-verification.md").read_text(encoding="utf8")
+    flat = " ".join(md.split())
+    raw = (ARTICLE / "site" / "data" / "bundle.js").read_text(encoding="utf8")
+    ath = json.loads(raw[raw.index("{"): raw.rindex("}") + 1])
+    for q in ath["quotes"]:
+        if q["rank"] in (2, 3, 6, 7):
+            for seg in q["segments"]:
+                if " ".join(seg.split())[:60] not in flat:
+                    raise SystemExit(f"quote rank {q['rank']} not found in the verification record: {seg[:60]!r}")
 
 
-def parse_latency(r4):
-    """Days from exploit to first return for each documented return (data/return_latency_audit.csv), cross-checked
-    against the canonical R4 numbers so a stale CSV or JSON fails loudly."""
-    from datetime import datetime
-    f = lambda t: datetime.strptime(t, "%Y-%m-%dT%H:%M:%SZ")
-    rows = list(csv.DictReader((ROOT / "data" / "return_latency_audit.csv").open()))
-    rows = [{"name": r["name"], "days": round((f(r["first_return_time_utc"]) - f(r["exploit_time_utc"])).total_seconds() / 86400, 3)}
-            for r in rows]
-    med = statistics.median(r["days"] for r in rows)
-    assert len(rows) == r4["n_dated"], "latency csv n != canonical R4 n"
-    assert abs(med - r4["median_days_from_incident"]) < 0.06, f"latency csv median {med} != canonical {r4['median_days_from_incident']}"
-    assert sum(r["days"] <= 7 for r in rows) == r4["within_7d"], "latency csv within-7d != canonical"
-    assert max(r["days"] for r in rows) <= 30 and r4["within_30d"] == r4["n_dated"]
-    return rows
-
-
-def parse_verification():
-    path = ROOT / "data" / "briefs" / "onchain-verification.md"
-    md = path.read_text()
-    run = re.search(r"Run date: (\d{4}-\d{2}-\d{2})", md).group(1)
-    shortlist = md.split("## 2. Ranked shortlist", 1)[1].split("\n## 3.", 1)[0]
-    blocks = re.split(r"\n### (?=\d+\. )", shortlist)[1:]
-    out = {}
-    for b in blocks:
-        head, rest = b.split("\n", 1)
-        num, title = head.split(". ", 1)
-        quote = "\n".join(ln[2:] for ln in rest.splitlines() if ln.startswith("> "))
-        link = re.search(r"- Link: (\S+)", rest).group(1)
-        chain, block, ts = re.search(r"- Chain / block / time: (\w+), block (\d+), (\S+)", rest).groups()
-        frm, to = re.search(r"- From -> to: `([^`]+)` -> `([^`]+)`", rest).groups()
-        txhash = link.rstrip("/").split("/")[-1]
-        out[int(num)] = {"title": title, "text": quote, "link": link, "chain": chain, "block": block,
-                         "time": ts, "from": frm, "to": to, "tx": txhash}
-    # the card text must stay exact: guard the lines the thread quotes
-    must = {
-        2: "only considering 20% as bounty.",
-        3: "20% is a deal.",
-        6: "No intention of keeping what is not ours.",
-        7: "If 90% of the funds are not returned within 24 hours, tomorrow we will launch a $1M reward for information that leads to your arrest",
-        9: "You SHALL pay 10% using your own money as bug bounty",
-    }
-    for k, frag in must.items():
-        if frag not in out[k]["text"]:
-            raise SystemExit(f"verification entry {k}: expected quote fragment missing: {frag!r}")
-    return {"run_date": run, "items": out}
-
-
-# ----------------------------------------------------------------------------- server / render
+# ----------------------------------------------------------------------------- server / browser
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
@@ -217,56 +98,102 @@ def launch(p):
         return p.chromium.launch(executable_path=str(cands[-1]))
 
 
-def render(only=None, dark=True):
-    D = build_data()
-    (OUT / "dark").mkdir(parents=True, exist_ok=True)
+def site_shots(browser, port):
+    """Two screenshots of the built site (desktop, 2x): the look-up with Poly Network selected, and the first screen."""
+    ctx = browser.new_context(viewport={"width": 1280, "height": 720}, device_scale_factor=2, reduced_motion="reduce")
+    pg = ctx.new_page()
+    errs = []
+    pg.on("pageerror", lambda e: errs.append(str(e)))
+    shots = {}
+    pg.goto(f"http://127.0.0.1:{port}/site/index.html")
+    pg.wait_for_selector("html[data-ready='1']")
+    pg.evaluate("document.fonts.ready")
+    pg.wait_for_timeout(300)
+    shots["home"] = pg.screenshot(type="png")
+    pg.goto(f"http://127.0.0.1:{port}/site/index.html#hack=20210810-poly-network")
+    pg.wait_for_selector("html[data-ready='1']")
+    pg.wait_for_timeout(300)
+    pg.evaluate("window.scrollTo(0, document.getElementById('q').getBoundingClientRect().top + window.scrollY - 96)")
+    pg.wait_for_timeout(300)
+    shots["lookup"] = pg.screenshot(type="png")
+    ctx.close()
+    if errs:
+        raise SystemExit(f"site errors while taking screenshots: {errs}")
+    return {k: "data:image/png;base64," + base64.b64encode(v).decode() for k, v in shots.items()}
+
+
+# ----------------------------------------------------------------------------- render
+def render(only=None, site_url=SITE_URL):
+    check_quotes()
+    OUT.mkdir(parents=True, exist_ok=True)
     srv, port = serve()
-    data_js = "window.CARD_DATA = " + json.dumps(D) + ";"
-    made = []
+    made, nums = [], []
     with sync_playwright() as p:
         browser = launch(p)
+        extra = {"cases": extra_cases(), "site_host": site_url.split("://", 1)[-1].rstrip("/"), "shots": site_shots(browser, port)}
         ctx = browser.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=2)
-        ctx.add_init_script(data_js)
-        for theme in (["light", "dark"] if dark else ["light"]):
-            for stem, cid in CARDS:
-                if only and not any(stem.startswith(o) or cid == o for o in only):
-                    continue
-                page = ctx.new_page()
-                msgs = []
-                page.on("console", lambda m: msgs.append(m.text) if m.type in ("error", "warning") else None)
-                page.on("pageerror", lambda e: msgs.append(str(e)))
-                page.goto(f"http://127.0.0.1:{port}/cards/template.html?card={cid}&theme={theme}")
-                page.wait_for_function("window.__ready === true", timeout=15000)
-                page.evaluate("document.fonts.ready")
-                over = page.evaluate("window.__overflow()")
-                if over:
-                    print(f"  WARN {stem} [{theme}] overflow: {over}")
-                if msgs:
-                    print(f"  WARN {stem} [{theme}] console: {msgs}")
-                dest = (OUT / "dark" if theme == "dark" else OUT) / f"{stem}.png"
-                page.locator("#card").screenshot(path=str(dest))
-                page.close()
-                made.append(dest)
-                print("wrote", dest.relative_to(ROOT))
+        ctx.add_init_script("window.CARD_EXTRA = " + json.dumps(extra) + ";")
+        for tweet, stem, cid in CARDS:
+            if only and not any(o in (stem, cid, str(tweet), f"{tweet:02d}") for o in only):
+                continue
+            page = ctx.new_page()
+            msgs = []
+            page.on("console", lambda m: msgs.append(m.text) if m.type in ("error", "warning") else None)
+            page.on("pageerror", lambda e: msgs.append(str(e)))
+            page.on("requestfailed", lambda r: msgs.append("failed request " + r.url))
+            page.goto(f"http://127.0.0.1:{port}/cards/template.html?card={cid}")
+            page.wait_for_function("window.__ready === true", timeout=15000)
+            err = page.evaluate("window.__error || ''")
+            if err:
+                raise SystemExit(f"{stem}: {err}")
+            over = page.evaluate("window.__overflow()")
+            if over:
+                print(f"  WARN {stem} overflow: {over}")
+            if msgs:
+                print(f"  WARN {stem} console: {msgs}")
+            dest = OUT / f"{stem}.png"
+            page.locator("#card").screenshot(path=str(dest))
+            seen = set()
+            for text, key in page.evaluate("window.__nums"):
+                if (text, key) not in seen:
+                    seen.add((text, key))
+                    nums.append((tweet, dest.name, text, key))
+            page.close()
+            made.append(dest)
+            print("wrote", dest.relative_to(ARTICLE.parent) if ARTICLE.parent in dest.parents else dest)
         browser.close()
     srv.shutdown()
+    if not only:
+        write_map(nums)
     return made
+
+
+def write_map(nums):
+    dest = ARTICLE / "thread" / "card-map.csv"
+    with dest.open("w", newline="", encoding="utf8") as f:
+        w = csv.writer(f)
+        w.writerow(["tweet_no", "card_file", "number_on_card", "source_key"])
+        for row in nums:
+            w.writerow(row)
+        w.writerow([13, "13-site-lookup.png", "(screenshot)", "numbers inside the screenshot are rendered by the site from site/data/bundle.js"])
+        w.writerow([14, "14-site-home.png", "(screenshot)", "numbers inside the screenshot are rendered by the site from site/data/bundle.js"])
+    print("wrote", dest, f"({len(nums)} numbers)")
 
 
 def contact_sheet():
     from PIL import Image, ImageDraw, ImageFont
 
-    files = [OUT / f"{stem}.png" for stem, _ in CARDS if (OUT / f"{stem}.png").exists()]
-    cols, tw = 3, 640
+    files = [OUT / f"{stem}.png" for _, stem, _ in CARDS if (OUT / f"{stem}.png").exists()]
+    cols, tw = 2, 600
     th = tw * 9 // 16
-    gap, cap = 24, 34
+    gap, cap = 24, 30
     rows = -(-len(files) // cols)
     W = cols * tw + (cols + 1) * gap
     H = rows * (th + cap) + (rows + 1) * gap
-    sheet = Image.new("RGB", (W, H), (226, 229, 233))
+    sheet = Image.new("RGB", (W, H), (21, 28, 40))
     d = ImageDraw.Draw(sheet)
     try:
-        font = ImageFont.truetype(str(ARTICLE / "site" / "assets" / "fonts" / "plexmono-400.woff2"), 20)
+        font = ImageFont.truetype("DejaVuSansMono.ttf", 16)
     except Exception:
         font = ImageFont.load_default()
     for i, f in enumerate(files):
@@ -275,17 +202,18 @@ def contact_sheet():
         y = gap + r * (th + cap + gap)
         im = Image.open(f).convert("RGB").resize((tw, th), Image.LANCZOS)
         sheet.paste(im, (x, y))
-        d.text((x, y + th + 6), f.stem, fill=(40, 48, 58), font=font)
-    dest = OUT / "contact-sheet.png"
+        d.text((x, y + th + 6), f.stem, fill=(169, 179, 195), font=font)
+    dest = OUT / "contact-600.png"
     sheet.save(dest)
-    print("wrote", dest.relative_to(ROOT), sheet.size)
+    print("wrote", dest, sheet.size)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="")
-    ap.add_argument("--no-dark", action="store_true")
+    ap.add_argument("--no-dark", action="store_true", help="accepted for older callers; the cards are dark only")
+    ap.add_argument("--site-url", default=SITE_URL)
     a = ap.parse_args()
     only = [s for s in a.only.split(",") if s] or None
-    render(only, dark=not a.no_dark)
+    render(only, a.site_url)
     contact_sheet()

@@ -54,11 +54,19 @@ def derive(key, value, src, definition):
 # ---------------------------------------------------------------- text facts
 # Short phrases lifted from canonical prose; the build fails if the phrase is
 # no longer present in the named canonical field, so copy cannot drift.
+# The seizure range is read from F1's own prose (not typed here) and checked against F1's numeric median.
+_le = re.search(r"two counted seizures were reported (\d[\d,]*) and (\d[\d,]*) days", byid["F1"]["canonical_value"])
+LE_RANGE = f"{_le.group(1)} and {_le.group(2)} days" if _le else "F1 seizure range not found"
+if _le and statistics.median([int(_le.group(i).replace(",", "")) for i in (1, 2)]) != byid["F1"]["numeric"]["median_days"]["law_enforcement_seizure"]:
+    problems.append("F1 seizure range does not match F1 numeric median")
+elif not _le:
+    problems.append("F1 seizure range not found in canonical_value")
+
 FACTS = [
     ("cronos_minutes", "~36 min", "F1", "canonical_value"),
     ("cronos_pct", "92.4%", "F1", "canonical_value"),
     ("bitfinex_days", "~2,015", "F1", "canonical_value"),
-    ("le_range", "169 and 1,389 days", "F1", "canonical_value"),
+    ("le_range", LE_RANGE, "F1", "canonical_value"),
     ("bybit_btc_days", "~12 days", "M2", "canonical_value"),
     ("bybit_thorchain", "72%", "M2", "canonical_value"),
     ("mango_kept", "41%", "R3", "tweet"),
@@ -247,16 +255,20 @@ if len(arrests_in) != e3["n_2016_plus_in_headline_scope"] or statistics.median(a
 
 clock_rows = [{"key": k, "label": CH[k], "pts": timing[k]} for k in CH if k in timing]
 clock_rows.append({"key": "attacker_return", "label": "Attacker returns funds", "pts": returns})
-clock_rows.append({"key": "first_arrest", "label": "First arrest or charge", "pts": arrests})
+# E3 is a separate sample from E2 and includes laundering cases and one employee detention, so the row is
+# "first recorded action against a person". Points, n and median all come from the 14 in-scope cases
+# (439.5 days); the full 16-case figures are kept as n_all / median_all.
+clock_rows.append({"key": "first_arrest", "label": "First recorded action against a person",
+                   "pts": [a for a in arrests if a["in_scope"]]})
 for row in clock_rows:
     row["median"] = statistics.median([p["days"] for p in row["pts"]])
     row["n"] = len(row["pts"])
     if row["key"] == "first_arrest":
-        # a separate 16-case sample (E3), not the 16 incidents counted in E2; lead with the in-scope median
-        row["label"] = "First arrest or charge (separate 16-case sample)"
-        row["median_all"] = row["median"]
-        row["median"] = e3["median_days_2016_plus_in_headline_scope"]
-        row["n_in_scope"] = len(arrests_in)
+        if row["n"] != e3["n_2016_plus_in_headline_scope"] or row["median"] != e3["median_days_2016_plus_in_headline_scope"]:
+            problems.append("clock first_arrest row differs from E3 in-scope cohort")
+        row["n_all"] = len(arrests)
+        row["median_all"] = e3["median_days"]
+        row["n_in_scope"] = row["n"]
 clock_rows.sort(key=lambda r: r["median"])
 clock_src = ["data/recovery_events.csv (include_in_sums=y)",
              "data/return_latency_audit.csv",

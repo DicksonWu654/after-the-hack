@@ -1,86 +1,85 @@
-I dug into every public record I could find of crypto hacks since 2016: what happened to the money, the negotiations, the arrests. 1,377 hacks, $16.5B stolen. I'm open sourcing all of it, and here's what I found.
----
-About 19% of stolen dollars has come back by any route. 10.0% was returned by the attacker or an insider, 9.0% was frozen, seized or halted, and 81.0% has no documented recovery.
+I went through the public records on 1,377 crypto hacks since 2016 to see what happens after the money's gone: the negotiations, the freezes, the arrests.
 
-Without Poly Network, Liquid and KuCoin it falls to 13.2%.
----
-By dollars, compromised keys and infrastructure lose the most (35.0%), ahead of smart-contract logic (24.8%).
+$16.5B stolen. Only 16 are known to have led to an arrest or charge.
 
-By count, contract bugs lead: 35.7% of incidents vs 15.7% for keys and infra. Oracle manipulation and access control also show up more by count than by dollars.
----
-The most common way money comes back is that the attacker hands it over: 52.5% of the $3.14B recovered.
+I'm open sourcing all of it 🧵
 
-Issuer, exchange or protocol freezes are 19.1%, law-enforcement seizures 10.5%, chain halts 8.3%. About 1 in 8 large exploits ends with a voluntary return.
 ---
-Freezes work on tokens someone controls. Tether froze $181k in the $1.46B Bybit theft, 0.012% of the loss.
 
-Across all routes about $43M (2.9%) of Bybit is corroborated as frozen. Issuer freezes in other hacks caught 1% to 11%.
+The short version: 19% of stolen dollars has a documented recovery.
+
+10% from attackers handing it back. 9% from freezes, seizures, rollbacks and other routes.
+
+The other 81% has no recorded recovery.
+
 ---
-Chains can step in too. Sui validators froze 72.6% of Cetus's $223M. Cronos spotted its attack in ~36 min, halted and rolled back, restoring 92.4%.
 
-Median time to recovery: issuer freezes 1.5 days, exchanges 3 days, law-enforcement seizures 779 days (169 and 1,389 days).
+Start with the famous ones.
+
+Poly Network lost $611M in 2021. The attacker gave back about $578M, and Tether froze another $33M.
+
+Nobody has been charged for it that I could find.
+
 ---
-10% is the going rate. The median opening bounty offer has been 10% every year since 2021, and 102 of 181 on-chain offers were exactly 10%.
 
-Attackers who settled kept a median 10% (n=35). At the far end, Verus kept 25% and Mango 41%.
+Euler lost $197M in 2023 and threatened a $1M reward for info leading to the attacker's arrest and the return of all funds.
+
+The attacker returned the funds and wrote on-chain: "I'm sorry."
+
 ---
-Shezmu offered 10% and the exploiter countered on-chain:
 
-"Sure we can talk about the refund, but only considering 20% as bounty."
+Bybit is the biggest in my data: $1.46B in Feb 2025. The FBI tied it to North Korea.
 
-Five minutes later the team replied: "20% is a deal."
+Tether froze $181k of it. That's about 0.01%.
+
 ---
-Euler took a harder line on-chain: "If 90% of the funds are not returned within 24 hours, tomorrow we will launch a $1M reward for information that leads to your arrest"
 
-5 days 19 hours later the attacker answered: "No intention of keeping what is not ours."
----
-Teams that reached out saw money come back in 36.5% of known cases (80 of 219). Without outreach it was 3.5% (9 of 256).
+Ronin lost $624M in 2022, also tied to North Korea by the FBI. At least $30M was seized.
 
-Offer size, deadlines and legal threats made no measurable difference. The attackers willing to give money back are the ones who answer.
----
-When money does come back, it's quick. Median 2.4 days from the hack to the first return, and 21 of 23 documented returns landed inside a week, timed by block timestamps. The other two took 8 and 22 days.
----
-9 of the 100 biggest hacks, about 1 in 10, have led to someone being charged for the hack itself.
+Government sources tie 22.6% of all stolen dollars to North Korea. Only 3.4% of that has been recovered or frozen.
 
-Across all 1,377 hacks it's 16, about 1 in 86 (1.2%).
 ---
-The wait is long: a median of 14.5 months (439.5 days) from hack to first arrest or charge, across the 14 cases with a dated first action. 10 of 14 took over a year.
 
-Two fast cases, Platypus (6 days) and Mango (76), involved a KYC'd exchange or a public identity.
+The FTX hack, hours after it filed for bankruptcy: US prosecutors charged three people over a SIM-swap theft linked to it.
+
+One pleaded guilty and another has a plea agreement on file.
+
 ---
-Of 23 people charged over a hack or its laundering: 8 convicted, pleaded guilty, or plea agreement on file; 8 charged but not in custody, 3 pending, 2 acquitted, 1 unknown, 1 vacated, appeal pending.
 
-On Oct 7 a jury convicted Spalletta on all counts over Uranium Finance hacks.
+About half the money that comes back is handed back by the attacker, often after a public on-chain negotiation.
+
+The usual opening offer is a 10% bounty, the median every year since 2021.
+
+Shezmu's attacker asked for 20%. Five minutes later the team replied: "20% is a deal."
+
 ---
-Government attribution puts North Korea behind 22.6% of stolen dollars, from 2.3% of incidents (32 incidents). In 2025 it was 58.9% of dollars, mostly Bybit.
 
-Adding firm and researcher attributions it's 39.1% of dollars and 6.9% of incidents (95 incidents).
+Arrests are rare. Just 9 of the 100 biggest hacks led to someone being arrested or charged for the hack.
+
+When someone does get caught, the first action against them comes a median of about 14 months after the hack.
+
 ---
-North Korean hacks almost never come back: 8.3% of dollars recovered across 95 incidents (government or firm), 3.8% without KuCoin and Munchables. Everything else: 25.8%.
 
-We found none in custody for an exchange or bridge theft in sources searched through 21 Oct 2026.
+Court cases cut both ways. On Oct 7 a jury convicted Uranium Finance's exploiter. A judge overturned the Mango trader's convictions, and the US appealed.
+
 ---
-Attackers now run the whole exploit inside the attack contract's own deployment transaction far more often: 0 of 95 in 2020-22, 14.3% in 2024, 40.5% in 2025, 34.1% in 2026 so far.
 
-By dollars it's 8% to 25% since 2024, so it's mostly small and mid-size exploits.
+Sometimes the chain itself steps in. Sui validators froze $162M stolen from Cetus, and Cronos rolled back its chain to restore $111.2M.
+
 ---
-On AI: 28 claims logged, 0 verified as an AI-written exploit in a real hack.
 
-In simulation, AI agents reproduced 207 of 405 past exploits (Anthropic's SCONE-bench). Recorded exploits rose from 12 to 38 a month (2025 vs Mar to Sep 2026): more attacks, more reporting, or both.
+What about AI? Across 28 public claims, I found zero verified AI-written exploits in real hacks. It does show up in phishing and tooling.
+
 ---
-Liquid Network, $320M. The attacker returned 3,400 BTC about 26 hours after the drain and held back 598.5 BTC, writing on-chain:
 
-"You SHALL pay 10% using your own money as bug bounty"
+You can look up any of the 1,377 hacks and see what happened to the money, as far as the records go:
+https://after-the-hack.shadow654.chatgpt.site
 
-Blockstream: "It is not white-hat activity. It is theft." Unresolved as of 21 Oct.
 ---
-NEAR Intents lost about $3.8M. NEAR told the attacker publicly "We have identified you, sir." and set a 48-hour deadline.
 
-100% came back within about 36 hours of detection, with no bounty reported.
----
 It's all here, with each number's definition and sources:
 https://after-the-hack.shadow654.chatgpt.site
 Paper: https://after-the-hack.shadow654.chatgpt.site/paper.html
 Code and data: https://github.com/DicksonWu654/after-the-hack
 
-A swarm of AI agents helped compile this, so there will be mistakes. Every claim links its source; corrections welcome!
+A swarm of AI agents helped compile this, so there will be mistakes. Sources are linked throughout, corrections welcome!

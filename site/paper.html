@@ -2,7 +2,7 @@
 <p><em>Data through 21 October 2026. Builds on the authors' unpublished prior study "One hack in eight" [1].</em></p>
 <h2 id="abstract">Abstract</h2>
 <p>Public accounts of crypto theft stop at the loss figure. This paper follows 1,377 hacks and exploits with a published USD loss, 1 January 2016 to 21 October 2026, worth $16.52B at the time of theft, through what happened next: whether the attacker gave money back, whether anyone froze or seized it, and whether anyone was charged. The master table joins DeFiLlama, SlowMist, rekt.news and DeFiHackLabs with curated outcome layers. The top-150 outcome layer was re-checked in a separate verification pass, and the verification verdict took precedence wherever the two differed.</p>
-<p>About 19.0% of stolen dollars ($3.14B of $16.52B) has a documented recovery by some channel. Removing the three largest recoveries from both numerator and denominator gives an ex-top-three sensitivity of 13.2%. Attackers voluntarily return funds in roughly one large exploit in eight (12.5%, estimated in our earlier paper), and 10% is the going bounty: 102 of 181 on-chain opening offers dated 2020 or later were exactly 10%. In 23 dated returns, the median first return was 2.4 days after the exploit, with 21 inside a week. These larger, well-documented returns may not represent other cases. Freezes depend on issuer, exchange, protocol or chain control, and the largest containment cases usually acted early. Prosecution is rare and slow: 9 of the 100 largest hacks, and 16 of the 1,377 incidents overall (about 1 in 86), have led to a person being charged for the hack. In a separate sample of 16 cases with a dated first action (some pre-2016 or laundering-side), the median wait was 608 days; for the 14 of those cases that are 2016 or later incidents in our scope it was 439.5 days. These medians describe observed first actions and do not estimate waiting times across all hacks. The people prosecuted are mostly insiders and exploiters within reach of Western courts. North Korea is behind at least 22.6% of stolen dollars from 2.3% of incidents on government attribution alone (34% to 39.1% of dollars, from up to 6.9% of incidents, with firm and researcher attributions). Recovery in North Korean cases is 3.8% once two outliers are removed. In the public sources searched through 21 October 2026, we found no record of a North Korean operator of an exchange or bridge theft being arrested.</p>
+<p>About 19.0% of stolen dollars ($3.14B of $16.52B) has a documented recovery by some channel. Removing the three largest recoveries from both numerator and denominator gives an ex-top-three sensitivity of 13.2%. Attackers voluntarily return funds in roughly one large exploit in eight (12.5%, estimated in our earlier paper), and 10% is the going bounty: 102 of 181 on-chain opening offers dated 2020 or later were exactly 10%. In 23 dated returns, the median first return was 2.4 days after the exploit, with 21 inside a week. These selected returns include flagged observations and actors other than the main exploiter, and may not represent other cases. Freezes depend on issuer, exchange, protocol or chain control, and the largest containment cases usually acted early. Prosecution is rare and slow: 9 of the 100 largest hacks, and 16 of the 1,377 incidents overall (about 1 in 86), have led to a person being charged for the hack. In a separate sample of 16 cases with a dated first action (some pre-2016 or laundering-side), the median wait was 607.5 days; for the 14 of those cases that are 2016 or later incidents in our scope it was 439.5 days. These medians describe observed first actions and do not estimate waiting times across all hacks. The people prosecuted are mostly insiders and exploiters within reach of Western courts. North Korea is behind at least 22.6% of stolen dollars from 2.3% of incidents on government attribution alone (34% to 39.1% of dollars, from up to 6.9% of incidents, with firm and researcher attributions). Recovery in North Korean cases is 3.8% once two outliers are removed. In the public sources searched through 21 October 2026, we found no record of a North Korean operator of an exchange or bridge theft being arrested.</p>
 <p>In a separate sample of 758 reproducible EVM exploits, attacks that run inside the attack contract's own deployment transaction rose from about 0% in 2020 to 2022 to 40.5% in 2025 (34.1% in 2026), though only 8% to 11% of the dollars. Tornado Cash directly funded the attacker in 30.2% of sampled Ethereum incidents with a resolved first funder after its 2025 delisting; repeated addresses receive repeated weight. Recorded incidents rose 2.3 to 3.1 times from 2025 to March-September 2026 on two trackers while dollars rose far less. We found no verified in-the-wild exploit written by AI. The verified attacker-side AI examples concern social engineering and tooling.</p>
 <p>We label each claim as reported (press, firm or company statement) or verified (a primary record we read: a decoded chain transaction, a court docket, a DOJ release or an FBI notice), and we keep make-whole payments by victims out of every recovery figure.</p>
 <h2 id="1-introduction">1 Introduction</h2>
@@ -33,7 +33,7 @@
 <li>Pure rug pulls and scams are mostly out. Personal-wallet theft and phishing of individuals are largely absent.</li>
 </ul>
 <p>A coverage check of August to October 2026 incidents changed six rows on 21 October 2026. The Ledger supply-chain theft through the reseller CryptoBilis (9 October) was added at $93M [125, 126]. Several outlets now carry it, every dollar figure is an analyst estimate ($86M to $102M), and Ledger has confirmed a hardware implant in one device and the reseller link, with no total. D'CENT's App Wallet theft (September, XRP) was added at SlowMist's $6.57M, a floor: analysts count about 12.4M XRP from 7,393 wallets, roughly $17M [135]. The KITE Foundation incident (DeFiLlama $13.34M) was dropped, because the foundation says no tokens were lost and the affected tokens are frozen. Astroport and Drop are counted once, as the Neutron governance attack, at the reported $9.3M exposure; the realised loss is not established [132, 133]. MANTRA, Meter and Pirate Chain stay in the master with no loss figure: each source value is the notional price of the chain's own tokens, drained from its wallets or newly minted, and realised proceeds are unknown. KiiChain ($9.7M) and TAC ($7.5M) are counted at their pre-exploit valuations, although attackers realised about $1.6M and $1.0M, so their realised losses are overstated.</p>
-<p><strong>Valuation.</strong> Losses are USD at the time of the incident, taken from DeFiLlama or the SlowMist entry, and never re-priced. Recoveries use theft-date USD where supported (Bitfinex and Verus are computed from units; Wintermute OP components use the loss-implied $0.88 per OP detailed in Section 5.1), capped at 100% of each incident's loss, with no double counting between a return and an overlapping freeze. Source-reported USD figures are carried and flagged where consistent theft-date valuation is unavailable. Bitfinex illustrates the unit-based method: about 94,000 of 119,754 BTC (78.5%) were seized in 2022 at a value of $3.6B, against a theft-date loss of $72M. We count the recovery as $56.5M, which is 78.5% of the theft-date loss. Euler's in-kind return is carried at the full $197M loss (100%), following the project's post-mortem account of full recovery [112]. Liquid is a valuation exception: the master carries a press-reported $266.5M return, or 83.3% of its $320M loss. Its unit share is 85.0% (3,400 of 3,998.5 BTC) [37, 39]. The two USD figures do not use a single theft-date BTC price, so Liquid's counted USD share retains a valuation limitation.</p>
+<p><strong>Valuation.</strong> Losses are USD at the time of the incident, taken from DeFiLlama or the SlowMist entry, and never re-priced. Recoveries use theft-date USD where supported (Bitfinex and Verus are computed from units; Wintermute OP components use the loss-implied $0.88 per OP detailed in Section 5.1), capped at 100% of each incident's loss, with no double counting between a return and an overlapping freeze. Source-reported USD figures are carried and flagged where consistent theft-date valuation is unavailable. Bitfinex illustrates the unit-based method: about 94,000 of 119,754 BTC (78.5%) were seized in 2022 at a value of $3.6B, against a theft-date loss of $72M. We count the recovery as $56.5M, which is 78.5% of the theft-date loss. Euler's in-kind return is carried at the full $197M loss (100%), following the project's post-mortem account of full recovery [112]. Liquid is a valuation exception: the master carries a press-reported $266.5M return, or 83.3% of its $320M loss. Its unit share is 85.0% (3,400 of 3,998.5 BTC) [37, 39]. The two USD figures do not use a single theft-date BTC price, so Liquid's counted USD share retains a valuation limitation. Ronin’s $30M seizure and Wormhole’s $140M net court-ordered recovery also retain source-reported recovery-time USD values without a demonstrated common theft-date repricing. Pizza DeFi’s $5M token return is a rounded security-firm report, capped at the $5M tracker loss; its separately reported $500k bounty is not added [147].</p>
 <p><strong>Victim-funded reimbursements.</strong> Payments from an exchange, foundation or consortium's own balance sheet are recorded separately from stolen-asset recoveries and excluded from the recovered share (Section 5.7).</p>
 <h3 id="22-curated-outcome-layers-and-verification-provenance">2.2 Curated outcome layers and verification provenance</h3>
 <p>Outcome fields come from four layers, applied in order, with the later layer winning a conflict.</p>
@@ -77,7 +77,7 @@
 <tr>
 <td style="text-align: left;">Incidents of $1M or more with a documented recovery</td>
 <td style="text-align: left;">147 of 662 (22.2%)</td>
-<td style="text-align: left;">151 of 659 (22.9%)</td>
+<td style="text-align: left;">150 of 659 (22.8%)</td>
 </tr>
 <tr>
 <td style="text-align: left;">Top 150 by loss: recovered share of loss</td>
@@ -97,11 +97,11 @@
 <tr>
 <td style="text-align: left;">DPRK vs non-DPRK recovered share of loss</td>
 <td style="text-align: left;">7.8% vs 25.1%</td>
-<td style="text-align: left;">8.3% vs 25.8%</td>
+<td style="text-align: left;">8.3% vs 25.9%</td>
 </tr>
 </tbody>
 </table>
-<p>The verification pass also classifies every top-150 row (Table 2). Nine rows still carry a recovery or claim that the pass could not corroborate. They are kept and flagged, and only one of them (Meerkat Finance, $29.4M) carries counted dollars. Five incidents that entered the top 150 after the scope changes were not re-checked.</p>
+<p>The verification pass also classifies every top-150 row (Table 2). Nine rows still carry a recovery or claim that the pass could not corroborate. They are kept and flagged, and none carries counted dollars. The 23 October consistency review retained Meerkat Finance’s company-reported recovery after reading Binance’s confirmation of a refund program and at least 95% recovered; it excluded BitPoint’s conflicting $2.3M overseas claim, whose mechanism and amount remain unsubstantiated. Five incidents that entered the top 150 after the scope changes were not re-checked.</p>
 <p><strong>Table 2.</strong> Verification verdict on each of the 150 largest incidents.</p>
 <table>
 <thead>
@@ -115,14 +115,14 @@
 <tbody>
 <tr>
 <td style="text-align: left;">verified_agree</td>
-<td style="text-align: right;">43</td>
+<td style="text-align: right;">41</td>
 <td style="text-align: right;">$1.61B</td>
 <td style="text-align: left;">the verification pass agrees with the first-layer values (a press or firm source matches within about 15%)</td>
 </tr>
 <tr>
 <td style="text-align: left;">corrected</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">$1.18B</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">$1.21B</td>
 <td style="text-align: left;">value, classification or scope changed by the verification pass</td>
 </tr>
 <tr>
@@ -134,7 +134,7 @@
 <tr>
 <td style="text-align: left;">not_corroborated</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">$29.4M</td>
+<td style="text-align: right;">$0</td>
 <td style="text-align: left;">master carries a recovery claim that the pass could not corroborate; kept and flagged</td>
 </tr>
 <tr>
@@ -147,7 +147,7 @@
 </table>
 <p>Agreement means that a press or firm source matches the first-layer value within about 15%. It does not mean the amount was checked on chain or against a court record. Rows where the pass found nothing and the master also has nothing are "no public record found", never "none".</p>
 <h3 id="23-outcome-checks-and-coverage">2.3 Outcome checks and coverage</h3>
-<p>Each incident carries an outcome-check level. "Full" means voluntary return, freeze or seizure, and arrest were each searched. "Partial" means some were. "None" means the outcome was never checked. For the top 150 incidents the check is full for 147. Below that, coverage thins quickly (Table 3). Of the 659 incidents of $1M or more, 147 have a full check, 265 a partial one, and 247 (37%) none. The documented-recovery share counts 151 incidents with that status over all 659; unchecked incidents stay in the denominator and contribute no documented recovery to the numerator. Their outcomes remain unknown. Where it matters we also give the share among checked incidents.</p>
+<p>Each incident carries an outcome-check level. "Full" means voluntary return, freeze or seizure, and arrest were each searched. "Partial" means some were. "None" means the outcome was never checked. For the top 150 incidents the check is full for 147. Below that, coverage thins quickly (Table 3). Of the 659 incidents of $1M or more, 147 have a full check, 265 a partial one, and 247 (37%) none. The documented-recovery share counts 150 incidents with that status over all 659; unchecked incidents stay in the denominator and contribute no documented recovery to the numerator. Their outcomes remain unknown. Where it matters we also give the share among checked incidents.</p>
 <p><strong>Table 3.</strong> Outcome-check coverage and documented recovery by scope.</p>
 <table>
 <thead>
@@ -169,8 +169,8 @@
 <td style="text-align: right;">147</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: right;">$2.84B</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">$2.83B</td>
 <td style="text-align: right;">20.1%</td>
 </tr>
 <tr>
@@ -179,7 +179,7 @@
 <td style="text-align: right;">100</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">44</td>
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">$2.66B</td>
 <td style="text-align: right;">20.3%</td>
 </tr>
@@ -205,7 +205,8 @@
 </tr>
 </tbody>
 </table>
-<p>Recovery statuses are: documented recovery, recovery announced but unquantified, claimed but unverified, no recovery in the sources checked, no voluntary return found (other channels not checked), no public record found (all channels searched), and not checked. Only documented, quantified recoveries add dollars. The "with a recovery" column of Table 3 counts incidents with positive counted dollars (143 of the 659 incidents of $1M or more). The 151 of 659 (22.9%) used in the text counts every incident with status "documented recovery", which includes eight whose recovery is documented but whose amount no source states (Pizza DeFi, EigenLayer, Term Finance, Yala, UXLINK, Wanchain, Coinsbuy and Nomic).</p>
+<p>An unquantified recovery retains its mechanism and source qualification: a freeze is not necessarily restitution, an order is not proof of an executed frozen balance, and a campaign seizure is not automatically linked to each wallet theft. Preventive rescues of other balances and victim-funded compensation do not establish recovery of the stolen assets. Pizza DeFi is now quantified from Halborn’s report of a completed $5M token return, rather than inferred from a ransom agreement [147].</p>
+<p>Recovery statuses are: documented recovery, recovery announced but unquantified, claimed but unverified, no recovery in the sources checked, no voluntary return found (other channels not checked), no public record found (all channels searched), and not checked. Only documented, quantified recoveries add dollars. The "with a recovery" column of Table 3 counts incidents with positive counted dollars (143 of the 659 incidents of $1M or more). The 150 of 659 (22.8%) used in the text counts every incident with status "documented recovery", which includes seven with a documented recovery but no counted USD amount (EigenLayer, Term Finance, Yala, UXLINK, Wanchain, Coinsbuy and Nomic).</p>
 <h3 id="24-attribution-tiers">2.4 Attribution tiers</h3>
 <p>DPRK attribution is tiered, and every share in this paper names its tier. <strong>Government-attributed</strong> means the FBI, DOJ, OFAC or Treasury, the UN panel or the Multilateral Sanctions Monitoring Team, South Korean or Japanese police, or a joint statement. <strong>Firm-attributed</strong> means Chainalysis, TRM, Elliptic, ZachXBT, a victim's forensics provider, or the tayvano researcher list. Within the firm tier, 47 rows ($0.83B) rest only on membership of the researcher list, which is a lead and not an attribution. We therefore report three figures: government only, government plus firm excluding researcher-list-only rows, and everything. Tiers for the 2026 incidents (Drift, Kelp, Bitget) are firm or victim-side only, because we found no government attribution for them.</p>
 <p><strong>Source grade of the government tier.</strong> The government tier names who attributed the theft, not how we checked it. Of its 32 rows ($3.74B), only Bybit (an FBI notice, $1.40B in the master) and DMM (the Japan National Police Agency page, $305M) were read at a primary source by us, and two more (a combined $60M) are matches to DOJ pleadings that we inferred. Twenty-seven of the 32 rows, $1.35B of the $3.74B (36%), are read through secondary sources: Wikipedia or press coverage, the tayvano researcher tabulation of the Multilateral Sanctions Monitoring Team report, a sibling dataset, or a recalled statement whose fbi.gov page returned an error (the Ronin row cites a primary source that we did not read). The tier is therefore the attribution as publicly reported by government bodies, and not a set of attributions we verified one by one. The tier is also sensitive to one row: Coincheck ($534M, 2018) sits in it only because press reporting (CyberScoop) cites a UN panel report. Without Coincheck the government-tier share is about 19.4% ($3.21B of $16.52B).</p>
@@ -834,7 +835,7 @@
 <h2 id="4-negotiation-and-voluntary-returns">4 Negotiation and voluntary returns</h2>
 <h3 id="41-how-often-attackers-give-the-money-back">4.1 How often attackers give the money back</h3>
 <p>Our earlier paper estimated that attackers voluntarily return funds in roughly one large exploit or key compromise in eight [1]. That study is unpublished. The aggregate tables behind the figures we quote from it (the 12.5% rate, the 181 opening offers dated 2020 or later, the 35 retention cases) are shipped in data/negotiation_tables/, and a public subset of its case rows is in data/negotiation_cases_public.csv. The frame is 1,078 exploits and key compromises of $100k or more, or $1M-class with any negotiation signal, from 2016 to mid-2026, built from nine public registries. Of those, 98 returns were confirmed. If the 503 incidents where reviewers found no evidence either way behave like the incidents the reviewers swept one by one, the rate is 12.5%. With no assumption at all the bounds are 9.1% to 55.8%, and among the 575 incidents with a known outcome it is 17%. Return is far rarer for stolen keys (7 of 138 known cases) than for contract exploits (91 of 437 known cases), and many of the largest hacks are key compromises.</p>
-<p>The master table gives an independent floor. Voluntary return is documented in 110 incidents (8.0% of 1,377) and in 78 of the 659 incidents of $1M or more (11.8%). Among incidents where voluntary return was actually reviewed, it is 78 of 364 (21.4%). The master's documented-return floor and the earlier estimate use different missing-outcome assumptions. The master's 22.9% (151 of 659) measures documented recovery by any channel, including freezes and seizures.</p>
+<p>The master table gives an independent floor. Voluntary return is documented in 110 incidents (8.0% of 1,377) and in 78 of the 659 incidents of $1M or more (11.8%). Among incidents where voluntary return was actually reviewed, it is 78 of 364 (21.4%). The master's documented-return floor and the earlier estimate use different missing-outcome assumptions. The master's 22.8% (150 of 659) measures documented recovery by any channel, including freezes and seizures.</p>
 <p>In dollars, voluntary returns total $1.65B, 10.0% of the $16.52B stolen (8.5% before the Liquid Network return). Three cases (Poly Network at $578M, Liquid Network at $266M and Euler at $197M) account for 63.2% of voluntary dollars, and without them voluntary return is $607M, about 3.7% of dollars stolen (Table 10). The earlier paper's 8.2% ($1.31B of $16.05B across 571 incidents with a known outcome and loss, cut at 5 September 2026 and before Liquid) agrees once scope and date are aligned. The dollars are a handful of famous events, and this is why case series mislead.</p>
 <p><strong>Table 10.</strong> The ten largest voluntary returns (counted USD, capped at the loss; Liquid retains a press-reported USD valuation as explained in Section 2.1).</p>
 <table>
@@ -855,7 +856,7 @@
 <td style="text-align: right;">$611M</td>
 <td style="text-align: right;">$578M</td>
 <td style="text-align: right;">94.6%</td>
-<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">35.0%</td>
 </tr>
 <tr>
 <td style="text-align: left;">Liquid Network</td>
@@ -863,7 +864,7 @@
 <td style="text-align: right;">$320M</td>
 <td style="text-align: right;">$266M</td>
 <td style="text-align: right;">83.3%</td>
-<td style="text-align: right;">16.2%</td>
+<td style="text-align: right;">16.1%</td>
 </tr>
 <tr>
 <td style="text-align: left;">Euler V1</td>
@@ -927,10 +928,10 @@
 <td style="text-align: right;">$22.3M</td>
 <td style="text-align: right;">$22.3M</td>
 <td style="text-align: right;">100.0%</td>
-<td style="text-align: right;">1.4%</td>
+<td style="text-align: right;">1.3%</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>All voluntary returns (104 incidents)</strong></td>
+<td style="text-align: left;"><strong>All voluntary returns (105 incidents)</strong></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"><strong>$1.65B</strong></td>
@@ -1280,7 +1281,7 @@
 <h3 id="51-the-all-channel-share">5.1 The all-channel share</h3>
 <p>Across all channels, 19.0% of stolen dollars ($3.14B of $16.52B) has a documented recovery. The numerator includes voluntary returns, issuer, exchange or protocol freezes, law-enforcement seizures, chain halts or rollbacks, white-hat or MEV rescues, innocent-recipient returns and unspecified recoveries, valued at theft-date USD where supported, with the source-reported exceptions in Section 2.1, and capped at 100% of each incident's loss. The denominator is all 1,377 incidents, including those whose outcome was never checked. The figure splits into 10.0% voluntary return ($1.65B) and 9.0% other recovery channels ($1.49B).</p>
 <p>Three incidents dominate: Poly Network ($611M), Liquid Network ($266M) and KuCoin ($239M, an exchange statement). Without them, in numerator and denominator, the share is 13.2%. Without chain-level interventions it is 16.3%. With Bybit at its corroborated $42.9M instead of the company claim of $78.9M it is 18.8%. The 13.2% is an ex-top-three sensitivity, a dollar-weighted aggregate of the remaining incidents. Most incidents have no documented recovery; 785 of the 1,377 were never outcome-checked, so their outcomes remain unknown.</p>
-<p>By count, 151 of 659 incidents of $1M or more (22.9%) have a documented recovery, and 36.7% of the 412 whose outcome was checked. Among the 150 largest incidents, 59 (39.3%) have one, worth 20.1% of their $14.11B; among the top 100, 44 do, worth 20.3% of their dollars. For the largest hacks recovery is the exception but not rare, and it is usually partial.</p>
+<p>By count, 150 of 659 incidents of $1M or more (22.8%) have a documented recovery, and 36.4% of the 412 whose outcome was checked. Among the 150 largest incidents, 58 (38.7%) have one, worth 20.1% of their $14.11B; among the top 100, 43 do, worth 20.3% of their dollars. For the largest hacks recovery is the exception but not rare, and it is usually partial.</p>
 <p><strong>Table 15.</strong> Recovery by incident year (counted USD under Section 2.1, including its source-reported valuation exceptions; cohorts include later returns, seizures and interventions).</p>
 <table>
 <thead>
@@ -1333,12 +1334,12 @@
 <tr>
 <td style="text-align: left;">2019</td>
 <td style="text-align: right;">$211M</td>
-<td style="text-align: right;">$3.3M</td>
-<td style="text-align: right;">1.6%</td>
+<td style="text-align: right;">$1M</td>
+<td style="text-align: right;">0.5%</td>
 <td style="text-align: right;">$0</td>
 <td style="text-align: right;">13</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">23.1%</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">15.4%</td>
 <td style="text-align: right;">7</td>
 </tr>
 <tr>
@@ -1355,9 +1356,9 @@
 <tr>
 <td style="text-align: left;">2021</td>
 <td style="text-align: right;">$2.66B</td>
-<td style="text-align: right;">$777M</td>
-<td style="text-align: right;">29.2%</td>
-<td style="text-align: right;">$616M</td>
+<td style="text-align: right;">$782M</td>
+<td style="text-align: right;">29.4%</td>
+<td style="text-align: right;">$621M</td>
 <td style="text-align: right;">91</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">19.8%</td>
@@ -1425,8 +1426,8 @@
 <td style="text-align: right;">19.0%</td>
 <td style="text-align: right;">$1.65B</td>
 <td style="text-align: right;">659</td>
-<td style="text-align: right;">151</td>
-<td style="text-align: right;">22.9%</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">22.8%</td>
 <td style="text-align: right;">247</td>
 </tr>
 </tbody>
@@ -1471,11 +1472,11 @@
 </tr>
 <tr>
 <td style="text-align: left;">2019</td>
-<td style="text-align: right;">1.6%</td>
-<td style="text-align: right;">1.6%</td>
 <td style="text-align: right;">0.5%</td>
+<td style="text-align: right;">0.5%</td>
+<td style="text-align: right;">0.2%</td>
 <td style="text-align: right;">0.0%</td>
-<td style="text-align: right;">BitPoint ($2.3M)</td>
+<td style="text-align: right;">Bithumb ($555k)</td>
 </tr>
 <tr>
 <td style="text-align: left;">2020</td>
@@ -1487,10 +1488,10 @@
 </tr>
 <tr>
 <td style="text-align: left;">2021</td>
-<td style="text-align: right;">29.2%</td>
-<td style="text-align: right;">28.4%</td>
-<td style="text-align: right;">8.1%</td>
-<td style="text-align: right;">5.4%</td>
+<td style="text-align: right;">29.4%</td>
+<td style="text-align: right;">28.6%</td>
+<td style="text-align: right;">8.4%</td>
+<td style="text-align: right;">5.7%</td>
 <td style="text-align: right;">Poly Network ($611M)</td>
 </tr>
 <tr>
@@ -1547,7 +1548,7 @@
 <p>FTX contributes $31.5M of frozen USDT, as documented by Elliptic. Paxos separately announced a law-enforcement-directed freeze of about $19M in PAXG. The linkage between that PAXG balance and the theft addresses remains unreconciled, so the PAXG amount adds nothing to the counted total (data/incidents_master.csv; data/recovery_events.csv, FTX rows and source URLs).</p>
 <p>Wintermute's 2022 OP recovery uses one common valuation: the reported $17.6M loss divided by 20M OP implies $0.88 per OP. The attacker returned 17M OP ($14.96M on that basis), and Vitalik Buterin returned another 1M OP ($0.88M), for $15.84M recovered, or 90%. The Optimism forum record and Blockscout transfers support the token amounts; the dollar figures apply the loss-implied valuation rather than return-date prices (data/incidents_master.csv; data/recovery_events.csv, Wintermute rows and source URLs).</p>
 <h3 id="52-by-channel">5.2 By channel</h3>
-<p>Of the $3.14B recovered, 52.5% was handed back by the attacker or an insider, 19.1% came from issuer, exchange or protocol freezes, 10.5% from law-enforcement seizure or court action, 8.3% from chain halts, validator freezes or security-council freezes, 5.7% from hard forks and rollbacks, 2.2% from white-hat and MEV rescues, and 1.6% from other or unspecified channels (Table 17). Chain-level halts and forks together are 14.0%. The builder uses explicit channel splits where recorded. Otherwise it allocates the voluntary returned amount first and assigns the remainder to the primary non-voluntary channel. Mixed-channel incidents can appear in more than one row. KuCoin contributes $222M to issuer, exchange or protocol freezes and $17.45M to court recovery; Qubic contributes $1.1323M to chain intervention and $0.1677M to exchange freeze. The voluntary row ($1.65B, 104 incidents) equals the returned-funds total behind the 10.0% voluntary share.</p>
+<p>Of the $3.14B recovered, 52.7% was handed back by the attacker or an insider, 19.1% came from issuer, exchange or protocol freezes, 10.5% from law-enforcement seizure or court action, 8.3% from chain halts, validator freezes or security-council freezes, 5.7% from hard forks and rollbacks, 2.2% from white-hat and MEV rescues, and 1.5% from other or unspecified channels (Table 17). Chain-level halts and forks together are 14.0%. The builder uses explicit channel splits where recorded. Otherwise it allocates the voluntary returned amount first and assigns the remainder to the primary non-voluntary channel. Mixed-channel incidents can appear in more than one row. KuCoin contributes $222M to issuer, exchange or protocol freezes and $17.45M to court recovery; Qubic contributes $1.1323M to chain intervention and $0.1677M to exchange freeze. The voluntary row ($1.65B, 105 incidents) equals the returned-funds total behind the 10.0% voluntary share.</p>
 <p><strong>Table 17.</strong> Recovered dollars by allocated channel, all scope and top 150.</p>
 <table>
 <thead>
@@ -1565,11 +1566,11 @@
 <tr>
 <td style="text-align: left;">voluntary return (attacker/insider)</td>
 <td style="text-align: right;">$1.65B</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">52.5%</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">52.7%</td>
 <td style="text-align: right;">$1.45B</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: right;">51.1%</td>
+<td style="text-align: right;">51.2%</td>
 </tr>
 <tr>
 <td style="text-align: left;">issuer / exchange / protocol freeze</td>
@@ -1618,11 +1619,11 @@
 </tr>
 <tr>
 <td style="text-align: left;">other / unspecified</td>
-<td style="text-align: right;">$49.3M</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">1.6%</td>
-<td style="text-align: right;">$38M</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">$47M</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">$35.7M</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">1.3%</td>
 </tr>
 <tr>
@@ -1630,7 +1631,7 @@
 <td style="text-align: right;"><strong>$3.14B</strong></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"><strong>100%</strong></td>
-<td style="text-align: right;"><strong>$2.84B</strong></td>
+<td style="text-align: right;"><strong>$2.83B</strong></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"><strong>100%</strong></td>
 </tr>
@@ -1639,7 +1640,7 @@
 <p>Counting only non-voluntary channels, the master gives 9.0% of stolen dollars. The separate non-voluntary event stream gives 6.8% ($1.159B of $17.161B on the raw DeFiLlama denominator) and 3.6% ($619M) once chain-level "damage averted" in two cases (BNB Chain 2022 and Cronos 2026) is excluded [52]. The two streams bracket the answer between 3.6% and 9.0%, and the gap is definitional. The freeze brief counts the BNB 2022 halt at $429M, the value of minted BNB that stayed on chain after validators stopped the chain, which the master rejects: that figure is derived by subtraction, and the halt stopped further outflow rather than returning stolen money. The master counts BNB at the $34M that Tether and Circle froze. The separate event stream excludes company claims and unresolved overlapping components that the master treats under its own inclusion rules; its current totals are reproducible in data/recovery_stream_summary.json. All of these are documented-only lower bounds.</p>
 <p>The earlier paper's priced-channel table ranks seizures first (49% of priced dollars) because it includes the LuBian forfeiture at its forfeiture value ($3.5B) and counts reimbursement by the victim (18%), both of which this paper excludes [1].</p>
 <h3 id="53-speed-decides">5.3 Speed decides</h3>
-<p>Time from incident to the recovery action is the strongest pattern in the channel data (Table 18). The five dated chain interventions, including forks and rollbacks, have a one-day median and a range of 0.125 to 33 days, issuer freezes in a median of 1.5 days, exchange freezes in 3 days, and counted law-enforcement seizures from 169 to about 1,389 days (a median of 779 days across two dated seizures counted in the sums, at 169 and about 1,389 days; Bitfinex, about 2,015 days or 5.5 years, is excluded from the sums). Counts are small (2 to 5 dated events per channel) and some times are approximate ("hours" is coded as 0.3 days or less), so treat the medians as orders of magnitude.</p>
+<p>Time from incident to the recovery action is the strongest pattern in the channel data (Table 18). The five dated chain interventions, including forks and rollbacks, have a one-day median and a range of 0.125 to 33 days, issuer freezes in a median of 1.5 days, exchange freezes in 3 days, and counted law-enforcement seizures from 169 to 1,398 days (a median of 783.5 days across two dated seizures counted in the sums, at 169 and 1,398 days; Bitfinex, about 2,015 days or 5.5 years, is excluded from the sums). Counts are small (2 to 5 dated events per channel) and some times are approximate ("hours" is coded as 0.3 days or less), so treat the medians as orders of magnitude.</p>
 <p><strong>Table 18.</strong> Days from incident to the recovery action, by channel (counted events with a date). The multi-channel row is the two dated rows, Bybit and Bitget; WazirX has no dated freeze row. Cronos is coded at 0.46 days (detection about 36 minutes in, block production resumed about 11 hours after the attack).</p>
 <table>
 <thead>
@@ -1696,13 +1697,13 @@
 <tr>
 <td style="text-align: left;">Law-enforcement seizure</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">779</td>
-<td style="text-align: right;">169 to 1389</td>
+<td style="text-align: right;">783.5</td>
+<td style="text-align: right;">169 to 1398</td>
 </tr>
 </tbody>
 </table>
 <p>Containment within hours preserved about 73% to 100% of the value at risk where it happened (Cetus 73%, BNB Chain 76% as damage averted, Cronos 92%, Venus 100%); that is value preserved, not the recovered share of Table 15. Venus paused within 20 minutes and finished a forced liquidation inside about 7 hours. Cronos detected the Tectonic exploit about 36 minutes after it began, then halted the chain and rolled it back, restoring $111.2M of the $120.4M borrowed (92.4%); $9.19M (7.6%) had already left. The post-mortem does not state when the halt took effect [53, 54]. BNB Chain halted about 3 hours after the first malicious withdrawal. Sui validators froze $162M of Cetus's $223M (72.6%) by the next day [42]. Tether's Bybit freeze caught about $181k of the roughly $1.46B taken, or about 0.01% of the loss.</p>
-<p>Attackers move faster than most responses. Stolen stablecoins in the Bitget case were reportedly converted within 41 minutes (a single outlet) [55]. Bybit's ETH was converted to BTC in about 12 days, 72% through THORChain, and Arkham called the proceeds "fully laundered" on day 12 (that is layering, not final cash-out) [56]. Seizures arrive on a different clock: 169 days (the counted $30M Ronin aggregate) and about 1,389 days (Uranium Finance, measured to mid-February because the seizure date is month-only). The Norwegian Ronin report at 331 days is excluded from counted amounts and timing because its overlap with the $30M aggregate remains unresolved; Bitfinex at about 2,015 days is also excluded from the sums (data/recovery_events.csv). Uranium was hacked in April 2021 and seized in February 2025.</p>
+<p>Attackers move faster than most responses. Stolen stablecoins in the Bitget case were reportedly converted within 41 minutes (a single outlet) [55]. Bybit's ETH was converted to BTC in about 12 days, 72% through THORChain, and Arkham called the proceeds "fully laundered" on day 12 (that is layering, not final cash-out) [56]. Seizures arrive on a different clock: 169 days (the counted $30M Ronin aggregate) and 1,398 days (Uranium Finance, seized on 24 February 2025, as specified by DOJ [81]). The Norwegian Ronin report at 331 days is excluded from counted amounts and timing because its overlap with the $30M aggregate remains unresolved; Bitfinex at about 2,015 days is also excluded from the sums (data/recovery_events.csv). Uranium was hacked on 28 April 2021 and the cryptocurrency was seized on 24 February 2025.</p>
 <h3 id="54-what-can-be-frozen">5.4 What can be frozen</h3>
 <p>Only three kinds of stolen asset can be frozen after the fact: tokens controlled by an issuer (USDT, USDC, EURe), project tokens with admin controls, and native assets on chains with a coordinated validator set or council (Sui, Arbitrum, Cronos, BNB Chain, Berachain, the Cosmos Hub). ETH, BTC, DAI and XMR on open chains cannot [52]. The overlap between what an issuer can freeze and what hackers steal is small. Issuer freezes caught 1% to 11% of an incident's loss in the counted cases (Poly Network $33M of $611M, 5.4%; Multichain 2.0%). Bybit was almost entirely ETH-denominated. In Mixin's $200M loss, Elliptic's breakdown was $95.3M in ETH, $23.7M in BTC and $23.6M in USDT, and the attacker had converted USDT to DAI to avoid a freeze.</p>
 <p>Attackers price freezes in. Cetus's USDC was blacklisted only after it had been swapped to ETH, per ZachXBT. The Poly Network attacker said publicly that the locked USDT had tainted the plan. KuCoin's attackers moved into decentralized exchanges because centralized venues freeze. Bancor froze BNT in 2018 but could not freeze ETH. Bitget asked THORChain to halt and was declined; BlockSec estimates about $269M passed through it by 29 September [57].</p>
@@ -1738,15 +1739,15 @@
 <p>Of the 100 largest hacks, 9 (9%) have led to a person being arrested or charged for the hack itself: FTX (the SIM-swap theft), Nomad, Mango Markets, NiceHash, Uranium Finance, KyberSwap Elastic, Coinrail, Josh Jones and IRA Financial. Twelve of 100 if laundering-side and related cases are added (Coincheck, Bitfinex, StableMagnet), and 11 of the 150 largest. NiceHash rests on a DOJ indictment of the DPRK trio for an unnamed Slovenian company, matched by inference; without it the count is 8. Three of the nine (Coinrail, Josh Jones, IRA Financial) are small single-incident press cases. The safe summary is about 1 in 10 of the largest hacks. An independent count on the raw DeFiLlama list, which ranks differently and treats Coincheck's buyers and Mt. Gox as person-level, finds 8 strict.</p>
 <p>Across all incidents the rate is about 1 in 86. Sixteen of 1,377 headline incidents (1.2%) have a person arrested or charged for the hack, and 16 of the 659 incidents of $1M or more (2.4%). The independent count on the raw list is 14 of 1,313 (1.1%) and 14 of 595 non-rug incidents of $1M or more (2.4%), and 10 of 195 incidents of $10M or more (5.1%). Arrests were searched systematically only for the top 150 and a sibling case list, so small incidents are under-counted, and all of these are lower bounds from public records. Top-100 hacks with a person charged are $1.03B of $13.12B (7.9%) in the master.</p>
 <p>Several cases that a press search would surface are not counted. BitGrail ended in a civil repayment order and a management ban, with no criminal charge confirmed. Multichain's CEO was detained in May 2023, before the July outflows, with no disclosed charges. A CoinDCX engineer whose laptop was infected through a fake freelance job was detained a week after the theft, and a police official, quoted by The Indian Express and relayed by Decrypt, said he was "totally in the dark" [122]. A 2026 arrest in Saint Martin concerns the November 2025 theft from a US Marshals-linked wallet, a different event from the October 2024 one in the top 150, and we found no official source linking the person arrested to the top-150 event. For Bybit, we found no public criminal charge or DOJ forfeiture action in the sources searched through 21 October 2026.</p>
-<h3 id="62-how-long-it-takes">6.2 How long it takes</h3>
-<p>The median time from incident to the first public arrest, indictment, unsealing or detention of a person is 608 days (about 20 months). This is a separate sample of 16 cases with a dated first action, and it is not the 16 incidents of Section 6.1: only 11 cases are in both. The timing sample adds Mt. Gox (2011) and Silk Road (2012), which are before 2016 and outside the 1,377 incidents, the laundering-side cases of Bitfinex and Coincheck, and the detention of the CoinDCX engineer. It lacks Coinrail, Josh Jones, 2gether, IRA Financial and Yala, which have no dated first action in our case file. The mean is 972 days and the interquartile range 354 to 1,650 days. Seventy-five percent took more than a year (Table 19). For the 14 cases that are 2016 or later incidents inside the 1,377 scope the median is 439.5 days (about 14.5 months), and for the 11 that are also in the 16 of Section 6.1 it is 439 days. Among DeFi-era US-led cases (2021 and later, n=9) the median is 439 days. The fast cases involved a KYC-verified exchange or a public identity: Platypus (6 days; two French brothers traced to a Binance account) and Mango (76 days). These medians describe cases with an observed first action; many incidents remain unresolved, so they do not estimate the waiting time across all hacks. Dropping the CoinDCX engineer and the Coincheck loot buyers leaves 14 cases with a median of 722 days.</p>
-<p><strong>Table 19.</strong> Days from incident to first public action against a person, in a separate sample of 16 cases (some pre-2016 or laundering-side; excludes in-rem actions and placeholders). The last column shows whether the case is one of the 16 incidents of 1,377 in Section 6.1.</p>
+<h3 id="62-time-to-the-first-recorded-action-against-a-person">6.2 Time to the first recorded action against a person</h3>
+<p>The median time from incident to the first recorded action against a person (public arrest, indictment, unsealing or detention) is 607.5 days (about 20 months). This is a separate sample of 16 cases with a dated first action, and it is not the 16 incidents of Section 6.1: only 11 cases are in both. The timing sample adds Mt. Gox (2011) and Silk Road (2012), which are before 2016 and outside the 1,377 incidents, the laundering-side cases of Bitfinex and Coincheck, and the detention of the CoinDCX engineer. It lacks Coinrail, Josh Jones, 2gether, IRA Financial and Yala, which have no dated first action in our case file. The mean is 972 days and the interquartile range 354 to 1,650 days. Seventy-five percent took more than a year (Table 19). For the 14 cases that are 2016 or later incidents inside the 1,377 scope the median is 439.5 days (about 14 months), and for the 11 that are also in the 16 of Section 6.1 it is 439 days. Among DeFi-era US-led cases (2021 and later, n=9) the median is 439 days. The fast cases involved a KYC-verified exchange or a public identity: Platypus (6 days; two French brothers traced to a Binance account) and Mango (76 days). These medians describe cases with an observed first action; many incidents remain unresolved, so they do not estimate the waiting time across all hacks. Dropping the CoinDCX engineer and the Coincheck loot buyers leaves 14 cases with a median of 722 days.</p>
+<p><strong>Table 19.</strong> Days from incident to first recorded action against a person, in a separate sample of 16 cases (some pre-2016 or laundering-side; excludes in-rem actions and placeholders). The last column shows whether the case is one of the 16 incidents of 1,377 in Section 6.1.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Incident</th>
 <th style="text-align: right;">Year</th>
-<th style="text-align: right;">Days to first public action against a person</th>
+<th style="text-align: right;">Days to first recorded action against a person</th>
 <th style="text-align: left;">First action</th>
 <th style="text-align: left;">Evidence grade</th>
 <th style="text-align: left;">Counted in the 16 of 1,377?</th>
@@ -1884,7 +1885,7 @@
 <tr>
 <td style="text-align: left;"><strong>Median, this sample (n=16)</strong></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;"><strong>608</strong></td>
+<td style="text-align: right;"><strong>607.5</strong></td>
 <td style="text-align: left;">mean 972; interquartile range 354 to 1,650</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -1958,7 +1959,7 @@
 </tbody>
 </table>
 <p>Criminal cases rarely return money. Recovery through them is dominated by two bitcoin seizures from people who sat on coins for years: Bitfinex (about 95,000 BTC, $3.6B at seizure) and Zhong's Silk Road theft (50,676 BTC, $3.36B at seizure). Everything else is small: Ahmed about $12.3M, Uranium about $31M, Ronin about $30M and a pending forfeiture of $15.1M of DPRK-linked USDT.</p>
-<p>Three jury trials have been held. Eisenberg (Mango) was convicted on all three counts on 18 April 2024. On 23 May 2025 the court vacated counts one and two for improper venue and entered a judgment of acquittal on count three, wire fraud, for want of a false representation on a permissionless platform; the government filed a notice of appeal on 22 July 2025 (Second Circuit No. 25-1782), briefing closed with the government's reply on 28 August 2026, and as of 21 October 2026 we found no argument date or decision, so the appeal is pending [76, 77, 78, 79, 131]. The Peraire-Bueno brothers (a MEV-Boost relay exploit) ended in a mistrial on 7 November 2025 after a deadlocked jury; a Rule 29 motion was argued on 13 March 2026 with no ruling found, and an order of 2 April 2026 told the parties to be ready for retrial on 7 June 2027. We last read the docket on 28 September 2026 and found no later ruling or date change as of 21 October 2026, but we did not re-read it on that day [80]. Spalletta (Uranium Finance) was convicted on all counts on 7 October 2026 after a six-day trial before Judge Rakoff, with about $31M seized in February 2025 [81]. Crypto Briefing reports sentencing for 16 February 2027 [142]. The docket lists a 14 October 2026 counsel order; we did not verify the reported sentencing date against an underlying scheduling entry on 21 October [82].</p>
+<p>Three jury trials have been held. Eisenberg (Mango) was convicted on all three counts on 18 April 2024. On 23 May 2025 the court vacated counts one and two for improper venue and entered a judgment of acquittal on count three, wire fraud, for want of a false representation on a permissionless platform; the government filed a notice of appeal on 22 July 2025 (Second Circuit No. 25-1782), briefing closed with the government's reply on 28 August 2026, and as of 21 October 2026 we found no argument date or decision, so the appeal is pending [76, 77, 78, 79, 131]. The Peraire-Bueno brothers (a MEV-Boost relay exploit) ended in a mistrial on 7 November 2025 after a deadlocked jury; a Rule 29 motion was argued on 13 March 2026 with no ruling found, and an order of 2 April 2026 told the parties to be ready for retrial on 7 June 2027. We last read the docket on 28 September 2026 and found no later ruling or date change as of 21 October 2026, but we did not re-read it on that day [80]. Spalletta (Uranium Finance) was convicted on all counts on 7 October 2026 after a six-day trial before Judge Rakoff, with about $31M seized on 24 February 2025 [81]. Crypto Briefing reports sentencing for 16 February 2027 [142]. The docket lists a 14 October 2026 counsel order; we did not verify the reported sentencing date against an underlying scheduling entry on 21 October [82].</p>
 <h3 id="64-code-is-law-defences">6.4 "Code is law" defences</h3>
 <p>Defendants have argued that they only used public functions of public code. The record is mixed (Table 21).</p>
 <p><strong>Table 21.</strong> Outcomes of "I only used the code as written" defences.</p>
@@ -2151,10 +2152,10 @@
 <p>The front end is fast and the back end is long. In the Bybit case the stolen tokens were swapped to ETH within minutes, spread across about 50 wallets within about two hours, and converted to BTC through THORChain (72% of the roughly 500,000 ETH bridged, per Arkham), and Arkham called the proceeds "fully laundered" on 5 March 2025, 12 days after the theft [56]. That describes conversion and layering, not final cash-out: eXch alone handled about $200M (about 15%) before it announced a shutdown, and ZachXBT alleges that a Chinese-language network laundered more than $1B over a longer period (single source, unverified) [88, 89]. Chainalysis models a three-wave cycle of about 45 days for 2022 to 2025 thefts: DeFi and mixers in days 0 to 5, limited-KYC exchanges and bridges in days 6 to 10, and no-KYC exchanges, guarantee services and Chinese-language networks in days 20 to 45. It finds that North Korea moves about 60% of its volume in transfers under $500k and over-indexes on Chinese-language money movement, Huione and mixing [2].</p>
 <p>The path is built around freezes. Actors convert issuer-controlled tokens to native assets first, which is why the freeze channel in Section 5.4 catches so little [90]. The first OFAC mixer designations (Blender in 2022, Tornado Cash in 2022, Sinbad in 2023) followed Lazarus use of each, and Tornado Cash was delisted on 21 March 2025 [91, 92, 93].</p>
 <h3 id="74-recovery">7.4 Recovery</h3>
-<p>Recovery is lower for North Korean thefts. Of the 95 incidents with gov-or-firm attribution ($6.45B), 8.3% of dollars has a documented recovery. Two outliers drive that: KuCoin 2020 ($239M, mostly freezable ERC-20 tokens, on the exchange's own statement) and Munchables 2024 (an insider returned the keys after being identified). Without them the share is 3.8%. On government attribution alone it is 3.4%. All other incidents recover 25.8% of dollars, or 17.1% without the three largest returns. Voluntary return is almost absent: the one North Korea case that returned money voluntarily had an insider who had been doxxed.</p>
+<p>Recovery is lower for North Korean thefts. Of the 95 incidents with gov-or-firm attribution ($6.45B), 8.3% of dollars has a documented recovery. Two outliers drive that: KuCoin 2020 ($239M, mostly freezable ERC-20 tokens, on the exchange's own statement) and Munchables 2024 (an insider returned the keys after being identified). Without them the share is 3.8%. On government attribution alone it is 3.4%. Incidents outside the government, firm and researcher-list groups recover 25.9% of dollars, or 17.1% without the three largest returns. Voluntary return is almost absent: the one North Korea case that returned money voluntarily had an insider who had been doxxed.</p>
 <p>What recovery there is comes from freezes and court orders. Bybit's day-one freezes were $42.9M (about 2.9% of $1.46B), including Tether's $181k; the company's later claims of $73M and $78.9M are unaudited [72]. Arbitrum's freeze of $71M from Kelp is the largest, and it is tied up in the creditor dispute described in Section 5.5. The DOJ's civil forfeiture complaints sought $15.1M of USDT linked to four 2023 thefts of about $37M, $100M, $138M and $107M at unnamed platforms [87]. Ronin produced about $30M, the first seizure of its kind, after OFAC listed the getaway wallet [94]. Later Norwegian recovery reports are retained as references and excluded from counted dollars because their overlap with that aggregate remains unresolved (data/recovery_events.csv).</p>
 <h3 id="75-indictments-sanctions-and-no-arrests">7.5 Indictments, sanctions and no arrests</h3>
-<p>In the public sources searched through 21 October 2026, we found no record of a North Korean operator of an exchange or bridge theft being arrested. The list of formal actions is indictments in absentia: Park Jin Hyok (complaint in 2018), Jon Chang Hyok, Kim Il and Park (unsealed 17 February 2021, including three crypto thefts totalling $112M), the Chinese over-the-counter launderers Tian Yinyin and Li Jiadong (2 March 2020, more than $100M of laundered exchange-hack proceeds), and a Foreign Trade Bank representative with Chinese launderers in April 2023 [95, 96, 97]. Treasury designated eight North Korean bankers and two entities on 4 November 2025 [98]. There have been four OFAC actions naming North Korean hacking groups or their wallet addresses (2019, 2020 and two in April 2022) and four DOJ in-rem actions. That count leaves out the three mixer designations of Section 7.3, which targeted the services and not North Korean persons, and the November 2025 banker designations above, so the number of OFAC actions touching the topic is higher. The people we found in custody in this related IT-worker stream were US and Ukrainian facilitators: five who pleaded guilty in November 2025, and two US nationals arrested in October 2026 who are charged, not convicted [128]. For Bybit we found no public DOJ criminal or forfeiture action naming the theft in the sources searched through 21 October 2026; the exchange itself sued North Korea, its Reconnaissance General Bureau and Lazarus in the District of Columbia (No. 1:26-cv-02173, Judge Bates) on 18 June 2026, under seal. The court granted a temporary restraining order on 19 June and a renewed one on 16 July, granted a preliminary injunction in part on 30 July, and unsealed the case on 6 August; service on the defendants through the State Department began on 25 August [99, 129]. Bybit reports freezing more than $30.5M across more than 28 exchanges and custodians; we did not check that figure against the court record.</p>
+<p>In the public sources searched through 21 October 2026, we found no record of a North Korean operator of an exchange or bridge theft being arrested. Recorded formal actions include indictments and complaints with no public operator-custody record found: Park Jin Hyok (complaint in 2018), Jon Chang Hyok, Kim Il and Park (unsealed 17 February 2021, including three crypto thefts totalling $112M), the Chinese over-the-counter launderers Tian Yinyin and Li Jiadong (2 March 2020, more than $100M of laundered exchange-hack proceeds), and a Foreign Trade Bank representative with Chinese launderers in April 2023 [95, 96, 97]. Treasury designated eight North Korean bankers and two entities on 4 November 2025 [98]. There have been four OFAC actions naming North Korean hacking groups or their wallet addresses (2019, 2020 and two in April 2022) and four DOJ in-rem actions. That count leaves out the three mixer designations of Section 7.3, which targeted the services and not North Korean persons, and the November 2025 banker designations above, so the number of OFAC actions touching the topic is higher. Related IT-worker prosecutions include charges against North Korean nationals and facilitators of several nationalities. DOJ’s 23 January 2025 release charges Jin Sung-Il and Pak Jin-Song alongside Mexican and US facilitators, and reports arrests of the three facilitators [145]. Its 30 June 2025 release charges four North Korean nationals in a virtual-currency theft scheme and describes them as at large [146]. Charges are allegations, not convictions or proof of custody. The previously recorded US/Ukrainian facilitator pleas in November 2025 and two US arrests in October 2026 are examples, not an exhaustive nationality list [128]. These January and June releases were directly re-read on 23 October 2026; the broader DOJ/court/OFAC custody search remains bounded to 21 October 2026. For Bybit we found no public DOJ criminal or forfeiture action naming the theft in the sources searched through 21 October 2026; the exchange itself sued North Korea, its Reconnaissance General Bureau and Lazarus in the District of Columbia (No. 1:26-cv-02173, Judge Bates) on 18 June 2026, under seal. The court granted a temporary restraining order on 19 June and a renewed one on 16 July, granted a preliminary injunction in part on 30 July, and unsealed the case on 6 August; service on the defendants through the State Department began on 25 August [99, 129]. Bybit reports freezing more than $30.5M across more than 28 exchanges and custodians; we did not check that figure against the court record.</p>
 <p>For a protocol the implication is hard. For the exchange and bridge thefts in the sources searched through 21 October 2026, indictments had produced no observed arrest of a North Korean operator. Recovery depended mainly on early containment, with later seizures also recorded. Section 8 takes up the new question of how much the attack surface changes when attackers use models; the evidence we have on state actors and AI so far concerns employment fraud and social engineering, not exploit development [100, 101].</p>
 <h2 id="8-attack-contracts-and-ai">8 Attack contracts and AI</h2>
 <p>The previous sections follow the money after a theft. This section looks at the theft itself, through the on-chain footprint of reproducible EVM exploits: how attacker contracts and habits changed, whether the 2026 jump in recorded incidents shows in more than one tracker, and what is documented about artificial intelligence in attacks. The findings are count-based and cover a different, smaller population than the 1,377 incidents of the earlier sections. We do not join them to the outcome layers, and none is a recovery or enforcement result.</p>
@@ -2171,7 +2172,7 @@
 <p>An attack contract that runs its exploit inside its own constructor is deployed and used in one transaction, leaving no interval between an on-chain deployment and the attack. Pending-transaction visibility depends on how the transaction is submitted [141]. We flag a row as a constructor attack when the attack transaction cited by DHL creates a contract.</p>
 <p>The share rose from about zero to over a third: 4.7% in 2023 (9 of 190), 14.3% in 2024 (26 of 182), 40.5% in 2025 (62 of 153) and 34.1% in 2026 (47 of 138). In 2020 to 2022 it was 0 of 95 after removing one false positive (Fortress Loans, 2022). Adding rows where the contract was deployed and used in the same block but in separate transactions gives 15.4% in 2024, 49.0% in 2025 and 44.2% in 2026 (K1). The rise appears inside each chain, so it is not a change in chain mix: on Ethereum it went from 0 of 39 (2020 to 2022) to 4.1%, 12.8%, 56.1% and 36.2%, and on BSC from 0 of 51 (2020 to 2022, after the same false-positive removal; 2.0% before it) to 5.2%, 12.7%, 29.0% and 28.0%.</p>
 <p><strong>Checks.</strong> We re-fetched 25 flagged rows. All are contract-creation transactions, and 24 of 25 (96%, Wilson interval 80.5% to 99.3%) are consistent with an exploit executed inside the creation transaction. A stricter test, requiring visible value flow to the attacker inside that transaction, passes 18 of 25 (72%); at that rate the 2025 share would be about 29%, still far above the 2020 to 2022 level. None of 15 unflagged rows was a creation transaction (two were created in the same block as the attack, in a different transaction).</p>
-<p><strong>Dollars.</strong> Weighted by reported USD loss, the same-transaction share is much smaller: 0.9% in 2023, 25.1% in 2024, 8.2% in 2025 and 10.9% in 2026. The shift in counts is therefore among small and mid-sized exploits. The dollar shares move a lot from year to year, and we did not decompose them.</p>
+<p><strong>Dollars.</strong> Weighted by reported USD loss, the same-transaction shares are 0.9% in 2023, 25.1% in 2024, 8.2% in 2025 and 10.9% in 2026. The dollar share is much smaller than the incident share in 2025 and 2026; in 2024 it is higher (25.1% versus 14.3%). The 2025–2026 pattern is concentrated in smaller and mid-sized exploits. The dollar shares move a lot from year to year, and we did not decompose them.</p>
 <p><strong>Lag.</strong> The median time between deploying an attacker-controlled contract and using it fell from 10.3 minutes in 2020 to 2022 to 4.2 minutes in 2023 and 2024, and to zero seconds in 2025 and 2026 (n = 44, 90, 97, 84 and 75) (K2). That is the same pattern: strictly same-transaction rows are 60.7% of the 2025 lag set and 53.3% of the 2026 set. With zero-lag rows removed, the median is flat at 10.3, 5.2, 10.9 and 6.0 minutes for 2020 to 2022, 2023, 2024 and 2026 (2025 has only 24 such rows and an unstable 185.4). The decline comes from atomic deployment and execution; nonzero deployment gaps remain roughly stable.</p>
 <p><strong>Table 23.</strong> Same-transaction attacks and deploy-to-attack lag in the DeFiHackLabs EVM sample, by year.</p>
 <table>
@@ -2294,7 +2295,7 @@
 <p>Three things recover money, and they share one property: they act before the proceeds are converted into something nobody can stop.</p>
 <p><strong>Speed.</strong> The sampled chain interventions, including forks and rollbacks, have a one-day median, with a range extending to 33 days. Issuer freezes have a 1.5-day median, exchange freezes 3 days, and seizures range from 169 days to over 5 years (Section 5.3). The named early-containment cases preserved about 73% to 100% of value at risk (Cronos 92.4%, Cetus 72.6%, Venus a full forced liquidation). Liquid's attacker returned 85% by minted units in about 26 hours. In our re-audited dated sample of 23 returns, the first return arrives at a median of 2.4 days after the exploit (21 of 23 inside a week), and in the earlier paper's smaller sample from the first on-chain message at a median of 42 hours (Section 4.4) [1]. These samples describe observed actions and successful returns; they do not measure how response speed changes outcomes across all hacks.</p>
 <p><strong>Freezable assets.</strong> Only issuer tokens, tokens with admin controls and native assets on chains with a coordinating validator set can be frozen. The overlap between that set and the assets thieves take is small (Section 5.4). Attackers who know this convert first. The channel share is therefore a property of asset design as much as of response quality: a protocol or chain that holds value in freezable form has more recovery options, and one that holds ETH, BTC or DAI on an open chain has none.</p>
-<p><strong>Identification.</strong> Most successful prosecutions in our records began with a name or an identifiable counterparty: a public identity, an insider or a KYC-verified cash-out. A minority began with tracing, where the thief moved or spent coins (Bitfinex, Zhong, Spalletta). Among the cases with a dated first public action, the observed medians were 14.5 to 20 months after the hack, depending on scope (Section 6.2). Identification may also shape negotiation. In the earlier paper, 80 of 219 incidents where a protocol messaged the attacker saw a return (36.5%) against 9 of 256 with no outreach (3.5%). That association cannot establish an outreach effect because protocols may message when they expect an answer [1].</p>
+<p><strong>Identification.</strong> Most successful prosecutions in our records began with a name or an identifiable counterparty: a public identity, an insider or a KYC-verified cash-out. A minority began with tracing, where the thief moved or spent coins (Bitfinex, Zhong, Spalletta). Among the cases with a dated first recorded action against a person, the observed medians were 439.5 days (14 in-scope cases) or 607.5 days (all 16 cases) after the hack, depending on scope (Section 6.2). Identification may also shape negotiation. In the earlier paper, 80 of 219 incidents where a protocol messaged the attacker saw a return (36.5%) against 9 of 256 with no outreach (3.5%). That association cannot establish an outreach effect because protocols may message when they expect an answer [1].</p>
 <h3 id="92-for-protocols">9.2 For protocols</h3>
 <p><strong>Pre-negotiated bounties.</strong> The 10% norm is a focal point that both sides already use: 102 of 181 bounty openings in the earlier paper were exactly 10%, and the median share kept by attackers who returned money was 10% (n=35), 21 of them exactly the offer [1]. A bounty published before an incident turns that convention into an instruction. SEAL's Safe Harbor sets no standard percentage, and its terms apply to identified whitehats rescuing funds from an active exploit; it excludes an attacker who starts an exploit and then "rescues" the funds. ENS adopted 10% with a $250k aggregate cap, KYC and OFAC screening, and 72-hour return [20, 21]. It cannot settle with an anonymous attacker, so a protocol needs both the registry for whitehats and a standing, public after-the-fact offer for everyone else. The post-hack 10% is uncapped and therefore much larger than pre-hack payouts, and the protocol's comparison is 10% against total loss.</p>
 <p><strong>Monitoring and response time.</strong> Recovery rates in our data are determined in the first hours. A protocol needs an alert path to the issuers and chain operators that can freeze, a pause mechanism it can use without a governance vote, and a pre-agreed contact with the SEAL 911 and investigator community. Bybit's 72-hour reimbursement shows what a balance sheet can do after the fact; Cronos shows what detection in 36 minutes, followed by a halt and rollback, can do before.</p>
@@ -2303,7 +2304,7 @@
 <h3 id="93-for-issuers-and-chains">9.3 For issuers and chains</h3>
 <p>The dispute between Tether and Circle is a policy dispute, not a technical one. Tether acts quickly on its own judgment and is criticised for discretion; Circle acts only on legal direction and is criticised for delay (Section 5.6). The data say that issuer freezes catch 1% to 11% of a loss in the counted cases because the thief converts first, so the only way to improve the channel is faster action in the first hours, which requires either a pre-agreed rule (for example, a published emergency-freeze procedure with a short review window) or an accepted discretion. Chains with validator or council freeze power should publish their process before they need it. The controversy in Cetus and Cronos was about who decides and how quickly a vote can close, not about whether the technique works; Kelp shows that a freeze does not end the matter when creditors file claims against the frozen property.</p>
 <h3 id="94-for-law-enforcement-and-policymakers">9.4 For law enforcement and policymakers</h3>
-<p>Three patterns matter. First, the arrest rate is 1.2% of incidents (16 of 1,377, about 1 in 86) and 9% of the 100 largest, and the median delay in a separate sample of 16 cases is 20 months (14.5 months for the 14 of them inside our scope), so a victim should not plan around prosecution. Second, the successes involve cooperating jurisdictions and persons with fiat exposure; for North Korean exchange and bridge-theft operators, the public sources searched through 21 October 2026 showed indictments and sanctions without an observed arrest, and the practical tools include freezes and designations. Third, outcomes in court are mixed on the law: two of the six cases in Table 21 went the defendant's way in court (an acquittal at first instance in Platypus, and Mango counts 1 to 3, vacated for venue or acquitted for want of a misrepresentation, under appeal), one produced a hung jury and one ended with the defendant at large, while computer-fraud and laundering theories have survived. Prosecutors and legislatures will need clarity on venue, misrepresentation and which statute fits permissionless code.</p>
+<p>Three patterns matter. First, the arrest rate is 1.2% of incidents (16 of 1,377, about 1 in 86) and 9% of the 100 largest, and the median time to the first recorded action against a person is 439.5 days for 14 in-scope cases; the full sample of 16 cases, including two pre-2016 incidents, has a median of 607.5 days, so a victim should not plan around prosecution. Second, the successes involve cooperating jurisdictions and persons with fiat exposure; for North Korean exchange and bridge-theft operators, the public sources searched through 21 October 2026 showed indictments and sanctions without an observed arrest, and the practical tools include freezes and designations. Third, outcomes in court are mixed on the law: two of the six cases in Table 21 went the defendant's way in court (an acquittal at first instance in Platypus, and Mango counts 1 to 3, vacated for venue or acquitted for want of a misrepresentation, under appeal), one produced a hung jury and one ended with the defendant at large, while computer-fraud and laundering theories have survived. Prosecutors and legislatures will need clarity on venue, misrepresentation and which statute fits permissionless code.</p>
 <p>Two implications for policy follow. Recovery channels with the highest per-event yield (chain halts, issuer freezes) run on private discretion with no standard of review, and the cases where discretion was exercised are the ones with litigation. And the numbers that policymakers see (tracker percentages in the 5% to 13% range in a normal year) are lower than the share in our master table, because trackers snapshot early and exclude chain-level actions; the choice of denominator and cohort should be stated whenever a recovery rate is quoted.</p>
 <h2 id="10-limitations">10 Limitations</h2>
 <p><strong>Coverage.</strong> The master table starts from four public lists and a curated layer, and it is not a census. Outcomes were checked for 412 of the 659 incidents of $1M or more; the other 247 were never checked, and "no recovery found" for the checked ones means no public record found, not none. The 19.0% share is therefore a documented-only floor: an incident with no documented recovery adds no dollars, but that does not mean it recovered nothing, and the 247 unchecked incidents are unknown, not unrecovered. Small incidents are under-covered, and arrests for small incidents were searched only through a sibling case list.</p>
@@ -2316,7 +2317,7 @@
 <p><strong>Observed-action timing.</strong> Time-to-first-action medians cover only cases with an observed arrest, charge or detention. Many incidents remain unresolved, so these medians do not estimate waiting times across all hacks. Pending cases and appeals (Eisenberg, Peraire-Bueno, Spalletta's reported sentencing on 16 February 2027, Powell's scheduling) were open on 21 October 2026; direct docket-check dates vary by row.</p>
 <p><strong>Sources.</strong> Some figures come from secondary coverage because primary pages were blocked (DOJ archive pages, the multilateral monitoring team's PDF); they are flagged in the project briefs. Program terms for Immunefi come from search results, not a direct fetch, and are described as such.</p>
 <h2 id="11-conclusion">11 Conclusion</h2>
-<p>Most stolen crypto is not recovered. Across 1,377 incidents and $16.52B stolen between 2016 and October 2026, 19.0% has a documented recovery by any channel, 13.2% without the three largest, and a typical year of tracked recoveries is 5% to 13%. Returns by attackers are the largest channel (10.0% of dollars) and are concentrated in a few cases. Voluntary return accounts for 52.5% of recovered dollars, and most of the rest comes from actions taken within days. Legal consequences are rarer than the public assumes: 1.2% of incidents lead to an arrest or charge, 9% of the 100 largest, with a median wait of 20 months in a separate sample of 16 cases (14.5 months for those inside our scope), and conviction usually follows a plea. North Korea is behind at least 22.6% of the dollars on government attribution from 2.3% of incidents (34% to 39.1% of dollars with firm attributions, from up to 6.9% of incidents), and the public sources searched through 21 October 2026 showed no arrest of a North Korean operator of an exchange or bridge theft.</p>
+<p>Most stolen crypto is not recovered. Across 1,377 incidents and $16.52B stolen between 2016 and October 2026, 19.0% has a documented recovery by any channel, 13.2% without the three largest, and a typical year of tracked recoveries is 5% to 13%. Returns by attackers are the largest channel (10.0% of dollars) and are concentrated in a few cases. Voluntary return accounts for 52.7% of recovered dollars, and most of the rest comes from actions taken within days. Legal consequences are rarer than the public assumes: 1.2% of incidents lead to an arrest or charge, 9% of the 100 largest, with a median time to the first recorded action against a person of 439.5 days in 14 in-scope cases (607.5 days in the separate full sample of 16), and conviction usually follows a plea. North Korea is behind at least 22.6% of the dollars on government attribution from 2.3% of incidents (34% to 39.1% of dollars with firm attributions, from up to 6.9% of incidents), and the public sources searched through 21 October 2026 showed no arrest of a North Korean operator of an exchange or bridge theft.</p>
 <p>On the attack side, a sample of 758 reproducible EVM exploits shows a shift to one-transaction attack contracts (about 0% in 2020 to 2022, 40.5% in 2025), Tornado Cash directly funding the attacker in about 30% of sampled Ethereum incidents with a resolved first funder after its delisting, and a rise of 2.3 to 3.1 times in recorded incidents from 2025 to March-September 2026 that dollars did not match. We found no verified exploit written by AI in the wild, and the AI evidence we could verify is capability research and attacker use in social engineering and tooling.</p>
 <p>The practical lesson is that the outcome of a hack is decided in its first days by choices made before it: which assets are freezable, who can act, what the pre-agreed offer is and whether the victim has decided to make users whole. The data support four recommendations for protocols and policy: publish a standing bounty and a freeze contact path before an incident, keep value in forms that a coordinating party can freeze where that is acceptable, measure recovery with a stated denominator and cohort, and treat identification of the attacker, not code, as the condition under which both negotiation and enforcement work.</p>
 <h2 id="references">References</h2>
@@ -2464,7 +2465,14 @@
 <li>Ethereum.org, Transactions: broadcast and the pending transaction pool. https://ethereum.org/developers/docs/transactions/</li>
 <li>Crypto Briefing, Uranium Finance hacker Spalletta found guilty (reported sentencing date). https://cryptobriefing.com/uranium-finance-hacker-spalletta-found-guilty/</li>
 <li>US DOJ (SDNY), Former security engineer sentenced to three years in prison for hacking two decentralized cryptocurrency exchanges. https://www.justice.gov/usao-sdny/pr/former-security-engineer-sentenced-three-years-prison-hacking-two-decentralized</li>
-<li>US DOJ (EDNY), Canadian national charged with stealing approximately $65 million in cryptocurrency from two DeFi protocols. https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi</li>
+<li>
+<p>US DOJ (EDNY), Canadian national charged with stealing approximately $65 million in cryptocurrency from two DeFi protocols. https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi</p>
+</li>
+<li>
+<p>US DOJ, Two North Korean Nationals and Three Facilitators Indicted for Multi-Year Fraudulent Remote Information Technology Worker Scheme (23 Jan 2025; directly read 23 Oct 2026). https://www.justice.gov/opa/pr/two-north-korean-nationals-and-three-facilitators-indicted-multi-year-fraudulent-remote</p>
+</li>
+<li>US DOJ, Coordinated Nationwide Actions to Combat North Korean Remote IT Workers’ Illicit Revenue Generation Schemes (30 Jun 2025; updated 3 Jul; directly read 23 Oct 2026). https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote</li>
+<li>Halborn, Explained: The PIZZA DeFi Platform Hack (13 Dec 2021; directly read 23 Oct 2026). https://www.halborn.com/blog/post/explained-the-pizza-defi-platform-hack-december-2021</li>
 </ol>
 <h2 id="appendix-a-canonical-numbers">Appendix A Canonical numbers</h2>
 <p>Each number used in the paper, with its definition, scope and confidence, from the project's canonical-numbers register (<code>data/canonical_numbers.json</code>).</p>
@@ -2524,7 +2532,7 @@
 <tr>
 <td style="text-align: left;">R2</td>
 <td style="text-align: left;">What share of stolen dollars comes back voluntarily?</td>
-<td style="text-align: left;">About 10% of stolen dollars ($1.65B of $16.52B = 10.0%; 8.5% before Liquid Network); only ~3.7% without the three largest returns (Poly Network, Liquid, Euler)</td>
+<td style="text-align: left;">About 10% of stolen dollars ($1.65B of $16.52B = 10.0%; 8.6% before Liquid Network); only ~3.7% without the three largest returns (Poly Network, Liquid, Euler)</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
@@ -2542,7 +2550,7 @@
 <tr>
 <td style="text-align: left;">R5</td>
 <td style="text-align: left;">Does messaging matter?</td>
-<td style="text-align: left;">Messaging is strongly associated with a return but not shown to cause one. Teams that reached out saw a return in 36.5% of known cases vs 3.5% without outreach (80 of 219 vs 9 of 256); outreach roughly doubled 2020-2026 while the return rate stayed 14-22%; no tested term (offer size, deadline, legal threat, non-pursuit promise, tone) shows a measurable effect.</td>
+<td style="text-align: left;">Messaging is strongly associated with a return but not shown to cause one. Teams that reached out saw a return in 36.5% of known cases vs 3.5% without outreach (80 of 219 vs 9 of 256); outreach roughly doubled 2020-2026 while the return rate stayed 14-22%; no measurable association was detected for the tested terms (offer size, deadline, legal threat, non-pursuit promise, tone), in underpowered observational tests.</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
@@ -2554,13 +2562,13 @@
 <tr>
 <td style="text-align: left;">C2</td>
 <td style="text-align: left;">How often (by count) does a hack have any recovery?</td>
-<td style="text-align: left;">151 of 659 incidents of $1M or more (22.9%) have a documented recovery; 36.7% of the 412 whose outcome was checked. Top 150 by loss: 59 of 150 (39.3%), 20.1% of their dollars; top 100: 44 of 100, 20.3% of dollars.</td>
+<td style="text-align: left;">150 of 659 incidents of $1M or more (22.8%) have a documented recovery; 36.4% of the 412 whose outcome was checked. Top 150 by loss: 58 of 150 (38.7%), 20.1% of their dollars; top 100: 43 of 100, 20.3% of dollars.</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
 <td style="text-align: left;">C3</td>
 <td style="text-align: left;">Which channels recover the money?</td>
-<td style="text-align: left;">Of recovered dollars (allocation by documented components): voluntary return (attacker/insider) 52.5% ($1649M, 104 incidents); issuer / exchange / protocol freeze 19.1% ($599M, 34 incidents); law-enforcement seizure / court 10.5% ($330M, 11 incidents); chain-level: halt / validator / security council 8.3% ($261M, 9 incidents); chain-level: hard fork / rollback 5.7% ($179M, 3 incidents); white-hat / MEV rescue 2.2% ($70M, 19 incidents); other / unspecified 1.6% ($49M, 12 incidents). Chain-level halts/forks together = 14.0%.</td>
+<td style="text-align: left;">Of recovered dollars (allocation by documented components): voluntary return (attacker/insider) 52.7% ($1654M, 105 incidents); issuer / exchange / protocol freeze 19.1% ($599M, 34 incidents); law-enforcement seizure / court 10.5% ($330M, 11 incidents); chain-level: halt / validator / security council 8.3% ($261M, 9 incidents); chain-level: hard fork / rollback 5.7% ($179M, 3 incidents); white-hat / MEV rescue 2.2% ($70M, 19 incidents); other / unspecified 1.5% ($47M, 11 incidents). Chain-level halts/forks together = 14.0%.</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
@@ -2578,7 +2586,7 @@
 <tr>
 <td style="text-align: left;">F1</td>
 <td style="text-align: left;">How fast do freezes and other recoveries happen?</td>
-<td style="text-align: left;">Chain interventions, including halts, validator freezes, forks and rollbacks: minutes to 33 days (median 1 day across five observed cases; the DAO fork took 33 days; Cronos detected the attack ~36 min after it began, halted the chain and rolled it back, restoring 92.4% (the halt time is not stated; block production resumed ~11h after the attack; the events file codes 0.46 days); Cetus froze within a day, 72.6%; BNB 2022 ~3h). Issuer freezes: hours to ~2 days (median 1.5). Exchange freezes: 0-11 days (median 3). Law-enforcement seizures: 169 days to 5+ years (the two counted seizures took 169 and 1,389 days, median 779; the Norwegian 331-day report is excluded because its overlap with the $30M aggregate is unresolved; the Uranium day count is to mid-Feb 2025, month-only evidence; Bitfinex ~2,015 days, 5.5 years, is excluded from the sums).</td>
+<td style="text-align: left;">Chain interventions, including halts, validator freezes, forks and rollbacks: minutes to 33 days (median 1 day across five observed cases; the DAO fork took 33 days; Cronos detected the attack ~36 min after it began, halted the chain and rolled it back, restoring 92.4% (the halt time is not stated; block production resumed ~11h after the attack; the events file codes 0.46 days); Cetus froze within a day, 72.6%; BNB 2022 ~3h). Issuer freezes: hours to ~2 days (median 1.5). Exchange freezes: 0-11 days (median 3). Law-enforcement seizures: 169 days to 5+ years (the two counted seizures were reported 169 and 1,398 days after the incidents, median 783.5; the Norwegian 331-day report is excluded because its overlap with the $30M aggregate is unresolved; DOJ specifies Uranium’s seizure date as 24 Feb 2025, 1,398 days after 28 Apr 2021; Bitfinex ~2,015 days, 5.5 years, is excluded from the sums).</td>
 <td style="text-align: left;">low</td>
 </tr>
 <tr>
@@ -2601,8 +2609,8 @@
 </tr>
 <tr>
 <td style="text-align: left;">E3</td>
-<td style="text-align: left;">How long until the first arrest or charge?</td>
-<td style="text-align: left;">In a SEPARATE sample of 16 cases with a dated first arrest, charge or detention (not the 16 incidents counted in E2; 11 overlap), the median is 608 days (about 20 months) from incident to first public action against a person (IQR 354-1,650; mean 972); 75% took over a year. Restricted to the 14 cases that are 2016+ incidents inside the 1,377 scope: median 439.5 days; restricted to the 11 cases that are also in the E2 set: median 439 days. Fast cases (Platypus 6 days, Mango 76) involved a KYC'd exchange or a public identity.</td>
+<td style="text-align: left;">How long until the first recorded action against a person?</td>
+<td style="text-align: left;">The median time to the first recorded action against a person is 439.5 days (about 14 months) in 14 in-scope dated cases, including laundering-side cases and one employee detention. This is a separate cohort from the 16 incidents counted in E2; 11 cases overlap. The full observed-action sample has 16 cases and a median of 607.5 days (about 20 months): it also includes pre-2016 Mt. Gox and Silk Road. Full-sample IQR 354-1,650 days; mean 972; 75% took over a year. Restricted to the 11 E2-overlap cases, the median is 439 days. Fast cases (Platypus 6 days, Mango 76) involved a KYC-verified exchange or a public identity.</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
@@ -2626,13 +2634,13 @@
 <tr>
 <td style="text-align: left;">D3</td>
 <td style="text-align: left;">Is recovery lower for DPRK hacks?</td>
-<td style="text-align: left;">Yes. DPRK-attributed (gov+firm, 95 incidents, $6.45B): 8.3% of dollars recovered, only 3.8% once KuCoin (exchange-claimed 84%) and Munchables (insider handed over keys) are removed. Government-attributed alone: 3.4%. Everything else: 25.8% (17.1% without the three largest returns).</td>
+<td style="text-align: left;">Yes. DPRK-attributed (gov+firm, 95 incidents, $6.45B): 8.3% of dollars recovered, only 3.8% once KuCoin (exchange-claimed 84%) and Munchables (insider handed over keys) are removed. Government-attributed alone: 3.4%. Everything else: 25.9% (17.1% without the three largest returns).</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
 <td style="text-align: left;">D4</td>
 <td style="text-align: left;">Have any DPRK hackers been arrested?</td>
-<td style="text-align: left;">In the public DOJ, court and OFAC sources searched through 21 Oct 2026, we found no arrest or custody record for a DPRK operator of an exchange or bridge theft. Indicted in absentia: Park Jin Hyok, Jon Chang Hyok, Kim Il (2021); Chinese OTC launderers Tian Yinyin and Li Jiadong (2020) and others. In custody or charged: only US and Ukrainian IT-worker facilitators (5 guilty pleas in November 2025; two more US nationals were arrested in October 2026 on an N.D. Ohio indictment announced 13 October and are charged, not convicted). OFAC actions against DPRK actors or their addresses: 4 (13 Sep 2019 Lazarus, Bluenoroff and Andariel; 2 Mar 2020 the Chinese OTC launderers; 14 and 22 Apr 2022 Ronin addresses). Separately OFAC designated three mixers that laundered Lazarus proceeds (Blender 6 May 2022, Tornado Cash 8 Aug 2022, delisted 21 Mar 2025, Sinbad 29 Nov 2023); those are not counted as actions against DPRK hackers. DOJ in-rem actions: 4. We found no public DOJ criminal or forfeiture action for Bybit in the sources searched as of 21 Oct 2026; Bybit filed a private civil suit (D.D.C. No. 1:26-cv-02173, Judge Bates; filed under seal 2026-06-18, preliminary injunction granted in part 2026-07-30, unsealed 2026-08-06).</td>
+<td style="text-align: left;">In the public DOJ, court and OFAC sources searched through 21 Oct 2026, we found no arrest or custody record for a DPRK operator of an exchange or bridge theft. Indicted in absentia: Park Jin Hyok, Jon Chang Hyok, Kim Il (2021); Chinese OTC launderers Tian Yinyin and Li Jiadong (2020) and others. Related IT-worker prosecutions also charge North Korean nationals and facilitators of several nationalities. DOJ announced charges against Jin Sung-Il and Pak Jin-Song, alongside Mexican and US facilitators, on 23 Jan 2025; on 30 Jun 2025 it announced charges against four North Korean nationals in a virtual-currency theft scheme. The January release reports arrests of the US and Mexican facilitators; the June release describes the four North Korean defendants as at large. These dated allegations do not establish custody of a North Korean exchange/bridge-theft operator. Previously recorded 5 guilty pleas by US/Ukrainian facilitators (Nov 2025) and two US arrests (Oct 2026) are examples, not an exhaustive nationality list. OFAC actions against DPRK actors or their addresses: 4 (13 Sep 2019 Lazarus, Bluenoroff and Andariel; 2 Mar 2020 the Chinese OTC launderers; 14 and 22 Apr 2022 Ronin addresses). Separately OFAC designated three mixers that laundered Lazarus proceeds (Blender 6 May 2022, Tornado Cash 8 Aug 2022, delisted 21 Mar 2025, Sinbad 29 Nov 2023); those are not counted as actions against DPRK hackers. DOJ in-rem actions: 4. We found no public DOJ criminal or forfeiture action for Bybit in the sources searched as of 21 Oct 2026; Bybit filed a private civil suit (D.D.C. No. 1:26-cv-02173, Judge Bates; filed under seal 2026-06-18, preliminary injunction granted in part 2026-07-30, unsealed 2026-08-06).</td>
 <td style="text-align: left;">high</td>
 </tr>
 <tr>
@@ -2644,7 +2652,7 @@
 <tr>
 <td style="text-align: left;">K1</td>
 <td style="text-align: left;">How common are same-transaction (constructor) attacks, and is the share growing?</td>
-<td style="text-align: left;">Share of enriched EVM exploits in the DeFiHackLabs sample (n=758) where the exploit ran inside the attack contract's own deployment transaction: 2023 4.7% (9/190); 2024 14.3% (26/182); 2025 40.5% (62/153); 2026 34.1% (47/138); ~0% in 2020-22 (0/95 after removing one false positive, Fortress Loans). Same-tx or same-block (deployed and attacked in the same block, separate txs): 49.0% in 2025 and 44.2% in 2026 (15.4% in 2024). USD-weighted the share is far smaller, 25.1% (2024), 8.2% (2025), 10.9% (2026): the shift is among small and mid exploits. Flag precision 24 of 25 sampled (96%, Wilson 80.5-99.3%).</td>
+<td style="text-align: left;">Share of enriched EVM exploits in the DeFiHackLabs sample (n=758) where the exploit ran inside the attack contract's own deployment transaction: 2023 4.7% (9/190); 2024 14.3% (26/182); 2025 40.5% (62/153); 2026 34.1% (47/138); ~0% in 2020-22 (0/95 after removing one false positive, Fortress Loans). Same-tx or same-block (deployed and attacked in the same block, separate txs): 49.0% in 2025 and 44.2% in 2026 (15.4% in 2024). USD-weighted shares are 25.1% (2024), 8.2% (2025), 10.9% (2026). The dollar share is lower than the incident share in 2025 and 2026; in 2024 it is higher. Flag precision 24 of 25 sampled (96%, Wilson 80.5-99.3%).</td>
 <td style="text-align: left;">medium</td>
 </tr>
 <tr>
